@@ -43,79 +43,38 @@
 ### Viewing Friends
 
 * As a logged in user, I want to be able to see my friend list on my profile page.
-  * When I'm on the `/my-friends` page:
+  * When I'm on the `/friends` page:
     * I can view all my friends.
-  * When I click on one of my friends:
-    * I want to see any unsettled transactions between us
-    * I want to be able to easily see the net difference between the two of us to easily determine how much one owes the other
-    * If there is neither of us owes each other money, I want to have an option to see a list of past settled expenses
-
-### Searching for Friends
-  * TODO: figure out how searching for friends and adding friends works on Splitwise
-
-### Unfriending
-  * As a logged in user I want to easily find the settings to unfriend a friend in my friends list
-    * When I'm on the `/my-friends` page:
-      * I want to easily find the setting to unfriend a specific friend in my friend's list
-      * I don't want to have some confirmation before completing the unfriending action
-
-## Groups (full CRUD)
-
-### Creating a Group
-  * As a logged in user I want to be able to easily add a group
-      * When I'm on the `/my-groups` page:
-        * I want to easily add people to my group
-        * Those members do not need to be a part of my fiendslist (?)
-
-### Getting Details about the Group
-  * As a logged in user and a member of the group:
-    * When I'm on the `/my-groups/:groupId` page:
-      * I want to easily see who I owe money to
-      * I want to easily see who owes money to me
-      * I should be able to easily find out who the other group members are, and how to contact them
-
-### Updating the Group
-  * As a logged in user and a member of the group:
-    * When I'm on the `/my-groups/:groupId` page:
-      * I should be able to easily find the settings to update the group details (group name and group members)
-      * If a user has unsettled expenses within the group, their balance must be 0 before they can be removed from the group
-      * There should be a prompt to confirm that the user should be removed from the group before they are actually removed
-
-### Deleting the Group
-  * As a logged in user and a member of the group:
-    * When I'm on the `/my-groups/:groupId` page:
-      * I want to easily find the settings to delete the group
-      * If I was not the one who created the group I should not have the ability to delete the entire group, only the ability to leave the group (if that's how we want to set up our app even though that's not how the original has it set up)
-      * If I am the owner of the app I should have the authority to delete the group
-        * There should be a prompt to confirm that the group should be deleted before actually deleteing the group
-
-## Bills (full CRUD)
-
-### Creating Bills
 
 ### Viewing Bill Details
 
 ### Updating Bills
 
-### Deleting Bills
 
 
-## Transaction History (full CRUD)
+----------- Sample below ----------------------
+### Viewing FauxTweets
 
-### Creating Transaction History
-  * As a logged in user
-    * The first time an expense is settled between another user and me, a history of our transactions should be made
+* As a logged in _or_ logged out user, I want to be able to view a selection of the most recent FauxTweets.
+  * When I'm on the `/fauxtweets` page:
+    * I can view the ten most recently posted FauxTweets.
+      * So that I can read and interact with the thoughts and memes of my friends.
 
-### Viewing Transaction History
-  * As a logged in user
-    * I should be able to view my full transaction history, by easily finding a tab on the splash page ("All Expenses")
-    * I should be able to easily find a transaction history between my fiends and me by clicking on their names in my fiends list
-    * I should be able to easily find a transaction history for the groups I'm in by clicking the group name in my groups
+* As a logged in _or_ logged out user, I want to be able to view a specific FauxTweet and its associated FauxComments and FauxLikes.
+  * When I'm on the `/fauxtweets/:id` page:
+    * I can view the content of the FauxTweet, as well as the associated FauxComments and FauxLikes.
+      * So that I can read and interact with the thoughts and memes of my friends, and add my own thoughts and memes in the FauxComments.
 
-### Updating Transaction History
-  * As a logged in user:
-    * I should be able to update any of my past tansaction details that I was involved in
+### Updating FauxTweets
 
-### Deleting Transaction History
-  * As a logged in user:
-    * I should be able to delete any of my past transaction details that I was involved in
+* As a logged in user, I want to be able to edit my FauxTweets by clicking an Edit button associated with the FauxTweet anywhere that FauxTweet appears.
+  * When I'm on the `/fauxtweets`, `/fauxtweets/:id`, or `/users/:id/fauxtweets` pages:
+    * I can click "Edit" to make permanent changes to FauxTweets I have posted.
+      * So that I can fix any errors I make in my FauxTweets.
+
+### Deleting FauxTweets
+
+* As a logged in user, I want to be able to delete my FauxTweets by clicking a Delete button associated with the FauxTweet anywhere that FauxTweet appears.
+  * When I'm on the `/fauxtweets`, `/fauxtweets/:id`, or `/users/:id/fauxtweets` pages:
+    * I can click "Delete" to permanently delete a FauxTweet I have posted.
+      * So that when I realize I shouldn't have publicly said something, I can easily remove it.

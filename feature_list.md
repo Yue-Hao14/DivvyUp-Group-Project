@@ -6,24 +6,25 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 
 * Users can sign up, log in, and log out.
 * Users can use a demo log in to try the site.
-* Users can't use certain features without logging in (like fauxtweeting and fauxliking posts).
-* Logged in users are directed to their profile page which displays their fauxtweets.
-* Logged out users are directed to a page displaying several recent fauxtweets.
+* Users can't use certain features without logging in (like add friends, create expenses, view transaction history etc).
+* Logged in users are directed to their profile page which displays their dashboard of their current pending expenses.
+* Logged out users are directed to a home page showing some features of the application.
+
 
 ## 2. Friends (partial CRUD)
 
-* Logged in user can view their friend list on their profile page
+* Logged in user can vie their friend list on their profile page
 * Logged in users can search other users and send a friend request
 * Logged in users can accept or decline a friend request
 * Friend list is updated once a friend request is accepted
 * Logged in user can unfriend another user in their friend list
 
-## 3. Group (full CRUD)
+## 6. Bonus: Group (full CRUD)
 
 * Logged in user can view all the groups they are part of on thier profile page and navbar
 * Logged in user can create a group with other user from navbar
 * All members of the group can add other users and leave the group
-* Only owner of the group can delete the entire group (are we sure about this? Do we want to change it for our app?)
+* Only owner of the group can delete the entire group
 
 ## 4. Bills (full CRUD)
 
