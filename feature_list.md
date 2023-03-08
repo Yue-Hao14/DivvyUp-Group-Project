@@ -14,7 +14,7 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 ## 2. Friends (partial CRUD)
 
 * Logged in user can view their friends list on their profile page
-* Logged in users can search other users, add a friend and friends list will be updated on both sides
+* Logged in users can add a friend and friends list will be updated on both sides
 * Logged in user can unfriend another user in their friends list and friends list will be updated on both sides
 
 

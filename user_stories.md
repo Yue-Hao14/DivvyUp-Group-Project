@@ -43,11 +43,46 @@
 ### Viewing Friends
 
 * As a logged in user, I want to be able to see my friend list on my profile page.
-  * When I'm on the `/my-friends` page:
+  * When I'm on the `/friends` page:
     * I can view all my friends.
+  * When I click on one of my friends and get directed to `/friends/:friendId` page
+    * I want to see any transactions between us
+    * I want to be able to easily see the net difference between the two of us to easily determine how much one owes the other
+    * If there is neither of us owes each other money, I want to have an option to see a list of past settled expenses
+
+### Adding Friends
+* As a logged in user, I want to be able to add a friend
+  * A modal will be opened with username, message input box and a "add friends" button
+  * User can only add existing user as a friend
+  * Once the form is submitted, I will be rediredted to my dashboard
+  * A new friend will be added to my friends list
+
+### Unfriending
+  * As a logged in user I want to easily find the settings to unfriend a friend in my friends list
+    * When I'm on the `/my-friends` page:
+      * I want to easily find the setting to unfriend a specific friend in my friend's list
+      * I don't want to have some confirmation before completing the unfriending action
 
 
+## Transaction History (full CRUD)
 
+### Creating Transaction History
+  * As a logged in user
+    * The first time an expense is settled between another user and me, a history of our transactions should be made
+
+### Viewing Transaction History
+  * As a logged in user
+    * I should be able to view my full transaction history, by easily finding a tab on the splash page ("All Expenses")
+    * I should be able to easily find a transaction history between my fiends and me by clicking on their names in my fiends list
+    * I should be able to easily find a transaction history for the groups I'm in by clicking the group name in my groups
+
+### Updating Transaction History
+  * As a logged in user:
+    * I should be able to update any of my past tansaction details that I was involved in
+
+### Deleting Transaction History
+  * As a logged in user:
+    * I should be able to delete any of my past transaction details that I was involved in
 
 
 ----------- Sample below ----------------------
