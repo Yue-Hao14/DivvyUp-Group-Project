@@ -10,6 +10,7 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 * Logged in users are directed to their profile page which displays their fauxtweets.
 * Logged out users are directed to a page displaying several recent fauxtweets.
 
+
 ## 2. Friends (partial CRUD)
 
 * Logged in user can vie their friend list on their profile page
@@ -18,12 +19,14 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 * Friend list is updated once a friend request is accepted
 * Logged in user can unfriend another user in their friend list
 
-## 3. Group (full CRUD)
 
-* Logged in user can view all the groups they are part of on thier profile page and navbar
-* Logged in user can create a group with other user from navbar
-* All members of the group can add other users and leave the group
-* Only owner of the group can delete the entire group
+## 3. Comments (full CRUD)
+
+* Logged in users can view comments when they click on a specific transaction
+* Logged in users can create comments on any transaction
+* Logged in users can update their own comments
+* Logged in users can delete their own comments
+
 
 ## 4. Bills (full CRUD)
 
@@ -31,6 +34,7 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 * Logged in users can create a new bill and send split requests to other users
 * Logged in users can update the details of the bill they created
 * Logged in users can delete the bills they created
+
 
 ## 5. Transaction History (partial CRUD)
 
@@ -40,9 +44,9 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 * Once a bill is paid, transcation history should be updated accordingly
 
 
-## 6. Bonus Comments
+## 6. Bonus: Group (full CRUD)
 
-* Logged in users can view comments when they click on a specific transaction
-* Logged in users can create comments on any transaction
-* Logged in users can update their own comments
-* Logged in users can delete their own comments
+* Logged in user can view all the groups they are part of on thier profile page and navbar
+* Logged in user can create a group with other user from navbar
+* All members of the group can add other users and leave the group
+* Only owner of the group can delete the entire group
