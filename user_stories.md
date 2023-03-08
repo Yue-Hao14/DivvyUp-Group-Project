@@ -51,6 +51,7 @@
     * If there is neither of us owes each other money, I want to have an option to see a list of past settled expenses
 
 ### Adding Friends
+
 * As a logged in user, I want to be able to add a friend
   * A modal will be opened with username, message input box and a "add friends" button
   * User can only add existing user as a friend
@@ -58,56 +59,126 @@
   * A new friend will be added to my friends list
 
 ### Unfriending
-  * As a logged in user I want to easily find the settings to unfriend a friend in my friends list
-    * When I'm on the `/my-friends` page:
-      * I want to easily find the setting to unfriend a specific friend in my friend's list
-      * I don't want to have some confirmation before completing the unfriending action
+
+* As a logged in user I want to be able to unfriend on `/friends/:friendId` page with a button click
+  * When I'm on the `/friends/:friendId` page:
+    * I want to easily find the button to unfriend a specific friend in my friend's list
+    * I want to have some confirmation before completing the unfriending action
+    * Once unfriending request is confirmed, I will be rediredted to my dashboard
+    * Friends list should be updated accordingly
 
 
-## Transaction History (full CRUD)
 
-### Creating Transaction History
+## Comments (full CRUD)
+
+### Viewing a comment
+
+* As a logged in user, I want to be able to view comments when click on a specific transaction
+  * When viewing transaction details:
+    * I want to see all the comments associated to this transaction (oldest at top, ascending order)
+    * Each comment should show the user who posted the comment and the date (MM/DD/YYY) when the comment is posted
+
+
+### Adding a comment
+
+* As a logged in user, I want to be able to add comments when click on a specific transaction
+  * When viewing transaction details:
+    * I want to see a text input box and a "post" button to create a new comment
+    * The "post" button should be disabled until user has to input at least 3 characters
+    * Once the form is submitted, the new comment will show up at the bottom of the comments list
+
+
+### Updating a comment
+
+* As a logged in user, I want to be able to update my comments when click on a specific transaction
+  * When viewing transaction details:
+    * I want to see an "update" icon
+    * Once click on the "update" icon, I can update comments and post the updated comments
+    * Once the form is submitted, the new comment will show up at the bottom of the comments list and the date will be "Edited on MM/DD/YYY"
+
+
+### Deleting a comment
+
+* As a logged in user, I want to be able to delete my comments when click on a specific transaction
+  * When viewing transaction details:
+    * I want to see a "delete" icon next to my comments
+    * Once click on the "delete" icon, a confirmation will be needed before I can delete the comment
+    * Once it's confirmed, the comment will be removed from the comments list
+
+
+
+## 4. Expenses (full CRUD)
+
+### Viewing all expenses
+
+* As a logged in user, I want to be able to view all my pending expenses when on `/dashboard` page
+  * When viewing `/dashboard` page:
+    * I want to see a summary of total balance, how much I owe and how much I am owed
+    * Below the summary, I want to see who owes me money and how much by decending order (latest at top)
+    * Below the summary, I want to see who I owe money to and how much by decending order (latest at top)
+
+
+### Viewing individual expense
+
+* As a logged in user, I want to be able to view specific expenses when click on it
+  * When viewing specific transaction:
+    * I want to see a summary of who added the expense and when
+    * Below summary, I want to see who paid the expense and details of who owes the payer and by how much
+    * Below the summary, I want to see all the comments
+
+
+### Adding an expense
+
+* As a logged in user, I want to be able to add an expenses when on `/dashboard` page, when on `/friends/:friendId` page
+  * When on `/dashboard` page
+    * I want to see a "Add an expense" button
+    * When click on "Add an expense" button, a modal will open and I need to input the user I want to split the expense with
+    * After I input a valid user, a form will be displayed with some input boxes for description , amount, paid by who (default to you), and how to split it (split evenly by default, they owe full or I owe the full amount), and a date (default to today), and finally "Cancel" and "Save" buttons at the end
+    * Once click on the "Cancel" button, modal will be closed withour submit the form and back to previous page
+    * I must enter a description and an amount greater than 0, otherwise an error message will be shown and "Save" button will be deactivated
+    * Once form is submitted successfully, the modal should close. I will see the current page being updated with the new expense
+
+  * When on `/friends/:friendId` page:
+    * When click on "Add an expense" button, a modal will open showing the friend I am splitting this expense with
+    * A form will be displayed with some input boxes for description , amount, paid by who (default to you), and how to split it (split evenly by default, they owe full or I owe the full amount), and a date (default to today), and finally "Cancel" and "Save" buttons at the end
+    * Once click on the "Cancel" button, modal will be closed withour submit the form and back to previous page
+    * I must enter a description and an amount greater than 0, otherwise an error message will be shown and "Save" button will be deactivated
+    * Once form is submitted successfully, the modal should close. I will see the current page being updated with the new expense
+
+
+### Updating an expense
+
+* As a logged in user, I want to be able to edit an expense when viewing an expense's details
+  * When click on "Edit expense" button:
+    * A modal same as "add an expense" will pop up with prefilled details of this expense
+    * Same restrictions as "add an expense" before I can save the changes
+    * Once click on the "Cancel" button, modal will be closed withour submit the form and back to previous page
+    * Once form is submitted successfully, the modal should close. I will see the current page being updated with the new expense
+
+
+### Deleting an expense
+
+* As a logged in user, I want to be able to delete an expense I am involved in when viewing that expense:
+  * I want to see a "delete" icon next to the expense summary
+  * When click on "delete" icon, an alert will pop up to confirm I REALLY want to delete this expense for ALL people involved with a "Cancel" and a "OK" button
+  * Once click on the "Cancel" button, modal will be closed withour deleting the expense and back to previous page
+  * Once click on the "OK" button, previous page will show up and the expenses list will be updated accordingly
+
+
+## Transaction History (partial CRUD)
+
+### Viewing transaction history
   * As a logged in user
-    * The first time an expense is settled between another user and me, a history of our transactions should be made
-
-### Viewing Transaction History
-  * As a logged in user
-    * I should be able to view my full transaction history, by easily finding a tab on the splash page ("All Expenses")
-    * I should be able to easily find a transaction history between my fiends and me by clicking on their names in my fiends list
-    * I should be able to easily find a transaction history for the groups I'm in by clicking the group name in my groups
-
-### Updating Transaction History
-  * As a logged in user:
-    * I should be able to update any of my past tansaction details that I was involved in
-
-### Deleting Transaction History
-  * As a logged in user:
-    * I should be able to delete any of my past transaction details that I was involved in
+    * I should be able to view my full transaction history, by easily finding a tab on the navbar ("All Expenses") and when click on it, I will be redirected to `/all` page
+      * The transaction history should show expenses summary with any users
+    * I should be able to easily find a transaction history between my fiends and me by clicking on their names in my fiends list and be redirected to `/friends/:friendId` page
+    * The transaction history should show expenses summary with this specific friend
 
 
------------ Sample below ----------------------
-### Viewing FauxTweets
+### Creating transaction history
+  * As a logged in user, when I first signed up for the application, I should have an empty transaction history when on `/all` or `/friends/:friendId` pages
 
-* As a logged in _or_ logged out user, I want to be able to view a selection of the most recent FauxTweets.
-  * When I'm on the `/fauxtweets` page:
-    * I can view the ten most recently posted FauxTweets.
-      * So that I can read and interact with the thoughts and memes of my friends.
 
-* As a logged in _or_ logged out user, I want to be able to view a specific FauxTweet and its associated FauxComments and FauxLikes.
-  * When I'm on the `/fauxtweets/:id` page:
-    * I can view the content of the FauxTweet, as well as the associated FauxComments and FauxLikes.
-      * So that I can read and interact with the thoughts and memes of my friends, and add my own thoughts and memes in the FauxComments.
+### Updating transaction history
+  * As a logged in user, I should see my transaction history being updated whenever there is a change to any of expenses that I am involved in
 
-### Updating FauxTweets
-
-* As a logged in user, I want to be able to edit my FauxTweets by clicking an Edit button associated with the FauxTweet anywhere that FauxTweet appears.
-  * When I'm on the `/fauxtweets`, `/fauxtweets/:id`, or `/users/:id/fauxtweets` pages:
-    * I can click "Edit" to make permanent changes to FauxTweets I have posted.
-      * So that I can fix any errors I make in my FauxTweets.
-
-### Deleting FauxTweets
-
-* As a logged in user, I want to be able to delete my FauxTweets by clicking a Delete button associated with the FauxTweet anywhere that FauxTweet appears.
-  * When I'm on the `/fauxtweets`, `/fauxtweets/:id`, or `/users/:id/fauxtweets` pages:
-    * I can click "Delete" to permanently delete a FauxTweet I have posted.
-      * So that when I realize I shouldn't have publicly said something, I can easily remove it.
