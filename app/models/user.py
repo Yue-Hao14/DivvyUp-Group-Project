@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
                               secondary=user_friends,
                               primaryjoin=user_friends.c.user==id,
                               secondaryjoin=user_friends.c.friend==id,
-                              backref='friend_of')
+                            )
 
     @property
     def password(self):

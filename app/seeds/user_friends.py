@@ -9,6 +9,7 @@ def seed_friends():
 
     demo.friends.append(john)
     demo.friends.append(jane)
+    john.friends.append(demo)
 
     db.session.add(demo)
     db.session.commit()
