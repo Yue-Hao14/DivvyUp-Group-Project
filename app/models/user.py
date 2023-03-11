@@ -1,12 +1,14 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .expense_ower import expense_owers
 
-# friends = db.Table(
-#     "user_friends",
-#     db.Column("user", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-#     db.Column("friend", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-# )
+
+user_friends = db.Table(
+    "user_friends",
+    db.Column("user", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+    db.Column("friend", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -21,11 +23,14 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    expenses = db.relationship("Expense", back_populates="payer")
-    # friends = db.relationship("User",
-    #                           secondary=friends,
-    #                           primaryjoin=id==friends.c.user,
-    #                           secondaryjoin=id==friends.c.friend)
+    payer_expenses = db.relationship("Expense", back_populates="payer")
+    ower_expenses=db.relationship("Expense", secondary=expense_owers, back_populates="owers")
+    friends = db.relationship('User',
+                              secondary=user_friends,
+                              primaryjoin=user_friends.c.user==id,
+                              secondaryjoin=user_friends.c.friend==id,
+                            )
+
 
     @property
     def password(self):
