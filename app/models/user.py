@@ -6,8 +6,8 @@ from .expense_ower import expense_owers
 
 user_friends = db.Table(
     "user_friends",
-    db.Column("user", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-    db.Column("friend", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+    db.Column("user", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("friend", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
 )
 
 class User(db.Model, UserMixin):
