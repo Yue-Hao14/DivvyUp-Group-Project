@@ -2,11 +2,11 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-# friends = db.Table(
-#     "user_friends",
-#     db.Column("user", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-#     db.Column("friend", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-# )
+friends = db.Table(
+    "user_friends",
+    db.Column("user", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+    db.Column("friend", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -22,10 +22,11 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     expenses = db.relationship("Expense", back_populates="payer")
-    # friends = db.relationship("User",
-    #                           secondary=friends,
-    #                           primaryjoin=id==friends.c.user,
-    #                           secondaryjoin=id==friends.c.friend)
+    friends = db.relationship('User',
+                              secondary=friends,
+                              primaryjoin=friends.c.user==id,
+                              secondaryjoin=friends.c.friend==id,
+                              backref='friend_of')
 
     @property
     def password(self):
