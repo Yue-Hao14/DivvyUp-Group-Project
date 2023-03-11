@@ -1,4 +1,5 @@
 from flask.cli import AppGroup
+from app.models import Expense, Comment, db
 from .users import seed_users, undo_users
 from .expenses import seed_expenses, undo_expenses
 from .comments import seed_comments, undo_comments
