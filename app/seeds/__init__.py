@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .expenses import seed_expenses, undo_expenses
 from .comments import seed_comments, undo_comments
-from .friends import seed_friends, undo_friends
+from .user_friends import seed_friends, undo_friends
 
 from app.models.db import db, environment, SCHEMA
 
