@@ -9,6 +9,10 @@ user_friends = db.Table(
     db.Column("user", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
     db.Column("friend", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
 )
+# add SCHEMA to user_friends table
+if environment == "production":
+    user_friends.schema = SCHEMA
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
