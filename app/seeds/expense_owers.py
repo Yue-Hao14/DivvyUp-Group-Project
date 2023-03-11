@@ -25,11 +25,6 @@ def seed_expense_owers():
 
     db.session.commit()
 
-    jane = User.query.filter_by(username='JaneDoe').first()
-    print("----------------", jane.ower_expenses)
-    print("-------------", jane.payer_expenses)
-    print("-------------", jane.friends)
-
 
 
 
