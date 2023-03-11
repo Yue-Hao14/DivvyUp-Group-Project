@@ -19,7 +19,7 @@ class Expense(db.Model):
     created_at = db.Column(db.Date, nullable=False, default=date.today())
     updated_at = db.Column(db.Date, nullable=False, default=date.today())
 
-    comments = db.relationship("Comment", back_populates="expense")
+    comments = db.relationship("Comment", back_populates="expense", cascade="all, delete-orphan")
     payer = db.relationship("User", back_populates="payer_expenses")
     owers = db.relationship("User", secondary=expense_owers, back_populates="ower_expenses")
 
