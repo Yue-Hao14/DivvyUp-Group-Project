@@ -22,10 +22,38 @@ def seed_users():
         last_name="Doe",
         email='janedoe@user.com',
         password='password')
+    Nick = User(
+        username='NickArakaki',
+        first_name="Nick",
+        last_name="Arakaki",
+        email='nickarakaki@user.com',
+        password='password')
+    Yue = User(
+        username='YueHao',
+        first_name="Yue",
+        last_name="Hao",
+        email='yuehao@user.com',
+        password='password')
+    Tuan = User(
+        username='TuanTran',
+        first_name="Tuan",
+        last_name="Tran",
+        email='tuantran@user.com',
+        password='password')
+    Troy = User(
+        username='TroyLee',
+        first_name="Troy",
+        last_name="Lee",
+        email='troylee@user.com',
+        password='password')
 
     db.session.add(demo)
     db.session.add(John)
     db.session.add(Jane)
+    db.session.add(Nick)
+    db.session.add(Yue)
+    db.session.add(Tuan)
+    db.session.add(Troy)
     db.session.commit()
 
 
