@@ -1,12 +1,6 @@
 from datetime import date
+from .expense_ower import expense_owers
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
-expense_ower = db.Table(
-    "expense_ower",
-    db.Column("expense_id", db.Integer, db.ForeignKey("expenses.id"), primary_key=True),
-    db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-)
-
 
 class Expense(db.Model):
     __tablename__ = "expenses"
@@ -26,8 +20,8 @@ class Expense(db.Model):
     updated_at = db.Column(db.Date, nullable=False, default=date.today())
 
     comments = db.relationship("Comment", back_populates="expense")
-    payer = db.relationship("User", back_populates="expenses")
-    owers = db.relationship("User", secondary=expense_ower, backref="expenses_owing")
+    payer = db.relationship("User", back_populates="payer_expenses")
+    owers = db.relationship("User", secondary=expense_owers, back_populates="ower_expenses")
 
     def to_dict(self):
         return {
