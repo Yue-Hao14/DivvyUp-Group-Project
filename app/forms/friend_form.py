@@ -10,6 +10,7 @@ def username_exists(form, field):
     if not user:
         raise ValidationError('User does not exist.')
 
+# TODO: ADD VALIDATION TO MAKE SURE THE USER BEING ADDED IS NOT ALREADY FRIENDED
 # FRONT END SHOULD VALIDATE THAT THE CURRENT USER IS NOT TYRING TO ADD THEMSELVES
 class FriendForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired(), username_exists])

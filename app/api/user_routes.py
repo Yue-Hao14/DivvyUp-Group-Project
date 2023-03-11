@@ -57,3 +57,19 @@ def add_a_friend():
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@user_routes.route('/friends/<int:id>', methods=["DELETE"])
+@login_required
+def remove_friend(id):
+    """
+    Remove a friend from current user's friends list, and update
+    the other user's friends list to remove current user
+    """
+    friend = User.query.get(id)
+    if friend not in current_user.friends:
+        return { 'errors': 'Cannot remove friend who is not in friends list' }
+    current_user.friends.remove(friend)
+    friend.friends.remove(current_user)
+    db.session.commit()
+    return { "message": "successfuly removed" }
