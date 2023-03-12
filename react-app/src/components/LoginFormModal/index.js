@@ -17,40 +17,42 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal();
     }
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+    <div className="login-modal-container">
+      <h1 className="login-modal-heading">Log In</h1>
+      <form className="login-modal-form" onSubmit={handleSubmit}>
+        <ul className="login-modal-errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="login-modal-label">
           Email
           <input
+            className="login-modal-input"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-        <label>
+        <label className="login-modal-label">
           Password
           <input
+            className="login-modal-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="login-modal-button" type="submit">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 
