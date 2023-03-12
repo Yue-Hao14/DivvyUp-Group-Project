@@ -51,7 +51,7 @@ def add_a_friend():
     if form.validate_on_submit():
         friend = User.query.filter(User.email == form.data["email"]).first()
         if friend.id == current_user.id:
-            return { "errors": "Cannot friend self" }
+            return { "errors": ["Cannot friend self"] }, 401
         current_user.friends.append(friend)
         friend.friends.append(current_user)
         db.session.commit()

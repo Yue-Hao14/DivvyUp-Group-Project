@@ -1,6 +1,7 @@
 // constants
 const GET_ALL_FRIENDS = 'friends/GET_ALL_FRIENDS'
 const ADD_FRIEND = 'friends/ADD_FRIEND'
+const REMOVE_FRIEND = 'friends/REMOVE_FRIEND'
 
 // action creator
 const getAllFriends = friends => ({
@@ -11,6 +12,11 @@ const getAllFriends = friends => ({
 const addFriend = friend => ({
     type: ADD_FRIEND,
     payload: friend
+})
+
+const removeFriend = friendId => ({
+    type: REMOVE_FRIEND,
+    payload: friendId
 })
 
 
@@ -50,6 +56,22 @@ export const addFriendThunk = (email) => async (dispatch) => {
     }
 }
 
+export const removeFriendThunk = (friendId) => async (dispatch) => {
+    const res = await fetch(`/api/users/friends/${friendId}`, {
+        method: "DELETE"
+    })
+
+    if (res.ok) {
+        dispatch(removeFriend(friendId))
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        return data.errors
+    } else {
+        return ["An Error occured. Please try again later."]
+    }
+}
+
 // reducer
 const initialState = {}
 export default function reducer(state = initialState, action) {
@@ -65,6 +87,11 @@ export default function reducer(state = initialState, action) {
                 friends[friend.id] = friend
             }
             return friends
+        }
+        case REMOVE_FRIEND: {
+            const newState = { ...state }
+            delete newState[action.payload]
+            return newState
         }
         default:
             return state

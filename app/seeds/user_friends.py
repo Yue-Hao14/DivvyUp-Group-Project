@@ -8,8 +8,9 @@ def seed_friends():
     jane = User.query.filter_by(username='JaneDoe').first()
 
     demo.friends.append(john)
-    demo.friends.append(jane)
     john.friends.append(demo)
+    demo.friends.append(jane)
+    jane.friends.append(demo)
 
     db.session.commit()
 
