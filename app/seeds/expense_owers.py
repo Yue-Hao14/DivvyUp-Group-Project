@@ -3,6 +3,8 @@ from sqlalchemy.sql import text
 
 
 def seed_expense_owers():
+
+    # TO DO: need to re-seed expense_owers table as a new instance of a class!!!!
     demo = User.query.filter_by(username='Demo').first()
     john = User.query.filter_by(username='JohnSmith').first()
     jane = User.query.filter_by(username='JaneDoe').first()

@@ -36,3 +36,5 @@ class Expense(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at,
         }
+
+    # TO DO: add another to_dict method to include limited info needed for transaction history

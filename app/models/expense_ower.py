@@ -12,6 +12,3 @@ expense_owers = db.Table(
 # add SCHEMA to expense_owers table
 if environment == "production":
     expense_owers.schema = SCHEMA
-
-
-
