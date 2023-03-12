@@ -14,7 +14,7 @@ function SideBar() {
 
     useEffect(() => {
         dispatch(getAllFriendsThunk()).then(() => setIsLoaded(true))
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
     if (!sessionUser) return Redirect("/") // Redirect user to home page if they are not logged in
 
