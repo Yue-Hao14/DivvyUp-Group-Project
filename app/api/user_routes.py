@@ -50,6 +50,8 @@ def add_a_friend():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         friend = User.query.filter(User.username == form.data["username"]).first()
+        if friend.id == current_user.id:
+            return { "errors": "Cannot friend self" }
         current_user.friends.append(friend)
         friend.friends.append(current_user)
         db.session.commit()
