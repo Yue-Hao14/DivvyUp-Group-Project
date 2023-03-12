@@ -1,4 +1,5 @@
 // constants
+import { RESET } from "./session";
 const GET_ALL_FRIENDS = 'friends/GET_ALL_FRIENDS'
 const ADD_FRIEND = 'friends/ADD_FRIEND'
 const REMOVE_FRIEND = 'friends/REMOVE_FRIEND'
@@ -93,6 +94,8 @@ export default function reducer(state = initialState, action) {
             delete newState[action.payload]
             return newState
         }
+        case RESET:
+            return initialState
         default:
             return state
     }
