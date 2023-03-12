@@ -1,12 +1,24 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { addFriendThunk } from "../../store/friends";
 
 function AddFriendModal() {
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
+    const [errors, setErrors] = useState([])
+    const dispatch = useDispatch();
+    const { closeModal } = useModal();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // will dispach here and validate form before hand
+        const request = { email };
+        const data = await dispatch(addFriendThunk(request));
+        if (data) {
+            setErrors(data)
+        } else {
+            closeModal();
+        }
+
     }
 
     return (
@@ -15,6 +27,11 @@ function AddFriendModal() {
                 <div className="add_friend_modal_icon"></div>
                 <div className="add_friend_modal_label">Add Friend</div>
             </div>
+            <ul>
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
             <input
             type="email"
             value={email}

@@ -4,6 +4,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import { getAllFriendsThunk } from "../../store/friends";
 import OpenModalButton from "../OpenModalButton";
 import AddFriendModal from "./AddFriendModal";
+import RemoveFriendModal from "./RemoveFriendModal";
 
 function SideBar() {
     const dispatch = useDispatch();
@@ -33,8 +34,12 @@ function SideBar() {
             <div className="side_bar_friends_list">
                 {isLoaded && (
                     Object.values(friends).map(friend => (
-                        <div className="side_bar_friend">
+                        <div key={friend.id} className="side_bar_friend">
                             <NavLink to={`/friends/${friend.id}`}>{`${friend.first_name} ${friend.last_name}`}</NavLink>
+                            <OpenModalButton
+                                modalComponent={<RemoveFriendModal />}
+                                buttonText={<i className="remove_friend_button fa-solid fa-trash" />}
+                            />
                         </div>
                     ))
                 )}

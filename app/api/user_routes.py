@@ -49,13 +49,13 @@ def add_a_friend():
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        friend = User.query.filter(User.username == form.data["username"]).first()
+        friend = User.query.filter(User.email == form.data["email"]).first()
         if friend.id == current_user.id:
             return { "errors": "Cannot friend self" }
         current_user.friends.append(friend)
         friend.friends.append(current_user)
         db.session.commit()
-        return [friend.to_dict() for friend in current_user.friends]
+        return friend.to_dict()
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
