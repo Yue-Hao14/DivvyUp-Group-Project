@@ -1,3 +1,11 @@
+.profile-dropdown {
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
 .navigation-container {
   display: flex;
   justify-content: space-between;
@@ -9,16 +17,10 @@
 }
 
 .navigation-logo {
-  display: flex;
-  align-items: center;
-  color: green;
+  color: #5BC5A7;
   font-size: 2rem;
   font-weight: bold;
   text-decoration: none;
-}
-
-.navigation-logo i {
-  margin-right: 10px;
 }
 
 .navigation-links {
@@ -39,15 +41,19 @@
 }
 
 .navigation-links a:hover {
-  color: green;
+  color: #5BC5A7;
+}
+
+.fa-money-bill {
+  margin-right: 10px;
 }
 
 nav ul.profile-dropdown {
   position: absolute;
   top: 80px;
   right: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  /* background-color: #5BC5A7; */
+  border: none;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 10px;
@@ -68,28 +74,29 @@ nav ul.profile-dropdown li:last-child {
 }
 
 nav ul.profile-dropdown button {
-  background-color: transparent;
+  background-color: #fff;
+  color: #5BC5A7;
   border: none;
-  color: #333;
   cursor: pointer;
   font-size: 14px;
   margin: 0;
   padding: 0;
   text-align: left;
   width: 100%;
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 20px;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 5px;
+  padding: 0 20px;
 }
 
 nav ul.profile-dropdown button:hover {
-  color: #1dd1a1;
-  background-color: #1dd1a1;
-  color: white;
+  color: #fff;
+  background-color: #5BC5A7;
 }
 
-
 nav ul.profile-dropdown a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -100,11 +107,11 @@ nav ul.profile-dropdown a:hover {
 .profile_menu_button {
   box-sizing: border-box;
   cursor: pointer;
-  color: green;
+  color: #5BC5A7;
   border: none;
   background-color: white;
   display: inline-block;
-  border: 1px solid green;
+  border: 1px solid #5BC5A7;
   border-radius: 20px;
   margin: 0 5px;
   padding: 10px;
@@ -113,7 +120,8 @@ nav ul.profile-dropdown a:hover {
 }
 
 .profile_menu_button:hover {
-  color: rgb(29, 96, 29);
+  color: #fff;
+  background-color: #5BC5A7;
 }
 
 .profile_menu_icon {
@@ -125,8 +133,9 @@ nav ul.profile-dropdown a:hover {
   padding: 5px 10px;
   font-size: 1.2rem;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .dropdown_item:hover {
-  color: rgb(29, 96, 29);
+  background-color: #E6F5F0;
 }
