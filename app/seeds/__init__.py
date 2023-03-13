@@ -4,6 +4,7 @@ from .users import seed_users, undo_users
 from .expenses import seed_expenses, undo_expenses
 from .comments import seed_comments, undo_comments
 from .user_friends import seed_friends, undo_friends
+from .expense_owers import seed_expense_owers, undo_expense_owers
 
 from app.models.db import db, environment, SCHEMA
 
@@ -22,10 +23,12 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_friends()
         undo_comments()
+        undo_expense_owers()
         undo_expenses()
         undo_users()
     seed_users()
     seed_expenses()
+    seed_expense_owers()
     seed_comments()
     seed_friends()
     # Add other seed functions here
@@ -36,6 +39,7 @@ def seed():
 def undo():
     undo_friends()
     undo_comments()
+    undo_expense_owers()
     undo_expenses()
     undo_users()
     # Add other undo functions here
