@@ -60,8 +60,8 @@ def seed_expense_users():
 # it will reset the primary keys for you as well.
 def undo_expense_users():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.expense_users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.expense_owers RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM expense_users"))
+        db.session.execute(text("DELETE FROM expense_owers"))
 
     db.session.commit()
