@@ -14,7 +14,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 #     expense_owers.schema = SCHEMA
 
 
-class ExpenseUser(db.Model):
+class ExpenseOwer(db.Model):
     __tablename__ = "expense_owers"
 
     if environment == "production":
