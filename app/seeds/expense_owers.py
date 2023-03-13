@@ -1,33 +1,36 @@
-from app.models import db, User, environment, SCHEMA, Expense
+from app.models import db, User, Expense, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
 def seed_expense_owers():
+    user1 = User.query.get(1)
+    user2 = User.query.get(2)
+    user3 = User.query.get(3)
+    user4 = User.query.get(4)
+    user5 = User.query.get(5)
+    user6 = User.query.get(6)
+    user7 = User.query.get(7)
 
-    # TO DO: need to re-seed expense_owers table as a new instance of a class!!!!
-    demo = User.query.filter_by(username='Demo').first()
-    john = User.query.filter_by(username='JohnSmith').first()
-    jane = User.query.filter_by(username='JaneDoe').first()
+    expense1 = Expense.query.get(1)
+    expense2 = Expense.query.get(2)
+    expense3 = Expense.query.get(3)
+    expense4 = Expense.query.get(4)
 
+    expense1.owers.append(user2)
+    expense1.owers.append(user3)
+    expense1.owers.append(user4)
 
-    demo_ower_expenses = Expense.query.filter(Expense.payer_id != demo.id).all()
-    john_ower_expenses = Expense.query.filter(Expense.payer_id != john.id).all()
-    jane_ower_expenses = Expense.query.filter(Expense.payer_id != jane.id).all()
+    expense2.owers.append(user1)
+    expense2.owers.append(user3)
+    expense2.owers.append(user4)
 
+    expense3.owers.append(user5)
+    expense3.owers.append(user6)
 
-    for expense in demo_ower_expenses:
-        # print("------------", expense.id)
-        demo.ower_expenses.append(expense)
+    expense4.owers.append(user7)
 
-    for expense in john_ower_expenses:
-        john.ower_expenses.append(expense)
-
-    for expense in jane_ower_expenses:
-        jane.ower_expenses.append(expense)
 
     db.session.commit()
-
-
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

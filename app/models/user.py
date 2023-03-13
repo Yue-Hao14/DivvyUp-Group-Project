@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .expense_ower import ExpenseUser
+from .expense_ower import expense_owers
 
 
 user_friends = db.Table(
@@ -28,7 +28,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     payer_expenses = db.relationship("Expense", back_populates="payer")
-    ower_expenses = db.relationship("ExpenseUser", back_populates="owers")
+    owed_expenses = db.relationship("Expense", secondary=expense_owers, back_populates="owers")
+    settled_expenses = db.relationship("SettledUserExpense", back_populates="settled_user")
     friends = db.relationship('User',
                               secondary=user_friends,
                               primaryjoin=user_friends.c.user==id,
