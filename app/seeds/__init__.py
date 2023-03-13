@@ -23,12 +23,12 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_friends()
         undo_comments()
-        # undo_expense_owers()
+        undo_expense_owers()
         undo_expenses()
         undo_users()
     seed_users()
     seed_expenses()
-    # seed_expense_owers()
+    seed_expense_owers()
     seed_comments()
     seed_friends()
     # Add other seed functions here
@@ -39,7 +39,7 @@ def seed():
 def undo():
     undo_friends()
     undo_comments()
-    # undo_expense_owers()
+    undo_expense_owers()
     undo_expenses()
     undo_users()
     # Add other undo functions here
