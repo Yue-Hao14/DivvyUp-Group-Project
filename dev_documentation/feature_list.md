@@ -28,18 +28,16 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 
 ## 4. Expenses (full CRUD)
 
-* Logged in users can read/get all their pending expenses
-* Logged in users can create a new expense and send split requests to other users
-* Logged in users can update the details of the expense
-* Logged in users can delete expenses
+* Logged in users can read/get all their pending expenses under "Dashboard" page and can see both pending and settled expenses under "All Expenses" page
+* Logged in payer can create a new expense and send split requests to other users
+* Logged in payer can update the details of the expense only if there is no settled expense yet
+* Logged in payer can delete expenses only if there is no settled expense yet
 
 
-## 5. Transaction History (partial CRUD)
+## 5. Payments (partial CRUD)
 
-* Logged in users can view their transcation history
-* A transaction history page should be created when a new user is created
-* Once a bill is paid, transcation history should be updated accordingly
-* Logged in user should not be able to update/delete their transaction history
+* Logged in users can read/get details of their payments
+* Logged in users can create a payment to settle their pending expenses, their dashboard and all expenses pages will be updated accordingly
 
 
 ## 6. Bonus: Group (full CRUD)
