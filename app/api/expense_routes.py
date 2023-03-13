@@ -50,8 +50,7 @@ def create_a_new_expense():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         ower_ids = data['owerIds']
-
-
+        
         new_expense = Expense(
             description=data['description'],
             amount=data['amount'],
