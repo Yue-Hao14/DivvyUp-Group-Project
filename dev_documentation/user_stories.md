@@ -35,7 +35,7 @@
 
 * As a logged in user, I want to log out via an easy to find log out button on the navigation bar.
   * While on any page of the site:
-    * I can log out of my account and be redirected to a page displaying recent FauxTweets.
+    * I can log out of my account and be redirected to a splash page displaying information about the application.
       * So that I can easily log out to keep my information secure.
 
 ## Friends
@@ -181,4 +181,3 @@
 
 ### Updating transaction history
   * As a logged in user, I should see my transaction history being updated whenever there is a change to any of expenses that I am involved in
-
