@@ -47,10 +47,13 @@ def create_a_new_expense():
     """
     data = request.get_json()
     form = ExpenseForm()
+    ower_ids = data['owerIds']
     form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        ower_ids = data['owerIds']
+    # Validate that the current user is not in the list of owers
+    if current_user.id in ower_ids:
+        return {"errors": ["Current User cannot be in ower's list"]}
 
+    if form.validate_on_submit():
         new_expense = Expense(
             description=data['description'],
             amount=data['amount'],
@@ -85,31 +88,43 @@ def update_an_expense(id):
     data = request.get_json()
     form = ExpenseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
+    expense = Expense.query.get(id)
+    if not expense:
+        return {'errors': 'Expense does not exist'}, 404
+    elif form.validate_on_submit():
         ower_ids = data['owerIds']
+        print("ower_ids =============================================================================================", ower_ids)
 
-        expense = Expense.query.get(id)
-        if not expense:
-            return {'errors': 'Expense does not exist'}, 404
-        elif current_user.id != expense.payer_id:
+        if current_user.id != expense.payer_id:
             return {'errors': 'Unauthorized to update this expense'}, 401
         elif len(expense.settled_owers) > 0:
             return {'errors': 'Cannot update an expense when one or more user has settled their expenses'}
         else:
-            expense.description = data["description"]
-            expense.amount=data['amount'],
-            expense.expense_date=date.fromisoformat(data['expenseDate']),
+            expense.description = form.data["description"]
+            expense.amount = form.data['amount']
+            expense.expense_date= form.data['expenseDate']
 
-        # print("ower_id-----------------------------------------------------", ower_ids)
 
-        for id in ower_ids:
-            # print("id------------------------------------------------------", id)
-            user = User.query.get(id)
-            if user not in expense.owers:
+            # cast current list of owers to a set
+            # cast new owers list to a set
+            # compare the two
+            # remove anyone who is in the current list but not the new list
+            # add anyone who is in the new list but not the current list
+            new_owers = set([User.query.get(id) for id in ower_ids])
+            current_owers = set(expense.owers)
+
+            users_to_be_removed = current_owers - new_owers # remove users who are in current expense.owers but not in new_owers
+            users_to_be_added = new_owers - current_owers # add users who are in new_owers but not in expense.owers
+
+            for user in list(users_to_be_removed):
+                expense.owers.remove(user)
+
+            for user in list(users_to_be_added):
                 expense.owers.append(user)
 
-        db.session.commit()
-        return expense.to_dict()
+            db.session.commit()
+
+            return expense.to_dict()
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
