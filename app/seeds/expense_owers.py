@@ -1,54 +1,35 @@
-from app.models import db, User, environment, SCHEMA, Expense, ExpenseOwer
+from app.models import db, User, Expense, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
 def seed_expense_owers():
-    # user 1 paid expense 1 (33.33 in total) and split among user 1,2,3
-    expense_ower_1 = ExpenseOwer(
-        expense_id = 1,
-        ower_id = 2,
-        amount_to_pay = 11.11,
-    )
-    expense_ower_2 = ExpenseOwer(
-        expense_id = 1,
-        ower_id = 3,
-        amount_to_pay = 11.11,
-    )
-    # user 2 paid expense 2 (66.66 in total) and split among user 1,2
-    expense_ower_3 = ExpenseOwer(
-        expense_id = 2,
-        ower_id = 1,
-        amount_to_pay = 33.33,
-    )
-    # user 3 paid expense 3 (99.99 in total) and split among user 3,4,5
-    expense_ower_4 = ExpenseOwer(
-        expense_id = 3,
-        ower_id = 4,
-        amount_to_pay = 33.33,
-    )
-    expense_ower_5 = ExpenseOwer(
-        expense_id = 3,
-        ower_id = 5,
-        amount_to_pay = 33.33,
-    )
-    # user 1 paid expense 4 (133.32 in total) and split among user 1,2,3,4
-    expense_ower_6 = ExpenseOwer(
-        expense_id = 4,
-        ower_id = 2,
-        amount_to_pay = 33.33,
-    )
-    expense_ower_7 = ExpenseOwer(
-        expense_id = 4,
-        ower_id = 3,
-        amount_to_pay = 33.33,
-    )
-    expense_ower_8 = ExpenseOwer(
-        expense_id = 4,
-        ower_id = 4,
-        amount_to_pay = 33.33,
-    )
+    user1 = User.query.get(1)
+    user2 = User.query.get(2)
+    user3 = User.query.get(3)
+    user4 = User.query.get(4)
+    user5 = User.query.get(5)
+    user6 = User.query.get(6)
+    user7 = User.query.get(7)
 
-    db.session.add_all([expense_ower_1,expense_ower_2,expense_ower_3, expense_ower_4, expense_ower_5, expense_ower_6, expense_ower_7, expense_ower_8])
+    expense1 = Expense.query.get(1)
+    expense2 = Expense.query.get(2)
+    expense3 = Expense.query.get(3)
+    expense4 = Expense.query.get(4)
+
+    expense1.owers.append(user2)
+    expense1.owers.append(user3)
+    expense1.owers.append(user4)
+
+    expense2.owers.append(user1)
+    expense2.owers.append(user3)
+    expense2.owers.append(user4)
+
+    expense3.owers.append(user5)
+    expense3.owers.append(user6)
+
+    expense4.owers.append(user7)
+
+
     db.session.commit()
 
 
