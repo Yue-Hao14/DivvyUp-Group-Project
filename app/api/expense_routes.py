@@ -71,7 +71,7 @@ def create_a_new_expense():
             new_expense.owers.append(user)
 
         db.session.commit()
-        return new_expense.to_dict()
+        return new_expense.to_dict(), 201
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -128,3 +128,20 @@ def update_an_expense(id):
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@expense_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_an_expense(id):
+    expense = Expense.query.get(id)
+
+    if not expense:
+        return {'errors': 'Expense does not exist'}, 404
+    elif current_user.id != expense.payer_id:
+            return {'errors': 'Unauthorized to delete this expense'}, 401
+    elif len(expense.settled_owers) > 0:
+        return {'errors': 'Cannot delete an expense when one or more user has settled their expenses'}
+    else:
+        db.session.delete(expense)
+        db.session.commit()
+        return { "message": "Successfully Removed" }
