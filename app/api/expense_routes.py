@@ -50,7 +50,7 @@ def create_a_new_expense():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         ower_ids = data['owerIds']
-        
+
         new_expense = Expense(
             description=data['description'],
             amount=data['amount'],
@@ -69,6 +69,47 @@ def create_a_new_expense():
 
         db.session.commit()
         return new_expense.to_dict()
+    else:
+        # return error
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@expense_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def update_an_expense(id):
+    """
+    validate expense via WTForms, and return the updated expense's detail
+    also make sure only payer can update expense only if no settled expense yet
+    """
+
+    data = request.get_json()
+    form = ExpenseForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        ower_ids = data['owerIds']
+
+        expense = Expense.query.get(id)
+        if not expense:
+            return {'errors': 'Expense does not exist'}, 404
+        elif current_user.id != expense.payer_id:
+            return {'errors': 'Unauthorized to update this expense'}, 401
+        elif len(expense.settled_owers) > 0:
+            return {'errors': 'Cannot update an expense when one or more user has settled their expenses'}
+        else:
+            expense.description = data["description"]
+            expense.amount=data['amount'],
+            expense.expense_date=date.fromisoformat(data['expenseDate']),
+
+        # print("ower_id-----------------------------------------------------", ower_ids)
+
+        for id in ower_ids:
+            # print("id------------------------------------------------------", id)
+            user = User.query.get(id)
+            if user not in expense.owers:
+                expense.owers.append(user)
+
+        db.session.commit()
+        return expense.to_dict()
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
