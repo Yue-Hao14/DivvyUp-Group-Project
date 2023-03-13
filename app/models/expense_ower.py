@@ -27,4 +27,4 @@ class ExpenseUser(db.Model):
 
     owers = db.relationship("User", back_populates="ower_expenses")
     # payer = db.relationship("User", back_populates="payer_expenses")
-    expense = db.relationship("Expense")
+    expense = db.relationship("Expense", back_populates="expense_users")
