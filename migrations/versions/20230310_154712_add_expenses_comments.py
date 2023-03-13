@@ -1,4 +1,4 @@
-"""add expenses, comments, and expense_owers tables
+"""add expenses, comments tables
 
 Revision ID: 192bbd05b325
 Revises: ffdc0a98111c

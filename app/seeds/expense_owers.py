@@ -1,33 +1,55 @@
-from app.models import db, User, environment, SCHEMA, Expense
+from app.models import db, User, environment, SCHEMA, Expense, ExpenseOwer
 from sqlalchemy.sql import text
 
 
 def seed_expense_owers():
+    # user 1 paid expense 1 (33.33 in total) and split among user 1,2,3
+    expense_ower_1 = ExpenseOwer(
+        expense_id = 1,
+        ower_id = 2,
+        amount_to_pay = 11.11,
+    )
+    expense_ower_2 = ExpenseOwer(
+        expense_id = 1,
+        ower_id = 3,
+        amount_to_pay = 11.11,
+    )
+    # user 2 paid expense 2 (66.66 in total) and split among user 1,2
+    expense_ower_3 = ExpenseOwer(
+        expense_id = 2,
+        ower_id = 1,
+        amount_to_pay = 33.33,
+    )
+    # user 3 paid expense 3 (99.99 in total) and split among user 3,4,5
+    expense_ower_4 = ExpenseOwer(
+        expense_id = 3,
+        ower_id = 4,
+        amount_to_pay = 33.33,
+    )
+    expense_ower_5 = ExpenseOwer(
+        expense_id = 3,
+        ower_id = 5,
+        amount_to_pay = 33.33,
+    )
+    # user 1 paid expense 4 (133.32 in total) and split among user 1,2,3,4
+    expense_ower_6 = ExpenseOwer(
+        expense_id = 4,
+        ower_id = 2,
+        amount_to_pay = 33.33,
+    )
+    expense_ower_7 = ExpenseOwer(
+        expense_id = 4,
+        ower_id = 3,
+        amount_to_pay = 33.33,
+    )
+    expense_ower_8 = ExpenseOwer(
+        expense_id = 4,
+        ower_id = 4,
+        amount_to_pay = 33.33,
+    )
 
-    # TO DO: need to re-seed expense_owers table as a new instance of a class!!!!
-    demo = User.query.filter_by(username='Demo').first()
-    john = User.query.filter_by(username='JohnSmith').first()
-    jane = User.query.filter_by(username='JaneDoe').first()
-
-
-    demo_ower_expenses = Expense.query.filter(Expense.payer_id != demo.id).all()
-    john_ower_expenses = Expense.query.filter(Expense.payer_id != john.id).all()
-    jane_ower_expenses = Expense.query.filter(Expense.payer_id != jane.id).all()
-
-
-    for expense in demo_ower_expenses:
-        # print("------------", expense.id)
-        demo.ower_expenses.append(expense)
-
-    for expense in john_ower_expenses:
-        john.ower_expenses.append(expense)
-
-    for expense in jane_ower_expenses:
-        jane.ower_expenses.append(expense)
-
+    db.session.add_all([expense_ower_1,expense_ower_2,expense_ower_3, expense_ower_4, expense_ower_5, expense_ower_6, expense_ower_7, expense_ower_8])
     db.session.commit()
-
-
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
