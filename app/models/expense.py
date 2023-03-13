@@ -1,5 +1,5 @@
 from datetime import date
-from .expense_ower import expense_owers
+from .expense_ower import ExpenseUser
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Expense(db.Model):
@@ -21,7 +21,8 @@ class Expense(db.Model):
 
     comments = db.relationship("Comment", back_populates="expense", cascade="all, delete-orphan")
     payer = db.relationship("User", back_populates="payer_expenses")
-    owers = db.relationship("User", secondary=expense_owers, back_populates="ower_expenses")
+    # owers = db.relationship("User", secondary=expense_owers, back_populates="ower_expenses")
+    expense_users = db.relationship("ExpenseUser", back_populates="expense")
 
     def to_dict(self):
         return {
