@@ -13,32 +13,24 @@ def seed_expenses():
         amount=33.33,
         payer_id=1,
         expense_date=date.fromisoformat(fake.date()),
-        split_method="even",
-        is_settled=True,
-        settled_date=date.fromisoformat(fake.date()),
     )
     expense2 = Expense(
         description=fake.sentence(),
         amount=66.66,
         payer_id=2,
         expense_date=date.fromisoformat(fake.date()),
-        split_method="even",
     )
     expense3 = Expense(
         description=fake.sentence(),
         amount=99.99,
         payer_id=3,
         expense_date=date.fromisoformat(fake.date()),
-        split_method="even",
-        is_settled=True,
-        settled_date=date.fromisoformat(fake.date()),
     )
     expense4 = Expense(
         description=fake.sentence(),
         amount=133.32,
         payer_id=1,
         expense_date=date.fromisoformat(fake.date()),
-        split_method="even",
     )
 
     db.session.add_all([expense1, expense2, expense3, expense4])

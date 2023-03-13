@@ -7,32 +7,32 @@ from .auth_routes import validation_errors_to_error_messages
 expense_routes = Blueprint('expenses', __name__)
 
 
-@expense_routes.route('/')
-@login_required
-def get_all_current_user_expenses():
-  """
-  return current users' all settled and pending expenses
-  """
-  payer_expenses = current_user.payer_expenses
-  ower_expenses = current_user.ower_expenses
-  payer_expenses_dict = {'payer expenses': [expense.to_dict() for expense in payer_expenses]}
-  ower_expenses_dict = {'ower expenses': [expense.to_dict() for expense in ower_expenses]}
-  return {'expenses':
-            {
-              "payer expenses": payer_expenses_dict,
-              "ower_expenses": ower_expenses_dict
-            }
-          }
+# @expense_routes.route('/')
+# @login_required
+# def get_all_current_user_expenses():
+#   """
+#   return current users' all settled and pending expenses
+#   """
+#   payer_expenses = current_user.payer_expenses
+#   ower_expenses = current_user.ower_expenses
+#   payer_expenses_dict = {'payer expenses': [expense.to_dict() for expense in payer_expenses]}
+#   ower_expenses_dict = {'ower expenses': [expense.to_dict() for expense in ower_expenses]}
+#   return {'expenses':
+#             {
+#               "payer expenses": payer_expenses_dict,
+#               "ower_expenses": ower_expenses_dict
+#             }
+#           }
 
 
-@expense_routes.route('/<int:id>')
-@login_required
-def get_single_expense_details(id):
-  """
-  return the details of a single expense
-  """
-  expense = Expense.query.get(id)
-  return expense.to_dict()
+# @expense_routes.route('/<int:id>')
+# @login_required
+# def get_single_expense_details(id):
+#   """
+#   return the details of a single expense
+#   """
+#   expense = Expense.query.get(id)
+#   return expense.to_dict()
 
 
 # @expense_routes.route('/', methods=['POST'])
