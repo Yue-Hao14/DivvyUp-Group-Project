@@ -10,7 +10,7 @@ fake = Faker()
 def seed_expenses():
     expense1 = Expense(
         description=fake.sentence(),
-        amount=round(random.uniform(33.33, 66.66), 2),
+        amount=33.33,
         payer_id=1,
         expense_date=date.fromisoformat(fake.date()),
         split_method="even",
@@ -19,14 +19,14 @@ def seed_expenses():
     )
     expense2 = Expense(
         description=fake.sentence(),
-        amount=round(random.uniform(33.33, 66.66), 2),
+        amount=66.66,
         payer_id=2,
         expense_date=date.fromisoformat(fake.date()),
         split_method="even",
     )
     expense3 = Expense(
         description=fake.sentence(),
-        amount=fake.pyfloat(left_digits=2, right_digits=2, positive=True, min_value=10, max_value=100),
+        amount=99.99,
         payer_id=3,
         expense_date=date.fromisoformat(fake.date()),
         split_method="even",
@@ -35,7 +35,7 @@ def seed_expenses():
     )
     expense4 = Expense(
         description=fake.sentence(),
-        amount=round(random.uniform(33.33, 66.66), 2),
+        amount=133.32,
         payer_id=1,
         expense_date=date.fromisoformat(fake.date()),
         split_method="even",
