@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal"
 import { removeFriendThunk } from "../../store/friends";
 
+import "./RemoveFriendModal.css"
 function RemoveFriendModal({ user }) {
     const { closeModal }  = useModal();
     const [errors, setErrors] = useState([])

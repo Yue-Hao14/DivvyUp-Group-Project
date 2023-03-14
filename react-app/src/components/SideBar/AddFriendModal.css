@@ -3,26 +3,42 @@
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
+    width: 400px;
   }
 
   .add_friend_modal_form_label_container {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem;
+    justify-content: space-between;
   }
 
   .add_friend_modal_icon {
-    width: 30px;
-    height: 30px;
-    /* background-image: url('path/to/icon.png'); */
+    width: 40px;
+    height: 40px;
     background-repeat: no-repeat;
     background-size: contain;
+  }
+
+  .fa-money-bill {
+    color: #5bc5a7;
+    font-size: 2rem;
   }
 
   .add_friend_modal_label {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 380px;
+    margin-right: 1rem;
+  }
+
+  .add_friend_modal_input {
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 1rem;
+    width: 95%;
   }
 
   .add_friend_modal_submit_button {
@@ -33,7 +49,8 @@
     font-size: 1rem;
     font-weight: bold;
     padding: 0.5rem 1rem;
-    margin-top: 1rem;
+    margin-top: auto;
+    margin-left: auto;
     cursor: pointer;
   }
 
@@ -51,15 +68,6 @@
 
   .add_friend_modal_form ul li {
     margin-bottom: 0.5rem;
-  }
-
-  .add_friend_modal_form input[type='email'] {
-    padding: 0.5rem;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    width: 100%;
-    margin-bottom: 1.5rem;
   }
 
   .add_friend_modal_form input[type='email']:focus {
