@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
-import FriendExpenseSummary from "./ExpenseSummary";
+import FriendExpenseSummary from "./FriendExpenseSummary";
 
 function ExpenseSummaries() {
     const expenses = useSelector(state => state.expenses.currentExpenseSummaries)
