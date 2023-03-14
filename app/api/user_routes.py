@@ -85,7 +85,7 @@ def get_friend_expenses(id):
     expenses_to_return = [*current_user_payer_expenses_to_return, *current_user_ower_expenses_to_return]
 
     # NICK MADE A NEW TO_DICT METHOD ON THE EXPENSE MODEL, HE REALLY NEEDS TO COMMENT HIS CODE BETTER
-    return [expense.to_dict_friend_summary(friend, current_user) for expense in expenses_to_return]
+    return [expense.to_dict_summary() for expense in expenses_to_return]
 
 
 @user_routes.route('/friends/<int:id>', methods=["DELETE"])

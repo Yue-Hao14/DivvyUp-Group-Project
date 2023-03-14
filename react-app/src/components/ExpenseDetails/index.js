@@ -6,7 +6,7 @@ import EditAndDeleteButtons from "./EditAndDeleteButtons"
 import ExpenseUserInfo from "./ExpenseInfo";
 import './ExpenseDetails.css'
 
-function ExpenseDetails(expenseId) {
+function ExpenseDetails({ expenseId }) {
     // dispatch thunk to get spot details added to store
     const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user)

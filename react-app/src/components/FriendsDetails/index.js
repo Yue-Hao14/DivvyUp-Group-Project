@@ -6,6 +6,7 @@ import ExpenseSummaries from "../ExpenseSummaries";
 
 function FriendDetails() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user)
     const [isLoaded, setIsLoaded] = useState(false);
     const { friendId }= useParams();
     const friend = useSelector(state => state.friends[friendId])
@@ -16,7 +17,7 @@ function FriendDetails() {
     }, [dispatch, friendId])
 
 
-    if (!friend) return Redirect('/'); // redirect to dashboard if the user is not in the current_user's friends list
+    if (!friend || !sessionUser) return Redirect('/'); // redirect to dashboard if the user is not in the current_user's friends list or there is no logged in user
 
     return (
         <div className="friend_details_div">
