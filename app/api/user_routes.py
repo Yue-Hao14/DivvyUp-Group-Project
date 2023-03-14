@@ -69,6 +69,9 @@ def get_friend_expenses(id):
     """
     friend = User.query.get(id)
 
+    if friend not in current_user.friends:
+        return { "errors": ["Cannot view expenses of a user who is not a friend of current user"] }, 401
+
     friend_ower_expenses = [expense for expense in friend.owed_expenses]
     friend_payer_expenses = [expense for expense in friend.payer_expenses]
     current_user_ower_expenses = [expense for expense in current_user.owed_expenses]
