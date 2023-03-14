@@ -43,7 +43,7 @@ const deleteExpense = expenseId => ({
 
 //thunks
 export const getAllExpensesThunk = () => async (dispatch) => {
-    const res = await fetch ('/api/expenses');
+    const res = await fetch ('/api/expenses/');
 
     if (res.ok) {
         const data = await res.json();
@@ -160,7 +160,7 @@ export default function reducer(state = initialState, action) {
     switch(action.type) {
         case GET_ALL_EXPENSE: {
             const expenses = {}
-            for (const expense of action.payload) {
+            for (const expense of action.payload.allExpenses) {
                 expenses[expense.id] = expense
             }
             return {...state, allExpenses: expenses}
