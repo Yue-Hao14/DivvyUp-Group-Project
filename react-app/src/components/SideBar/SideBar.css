@@ -1,8 +1,7 @@
 .side_bar {
-    /* background-color: #ffffff; */
     width: 240px;
     height: 100%;
-    position: fixed;
+    /* position: fixed; */
     top: 90px;
     left: 8px;
     z-index: 999;
@@ -28,7 +27,7 @@
     align-items: center;
     height: 30px;
     margin-bottom: 20px;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
   }
 
   .side_bar_friends_label {
@@ -48,10 +47,11 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    font-weight: 520;
   }
 
   .side_bar_friends_add_button button:hover {
-    font-weight: bold;
+    font-weight: bolder;
   }
 
   .side_bar_friends_list {
@@ -77,19 +77,13 @@
     font-size: 14px;
     color: #dd4b39;
     cursor: pointer;
-    /* border: none !important; */
-    /* background-color: transparent !important; */
   }
 
   .remove_friend_button:hover {
     color: #9c2921;
   }
 
-  .side_bar_friend_label {
-    /* background-color: #f4f4f4; */
-    padding: 8px;
-    border-radius: 4px;
-  }
+
 
   .modal_open .side_bar {
     filter: blur(5px);
