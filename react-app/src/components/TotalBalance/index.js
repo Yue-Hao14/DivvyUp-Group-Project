@@ -1,10 +1,19 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react"
 import { Redirect } from "react-router-dom";
+import { getAllExpensesThunk } from "../../store/expenses";
 
 function TotalBalance () {
 
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.allExpenses)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      if (sessionUser) {
+        dispatch(getAllExpensesThunk());
+      }
+    }, [dispatch, sessionUser]);
 
     console.log(sessionUser);
     if (!sessionUser) return <Redirect to='/' />
