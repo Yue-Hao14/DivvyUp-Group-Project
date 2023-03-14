@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import SideBar from "./components/SideBar";
 import TotalBalance from "./components/TotalBalance";
 import FriendDetails from "./components/FriendsDetails";
+import TopBar from "./components/TopBar";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ function App() {
       {isLoaded && (
         <>
           <SideBar />
-          <TotalBalance />
+          <TopBar />
           <Switch>
             <Route path="/login" >
               <LoginFormPage />
