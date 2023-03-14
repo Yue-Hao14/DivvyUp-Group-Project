@@ -22,6 +22,7 @@ function App() {
       {isLoaded && (
         <>
           <SideBar />
+          <TopBar />
           <Switch>
             <Route path="/login" >
               <LoginFormPage />
