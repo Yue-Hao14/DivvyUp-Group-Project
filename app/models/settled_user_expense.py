@@ -21,3 +21,9 @@ class SettledUserExpense(db.Model):
             "settledDate": self.settled_date,
             "settledUser": self.settled_user.to_dict_id_name()
         }
+
+    def to_dict_wo_user(self):
+        return {
+            "expenseId": self.expense_id,
+            "settledDate": self.settled_date
+        }
