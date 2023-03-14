@@ -20,9 +20,9 @@ def get_all_current_user_expenses():
 
   return {'expenses':
             {
-              "payerExpenses": [expense.to_dict_wo_payer() for expense in payer_expenses],
-              "owerExpenses": [expense.to_dict() for expense in owed_expenses],
-              "settledExpenses": [expense.to_dict() for expense in settled_expenses]
+              "payerExpenses": [expense.to_dict_payer_summary() for expense in payer_expenses],
+              "owerExpenses": [expense.to_dict_ower_summary() for expense in owed_expenses],
+            #   "settledExpenses": [expense.to_dict() for expense in settled_expenses]
             }
           }
 

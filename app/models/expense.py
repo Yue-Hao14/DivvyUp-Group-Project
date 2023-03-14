@@ -48,6 +48,27 @@ class Expense(db.Model):
             "updatedAt": self.updated_at,
         }
 
+    def to_dict_payer_summary(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "owers": [ower.to_dict_id_name() for ower in self.owers],
+            "settledOwers": [settled_ower.to_dict() for settled_ower in self.settled_owers],
+            "amount": self.amount,
+            "expenseDate": self.expense_date,
+        }
+
+    def to_dict_ower_summary(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "payer": self.payer.to_dict_id_name(),
+            "amount": self.amount,
+            "expenseDate": self.expense_date,
+        }
+
+
+
 
 
     # TO DO: add another to_dict method to include limited info needed for transaction history
