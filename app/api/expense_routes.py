@@ -11,20 +11,24 @@ expense_routes = Blueprint('expenses', __name__)
 @expense_routes.route('/')
 @login_required
 def get_all_current_user_expenses():
-  """
-  return current users' all settled and pending expenses
-  """
-  payer_expenses = current_user.payer_expenses
-  owed_expenses = current_user.owed_expenses
-  settled_expenses = current_user.settled_expenses
+    """
+    return current users' all settled and pending expenses
+    """
+    #   payer_expenses = current_user.payer_expenses
+    payer_expenses = [expense.to_dict_payer_summary() for expense in current_user.payer_expenses]
+    ower_expenses = [expense.to_dict_ower_summary() for expense in current_user.owed_expenses]
+    all_expenses = [*payer_expenses, *ower_expenses]
 
-  return {'expenses':
-            {
-              "payerExpenses": [expense.to_dict_wo_payer() for expense in payer_expenses],
-              "owerExpenses": [expense.to_dict() for expense in owed_expenses],
-              "settledExpenses": [expense.to_dict() for expense in settled_expenses]
-            }
-          }
+    return {'allExpenses': all_expenses }
+
+
+@expense_routes.route("/settled")
+@login_required
+def get_all_current_user_settled_expenses():
+    """
+    Return all of the current user's settled expenses
+    """
+    return {"settledExpenses": [settled_expense.to_dict_wo_user() for settled_expense in current_user.settled_expenses]}
 
 
 @expense_routes.route('/<int:id>')
@@ -34,6 +38,9 @@ def get_single_expense_details(id):
   return the details of a single expense
   """
   expense = Expense.query.get(id)
+
+  if not expense:
+    return {"errors": ["Expense not found"]}
 
   return expense.to_dict()
 
