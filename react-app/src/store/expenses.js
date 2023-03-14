@@ -81,7 +81,7 @@ export const getSettledExpensesThunk = () => async (dispatch) => {
     }
 }
 
-export const getFriendExpensesThunk = (friendId) => async (async) => {
+export const getFriendExpensesThunk = (friendId) => async (dispatch) => {
     const res = await fetch(`/api/users/friends/${friendId}`);
 
     if (res.ok) {
@@ -198,7 +198,7 @@ export default function reducer(state = initialState, action) {
         case GET_FRIEND_EXPENSES: {
             const newState = { ...state };
             const friendExpenses = {};
-            for (expense of action.payload) {
+            for (const expense of action.payload) {
                 friendExpenses[expense.id] = expense
             }
             newState.currentExpenseSummaries = friendExpenses;

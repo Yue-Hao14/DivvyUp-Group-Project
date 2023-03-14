@@ -21,10 +21,10 @@ function TotalBalance () {
 
     for (let i = 0; i < expensesArr.length; i++) {
         const expense = expensesArr[i];
-        if (expense.owers.includes(sessionUser)) {
-            totalBalance += expense.amount / expense.owers.length;
+        if (expense.owers && expense.owers.includes(sessionUser)) {
+          totalBalance += expense.amount / expense.owers.length;
         }
-    }
+      }
 
     return (
         <>
