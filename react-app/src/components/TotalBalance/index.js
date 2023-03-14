@@ -9,17 +9,19 @@ function TotalBalance () {
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.allExpenses)
 
-
     useEffect(() => {
         dispatch(getAllExpensesThunk())
     }, [dispatch])
 
-    if (!sessionUser) return Redirect('/')
+    if (!sessionUser) return <Redirect to='/' />
 
     let totalBalance  = 0;
 
-    for (let expense in userExpenses) {
-        if (expense.owers.include(sessionUser)) {
+    const expensesArr = Object.values(userExpenses);
+
+    for (let i = 0; i < expensesArr.length; i++) {
+        const expense = expensesArr[i];
+        if (expense.owers.includes(sessionUser)) {
             totalBalance += expense.amount / expense.owers.length;
         }
     }
