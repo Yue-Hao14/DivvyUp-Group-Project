@@ -17,8 +17,13 @@ class SettledUserExpense(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "user": self.settled_user.to_dict(),
-            "expense": self.expense.to_dict(),
-            "settled_date": self.settled_date
+            "expenseId": self.expense_id,
+            "settledDate": self.settled_date,
+            "settledUser": self.settled_user.to_dict_id_name()
+        }
+
+    def to_dict_wo_user(self):
+        return {
+            "expenseId": self.expense_id,
+            "settledDate": self.settled_date
         }

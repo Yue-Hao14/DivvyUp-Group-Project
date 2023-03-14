@@ -1,8 +1,8 @@
-"""add users, comments, expense_owers, expenses, settled_user_expenses tables
+"""empty message
 
-Revision ID: fa0ee901ae00
+Revision ID: 43b3518754e7
 Revises:
-Create Date: 2023-03-13 12:49:19.040748
+Create Date: 2023-03-13 17:46:21.731901
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'fa0ee901ae00'
+revision = '43b3518754e7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -64,8 +64,8 @@ def upgrade():
     op.create_table('expense_owers',
     sa.Column('expense_id', sa.Integer(), nullable=False),
     sa.Column('ower_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['expense_id'], ['expenses.id'], ),
-    sa.ForeignKeyConstraint(['ower_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['expense_id'], ['expenses.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['ower_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('expense_id', 'ower_id')
     )
     op.create_table('settled_user_expenses',
@@ -85,6 +85,7 @@ def upgrade():
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE expense_owers SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE settled_user_expenses SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 

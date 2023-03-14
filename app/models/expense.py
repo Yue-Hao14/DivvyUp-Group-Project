@@ -28,10 +28,47 @@ class Expense(db.Model):
             "id": self.id,
             "description": self.description,
             "amount": self.amount,
-            "payer": self.payer.to_dict(),
-            "expense_date": self.expense_date,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
+            "payer": self.payer.to_dict_id_name(),
+            "owers": [ower.to_dict_id_name() for ower in self.owers],
+            "settledOwers": [settled_ower.to_dict() for settled_ower in self.settled_owers],
+            "expenseDate": self.expense_date,
+            "createdAt": self.created_at,
+            "updatedAt": self.updated_at,
+            "comments": [comment.to_dict() for comment in self.comments],
         }
+
+    def to_dict_wo_payer(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "amount": self.amount,
+            "owers": [ower.to_dict_id_name() for ower in self.owers],
+            "expenseDate": self.expense_date,
+            "createdAt": self.created_at,
+            "updatedAt": self.updated_at,
+        }
+
+    def to_dict_payer_summary(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "owers": [ower.to_dict_id_name() for ower in self.owers],
+            "settledOwers": [settled_ower.to_dict() for settled_ower in self.settled_owers],
+            "amount": self.amount,
+            "expenseDate": self.expense_date,
+        }
+
+    def to_dict_ower_summary(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "payer": self.payer.to_dict_id_name(),
+            "amount": self.amount,
+            "expenseDate": self.expense_date,
+        }
+
+
+
+
 
     # TO DO: add another to_dict method to include limited info needed for transaction history

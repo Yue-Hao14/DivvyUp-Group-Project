@@ -40,7 +40,7 @@ function SideBar () {
             <div key={friend.id} className='side_bar_friend'>
               <NavLink
                 to={`/friends/${friend.id}`}
-              >{`${friend.first_name} ${friend.last_name}`}</NavLink>
+              >{`${friend.firstName} ${friend.lastName}`}</NavLink>
               <div className='remove_friend_button_container'>
                 <OpenModalButton
                   modalComponent={<RemoveFriendModal user={friend} />}

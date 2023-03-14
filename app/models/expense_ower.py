@@ -5,13 +5,13 @@ expense_owers = db.Table(
     db.Column(
         "expense_id",
         db.Integer,
-        db.ForeignKey(add_prefix_for_prod("expenses.id")),
+        db.ForeignKey(add_prefix_for_prod("expenses.id"), ondelete="CASCADE"),
         primary_key=True
     ),
     db.Column(
         "ower_id",
         db.Integer,
-        db.ForeignKey(add_prefix_for_prod("users.id")),
+        db.ForeignKey(add_prefix_for_prod("users.id"), ondelete="CASCADE"),
         primary_key=True
     )
 )
