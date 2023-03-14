@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SideBar from "./components/SideBar";
 import TotalBalance from "./components/TotalBalance";
+import FriendDetails from "./components/FriendsDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignupFormPage />
+            </Route>
+            <Route path="/friends/:friendId">
+              <FriendDetails />
             </Route>
           </Switch>
         </>
