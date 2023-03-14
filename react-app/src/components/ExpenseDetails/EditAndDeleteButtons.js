@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import OpenModalButton from '../OpenModalButton'
 import { DeleteExpenseModal } from "./DeleteExpenseModal"
+import { EditExpenseModal } from "./EditExpenseModal"
 
 function EditAndDeleteButtons() {
     const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
@@ -19,7 +20,7 @@ function EditAndDeleteButtons() {
                 Delete should open a confirm delete modal
              */}
             <OpenModalButton
-                modalComponent={<h1>This is where the edit expense modal will go</h1>}
+                modalComponent={<EditExpenseModal />}
                 buttonText="edit"
             />
             <OpenModalButton

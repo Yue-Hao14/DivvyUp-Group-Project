@@ -5,7 +5,6 @@ import { useModal } from '../../context/Modal'
 import { postExpenseThunk } from '../../store/expenses'
 import './AddExpenseModal.css'
 
-// TO DO: figure out how to add owerIds to the Array
 
 function AddExpenseModal() {
   const [owerIds, setOwerIds] = useState([])
@@ -61,15 +60,11 @@ function AddExpenseModal() {
     setHasSubmitted(true);
 
     const newExpense = { owerIds, description, amount, expenseDate, errors }
-    console.log(newExpense)
+    // console.log(newExpense)
 
     if (Object.values(errors).length === 0) {
       const data = await dispatch(postExpenseThunk(newExpense))
-      if (data) {
-        setErrors(data)
-      } else {
-        closeModal()
-      }
+      closeModal()
     }
   }
 
