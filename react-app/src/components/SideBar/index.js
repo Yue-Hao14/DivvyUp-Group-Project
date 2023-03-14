@@ -11,18 +11,13 @@ function SideBar () {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
   const friends = useSelector(state => state.friends)
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  useEffect(() => {
-    dispatch(getAllFriendsThunk()).then(() => setIsLoaded(true))
-  }, [dispatch, sessionUser])
 
   if (!sessionUser) return null // Do not display sidebar if user is not logged in
 
   return (
     <div className='side_bar'>
       <div className='side_bar_dashboard'>
-        <NavLink to={`/dashboard`}>Dashboard</NavLink>
+        <NavLink to={`/`}>Dashboard</NavLink>
       </div>
       <div className='side_bar_all_expenses'>
         <NavLink to={`/all-expenses`}>All Expenses</NavLink>
@@ -39,8 +34,7 @@ function SideBar () {
         </div>
       </div>
       <div className='side_bar_friends_list'>
-        {isLoaded &&
-          Object.values(friends).map(friend => (
+        {Object.values(friends).map(friend => (
             <div key={friend.id} className='side_bar_friend'>
               <NavLink
                 to={`/friends/${friend.id}`}

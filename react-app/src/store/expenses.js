@@ -3,39 +3,44 @@ import { RESET } from "./session"
 const GET_ALL_EXPENSE = 'expenses/GET_ALL_EXPENSES'
 const GET_SINGLE_EXPENSE_DETAILS = 'expenses/GET_SINGLE_EXPENSE_DETAILS'
 const GET_SETTLED_EXPENSES = 'expenses/GET_SETTLED_EXPENSES'
+const GET_FRIEND_EXPENSES = 'expenses/GET_FRIEND_EXPENSES'
 const ADD_EXPENSE = 'expenses/ADD_EXPENSE'
 const UPDATE_EXPENSE = 'expenses/UPDATE_EXPENSE'
 const DELETE_EXPENSE = 'expenses/DELETE_EXPENSE'
 
 
-
 //action creator
-const getAllExpenses = expenses => ({
+export const getAllExpenses = expenses => ({
     type: GET_ALL_EXPENSE,
     payload: expenses
 })
 
-const getSettledExpenses = expenses => ({
+export const getSettledExpenses = expenses => ({
     type: GET_SETTLED_EXPENSES,
     payload: expenses
 })
 
-const getSingleExpenseDetails = expenseDetails => ({
+export const getFriendExpenses = expenses => ({
+    type: GET_FRIEND_EXPENSES,
+    payload: expenses
+})
+
+export const getSingleExpenseDetails = expenseDetails => ({
     type: GET_SINGLE_EXPENSE_DETAILS,
     payload: expenseDetails
 })
 
-const postExpense = expense => ({
+export const postExpense = expense => ({
     type: ADD_EXPENSE,
     payload: expense
 })
 
-const updateExpense = expense => ({
+export const updateExpense = expense => ({
     type: UPDATE_EXPENSE,
     payload: expense
 })
 
-const deleteExpense = expenseId => ({
+export const deleteExpense = expenseId => ({
     type: DELETE_EXPENSE,
     id: expenseId
 })
@@ -43,7 +48,7 @@ const deleteExpense = expenseId => ({
 
 //thunks
 export const getAllExpensesThunk = () => async (dispatch) => {
-    const res = await fetch ('/api/expenses');
+    const res = await fetch ('/api/expenses/');
 
     if (res.ok) {
         const data = await res.json();
@@ -65,6 +70,23 @@ export const getSettledExpensesThunk = () => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(getSettledExpenses(data));
+        return data;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An Error occured. Please try again later"]
+    }
+}
+
+export const getFriendExpensesThunk = (friendId) => async (async) => {
+    const res = await fetch(`/api/users/friends/${friendId}`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getFriendExpenses(data));
         return data;
     } else if (res.status < 500) {
         const data = await res.json();
@@ -155,7 +177,12 @@ export const deleteExpenseThunk = expenseId => async (dispatch) => {
 
 //reducer
 
-const initialState = {allExpenses : {}, settledExpenses: {}, currentExpenseDetails: {}}
+const initialState = {
+                        allExpenses : {},
+                        settledExpenses: {},
+                        currentExpenseSummaries: {},
+                        currentExpenseDetails: {}
+                     }
 export default function reducer(state = initialState, action) {
     switch(action.type) {
         case GET_ALL_EXPENSE: {
@@ -163,10 +190,19 @@ export default function reducer(state = initialState, action) {
             for (const expense of action.payload) {
                 expenses[expense.id] = expense
             }
-            return {...state, allExpenses: expenses}
+            return { ...state, allExpenses: expenses, currentExpenseSummaries: expenses }
         }
         case GET_SINGLE_EXPENSE_DETAILS: {
             return {...state, currentExpenseDetails: action.payload}
+        }
+        case GET_FRIEND_EXPENSES: {
+            const newState = { ...state };
+            const friendExpenses = {};
+            for (expense of action.payload) {
+                friendExpenses[expense.id] = expense
+            }
+            newState.currentExpenseSummaries = friendExpenses;
+            return newState;
         }
         case GET_SETTLED_EXPENSES: {
             const settledExpenses = {}

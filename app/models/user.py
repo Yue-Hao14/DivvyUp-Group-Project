@@ -27,6 +27,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    # TODO: ADD RELATIONSHIP TO COMMENTS
     payer_expenses = db.relationship("Expense", back_populates="payer")
     owed_expenses = db.relationship("Expense", secondary=expense_owers, back_populates="owers")
     settled_expenses = db.relationship("SettledUserExpense", back_populates="settled_user")
@@ -62,4 +63,20 @@ class User(db.Model, UserMixin):
             'id': self.id,
             "firstName": self.first_name,
             "lastName": self.last_name,
+        }
+
+    def to_dict_login(self):
+        ower_expenses = [expense.to_dict_summary() for expense in self.owed_expenses]
+        payer_expenses = [expense.to_dict_summary() for expense in self.payer_expenses]
+        return {
+            "User": {
+                "id": self.id,
+                "username": self.username,
+                "firstName": self.first_name,
+                "lastName": self.last_name,
+                "email": self.email
+            },
+            "Friends": [friend.to_dict_id_name() for friend in self.friends],
+            "AllExpenses": [*payer_expenses, *ower_expenses],
+            "SettledExpenses": [expense.to_dict_wo_user() for expense in self.settled_expenses],
         }
