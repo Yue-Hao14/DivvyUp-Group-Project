@@ -5,17 +5,17 @@ const ADD_FRIEND = 'friends/ADD_FRIEND'
 const REMOVE_FRIEND = 'friends/REMOVE_FRIEND'
 
 // action creator
-const getAllFriends = friends => ({
+export const getAllFriends = friends => ({
 	type: GET_ALL_FRIENDS,
 	payload: friends
 });
 
-const addFriend = friend => ({
+export const addFriend = friend => ({
     type: ADD_FRIEND,
     payload: friend
 })
 
-const removeFriend = friendId => ({
+export const removeFriend = friendId => ({
     type: REMOVE_FRIEND,
     payload: friendId
 })
