@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SideBar from "./components/SideBar";
+import TopBar from "./components/TopBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
       {isLoaded && (
         <>
           <SideBar />
+          <TopBar />
           <Switch>
             <Route path="/login" >
               <LoginFormPage />
