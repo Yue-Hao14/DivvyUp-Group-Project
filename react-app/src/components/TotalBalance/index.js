@@ -4,14 +4,10 @@ import { Redirect } from "react-router-dom";
 import { getAllExpensesThunk } from "../../store/expenses";
 
 function TotalBalance () {
-    const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.allExpenses)
 
-    useEffect(() => {
-        dispatch(getAllExpensesThunk())
-    }, [dispatch])
 
     if (!sessionUser) return <Redirect to='/' />
 
@@ -21,10 +17,10 @@ function TotalBalance () {
 
     for (let i = 0; i < expensesArr.length; i++) {
         const expense = expensesArr[i];
-        if (expense.owers.includes(sessionUser)) {
-            totalBalance += expense.amount / expense.owers.length;
+        if (expense.owers && expense.owers.includes(sessionUser)) {
+          totalBalance += expense.amount / expense.owers.length;
         }
-    }
+      }
 
     return (
         <>

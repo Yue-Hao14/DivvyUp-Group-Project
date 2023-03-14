@@ -61,6 +61,32 @@ def add_a_friend():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@user_routes.route('/friends/<int:id>')
+@login_required
+def get_friend_expenses(id):
+    """
+    Get a list of expense summaries between the current user and the friend by friend id
+    """
+    friend = User.query.get(id)
+
+    if friend not in current_user.friends:
+        return { "errors": ["Cannot view expenses of a user who is not a friend of current user"] }, 401
+
+    friend_ower_expenses = [expense for expense in friend.owed_expenses]
+    friend_payer_expenses = [expense for expense in friend.payer_expenses]
+    current_user_ower_expenses = [expense for expense in current_user.owed_expenses]
+    current_user_payer_expenses = [expense for expense in current_user.payer_expenses]
+
+    # current user payer expenses where friend is ower
+    current_user_payer_expenses_to_return = set(current_user_payer_expenses).intersection(set(friend_ower_expenses))
+    # current user ower expenses where friend is payer
+    current_user_ower_expenses_to_return = set(current_user_ower_expenses).intersection(set(friend_payer_expenses))
+
+    expenses_to_return = [*current_user_payer_expenses_to_return, *current_user_ower_expenses_to_return]
+
+    return [expense.to_dict_summary() for expense in expenses_to_return]
+
+
 @user_routes.route('/friends/<int:id>', methods=["DELETE"])
 @login_required
 def remove_friend(id):
