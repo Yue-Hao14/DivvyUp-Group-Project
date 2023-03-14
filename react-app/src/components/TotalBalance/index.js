@@ -4,14 +4,10 @@ import { Redirect } from "react-router-dom";
 import { getAllExpensesThunk } from "../../store/expenses";
 
 function TotalBalance () {
-    const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.allExpenses)
 
-    useEffect(() => {
-        dispatch(getAllExpensesThunk())
-    }, [dispatch])
 
     if (!sessionUser) return <Redirect to='/' />
 

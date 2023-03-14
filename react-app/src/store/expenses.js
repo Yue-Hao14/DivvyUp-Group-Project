@@ -187,7 +187,7 @@ export default function reducer(state = initialState, action) {
     switch(action.type) {
         case GET_ALL_EXPENSE: {
             const expenses = {}
-            for (const expense of action.payload.allExpenses) {
+            for (const expense of action.payload) {
                 expenses[expense.id] = expense
             }
             return { ...state, allExpenses: expenses, currentExpenseSummaries: expenses }
