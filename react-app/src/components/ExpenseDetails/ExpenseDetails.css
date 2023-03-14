@@ -1,0 +1,45 @@
+/* TODO: ADD STYLING FOR EXPENSE DETAILS HERE */
+.expense_details_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.expense_details_div_upper,
+.expense_details_div_lower {
+    display: flex;
+    flex-direction: row;
+}
+
+/********************* expense_details_upper_div **********************/
+/* .expense_details_icon {
+
+} */
+
+.expense_details_info_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.expense_details_buttons_div {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .expense_details_info_expense_description,
+.expense_details_info_expense_amount,
+.expense_details_info_added_by,
+.expense_details_info_last_updated {
+
+} */
+
+/********************* expense_details_lower_div **********************/
+.expense_details_users_info_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.expense_details_comments_div {
+    display: flex;
+    flex-direction: column;
+}

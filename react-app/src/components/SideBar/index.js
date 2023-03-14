@@ -17,12 +17,16 @@ function SideBar () {
     dispatch(getAllFriendsThunk()).then(() => setIsLoaded(true))
   }, [dispatch, sessionUser])
 
-  if (!sessionUser) return Redirect('/') // Redirect user to home page if they are not logged in
+  if (!sessionUser) return null // Do not display sidebar if user is not logged in
 
   return (
     <div className='side_bar'>
-      <div className='side_bar_dashboard'>Dashboard</div>
-      <div className='side_bar_all_expenses'>All Expenses</div>
+      <div className='side_bar_dashboard'>
+        <NavLink to={`/dashboard`}>Dashboard</NavLink>
+      </div>
+      <div className='side_bar_all_expenses'>
+        <NavLink to={`/all-expenses`}>All Expenses</NavLink>
+      </div>
       <div className='side_bar_friends_label_div'>
         <div className='side_bar_friends_label'>
           FRIENDS
