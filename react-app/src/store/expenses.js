@@ -1,3 +1,5 @@
+import { RESET } from "./session"
+
 const GET_ALL_EXPENSE = 'expenses/GET_ALL_EXPENSES'
 const GET_SINGLE_EXPENSE_DETAILS = 'expenses/GET_SINGLE_EXPENSE_DETAILS'
 const GET_SETTLED_EXPENSES = 'expenses/GET_SETTLED_EXPENSES'
@@ -189,6 +191,9 @@ export default function reducer(state = initialState, action) {
             newState.allExpenses = { ...state.allExpenses }
             delete newState.allExpenses[action.id]
             return newState
+        }
+        case RESET: {
+            return initialState;
         }
         default:
             return state

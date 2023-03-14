@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
-import { removeFriendThunk } from "../../store/friends";
+import { deleteExpenseThunk } from "../../store/expenses";
 
-import "./RemoveFriendModal.css"
-function RemoveFriendModal({ user }) {
+function DeleteExpenseModal() {
     const { closeModal }  = useModal();
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([]);
+    const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
     const dispatch = useDispatch();
 
     const confirmDelete = async () => {
         // dispatch remove friend thunk
-        const data = await dispatch(removeFriendThunk(user.id))
+        const data = await dispatch(deleteExpenseThunk(expenseDetails.id))
         if (data) {
             // if there were any errors display them although there shouldn't be
             setErrors(data);
@@ -21,10 +21,11 @@ function RemoveFriendModal({ user }) {
         }
     }
 
+
     return (
         <div className="delete_confirmation_modal_div">
-            <h2 className="delete_confirmation_modal_title">Unfriend {`${user.firstName}`}</h2>
-            <p className="delete_confirmation_modal_info">Are you sure you want to remove {`${user.firstName} from your friends list?`}</p>
+            <h2 className="delete_confirmation_modal_title">Delete Expense</h2>
+            <p className="delete_confirmation_modal_info">Are you sure you want to delete this expense? This will completely remove this expense for ALL people involved, not just you.</p>
             <ul className="delete_confirmation_modal_errors_list">
                 {errors.map((error,idx) => (
                     <li key={idx}>{error}</li>
@@ -38,4 +39,4 @@ function RemoveFriendModal({ user }) {
     )
 }
 
-export default RemoveFriendModal
+export default DeleteExpenseModal
