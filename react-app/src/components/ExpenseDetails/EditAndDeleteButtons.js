@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import OpenModalButton from '../OpenModalButton'
-import { DeleteExpenseModal } from "./DeleteExpenseModal"
+import DeleteExpenseModal from "./DeleteExpenseModal"
 
 function EditAndDeleteButtons() {
     const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
