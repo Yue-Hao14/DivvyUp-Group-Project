@@ -12,7 +12,6 @@ function SplashPage () {
     const dispatch = useDispatch()
 
     const expensesArr = Object.values(userExpenses)
-    console.log("Expenses Arr====================================================", expensesArr)
 
     useEffect(() => {
         if (sessionUser) {
@@ -29,8 +28,7 @@ function SplashPage () {
     let unSettledByOthersArr = [];
 
     // iterate through each exepense and determine how much user owes and is owed
-    for (let i = 0; i < expensesArr.length; i++) {
-        const expense = expensesArr[i];
+    for (const expense of expensesArr) {
         const numOwers = expense.owers.length;
         const splitAmount = (expense.amount / (numOwers + 1))
 
