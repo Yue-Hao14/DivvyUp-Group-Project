@@ -50,8 +50,8 @@ function AddExpenseModal() {
 
   // calculate splitAmount every time when amount and/or owerIds change
   useEffect(() => {
-    const calculatedValue = (amount / (owerIds.length + 1)).toFixed(2)
-    setSplitAmount(calculatedValue)
+    const calculatedSplitAmount = (amount / (owerIds.length + 1)).toFixed(2)
+    setSplitAmount(calculatedSplitAmount)
   }, [amount, owerIds])
 
 
@@ -59,9 +59,13 @@ function AddExpenseModal() {
     e.preventDefault();
     setHasSubmitted(true);
 
+    // make sure amount only has 2 decimal points
+    amount = amount.toFixed(2)
+
     const newExpense = { owerIds, description, amount, expenseDate, errors }
     // console.log(newExpense)
 
+    // if no error, we POST the newExpense to db via thunk
     if (Object.values(errors).length === 0) {
       const data = await dispatch(postExpenseThunk(newExpense))
       closeModal()
@@ -74,11 +78,6 @@ function AddExpenseModal() {
       <div className='add_expense_modal_label_container'>
         Add an expense
       </div>
-      {/* <ul className="add_epense_modal_error_list">
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-          ))}
-        </ul> */}
       <div className='add_expense_modal_payer_and_owers_container'>
         <div className='add_expense_modal_payer_text'>With you and: </div>
         <Select
@@ -95,12 +94,6 @@ function AddExpenseModal() {
           }
           }
         />
-        {/* <optgroup label="Select Following Friends">
-            {Object.values(friends).map(friend => (
-              <option value={friend.id}>{friend.firstName} {friend.lastName}</option>
-            ))
-            }
-          </optgroup> */}
         {hasSubmitted &&
           errors.emptyOwerIds &&
           (<div className='error'>{errors.emptyOwerIds}</div>)}
