@@ -21,8 +21,6 @@ function SplashPage() {
             let newTotalOwed = 0;
             let newTotalOwe = 0;
 
-
-
             for (let i = 0; i < expensesArr.length; i++) {
                 const expense = expensesArr[i];
                 if (expense.payer.id === sessionUser.id) {
@@ -45,7 +43,7 @@ function SplashPage() {
         if (sessionUser) {
             dispatch(getAllExpensesThunk()).then(calculateTotals);
         }
-    }, [dispatch, sessionUser, userExpenses]);
+    }, [dispatch, sessionUser]);
 
     return (
         <>
