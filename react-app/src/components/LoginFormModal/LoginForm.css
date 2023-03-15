@@ -7,6 +7,7 @@
     margin: auto;
     min-width: 600px;
     border: 1px solid gray;
+    background-color: transparent;
     /* border-radius: 2rem; */
     padding: 2rem;
     overflow: hidden;
@@ -14,7 +15,7 @@
 
   .login-modal-heading {
     font-size: 2.5rem;
-    margin: 1rem 0;
+    margin: 0rem 0;
   }
 
   .login-modal-form {
@@ -28,7 +29,7 @@
   .login-modal-label {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
+    margin: 0.8rem 0;
     width: 100%;
     font-size: 1.0rem;
     font-weight: 560;
