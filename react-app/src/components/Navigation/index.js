@@ -13,19 +13,19 @@ function Navigation ({ isLoaded }) {
   return (
     <nav className='navigation-container'>
       <NavLink exact to='/' className='navigation-logo'>
-	  <i className="fa-solid fa-divide"></i>
-	  DivvyUp
+        <i className='fa-solid fa-divide'></i>
+        DivvyUp
       </NavLink>
       {isLoaded && (
         <ul className='navigation-links'>
+          <div className='navigation-add-expense-button'>
           {sessionUser && (
-            <li>
-              <OpenModalButton
-                modalComponent={<AddExpenseModal />}
-                buttonText='Add an Expense'
-              />
-            </li>
+            <OpenModalButton
+              modalComponent={<AddExpenseModal />}
+              buttonText='Add an Expense'
+            />
           )}
+          </div>
           <li>
             <ProfileButton user={sessionUser} />
           </li>
