@@ -6,12 +6,13 @@ function TotalBalance () {
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.allExpenses)
 
-    console.log(sessionUser);
+    // console.log(sessionUser);
     if (!sessionUser) return <Redirect to='/' />
 
     let totalBalance  = 0;
 
     const expensesArr = Object.values(userExpenses);
+    // console.log(expensesArr);
 
     for (let i = 0; i < expensesArr.length; i++) {
         const expense = expensesArr[i];
