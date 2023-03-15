@@ -37,7 +37,7 @@ DivvyUp, a SplitWise clone, is a website for users to share expenses with friend
 ## 5. Payments (partial CRUD)
 
 * Logged in users can read/get details of their payments
-* Logged in users can create a payment to settle their pending expenses, their dashboard and all expenses pages will be updated accordingly
+* Payer of the expense can create a payment to settle their pending expenses with each ower, dashboard and all expenses pages will be updated accordingly
 
 
 ## 6. Bonus: Group (full CRUD)
