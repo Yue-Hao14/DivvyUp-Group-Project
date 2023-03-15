@@ -9,7 +9,7 @@ import './AddExpenseModal.css'
 function AddExpenseModal() {
   const [owerIds, setOwerIds] = useState([])
   const [description, setDescription] = useState("")
-  const [amount, setAmount] = useState(0)
+  let [amount, setAmount] = useState(0)
   const [splitAmount, setSplitAmount] = useState(0)
   const [expenseDate, setExpenseDate] = useState("")
   const [errors, setErrors] = useState({})
@@ -60,7 +60,7 @@ function AddExpenseModal() {
     setHasSubmitted(true);
 
     // make sure amount only has 2 decimal points
-    amount = amount.toFixed(2)
+    amount = parseFloat(amount).toFixed(2)
 
     const newExpense = { owerIds, description, amount, expenseDate, errors }
     // console.log(newExpense)
@@ -108,7 +108,7 @@ function AddExpenseModal() {
             value={description}
             onChange={e => setDescription(e.target.value)}
             required
-            placeholder='description'
+            placeholder='Enter a description'
             className='add_expense_modal_description' />
           {hasSubmitted &&
             errors.emptyDescription &&

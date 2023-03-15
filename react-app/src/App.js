@@ -6,9 +6,11 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SideBar from "./components/SideBar";
-import TotalBalance from "./components/TotalBalance";
 import FriendDetails from "./components/FriendsDetails";
 import TopBar from "./components/TopBar";
+import SplashPage from "./components/SplashPage"
+import AllExpenses from "./components/AllExpenses";
+
 
 
 function App() {
@@ -26,6 +28,9 @@ function App() {
           <SideBar />
           <TopBar />
           <Switch>
+            <Route path="/dashboard" >
+              <SplashPage />
+            </Route>
             <Route path="/login" >
               <LoginFormPage />
             </Route>
@@ -34,6 +39,9 @@ function App() {
             </Route>
             <Route path="/friends/:friendId">
               <FriendDetails />
+            </Route>
+            <Route path="/all-expenses">
+              <AllExpenses />
             </Route>
           </Switch>
         </>

@@ -7,6 +7,7 @@
     margin: auto;
     min-width: 600px;
     border: 1px solid gray;
+    background-color: transparent;
     /* border-radius: 2rem; */
     padding: 2rem;
     overflow: hidden;
@@ -14,7 +15,7 @@
 
   .login-modal-heading {
     font-size: 2.5rem;
-    margin: 1rem 0;
+    margin: 0rem 0;
   }
 
   .login-modal-form {
@@ -28,9 +29,10 @@
   .login-modal-label {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
+    margin: 0.8rem 0;
     width: 100%;
-    font-size: 1.3rem;
+    font-size: 1.0rem;
+    font-weight: 560;
 
   }
 
@@ -41,8 +43,8 @@
     border: 1px solid gray;
     width: 100%;
     max-width: 350px;
-    height: 50px;
-    font-size: 1.1rem;
+    height: 40px;
+    font-size: 1.0rem;
   }
 
   .login-modal-errors {
@@ -51,20 +53,30 @@
   }
 
   .login-modal-button {
-    padding: 1rem;
-    margin: 1rem 0;
+    /* padding: 0.8rem; */
+    margin: 0.6rem 0;
+    margin-left: 10px;
     border-radius: 8px;
     border: none;
     background-color: #5BC5A7;
     color: white;
     cursor: pointer;
-    width: 100%;
-    max-width: 350px;
-    height: 50px;
+    width: 365px;
+    height: 40px;
     font-size: 1.1rem;
-    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* box-sizing: border-box; */
   }
 
   .login-modal-button:hover {
-    background-color: rgb(58, 108, 58);
+    background-color: #48a289;
+
+  }
+
+  .login-modal-button:active {
+    background-color: #48a289;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.2) inset;
+    transform: translateY(4px);
   }

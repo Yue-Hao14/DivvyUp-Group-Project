@@ -10,7 +10,7 @@ function Navigation ({ isLoaded }) {
   return (
     <nav className='navigation-container'>
       <NavLink exact to='/' className='navigation-logo'>
-	  <i className="fa-solid fa-money-bill"></i>
+	  <i className="fa-solid fa-divide"></i>
 	  DivvyUp
       </NavLink>
       {isLoaded && (

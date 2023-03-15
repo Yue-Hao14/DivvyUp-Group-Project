@@ -1,0 +1,99 @@
+.splash-page-wrapper {
+    margin-left: 275px;
+    padding: 0 16px;
+  }
+
+  .splash-page-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .splash-page-header-button {
+    display: flex;
+    align-items: center;
+  }
+
+  .splash-page-button {
+    margin-left: 16px;
+  }
+
+  .splash-page-title {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .splash-page-total-balance-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .splash-page-balance-container h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .splash-page-owe-container,
+  .splash-page-are-owe-container {
+    margin-left: 24px;
+  }
+
+  .splash-page-owe-container h3,
+  .splash-page-are-owe-container h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .splash-page-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .you-owe-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .you-owe-details-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .you-owe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .you-owe-list > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  .are-owed-you-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .are-owed-you-list > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  .you-are-owed-details-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }

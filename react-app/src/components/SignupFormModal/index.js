@@ -51,6 +51,26 @@ function SignupFormModal() {
           />
         </label>
         <label className="signup-modal-label">
+          First Name
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="signup-modal-input"
+            required
+          />
+        </label>
+        <label className="signup-modal-label">
+          Last Name
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="signup-modal-input"
+            required
+          />
+		  </label>
+        <label className="signup-modal-label">
           Username
           <input
             type="text"
