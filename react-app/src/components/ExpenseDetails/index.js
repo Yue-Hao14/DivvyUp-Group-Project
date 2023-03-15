@@ -14,10 +14,10 @@ function ExpenseDetails({ expenseId }) {
                 <div className="expense_details_div_upper">
                     <div className="expense_details_icon"></div>
                     <ExpenseInfo />
-                    {/* <EditAndDeleteButtons /> */}
+                    <EditAndDeleteButtons />
                 </div>
                 <div className="expense_details_div_lower">
-                    {/* <ExpenseUserInfo /> */}
+                    <ExpenseUserInfo />
                     <div className="expense_details_comments_div">
                         {/* This is where a comments component will go */}
                     </div>
