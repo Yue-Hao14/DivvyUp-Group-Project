@@ -1,5 +1,5 @@
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
-import ExpenseSummarySection from "./ExpenseSummarySection";
+import ExpenseSummarySection from "../ExpenseSummaries/ExpenseSummarySection";
 
 function SettledExpenses() {
     const settledExpenses = [];
@@ -10,13 +10,14 @@ function SettledExpenses() {
             // make sure they are in list of settled owers
     const orderedSettledExpenses = groupExpensesByMonth(settledExpenses);
     return (
-        <div className="expense_summaries_div">
-            {orderedSettledExpenses.map((expenseList, idx) => {
-                return (
-                    <ExpenseSummarySection key={idx} expenses={expenseList} />
-                )
-            })}
-        </div>
+        // <div className="expense_summaries_div">
+        //     {orderedSettledExpenses.map((expenseList, idx) => {
+        //         return (
+        //             <ExpenseSummarySection key={idx} expenses={expenseList} />
+        //         )
+        //     })}
+        // </div>
+        null
     )
 }
 
