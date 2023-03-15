@@ -2,73 +2,58 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
 import AddExpenseModal from '../Navigation/AddExpenseModal'
+import LoggedOutSplashPage from '../LoggedOutSplashPage'
 import { getAllExpensesThunk } from '../../store/expenses'
 import './Splash.css'
 
 function SplashPage () {
-  // const [totalBalance, setTotalBalance] = useState(0);
-  // const [totalOwe, setTotalOwe] = useState(0);
-  // const [totalOwed, setTotalOwed] = useState(0);
+    const userExpenses = useSelector(state => state.expenses.allExpenses)
+    const sessionUser = useSelector(state => state.session.user)
+    const dispatch = useDispatch()
 
-  const userExpenses = useSelector(state => state.expenses.allExpenses)
-  const sessionUser = useSelector(state => state.session.user)
-  const dispatch = useDispatch()
+    const expensesArr = Object.values(userExpenses)
 
-  const expensesArr = Object.values(userExpenses)
+    useEffect(() => {
+        if (sessionUser) {
+        dispatch(getAllExpensesThunk())
+        }
+    }, [sessionUser])
 
-  useEffect(() => {
-    if (sessionUser) {
-      dispatch(getAllExpensesThunk())
-    }
-  }, [sessionUser])
+    if (!sessionUser) return <LoggedOutSplashPage />; // account for if the user logs out on this page
 
-    let totalOwed = 0;
-    let totalDebt = 0;
-    let totalSettled = 0;
-    let totalSettledByOthers = 0
+    let userOwed = 0;
+    let userDebt = 0;
     let totalBalance = 0;
-    let unsettledArr = [];
+    let unsettledByUserArr = [];
     let unSettledByOthersArr = [];
 
-    for (let i = 0; i < expensesArr.length; i++) {
-        const expense = expensesArr[i];
+    // iterate through each exepense and determine how much user owes and is owed
+    for (const expense of expensesArr) {
+        const numOwers = expense.owers.length;
+        const splitAmount = (expense.amount / (numOwers + 1))
 
-        // Check if user is the payer
+        // If user is payer, they are owed splitAmount * num owers minus (the length of settledOwers * splitAmount)
         if (expense.payer.id === sessionUser.id) {
-            const numOwers = expense.owers.length;
-            totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
-            // console.log("=====================totalOwed:", totalOwed);
-        }
-        // Check if user is an owner
-        if (expense.owers) {
-            const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-            if (userOwer) {
-                totalDebt += expense.amount / (expense.owers.length + 1);
-                // console.log("==============totalDEbt:", totalDebt);
+            // if length of settled owers is less than numOwers
+            const numUnsettledOwers = numOwers - expense.settledOwers.length
+            if (numUnsettledOwers > 0) {
+                userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
+                unSettledByOthersArr.push(expense);
             }
-        }
-
-        // Check if user is a settler
-        if (expense.settledOwers) {
-            for (let j = 0; j < expense.settledOwers.length; j++) {
-                const settledOwer = expense.settledOwers[j];
-                for (let k = 0; k < settledOwer.settledUser.length; k++) {
-                    const settledUser = settledOwer.settledUser[k];
-                    if (settledUser.id === sessionUser.id) {
-                        totalSettled += expense.amount / (expense.owers.length + 1);
-                        // console.log("===========totalSettle:", totalSettled);
-                    }
-                }
-                unSettledByOthersArr.push(expense)
-            }
+                // find number of users who still owe, multiply the split amount by number of users who still owe
+                    // and add to userOwed
         } else {
-            unsettledArr.push(expense)
-            totalSettledByOthers = (expense.amount / (expense.owers.length + 1)) * expense.settledOwers.length;
-            // console.log("=================totalSetteleByOthers:", totalSettledByOthers);
+        // If user is not payer, then they must be an ower
+        // If user is an ower, and has not settled their debt, add splitAmount to userDebt
+            const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
+            if (!userInSettledOwers) {
+                userDebt += Number.parseFloat(splitAmount.toFixed(2))
+                unsettledByUserArr.push(expense)
+            }
         }
     }
 
-    totalBalance = totalOwed - totalDebt + totalSettled - totalSettledByOthers
+    totalBalance = userOwed - userDebt
 
     return (
         <>
@@ -98,7 +83,7 @@ function SplashPage () {
                             <h3>You owe</h3>
                         </div>
                         <div>
-                            {(totalDebt - totalSettled).toFixed(2)}
+                            {userDebt.toFixed(2)}
                         </div>
                     </div>
                     <div className="splash-page-are-owe-container">
@@ -106,7 +91,7 @@ function SplashPage () {
                             <h3>You are owed</h3>
                         </div>
                         <div>
-                            {(totalOwed - totalSettledByOthers).toFixed(2)}
+                            {userOwed.toFixed(2)}
                         </div>
                     </div>
                 </div>
@@ -116,7 +101,7 @@ function SplashPage () {
                             <h2>YOU OWE</h2>
                         </div>
                         <div className="you-owe-list">
-                            {unsettledArr.filter(expense => expense.payer.id !== sessionUser.id)
+                            {unsettledByUserArr.filter(expense => expense.payer.id !== sessionUser.id)
                                 .map(expense => {
                                     const owedAmount = expense.amount / (expense.owers.length + 1);
                                     return (
