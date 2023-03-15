@@ -23,7 +23,7 @@ function EditAndDeleteButtons({ expense }) {
                 Delete should open a confirm delete modal
              */}
             <OpenModalButton
-                modalComponent={<EditExpenseModal />}
+                modalComponent={<EditExpenseModal expense={expense}/>}
                 buttonText="edit"
             />
             <OpenModalButton
