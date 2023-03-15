@@ -62,8 +62,8 @@ function AddExpenseModal() {
     // make sure amount only has 2 decimal points
     amount = parseFloat(amount).toFixed(2)
 
-    const newExpense = { owerIds, description, amount, expenseDate, errors }
-    // console.log(newExpense)
+    const newExpense = { owerIds, description, amount, expenseDate }
+    console.log("newExpense:", newExpense)
 
     // if no error, we POST the newExpense to db via thunk
     if (Object.values(errors).length === 0) {
@@ -76,7 +76,7 @@ function AddExpenseModal() {
     <form
       className="add_expense_modal_form">
       <div className='add_expense_modal_label_container'>
-        Add an expense
+        Add an Expense
       </div>
       <div className='add_expense_modal_payer_and_owers_container'>
         <div className='add_expense_modal_payer_text'>With you and: </div>
@@ -85,7 +85,7 @@ function AddExpenseModal() {
           isMulti
           options={friends_options}
           onChange={e => {
-            console.log('e:', e)
+            // console.log('e:', e)
             let temp_owers_arr = []
             e.forEach(ower => {
               temp_owers_arr.push(ower.value)

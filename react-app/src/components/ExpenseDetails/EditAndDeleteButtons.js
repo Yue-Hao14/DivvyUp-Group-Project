@@ -14,6 +14,8 @@ function EditAndDeleteButtons({ expense }) {
      */
     if ((expense.payer.id != sessionUser.id) || expense.settledOwers.length > 0) return null
 
+
+
     return (
         <div className="expense_details_buttons_div">
             {/* OpenModalButtons for each

@@ -2,6 +2,7 @@ function ExpenseUserInfo({ expense }) {
     // might have a type issue here with expense.amount (might be string)
     const owerAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2)
 
+
     return (
         <div className="expense_details_info_div">
             <div className="expense_details_user_info_div">
