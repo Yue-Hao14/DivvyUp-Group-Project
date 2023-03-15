@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
-import FriendExpenseSummary from "./FriendExpenseSummary";
+import ExpenseSummary from "./ExpenseSummary";
 
-function FriendExpenseSummaries() {
+function AllExpenseSummaries() {
     const expenses = useSelector(state => state.expenses.currentExpenseSummaries)
     const orderedExpenses = groupExpensesByMonth(Object.values(expenses));
 
@@ -10,11 +10,11 @@ function FriendExpenseSummaries() {
         <div className="expense_summaries_div">
             {Object.values(orderedExpenses).map((expenseList, idx) => {
                 return (
-                    <FriendExpenseSummary key={idx} expenses={expenseList} />
+                    <ExpenseSummary key={idx} expenses={expenseList} />
                 )
             })}
         </div>
     )
 }
 
-export default FriendExpenseSummaries;
+export default AllExpenseSummaries;

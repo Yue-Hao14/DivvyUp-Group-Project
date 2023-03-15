@@ -9,6 +9,7 @@ import SideBar from "./components/SideBar";
 import TotalBalance from "./components/TotalBalance";
 import FriendDetails from "./components/FriendsDetails";
 import TopBar from "./components/TopBar";
+import AllExpenses from "./components/AllExpenses";
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route path="/friends/:friendId">
               <FriendDetails />
+            </Route>
+            <Route path="/all-expenses">
+              <AllExpenses />
             </Route>
           </Switch>
         </>

@@ -11,7 +11,7 @@ function ExpenseUserInfo() {
             <div className="expense_details_user_info_div">
                 <i className="expense_details_user_icon fa-solid fa-user" />
                 <div className="expense_details_user_info">
-                    <span className="expense_details_user_name">{`${expenseDetails.payer.firstName} ${expenseDetails.payer.lastName[0]}.`}</span> paid <span className="expense_details_user_amount">{`${expenseDetails.amount}`}</span>
+                    <span className="expense_details_user_name">{`${expenseDetails.payer.firstName} ${expenseDetails.payer.lastName[0]}.`}</span> paid <span className="expense_details_user_amount">${expenseDetails.amount}</span>
                 </div>
             </div>
             {expenseDetails.owers.map(ower => {
@@ -19,7 +19,7 @@ function ExpenseUserInfo() {
                     <div key={ower.id} className="expense_details_user_info_div">
                         <i className="expense_details_user_icon fa-solid fa-user" />
                         <div className="expense_details_user_info">
-                            <span className="expense_details_user_name">{ower.firstName} {ower.lastName[0]}.</span> owes <span className="expense_details_user_amount">{owerAmount}</span>
+                            <span className="expense_details_user_name">{ower.firstName} {ower.lastName[0]}.</span> owes <span className="expense_details_user_amount">${owerAmount}</span>
                         </div>
                     </div>
                 )
