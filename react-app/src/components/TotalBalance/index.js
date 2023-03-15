@@ -52,7 +52,6 @@ function TotalBalance() {
                     const settledUser = settledOwer.settledUser[k];
                     if (settledUser.id === sessionUser.id) {
                         totalSettled += expense.amount / (expense.owers.length + 1);
-
                     }
                 }
             }
@@ -64,20 +63,6 @@ function TotalBalance() {
 
     totalBalance = totalOwed - totalDebt + totalSettled - totalSettledByOthers
 
-
-    // let totalBalance  = 0;
-
-    // const expensesArr = Object.values(userExpenses);
-    // // console.log(expensesArr);
-
-    // for (let i = 0; i < expensesArr.length; i++) {
-    //     const expense = expensesArr[i];
-    //     // console.log(expense);
-    //       const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-    //       if (userOwer) {
-    //         totalBalance += expense.amount / (expense.owers.length + 1);
-    //       }
-    //     }
 
     return (
         <>
