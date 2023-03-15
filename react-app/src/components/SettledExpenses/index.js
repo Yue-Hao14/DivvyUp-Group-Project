@@ -1,15 +1,31 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom"
+import { getSettledExpensesThunk } from "../../store/expenses";
+import ExpenseSummarySection from "../ExpenseSummaries/ExpenseSummarySection";
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
 
 function SettledExpenses() {
+    const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const settledExpenses = useSelector(state => state.expenses.settledExpenses);
-    console.log("Settled Expenses in SettledExpenses Modal", settledExpenses)
-    // make sure settledExpenses slice of state is up to date
-    // use settledExpenses slice of state to get settled expenses list
 
-    // const orderedSettledExpenses = groupExpensesByMonth(settledExpenses);
+    useEffect(() => {
+        dispatch(getSettledExpensesThunk())
+    }, [dispatch])
+
+    if (!sessionUser) return Redirect("/")
+
+    const orderedSettledExpenses = groupExpensesByMonth(Object.values(settledExpenses));
+
     return (
-        null
+        <div className="expense_summaries_div">
+            {Object.values(orderedSettledExpenses).map((expenseList, idx) => {
+                return (
+                    <ExpenseSummarySection key={idx} expenses={expenseList} />
+                )
+            })}
+        </div>
     )
 }
 

@@ -207,7 +207,7 @@ export default function reducer(state = initialState, action) {
         case GET_SETTLED_EXPENSES: {
             const settledExpenses = {}
             for (const expense of action.payload) {
-                settledExpenses[expense.expenseId] = expense
+                settledExpenses[expense.id] = expense
             }
             return {...state, settledExpenses};
         }

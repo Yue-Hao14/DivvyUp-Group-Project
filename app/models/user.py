@@ -71,8 +71,8 @@ class User(db.Model, UserMixin):
         payer_expenses = [expense.to_dict_summary() for expense in self.payer_expenses]
 
         # all user settled expenses both where user is debtor and collector
-        user_collector_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in self.settled_expenses]
-        user_debtor_expenses = [expense.to_dict_summary() for expense in self.payer_expenses if len(expense.settled_owers) > 0]
+        user_debtor_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in self.settled_expenses]
+        user_collector_expenses = [expense.to_dict_summary() for expense in self.payer_expenses if len(expense.settled_owers) == len(expense.owers)]
 
         return {
             "User": {

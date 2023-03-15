@@ -28,10 +28,11 @@ def get_all_current_user_payments():
     """
     Return all of the current user's settled expenses (paid and being paid)
     """
-    user_paid_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in current_user.settled_expenses]
-    user_was_paid_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses if len(expense.settled_owers) > 0]
+    user_debtor_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in current_user.settled_expenses]
+    user_collector_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses if len(expense.settled_owers) == len(expense.owers)]
     # return [{"settledExpenses": [settled_expense.to_dict_wo_user() for settled_expense in current_user.settled_expenses]}]
-    return [*user_paid_expenses, *user_was_paid_expenses]
+    return [*user_debtor_expenses, *user_collector_expenses]
+
 
 @expense_routes.route('/<int:id>')
 @login_required
