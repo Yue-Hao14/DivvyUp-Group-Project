@@ -5,6 +5,7 @@ import { getAllFriendsThunk } from '../../store/friends'
 import OpenModalButton from '../OpenModalButton'
 import AddFriendModal from './AddFriendModal'
 import RemoveFriendModal from './RemoveFriendModal'
+
 import './SideBar.css'
 
 function SideBar () {
@@ -23,7 +24,7 @@ function SideBar () {
   return (
     <div className='side_bar'>
       <div className='side_bar_dashboard'>
-        <NavLink to={`/dashboard`}>Dashboard</NavLink>
+        <NavLink to={`/`}>Dashboard</NavLink>
       </div>
       <div className='side_bar_all_expenses'>
         <NavLink to={`/all-expenses`}>All Expenses</NavLink>

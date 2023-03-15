@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
 import AddExpenseModal from '../TopBar/AddExpenseModal'
+import LoggedOutSplashPage from '../LoggedOutSplashPage'
 import { getAllExpensesThunk } from '../../store/expenses'
 import './Splash.css'
 
@@ -21,6 +22,8 @@ function SplashPage () {
       dispatch(getAllExpensesThunk())
     }
   }, [sessionUser])
+
+  if (!sessionUser) return <LoggedOutSplashPage />; // account for if the user logs out on this page
 
     let totalOwed = 0;
     let totalDebt = 0;

@@ -29,7 +29,7 @@ function App() {
           <SideBar />
           <TopBar />
           <Switch>
-            <Route path="/dashboard" >
+            <Route exact path="/" >
               <SplashPage />
             </Route>
             <Route path="/login" >
