@@ -18,7 +18,7 @@ function SplashPage () {
 
   useEffect(() => {
     if (sessionUser) {
-      dispatch(getAllExpensesThunk)
+      dispatch(getAllExpensesThunk())
     }
   }, [sessionUser])
 
