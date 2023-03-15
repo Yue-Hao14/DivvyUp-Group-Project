@@ -28,6 +28,9 @@ function SideBar () {
       <div className='side_bar_all_expenses'>
         <NavLink to={`/all-expenses`}>All Expenses</NavLink>
       </div>
+      <div className='side_bar_all_expenses'>
+        <NavLink to={`/all-settled-expenses`}>Settled Expenses</NavLink>
+      </div>
       <div className='side_bar_friends_label_div'>
         <div className='side_bar_friends_label'>
           FRIENDS
