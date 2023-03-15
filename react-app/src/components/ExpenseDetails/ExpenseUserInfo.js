@@ -3,6 +3,8 @@ import { useSelector } from "react-redux"
 function ExpenseUserInfo() {
     const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
 
+    if (!expenseDetails) return null
+
     // might have a type issue here with expenseDetails.amount (might be string)
     const owerAmount = (expenseDetails.amount / (expenseDetails.owers.length + 1)).toFixed(2)
 
