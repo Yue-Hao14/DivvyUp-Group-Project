@@ -15,11 +15,11 @@ def get_all_current_user_expenses():
     return current users' all settled and pending expenses
     """
     #   payer_expenses = current_user.payer_expenses
-    payer_expenses = [expense.to_dict_payer_summary() for expense in current_user.payer_expenses]
-    ower_expenses = [expense.to_dict_ower_summary() for expense in current_user.owed_expenses]
+    ower_expenses = [expense.to_dict_summary() for expense in current_user.owed_expenses]
+    payer_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses]
     all_expenses = [*payer_expenses, *ower_expenses]
 
-    return {'allExpenses': all_expenses }
+    return [*payer_expenses, *ower_expenses]
 
 
 @expense_routes.route("/settled")

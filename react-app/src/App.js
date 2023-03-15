@@ -6,7 +6,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SideBar from "./components/SideBar";
-import TotalBalance from "./components/TotalBalance";
+import FriendDetails from "./components/FriendsDetails";
+import TopBar from "./components/TopBar";
+import SplashPage from "./components/SplashPage"
+
 
 function App() {
   const dispatch = useDispatch();
@@ -21,13 +24,17 @@ function App() {
       {isLoaded && (
         <>
           <SideBar />
-          <TotalBalance />
+          <TopBar />
+          <SplashPage />
           <Switch>
             <Route path="/login" >
               <LoginFormPage />
             </Route>
             <Route path="/signup">
               <SignupFormPage />
+            </Route>
+            <Route path="/friends/:friendId">
+              <FriendDetails />
             </Route>
           </Switch>
         </>

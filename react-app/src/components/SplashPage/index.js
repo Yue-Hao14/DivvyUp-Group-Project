@@ -1,23 +1,51 @@
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from '../OpenModalButton'
+import AddExpenseModal from "../TopBar/AddExpenseModal";
+import { getAllExpensesThunk } from "../../store/expenses";
+
 
 function SplashPage() {
-    const userExpenses = useSelector(state => state.expenses.allExpenses)
-    const sessionUser = useSelector(state => state.session.user)
+    const [totalBalance, setTotalBalance] = useState(0);
+    const [totalOwe, setTotalOwe] = useState(0);
+    const [totalOwed, setTotalOwed] = useState(0);
 
-    let totalBalance = 0;
+    const userExpenses = useSelector(state => state.expenses.allExpenses);
+    const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch()
 
     const expensesArr = Object.values(userExpenses);
 
-    for (let i = 0; i < expensesArr.length; i++) {
-        const expense = expensesArr[i];
+    useEffect(() => {
+        function calculateTotals() {
+            let newTotalOwed = 0;
+            let newTotalOwe = 0;
 
-        const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-        if (userOwer) {
-            totalBalance += expense.amount / (expense.owers.length + 1);
+
+
+            for (let i = 0; i < expensesArr.length; i++) {
+                const expense = expensesArr[i];
+                if (expense.payer.id === sessionUser.id) {
+                    const numOwers = expense.owers.length;
+                    newTotalOwed += (expense.amount / (numOwers + 1)) * numOwers;
+                } else if (expense.owers) {
+                    const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
+                    if (userOwer) {
+                        newTotalOwe += expense.amount / expense.owers.length;
+                    }
+                }
+
+            };
+
+            setTotalOwed(newTotalOwed);
+            setTotalOwe(newTotalOwe);
+            setTotalBalance(newTotalOwed - newTotalOwe);
         }
-    }
 
+        if (sessionUser) {
+            dispatch(getAllExpensesThunk()).then(calculateTotals);
+        }
+    }, [dispatch, sessionUser, userExpenses]);
 
     return (
         <>
@@ -27,7 +55,7 @@ function SplashPage() {
                         <h1 className="splash-page-title">Dashboard</h1>
                         <div className="splash-page-button">
                             <OpenModalButton
-                                modalComponent={ }
+                                modalComponent={<AddExpenseModal />}
                                 buttonText='Add an Expense'
                             />
                         </div>
@@ -39,7 +67,7 @@ function SplashPage() {
                             <h3>Total balance</h3>
                         </div>
                         <div>
-                            {totalBalance}
+                            {totalBalance.toFixed(2)}
                         </div>
                     </div>
                     <div className="splash-page-owe-container">
@@ -47,7 +75,7 @@ function SplashPage() {
                             <h3>You owe</h3>
                         </div>
                         <div>
-                            {totalBalance}
+                            {totalOwe.toFixed(2)}
                         </div>
                     </div>
                     <div className="splash-page-are-owe-container">
@@ -55,7 +83,7 @@ function SplashPage() {
                             <h3>You are owed</h3>
                         </div>
                         <div>
-                            {totalBalance}
+                            {totalOwed.toFixed(2)}
                         </div>
                     </div>
                 </div>
@@ -64,7 +92,7 @@ function SplashPage() {
                         <div>
                             <h2>YOU OWE</h2>
                         </div>
-                        <div>
+                        <div className="you-owe-list">
 
                         </div>
                     </div>
@@ -73,7 +101,20 @@ function SplashPage() {
                             <h2>YOU ARE OWED</h2>
                         </div>
                         <div>
-
+                            {expensesArr.filter(expense => expense.payer.id === sessionUser.id)
+                                .map(expense => {
+                                    const amountOwed = expense.amount / (expense.owers.length + 1);
+                                    return (
+                                        <div key={expense.id}>
+                                            {expense.owers.map(ower => (
+                                                <div>
+                                                    <div>{ower.firstName}</div>
+                                                    <div> owes you ${amountOwed.toFixed(2)}</div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                                })}
                         </div>
                     </div>
                 </div>
@@ -81,3 +122,5 @@ function SplashPage() {
         </>
     )
 }
+
+export default SplashPage;

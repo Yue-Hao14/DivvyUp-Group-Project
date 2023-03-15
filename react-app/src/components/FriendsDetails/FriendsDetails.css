@@ -1,0 +1,11 @@
+/* TODO: Add styling for FriendsDetails */
+.friend_details_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.friend_details_info_div,
+.friend_details_user_info_div {
+    display: flex;
+    flex-direction: row;
+}

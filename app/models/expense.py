@@ -59,6 +59,28 @@ class Expense(db.Model):
             "expenseDate": self.expense_date,
         }
 
+    # NICK PLEASE COMMENT THIS CODE LATER SO EVERYONE KNOWS WTF YOU DID
+    def to_dict_friend_summary(self, friend, current_user):
+        if current_user in self.owers:
+            ower = current_user
+        else:
+            ower = friend
+
+        isSettled = False
+
+        if friend in self.settled_owers or current_user in self.settled_owers:
+            isSettled = True
+
+        return {
+            "id": self.id,
+            "description": self.description,
+            "payer": self.payer.to_dict_id_name(),
+            "ower": ower.to_dict_id_name(),
+            "amount": self.amount,
+            "expenseDate": self.expense_date,
+            "isSettled": isSettled
+        }
+
     def to_dict_payer_summary(self):
         return {
             "id": self.id,
