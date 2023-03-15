@@ -6,6 +6,7 @@ function ExpenseInfo() {
     return (
         <>
             {!!expenseDetails && (<div className="expense_details_info_div">
+                <h1>{expenseDetails.id}</h1>
                 <div className="expense_details_info_expense_description">{expenseDetails.description}</div>
                 <div className="expense_details_info_expense_amount">{expenseDetails.amount}</div>
                 {/* Going to want to format the dates, probably with a helper function maybe make a utils folder */}
