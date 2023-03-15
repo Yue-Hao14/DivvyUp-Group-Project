@@ -214,11 +214,7 @@ export default function reducer(state = initialState, action) {
         case ADD_EXPENSE: {
             const newState = {...state};
             newState.allExpenses = { ...state.allExpenses, [action.payload.id]: action.payload };
-<<<<<<< HEAD
-            // need to also update currentExpenseSummaries
-=======
             newState.currentExpenseSummaries = { ...state.currentExpenseSummaries, [action.payload.id]: action.payload };
->>>>>>> main
             return newState;
         }
         case UPDATE_EXPENSE: {
