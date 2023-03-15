@@ -4,7 +4,7 @@
   position: fixed;
   bottom: 0;
   left: 8px;
-  z-index: 999;
+  /* z-index: 2; */
   overflow-x: hidden;
   padding: 16px 8px;
   margin-left: 27px;
@@ -73,16 +73,14 @@
   font-weight: 540;
 }
 
-.remove_friend_button {
+.remove_friend_button_container button {
   font-size: 14px;
   color: #dd4b39;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
-.remove_friend_button:hover {
-  color: #9c2921;
-}
-
-.modal_open .side_bar {
-  filter: blur(5px);
+.remove_friend_button_container:hover button{
+  color: #903023;
 }
