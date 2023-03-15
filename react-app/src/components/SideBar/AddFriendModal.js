@@ -25,7 +25,7 @@ function AddFriendModal() {
     <form className="add_friend_modal_form" onSubmit={handleSubmit}>
       <div className="add_friend_modal_form_label_container">
         <div className="add_friend_modal_label">
-          <i className="fas fa-money-bill add_friend_modal_icon"></i>
+          <i className="fas a-solid fa-divide add_friend_modal_icon"></i>
           <span className="add_friend_modal_label_text">Add Friend</span>
         </div>
       </div>
