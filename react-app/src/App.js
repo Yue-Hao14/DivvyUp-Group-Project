@@ -27,8 +27,10 @@ function App() {
         <>
           <SideBar />
           <TopBar />
-          <SplashPage />
           <Switch>
+            <Route path="/dashboard" >
+              <SplashPage />
+            </Route>
             <Route path="/login" >
               <LoginFormPage />
             </Route>
