@@ -39,7 +39,7 @@ export const getAllFriendsThunk = () => async (dispatch) => {
 }
 
 export const addFriendThunk = (email) => async (dispatch) => {
-    const res = await fetch('api/users/friends', {
+    const res = await fetch('/api/users/friends', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(email)
