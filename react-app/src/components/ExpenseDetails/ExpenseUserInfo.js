@@ -1,6 +1,11 @@
+import { useSelector } from 'react-redux'
+
+
+
 function ExpenseUserInfo({ expense }) {
     // might have a type issue here with expense.amount (might be string)
     const owerAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2)
+    const sessionUser = useSelector(state => state.session.user)
 
 
     return (
@@ -17,6 +22,10 @@ function ExpenseUserInfo({ expense }) {
                         <i className="expense_details_user_icon fa-solid fa-user" />
                         <div className="expense_details_user_info">
                             <span className="expense_details_user_name">{ower.firstName} {ower.lastName[0]}.</span> owes <span className="expense_details_user_amount">${owerAmount}</span>
+                            {
+                                if （(sessionUser.id === expense.payer.id) && ）
+                            }
+                            <span> where add a payment button goes</span>
                         </div>
                     </div>
                 )
