@@ -54,3 +54,11 @@
   .expense_summary_amount {
     font-weight: bold;
   }
+
+  .settled {
+    background-color: #5bc5a7a5;
+  }
+
+  .unsettled {
+    background-color: #ff662faa;
+  }

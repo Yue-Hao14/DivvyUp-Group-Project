@@ -40,7 +40,7 @@ function ExpenseSummary({ expense }) {
     }
 
     return (
-        <>
+        <div className={(expense.owers.length === expense.settledOwers.length) ? "settled" : "unsettled"}>
             <div onClick={() => displayDetails(expense)} className="expense_summary_details_container">
                 <div className="expense_summary_expense_date">{abbrevMonths[date.getMonth()]} {date.getUTCDate()}</div>
                 <div className="expense_summary_expense_icon">icon</div>
@@ -49,7 +49,7 @@ function ExpenseSummary({ expense }) {
                 {owerDescription}
             </div>
             {showDetailsId === expense.id && <ExpenseDetails expense={expense} />}
-        </>
+        </div>
     )
 }
 
