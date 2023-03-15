@@ -5,6 +5,7 @@ import { useModal } from '../../context/Modal'
 import { updateExpenseThunk } from '../../store/expenses'
 
 // TO DO: add default value to the SELECT element
+// TO DO: test updateExpenseThunk
 
 function EditExpenseModal() {
   const dispatch = useDispatch();
@@ -94,7 +95,7 @@ function EditExpenseModal() {
     <form
       className="add_expense_modal_form">
       <div className='add_expense_modal_label_container'>
-        Add an expense
+        Edit the expense
       </div>
       <div className='add_expense_modal_payer_and_owers_container'>
         <div className='add_expense_modal_payer_text'>With you and: </div>
