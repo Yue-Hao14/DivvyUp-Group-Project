@@ -183,7 +183,7 @@ function EditExpenseModal({expense}) {
           (<div className='error'>{errors.emptyExpenseDate}</div>)}
       </div>
       <div className='add_expense_modal_bottom_container'>
-        <button className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
+        <button type="button" className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
         <button className='add_expense_modal_submit_button' onClick={handleSubmit}>Submit</button>
       </div>
     </form>
