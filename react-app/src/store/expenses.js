@@ -145,7 +145,7 @@ export const updateExpenseThunk = expense => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(postExpense(data));
+        dispatch(updateExpense(data));
         return data;
     } else if (res.status < 500) {
         const data = await res.json();
