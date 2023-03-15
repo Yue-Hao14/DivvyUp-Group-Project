@@ -139,3 +139,27 @@ nav ul.profile-dropdown a:hover {
 .dropdown_item:hover {
   background-color: #E6F5F0;
 }
+
+.navigation-add-expense-button button {
+  background-color: transparent;
+  color: #5BC5A7;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  /* font-weight: bold; */
+  padding: 0.75rem 1rem; /* increased padding on top and bottom */
+  margin-top: 1px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.navigation-add-expense-button:hover button{
+  background-color: #5BC5A7;
+  color: white;
+}
+
+.navigation-add-expense-button:active button{
+  background-color: #5BC5A7;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+}
