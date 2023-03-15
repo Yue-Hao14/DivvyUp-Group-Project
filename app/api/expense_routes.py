@@ -12,7 +12,7 @@ expense_routes = Blueprint('expenses', __name__)
 @login_required
 def get_all_current_user_expenses():
     """
-    return current users' all settled and pending expenses
+    return current users' all pending expenses
     """
     #   payer_expenses = current_user.payer_expenses
     ower_expenses = [expense.to_dict_summary() for expense in current_user.owed_expenses]
@@ -24,12 +24,14 @@ def get_all_current_user_expenses():
 
 @expense_routes.route("/settled")
 @login_required
-def get_all_current_user_settled_expenses():
+def get_all_current_user_payments():
     """
-    Return all of the current user's settled expenses
+    Return all of the current user's settled expenses (paid and being paid)
     """
-    return {"settledExpenses": [settled_expense.to_dict_wo_user() for settled_expense in current_user.settled_expenses]}
-
+    user_paid_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in current_user.settled_expenses]
+    user_was_paid_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses if len(expense.settled_owers) > 0]
+    # return [{"settledExpenses": [settled_expense.to_dict_wo_user() for settled_expense in current_user.settled_expenses]}]
+    return [*user_paid_expenses, *user_was_paid_expenses]
 
 @expense_routes.route('/<int:id>')
 @login_required
@@ -56,7 +58,7 @@ def create_a_new_expense():
     form = ExpenseForm()
     ower_ids = data['owerIds']
     form['csrf_token'].data = request.cookies['csrf_token']
-    # Validate that the current user is not in the list of owers
+    # Validate that the current user (payer) is not in the list of owers
     if current_user.id in ower_ids:
         return {"errors": ["Current User cannot be in ower's list"]}
 
