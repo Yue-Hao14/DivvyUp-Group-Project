@@ -1,45 +1,70 @@
-/* TODO: ADD STYLING FOR EXPENSE DETAILS HERE */
 .expense_details_div {
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: white;
 }
 
-.expense_details_div_upper,
-.expense_details_div_lower {
+.expense_details_div_upper {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-/********************* expense_details_upper_div **********************/
-/* .expense_details_icon {
-
-} */
+.fa-divide {
+    width: 40px;
+    height: 50px;
+    font-size: 50px;
+    margin-right: 20px;
+}
 
 .expense_details_info_div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-grow: 1;
+    margin-right: 20px;
 }
 
-.expense_details_buttons_div {
-    display: flex;
-    flex-direction: row;
+.expense_details_info_expense_description {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
 }
 
-/* .expense_details_info_expense_description,
-.expense_details_info_expense_amount,
+.expense_details_info_expense_amount {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4caf50;
+    margin-bottom: 5px;
+}
+
 .expense_details_info_added_by,
 .expense_details_info_last_updated {
-
-} */
-
-/********************* expense_details_lower_div **********************/
-.expense_details_users_info_div {
-    display: flex;
-    flex-direction: column;
+    font-size: 14px;
+    color: #757575;
+    margin-bottom: 2px;
 }
 
-.expense_details_comments_div {
+.expense_details_div_lower {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* .expense_details_comments_div {
+    flex-grow: 1;
+    margin-left: 20px;
+} */
+
+.expense_details_user_info_div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.expense_details_user_icon {
+    font-size: 20px;
+    margin-right: 8px;
+    color: #5bc5a7;
 }

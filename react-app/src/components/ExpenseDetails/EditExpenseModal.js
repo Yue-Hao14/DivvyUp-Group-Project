@@ -29,7 +29,7 @@ function EditExpenseModal({expense}) {
   // set expense details to state variables
   const [owerIds, setOwerIds] = useState(expense ? current_owerIds : [])
   const [description, setDescription] = useState(expense ? expense.description : "")
-  let [amount, setAmount] = useState(expense ? expense.amount : 0)
+  let [amount, setAmount] = useState(expense ? expense.amount.toString() : "")
   const [splitAmount, setSplitAmount] = useState(expense ? calculatedSplitAmount : 0)
   const [expenseDate, setExpenseDate] = useState(expense ? new Date(expense.expenseDate).toISOString().split('T')[0] : "")
   const [errors, setErrors] = useState({})
