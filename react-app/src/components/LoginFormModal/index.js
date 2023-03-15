@@ -21,6 +21,10 @@ function LoginFormModal() {
     }
   };
 
+  const loginDemo = async () => {
+    dispatch(login("demo@user.com", "password")).then(closeModal)
+  }
+
   return (
     <div className="login-modal-container">
       <h1 className="login-modal-heading">Log In</h1>
@@ -52,6 +56,7 @@ function LoginFormModal() {
         </label>
         <button className="login-modal-button" type="submit">Log In</button>
       </form>
+        <button onClick={loginDemo} className="login-modal-button">Log In as Demo</button>
     </div>
   );
 }

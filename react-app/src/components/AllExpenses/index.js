@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TotalBalance from "../TotalBalance";
 import { getAllExpensesThunk } from "../../store/expenses"
-import AllExpenseSummaries from "./AllExpenseSummaries"
+import ExpenseSummarySection from "../ExpenseSummaries/ExpenseSummarySection";
+import FriendExpenseSummaries from "../ExpenseSummaries";
 
 function AllExpenses() {
     const currentExpenseSummaries = useSelector(state => state.expenses.currentExpenseSummaries)
@@ -19,7 +20,7 @@ function AllExpenses() {
 
     return (
         <>
-            <AllExpenseSummaries />
+            <FriendExpenseSummaries />
             <TotalBalance />
         </>
     )

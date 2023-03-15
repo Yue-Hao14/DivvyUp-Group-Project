@@ -44,8 +44,6 @@ class Expense(db.Model):
             "amount": self.amount,
             "owers": [ower.to_dict_id_name() for ower in self.owers],
             "expenseDate": self.expense_date,
-            "createdAt": self.created_at,
-            "updatedAt": self.updated_at,
         }
 
     def to_dict_summary(self):
@@ -57,6 +55,8 @@ class Expense(db.Model):
             "settledOwers": [settled_ower.to_dict() for settled_ower in self.settled_owers],
             "amount": self.amount,
             "expenseDate": self.expense_date,
+            "createdAt": self.created_at,
+            "updatedAt": self.updated_at
         }
 
     # NICK PLEASE COMMENT THIS CODE LATER SO EVERYONE KNOWS WTF YOU DID

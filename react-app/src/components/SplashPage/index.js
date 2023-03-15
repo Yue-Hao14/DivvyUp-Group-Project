@@ -1,29 +1,26 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
-import AddExpenseModal from "../TopBar/AddExpenseModal";
-import { getAllExpensesThunk } from "../../store/expenses";
-import "./Splash.css"
+import AddExpenseModal from '../TopBar/AddExpenseModal'
+import { getAllExpensesThunk } from '../../store/expenses'
+import './Splash.css'
 
+function SplashPage () {
+  // const [totalBalance, setTotalBalance] = useState(0);
+  // const [totalOwe, setTotalOwe] = useState(0);
+  // const [totalOwed, setTotalOwed] = useState(0);
 
-function SplashPage() {
-    // const [totalBalance, setTotalBalance] = useState(0);
-    // const [totalOwe, setTotalOwe] = useState(0);
-    // const [totalOwed, setTotalOwed] = useState(0);
+  const userExpenses = useSelector(state => state.expenses.allExpenses)
+  const sessionUser = useSelector(state => state.session.user)
+  const dispatch = useDispatch()
 
-    const userExpenses = useSelector(state => state.expenses.allExpenses);
-    const sessionUser = useSelector(state => state.session.user);
-    const dispatch = useDispatch()
+  const expensesArr = Object.values(userExpenses)
 
-
-    const expensesArr = Object.values(userExpenses);
-
-    useEffect(() => {
-        if (sessionUser) {
-            dispatch(getAllExpensesThunk())
-        }
-    }, [sessionUser])
-
+  useEffect(() => {
+    if (sessionUser) {
+      dispatch(getAllExpensesThunk())
+    }
+  }, [sessionUser])
 
     let totalOwed = 0;
     let totalDebt = 0;
@@ -161,4 +158,4 @@ function SplashPage() {
     )
 }
 
-export default SplashPage;
+export default SplashPage
