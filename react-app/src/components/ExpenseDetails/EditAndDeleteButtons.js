@@ -5,15 +5,16 @@ import DeleteExpenseModal from "./DeleteExpenseModal"
 
 
 
-function EditAndDeleteButtons() {
-    const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
+function EditAndDeleteButtons({ expense }) {
     const sessionUser = useSelector(state => state.session.user)
 
     /*
         Render the buttons only if the current user is the payer of the expense
         AND there are nobody has settled their expense yet
      */
-    if (!expenseDetails || (expenseDetails.payer.id != sessionUser.id) || expenseDetails.settledOwers.length > 0) return null
+    if ((expense.payer.id != sessionUser.id) || expense.settledOwers.length > 0) return null
+
+
 
     return (
         <div className="expense_details_buttons_div">
