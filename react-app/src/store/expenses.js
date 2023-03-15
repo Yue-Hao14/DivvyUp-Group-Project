@@ -227,7 +227,10 @@ export default function reducer(state = initialState, action) {
         case DELETE_EXPENSE: {
             const newState = { ...state }
             newState.allExpenses = { ...state.allExpenses }
+            newState.currentExpenseSummaries = { ...state.currentExpenseSummaries }
+            newState.currentExpenseDetails = null
             delete newState.allExpenses[action.id]
+            delete newState.currentExpenseSummaries[action.id]
             return newState
         }
         case RESET: {
