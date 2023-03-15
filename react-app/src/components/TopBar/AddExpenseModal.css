@@ -1,3 +1,140 @@
+.add_expense_modal_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.add_expense_modal_label_container {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.add_expense_modal_payer_and_owers_container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.add_expense_modal_payer_text {
+  margin-right: 0.5rem;
+}
+
+.add_expense_modal_owers {
+  flex: 1;
+}
+
+.add_expense_modal_upper_middle_container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.add_expense_modal_icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.add_expense_modal_upper_middle_right_container {
+  flex: 1;
+}
+
+.add_expense_modal_description,
+.add_expense_modal_amount {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.add_expense_modal_description:focus,
+.add_expense_modal_amount:focus {
+  outline: none;
+  border: 1px solid #5bc5a7;
+}
+
+.add_expense_modal_lower_middle_container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.add_expense_modal_payer_split_method {
+  flex: 1;
+}
+
+.add_expense_modal_cost_per_person {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.add_expense_modal_expense_date {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.add_expense_modal_expense_date:focus {
+  outline: none;
+  border: 1px solid #5bc5a7;
+}
+
+.add_expense_modal_cancel_button,
+.add_expense_modal_submit_button {
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add_expense_modal_cancel_button {
+  background-color: #fff;
+  color: #5bc5a7;
+  border: 2px solid #5bc5a7;
+}
+
+.add_expense_modal_submit_button {
+  background-color: #5bc5a7;
+  color: white;
+  border: 2px solid #5bc5a7;
+
+}
+
+.add_expense_modal_cancel_button:hover,
+.add_expense_modal_submit_button:hover {
+  background-color: #48a289;
+  border: 2px solid #48a289;
+
+  color: white;
+}
+
+.add_expense_modal_cancel_button:active,
+.add_expense_modal_submit_button:active {
+  background-color: #3c7f56;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
+}
+.add_expense_modal_cancel_button:focus,
+.add_expense_modal_submit_button:focus {
+  outline: none;
+}
+
 .error {
-  color: red
+  color: red;
+  margin-top: 0.5rem;
 }
