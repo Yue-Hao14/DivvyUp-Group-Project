@@ -26,20 +26,20 @@ function FriendExpenseSummary({ expenses }) {
                 // filter owers to find the first instance of either the user or the friend
                 let ower = expense.owers.find(ower => (ower.id === sessionUser.id || ower.id === parseInt(friendId)))
                 return (
-                    <>
-                        <div onClick={displayDetails} key={expense.id} className="expense_summary_details_container">
+                    ower && (
+                        <div key={expense.id} className="expense_summary_details_container">
                             <div className="expense_summary_expense_date">{expense.expenseDate}</div>
                             <div className="expense_summary_expense_icon">icon</div>
                             <div className="expense_summary_expense_description">{expense.description}</div>
                             <div className="expense_summary_expense_payerInfo">{expense.payer.firstName} {expense.payer.lastName[0]}. paid <span className="expense_summary_amount">${expense.amount}</span></div>
                             <div className="expense_summary_expense_payerInfo">{ower.firstName} {ower.lastName[0]}. owes <span className="expense_summary_amount">${splitAmount}</span></div>
                         </div>
-                        {showDetails && <ExpenseDetails />}
-                    </>
+                    )
                 )}
             )}
         </div>
     )
 }
+
 
 export default FriendExpenseSummary;
