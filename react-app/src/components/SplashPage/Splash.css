@@ -1,99 +1,115 @@
 .splash-page-wrapper {
-    margin-left: 275px;
-    padding: 0 16px;
-  }
+  margin-left: 330px;
+  margin-right: 430px;
+}
+.splash-page-header-button {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.splash-page-title {
+  font-size: 2rem;
+  margin: 0;
+}
 
-  .splash-page-header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-  }
+.splash-page-button button {
+  background-color: #5bc5a7;
+  color: white;
+  border: 2px solid #5bc5a7;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin-top: auto;
+  margin-left: auto;
+  cursor: pointer;
+}
 
-  .splash-page-header-button {
-    display: flex;
-    align-items: center;
-  }
+.splash-page-button button:hover {
+  background-color: #48a289;
+  border: 2px solid #48a289;
+  color: white;
+}
+.splash-page-button button:active {
+  background-color: #3c7f56;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+}
 
-  .splash-page-button {
-    margin-left: 16px;
-  }
+.splash-page-balance-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+  /* margin-left: 330px; */
+  gap: 1rem;
+}
 
-  .splash-page-title {
-    font-size: 36px;
-    font-weight: 700;
-  }
+.splash-page-total-balance-container,
+.splash-page-owe-container,
+.splash-page-are-owe-container {
+  border: 2px solid #5bc5a7;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  flex-basis: calc(33.33% - 1rem);
+}
 
-  .splash-page-total-balance-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-  }
+.splash-page-total-balance-container h3,
+.splash-page-owe-container h3,
+.splash-page-are-owe-container h3 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
 
-  .splash-page-balance-container h3 {
-    font-size: 18px;
-    font-weight: 600;
-  }
+.splash-page-total-balance-container div,
+.splash-page-owe-container div,
+.splash-page-are-owe-container div {
+  font-size: 2rem;
+  font-weight: bold;
+}
 
-  .splash-page-owe-container,
-  .splash-page-are-owe-container {
-    margin-left: 24px;
-  }
+.splash-page-content-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 2rem;
+}
 
-  .splash-page-owe-container h3,
-  .splash-page-are-owe-container h3 {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
+.you-owe-details-container,
+.you-are-owed-details-container {
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  flex-basis: calc(50% - 1rem);
+}
 
-  .splash-page-content-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+.you-owe-list,
+.are-owed-you-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* gap: 112rem; */
+}
 
-  .you-owe-details-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+.you-owe-row,
+.are-owed-you-row {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 
-  .you-owe-details-container h2 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
+.you-owe-payer,
+.are-owed-you-ower {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
-  .you-owe-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .you-owe-list > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-  }
-
-  .are-owed-you-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .are-owed-you-list > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-  }
-
-  .you-are-owed-details-container h2 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
+.you-owe-amount,
+.are-owed-you-amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #666;
+}
