@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux"
 import OpenModalButton from '../OpenModalButton'
-import { DeleteExpenseModal } from "./DeleteExpenseModal"
-import { EditExpenseModal } from "./EditExpenseModal"
+import EditExpenseModal from "./EditExpenseModal"
+import DeleteExpenseModal from "./DeleteExpenseModal"
+
 
 
 function EditAndDeleteButtons() {

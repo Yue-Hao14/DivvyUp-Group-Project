@@ -22,9 +22,9 @@ function AddExpenseModal() {
 
   // const today = new Date()
 
-
+  // create an array of friendsId to for SELECT element
   const friends_array = Object.values(friends)
-  console.log(friends_array)
+  // console.log(friends_array)
   let friends_options = []
   friends_array.forEach(friend => {
     const value = friend.id

@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../context/Modal'
 import { updateExpenseThunk } from '../../store/expenses'
 
+// TO DO: add default value to the SELECT element
+
 function EditExpenseModal() {
   const dispatch = useDispatch();
   const { closeModal } = useModal()
 
   // get expense details from redux store
-  const expenseDetails = useSelector((store) => store.currentExpenseDetails);
+  const expenseDetails = useSelector((store) => store.expenses.currentExpenseDetails);
+  console.log("expenseDetails:", expenseDetails)
   // extract owerIds from expense details
   const current_owers = expenseDetails.owers
   let current_owerIds = []
@@ -28,6 +31,21 @@ function EditExpenseModal() {
   const [expenseDate, setExpenseDate] = useState(expenseDetails ? expenseDetails.expenseDate : "")
   const [errors, setErrors] = useState({})
   const [hasSubmitted, setHasSubmitted] = useState(false)
+
+  // create an array of friendsId to for SELECT element
+  const friends = useSelector(state => state.friends)
+  const friends_array = Object.values(friends)
+  // console.log(friends_array)
+  let friends_options = []
+  friends_array.forEach(friend => {
+    const value = friend.id
+    const label = friend.firstName + " " + friend.lastName
+    const friend_obj = {
+      value,
+      label
+    }
+    friends_options.push(friend_obj)
+  });
 
   // error validations
   useEffect(() => {
