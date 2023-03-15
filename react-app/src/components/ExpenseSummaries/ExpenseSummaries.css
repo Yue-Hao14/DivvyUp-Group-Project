@@ -1,1 +1,5 @@
 /* TODO: Add styling for Expense Summaries here */
+.expense_summary_details_container {
+    cursor: pointer;
+    border: 3px solid red;
+}
