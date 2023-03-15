@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { getSingleExpenseDetailsThunk } from "../../store/expenses";
 import ExpenseInfo from "./ExpenseInfo";
 import EditAndDeleteButtons from "./EditAndDeleteButtons"
-import ExpenseUserInfo from "./ExpenseInfo";
+import ExpenseUserInfo from "./ExpenseUserInfo";
 import './ExpenseDetails.css'
 
-function ExpenseDetails({ expenseId }) {
+function ExpenseDetails() {
     const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
 
     return (

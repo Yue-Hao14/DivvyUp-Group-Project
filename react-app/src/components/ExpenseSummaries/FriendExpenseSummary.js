@@ -8,16 +8,18 @@ import './ExpenseSummaries.css'
 // TODO: FORMAT DATE STRING
 function FriendExpenseSummary({ expenses }) {
     const dispatch = useDispatch();
+    // can get friend details from state
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const [showDetailsId, setShowDetailsId] = useState(null)
     const sessionUser = useSelector(state => state.session.user);
+    // might be able to refactor this component to be used with all expense summaries component
     const { friendId } = useParams()
+    const date = new Date(expenses[0].expenseDate)
 
     const displayDetails = (expense) => {
         if (showDetailsId !== expense.id) {
             dispatch(getSingleExpenseDetailsThunk(expense.id))
             .then(() => setShowDetailsId(expense.id))
-            // console.log(expense.id)
-            console.log("details will be expanding, once i figure out how")
         } else {
             setShowDetailsId(null)
         }
@@ -25,11 +27,12 @@ function FriendExpenseSummary({ expenses }) {
 
     return (
         <div className="expense_summary_container">
-            <div className="expense_summary_month_year"></div>
+            <div className="expense_summary_month_year">{months[date.getMonth()]} {date.getFullYear()}</div>
             {expenses.map(expense => {
                 // calculate how much is owed
                 const splitAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2);
                 // filter owers to find the first instance of either the user or the friend
+                // check expnse payer, if not current user, then current user is ower, otherwise friend is ower
                 let ower = expense.owers.find(ower => (ower.id === sessionUser.id || ower.id === parseInt(friendId)))
                 return (
                     <>
