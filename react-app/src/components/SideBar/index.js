@@ -23,7 +23,7 @@ function SideBar () {
   return (
     <div className='side_bar'>
       <div className='side_bar_dashboard'>
-        <NavLink to={`/`}>Dashboard</NavLink>
+        <NavLink to={`/dashboard`}>Dashboard</NavLink>
       </div>
       <div className='side_bar_all_expenses'>
         <NavLink to={`/all-expenses`}>All Expenses</NavLink>

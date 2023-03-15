@@ -6,46 +6,72 @@ import { getAllExpensesThunk } from "../../store/expenses";
 
 
 function SplashPage() {
-    const [totalBalance, setTotalBalance] = useState(0);
-    const [totalOwe, setTotalOwe] = useState(0);
-    const [totalOwed, setTotalOwed] = useState(0);
+    // const [totalBalance, setTotalBalance] = useState(0);
+    // const [totalOwe, setTotalOwe] = useState(0);
+    // const [totalOwed, setTotalOwed] = useState(0);
 
     const userExpenses = useSelector(state => state.expenses.allExpenses);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
 
+
     const expensesArr = Object.values(userExpenses);
 
     useEffect(() => {
-        function calculateTotals() {
-            let newTotalOwed = 0;
-            let newTotalOwe = 0;
+        if (sessionUser) {
+            dispatch(getAllExpensesThunk)
+        }
+    }, [sessionUser])
 
-
+            let totalOwed = 0;
+            let totalOwe = 0;
+            let totalBalance = 0
 
             for (let i = 0; i < expensesArr.length; i++) {
                 const expense = expensesArr[i];
                 if (expense.payer.id === sessionUser.id) {
                     const numOwers = expense.owers.length;
-                    newTotalOwed += (expense.amount / (numOwers + 1)) * numOwers;
+                    totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
                 } else if (expense.owers) {
                     const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
                     if (userOwer) {
-                        newTotalOwe += expense.amount / expense.owers.length;
+                        totalOwe += expense.amount / expense.owers.length;
                     }
                 }
-
             };
+            totalBalance = totalOwed - totalOwe
 
-            setTotalOwed(newTotalOwed);
-            setTotalOwe(newTotalOwe);
-            setTotalBalance(newTotalOwed - newTotalOwe);
-        }
 
-        if (sessionUser) {
-            dispatch(getAllExpensesThunk()).then(calculateTotals);
-        }
-    }, [dispatch, sessionUser, userExpenses]);
+    // const expensesArr = Object.values(userExpenses);
+
+    // useEffect(() => {
+    //     function calculateTotals() {
+    //         let newTotalOwed = 0;
+    //         let newTotalOwe = 0;
+
+    //         for (let i = 0; i < expensesArr.length; i++) {
+    //             const expense = expensesArr[i];
+    //             if (expense.payer.id === sessionUser.id) {
+    //                 const numOwers = expense.owers.length;
+    //                 newTotalOwed += (expense.amount / (numOwers + 1)) * numOwers;
+    //             } else if (expense.owers) {
+    //                 const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
+    //                 if (userOwer) {
+    //                     newTotalOwe += expense.amount / expense.owers.length;
+    //                 }
+    //             }
+
+    //         };
+
+    //         setTotalOwed(newTotalOwed);
+    //         setTotalOwe(newTotalOwe);
+    //         setTotalBalance(newTotalOwed - newTotalOwe);
+    //     }
+
+    //     if (sessionUser) {
+    //         dispatch(getAllExpensesThunk()).then(calculateTotals);
+    //     }
+    // }, [dispatch, sessionUser, expensesArr]);
 
     return (
         <>
