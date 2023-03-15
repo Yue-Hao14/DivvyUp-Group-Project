@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from '../OpenModalButton'
 import AddExpenseModal from "../TopBar/AddExpenseModal";
 import { getAllExpensesThunk } from "../../store/expenses";
+import "./Splash.css"
 
 
 function SplashPage() {
