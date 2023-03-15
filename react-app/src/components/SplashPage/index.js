@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
-import AddExpenseModal from '../TopBar/AddExpenseModal'
+import AddExpenseModal from '../Navigation/AddExpenseModal'
+import LoggedOutSplashPage from '../LoggedOutSplashPage'
 import { getAllExpensesThunk } from '../../store/expenses'
 import './Splash.css'
 import OweYou from './oweYou'
@@ -18,6 +19,7 @@ function SplashPage() {
     const dispatch = useDispatch()
 
     const expensesArr = Object.values(userExpenses)
+    const expensesArr = Object.values(userExpenses)
 
     useEffect(() => {
         if (sessionUser) {
@@ -25,18 +27,20 @@ function SplashPage() {
         }
     }, [sessionUser])
 
-    let totalOwed = 0;
-    let totalDebt = 0;
-    let totalSettled = 0;
-    let totalSettledByOthers = 0
+    if (!sessionUser) return <LoggedOutSplashPage />; // account for if the user logs out on this page
+
+    let userOwed = 0;
+    let userDebt = 0;
     let totalBalance = 0;
-    let unsettledArr = [];
+    let unsettledByUserArr = [];
     let unSettledByOthersArr = [];
 
-    for (let i = 0; i < expensesArr.length; i++) {
-        const expense = expensesArr[i];
+    // iterate through each exepense and determine how much user owes and is owed
+    for (const expense of expensesArr) {
+        const numOwers = expense.owers.length;
+        const splitAmount = (expense.amount / (numOwers + 1))
 
-        // Check if user is the payer
+        // If user is payer, they are owed splitAmount * num owers minus (the length of settledOwers * splitAmount)
         if (expense.payer.id === sessionUser.id) {
             const numOwers = expense.owers.length;
             totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
@@ -68,7 +72,7 @@ function SplashPage() {
         }
     }
 
-    totalBalance = totalOwed - totalDebt + totalSettled - totalSettledByOthers
+    totalBalance = userOwed - userDebt
 
     return (
         <>
@@ -98,7 +102,7 @@ function SplashPage() {
                             <h3>You owe</h3>
                         </div>
                         <div>
-                            {(totalDebt - totalSettled).toFixed(2)}
+                            {userDebt.toFixed(2)}
                         </div>
                     </div>
                     <div className="splash-page-are-owe-container">
@@ -106,7 +110,7 @@ function SplashPage() {
                             <h3>You are owed</h3>
                         </div>
                         <div>
-                            {(totalOwed - totalSettledByOthers).toFixed(2)}
+                            {userOwed.toFixed(2)}
                         </div>
                     </div>
                 </div>

@@ -20,48 +20,34 @@ function TotalBalance() {
 
     const expensesArr = Object.values(userExpenses);
 
-    let totalOwed = 0;
-    let totalDebt = 0;
-    let totalSettled = 0;
-    let totalSettledByOthers = 0
+    let userOwed = 0;
+    let userDebt = 0;
     let totalBalance = 0;
 
-    for (let i = 0; i < expensesArr.length; i++) {
-        const expense = expensesArr[i];
+    for (const expense of expensesArr) {
+        const numOwers = expense.owers.length;
+        const splitAmount = (expense.amount / (numOwers + 1))
 
-        // Check if user is the payer
+        // If user is payer, they are owed splitAmount * num owers minus (the length of settledOwers * splitAmount)
         if (expense.payer.id === sessionUser.id) {
-            const numOwers = expense.owers.length;
-            totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
-
-        }
-        // Check if user is an owner
-        if (expense.owers) {
-            const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-            if (userOwer) {
-                totalDebt += expense.amount / (expense.owers.length + 1);
-
+            // if length of settled owers is less than numOwers
+            const numUnsettledOwers = numOwers - expense.settledOwers.length
+            if (numUnsettledOwers > 0) {
+                userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
             }
-        }
-
-        // Check if user is a settler
-        if (expense.settledOwers) {
-            for (let j = 0; j < expense.settledOwers.length; j++) {
-                const settledOwer = expense.settledOwers[j];
-                for (let k = 0; k < settledOwer.settledUser.length; k++) {
-                    const settledUser = settledOwer.settledUser[k];
-                    if (settledUser.id === sessionUser.id) {
-                        totalSettled += expense.amount / (expense.owers.length + 1);
-                    }
-                }
-            }
+                // find number of users who still owe, multiply the split amount by number of users who still owe
+                    // and add to userOwed
         } else {
-            totalSettledByOthers = (expense.amount / (expense.owers.length + 1)) * expense.settledOwers.length;
-
+        // If user is not payer, then they must be an ower
+        // If user is an ower, and has not settled their debt, add splitAmount to userDebt
+            const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
+            if (!userInSettledOwers) {
+                userDebt += Number.parseFloat(splitAmount.toFixed(2))
+            }
         }
     }
 
-    totalBalance = totalOwed - totalDebt + totalSettled - totalSettledByOthers
+    totalBalance = userOwed - userDebt
 
 
     return (

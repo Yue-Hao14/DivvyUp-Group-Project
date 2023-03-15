@@ -16,13 +16,21 @@ class SettledUserExpense(db.Model):
     settled_user = db.relationship("User", back_populates="settled_expenses")
 
     def to_dict(self):
-        settle_users = [user.to_dict_id_name() for user in [self.settled_user]]
-
         return {
             "expenseId": self.expense_id,
             "settledDate": self.settled_date,
-            "settledUser": [*settle_users]
+            "settledUserId": self.user_id
         }
+
+    def to_dict_with_user_details(self):
+        settle_users = [user.to_dict_id_name() for user in [self.settled_user]]
+        return {
+            "expenseId": self.expense_id,
+            "settledDate": self.settled_date,
+            "settledUserId": self.user_id,
+            "userDetails": self.settled_user.to_dict_id_name
+        }
+
 
     def to_dict_wo_user(self):
         return {
