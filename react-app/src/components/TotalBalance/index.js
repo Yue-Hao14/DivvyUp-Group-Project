@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react"
 import { Redirect } from "react-router-dom";
-import { getAllExpensesThunk } from "../../store/expenses";
+import { getFriendExpensesThunk } from "../../store/expenses";
 
 function TotalBalance () {
 
     const sessionUser = useSelector(state => state.session.user)
-    const userExpenses = useSelector(state => state.expenses.allExpenses)
+    const userExpenses = useSelector(state => state.expenses.currentExpenseSummaries)
     const dispatch = useDispatch();
 
     useEffect(() => {
       if (sessionUser) {
-        dispatch(getAllExpensesThunk());
+        dispatch(getFriendExpensesThunk());
       }
     }, [dispatch, sessionUser]);
 

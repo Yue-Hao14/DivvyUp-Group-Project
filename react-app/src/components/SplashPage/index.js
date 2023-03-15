@@ -20,27 +20,60 @@ function SplashPage() {
 
     useEffect(() => {
         if (sessionUser) {
-            dispatch(getAllExpensesThunk)
+            dispatch(getAllExpensesThunk())
         }
     }, [sessionUser])
 
-            let totalOwed = 0;
-            let totalOwe = 0;
-            let totalBalance = 0
 
-            for (let i = 0; i < expensesArr.length; i++) {
-                const expense = expensesArr[i];
-                if (expense.payer.id === sessionUser.id) {
-                    const numOwers = expense.owers.length;
-                    totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
-                } else if (expense.owers) {
-                    const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-                    if (userOwer) {
-                        totalOwe += expense.amount / expense.owers.length;
-                    }
+    let totalOwed = 0;
+    let totalDebt = 0;
+    let totalSettled = 0;
+    let totalSettledByOthers = 0
+    let totalBalance = 0;
+
+    for (let i = 0; i < expensesArr.length; i++) {
+        const expense = expensesArr[i];
+
+        // Check if user is the payer
+        if (expense.payer.id === sessionUser.id) {
+            const numOwers = expense.owers.length;
+            totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
+        }
+        // Check if user is an owner
+        else if (expense.owers) {
+            const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
+            if (userOwer) {
+                totalDebt += expense.amount / (expense.owers.length + 1);
+            }
+
+            // Check if user is a settler
+            if (expense.settledOwers) {
+                const isSettler = expense.settledOwers.find(settler => settler.id === sessionUser.id);
+                if (isSettler) {
+                    totalSettled = expense.amount / (expense.owers.length + 1)
+                } else {
+                    totalSettledByOthers = (expense.amount / (expense.owers.length + 1)) * expense.settledOwers.length
                 }
-            };
-            totalBalance = totalOwed - totalOwe
+            }
+        }
+    }
+
+    totalBalance = totalOwed - totalDebt + totalSettled - totalSettledByOthers
+
+
+    // for (let i = 0; i < expensesArr.length; i++) {
+    //     const expense = expensesArr[i];
+    //     if (expense.payer.id === sessionUser.id) {
+    //         const numOwers = expense.owers.length;
+    //         totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
+    //     } else if (expense.owers) {
+    //         const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
+    //         if (userOwer) {
+    //             totalOwe += expense.amount / (expense.owers.length + 1);
+    //         }
+    //     }
+    // };
+    // totalBalance = totalOwed - totalOwe
 
 
     // const expensesArr = Object.values(userExpenses);
@@ -102,7 +135,7 @@ function SplashPage() {
                             <h3>You owe</h3>
                         </div>
                         <div>
-                            {totalOwe.toFixed(2)}
+                            {(totalDebt - totalSettled).toFixed(2)}
                         </div>
                     </div>
                     <div className="splash-page-are-owe-container">
@@ -110,7 +143,7 @@ function SplashPage() {
                             <h3>You are owed</h3>
                         </div>
                         <div>
-                            {totalOwed.toFixed(2)}
+                            {(totalOwed - totalSettledByOthers).toFixed(2)}
                         </div>
                     </div>
                 </div>
@@ -126,10 +159,10 @@ function SplashPage() {
                                     return (
                                         <div key={expense.id}>
 
-                                                <div>
-                                                    <div>{expense.payer.firstName}</div>
-                                                    <div> you owe ${owedAmount.toFixed(2)}</div>
-                                                </div>
+                                            <div>
+                                                <div>{expense.payer.firstName}</div>
+                                                <div> you owe ${owedAmount.toFixed(2)}</div>
+                                            </div>
                                         </div>
                                     )
                                 })}
