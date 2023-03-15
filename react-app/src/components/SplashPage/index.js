@@ -93,28 +93,40 @@ function SplashPage() {
                             <h2>YOU OWE</h2>
                         </div>
                         <div className="you-owe-list">
-
-                        </div>
-                    </div>
-                    <div className="you-are-owed-details-container">
-                        <div>
-                            <h2>YOU ARE OWED</h2>
-                        </div>
-                        <div>
-                            {expensesArr.filter(expense => expense.payer.id === sessionUser.id)
+                            {expensesArr.filter(expense => expense.payer.id !== sessionUser.id)
                                 .map(expense => {
-                                    const amountOwed = expense.amount / (expense.owers.length + 1);
+                                    const owedAmount = expense.amount / (expense.owers.length + 1);
                                     return (
                                         <div key={expense.id}>
-                                            {expense.owers.map(ower => (
+
                                                 <div>
-                                                    <div>{ower.firstName}</div>
-                                                    <div> owes you ${amountOwed.toFixed(2)}</div>
+                                                    <div>{expense.payer.firstName}</div>
+                                                    <div> you owe ${owedAmount.toFixed(2)}</div>
                                                 </div>
-                                            ))}
                                         </div>
                                     )
                                 })}
+                        </div>
+                        <div className="you-are-owed-details-container">
+                            <div>
+                                <h2>YOU ARE OWED</h2>
+                            </div>
+                            <div className="are-owed-you-list">
+                                {expensesArr.filter(expense => expense.payer.id === sessionUser.id)
+                                    .map(expense => {
+                                        const amountOwed = expense.amount / (expense.owers.length + 1);
+                                        return (
+                                            <div key={expense.id}>
+                                                {expense.owers.map(ower => (
+                                                    <div>
+                                                        <div>{ower.firstName}</div>
+                                                        <div> owes you ${amountOwed.toFixed(2)}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )
+                                    })}
+                            </div>
                         </div>
                     </div>
                 </div>
