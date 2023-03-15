@@ -30,6 +30,8 @@ function SplashPage() {
     let totalSettled = 0;
     let totalSettledByOthers = 0
     let totalBalance = 0;
+    let unsettledArr = [];
+    let unSettledByOthersArr = [];
 
     for (let i = 0; i < expensesArr.length; i++) {
         const expense = expensesArr[i];
@@ -38,74 +40,38 @@ function SplashPage() {
         if (expense.payer.id === sessionUser.id) {
             const numOwers = expense.owers.length;
             totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
+            // console.log("=====================totalOwed:", totalOwed);
         }
         // Check if user is an owner
-        else if (expense.owers) {
+        if (expense.owers) {
             const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
             if (userOwer) {
                 totalDebt += expense.amount / (expense.owers.length + 1);
+                // console.log("==============totalDEbt:", totalDebt);
             }
+        }
 
-            // Check if user is a settler
-            if (expense.settledOwers) {
-                const isSettler = expense.settledOwers.find(settler => settler.id === sessionUser.id);
-                if (isSettler) {
-                    totalSettled = expense.amount / (expense.owers.length + 1)
-                } else {
-                    totalSettledByOthers = (expense.amount / (expense.owers.length + 1)) * expense.settledOwers.length
+        // Check if user is a settler
+        if (expense.settledOwers) {
+            for (let j = 0; j < expense.settledOwers.length; j++) {
+                const settledOwer = expense.settledOwers[j];
+                for (let k = 0; k < settledOwer.settledUser.length; k++) {
+                    const settledUser = settledOwer.settledUser[k];
+                    if (settledUser.id === sessionUser.id) {
+                        totalSettled += expense.amount / (expense.owers.length + 1);
+                        // console.log("===========totalSettle:", totalSettled);
+                    }
                 }
+                unSettledByOthersArr.push(expense)
             }
+        } else {
+            unsettledArr.push(expense)
+            totalSettledByOthers = (expense.amount / (expense.owers.length + 1)) * expense.settledOwers.length;
+            // console.log("=================totalSetteleByOthers:", totalSettledByOthers);
         }
     }
 
     totalBalance = totalOwed - totalDebt + totalSettled - totalSettledByOthers
-
-
-    // for (let i = 0; i < expensesArr.length; i++) {
-    //     const expense = expensesArr[i];
-    //     if (expense.payer.id === sessionUser.id) {
-    //         const numOwers = expense.owers.length;
-    //         totalOwed += (expense.amount / (numOwers + 1)) * numOwers;
-    //     } else if (expense.owers) {
-    //         const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-    //         if (userOwer) {
-    //             totalOwe += expense.amount / (expense.owers.length + 1);
-    //         }
-    //     }
-    // };
-    // totalBalance = totalOwed - totalOwe
-
-
-    // const expensesArr = Object.values(userExpenses);
-
-    // useEffect(() => {
-    //     function calculateTotals() {
-    //         let newTotalOwed = 0;
-    //         let newTotalOwe = 0;
-
-    //         for (let i = 0; i < expensesArr.length; i++) {
-    //             const expense = expensesArr[i];
-    //             if (expense.payer.id === sessionUser.id) {
-    //                 const numOwers = expense.owers.length;
-    //                 newTotalOwed += (expense.amount / (numOwers + 1)) * numOwers;
-    //             } else if (expense.owers) {
-    //                 const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-    //                 if (userOwer) {
-    //                     newTotalOwe += expense.amount / expense.owers.length;
-    //                 }
-    //             }
-
-    //         };
-
-    //         setTotalOwed(newTotalOwed);
-    //         setTotalOwe(newTotalOwe);
-    //         setTotalBalance(newTotalOwed - newTotalOwe);
-    //     }
-
-    //     if (sessionUser) {
-    //         dispatch(getAllExpensesThunk()).then(calculateTotals);
-    //     }
-    // }, [dispatch, sessionUser, expensesArr]);
 
     return (
         <>
@@ -153,7 +119,7 @@ function SplashPage() {
                             <h2>YOU OWE</h2>
                         </div>
                         <div className="you-owe-list">
-                            {expensesArr.filter(expense => expense.payer.id !== sessionUser.id)
+                            {unsettledArr.filter(expense => expense.payer.id !== sessionUser.id)
                                 .map(expense => {
                                     const owedAmount = expense.amount / (expense.owers.length + 1);
                                     return (
@@ -172,7 +138,7 @@ function SplashPage() {
                                 <h2>YOU ARE OWED</h2>
                             </div>
                             <div className="are-owed-you-list">
-                                {expensesArr.filter(expense => expense.payer.id === sessionUser.id)
+                                {unSettledByOthersArr.filter(expense => expense.payer.id === sessionUser.id)
                                     .map(expense => {
                                         const amountOwed = expense.amount / (expense.owers.length + 1);
                                         return (
