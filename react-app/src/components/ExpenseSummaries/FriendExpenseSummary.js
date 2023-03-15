@@ -8,9 +8,11 @@ import './ExpenseSummaries.css'
 // TODO: FORMAT DATE STRING
 function FriendExpenseSummary({ expenses }) {
     const dispatch = useDispatch();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const [showDetailsId, setShowDetailsId] = useState(null)
     const sessionUser = useSelector(state => state.session.user);
     const { friendId } = useParams()
+    const date = new Date(expenses[0].expenseDate)
 
     const displayDetails = (expense) => {
         if (showDetailsId !== expense.id) {
@@ -25,7 +27,7 @@ function FriendExpenseSummary({ expenses }) {
 
     return (
         <div className="expense_summary_container">
-            <div className="expense_summary_month_year"></div>
+            <div className="expense_summary_month_year">{months[date.getMonth()]} {date.getFullYear()}</div>
             {expenses.map(expense => {
                 // calculate how much is owed
                 const splitAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2);
