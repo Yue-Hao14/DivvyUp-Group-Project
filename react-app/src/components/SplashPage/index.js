@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
-import AddExpenseModal from '../TopBar/AddExpenseModal'
+import AddExpenseModal from '../Navigation/AddExpenseModal'
 import { getAllExpensesThunk } from '../../store/expenses'
 import './Splash.css'
 
