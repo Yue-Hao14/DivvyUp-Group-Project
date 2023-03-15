@@ -2,27 +2,38 @@ import { useState, useEffect } from 'react'
 import Select from "react-select"
 import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../context/Modal'
-import { postExpenseThunk } from '../../store/expenses'
-import './AddExpenseModal.css'
+import { updateExpenseThunk } from '../../store/expenses'
 
+// TO DO: add default value to the SELECT element
 
-function AddExpenseModal() {
-  const [owerIds, setOwerIds] = useState([])
-  const [description, setDescription] = useState("")
-  let [amount, setAmount] = useState(0)
-  const [splitAmount, setSplitAmount] = useState(0)
-  const [expenseDate, setExpenseDate] = useState("")
+function EditExpenseModal() {
+  const dispatch = useDispatch();
+  const { closeModal } = useModal()
+
+  // get expense details from redux store
+  const expenseDetails = useSelector((store) => store.expenses.currentExpenseDetails);
+  console.log("expenseDetails:", expenseDetails)
+  // extract owerIds from expense details
+  const current_owers = expenseDetails.owers
+  let current_owerIds = []
+  current_owers.forEach(ower => {
+    current_owerIds.push(ower.id)
+  });
+
+  // calculate current splitAmount
+  const calculatedSplitAmount = (expenseDetails.amount / (current_owerIds.length + 1)).toFixed(2)
+
+  // set expense details to state variables
+  const [owerIds, setOwerIds] = useState(expenseDetails ? current_owerIds : [])
+  const [description, setDescription] = useState(expenseDetails ? expenseDetails.description : "")
+  const [amount, setAmount] = useState(expenseDetails ? expenseDetails.amount : 0)
+  const [splitAmount, setSplitAmount] = useState(expenseDetails ? calculatedSplitAmount : 0)
+  const [expenseDate, setExpenseDate] = useState(expenseDetails ? expenseDetails.expenseDate : "")
   const [errors, setErrors] = useState({})
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
-  const dispatch = useDispatch()
-  const { closeModal } = useModal()
-  const friends = useSelector(state => state.friends)
-  const sessionUser = useSelector(state => state.session.user)
-
-  // const today = new Date()
-
   // create an array of friendsId to for SELECT element
+  const friends = useSelector(state => state.friends)
   const friends_array = Object.values(friends)
   // console.log(friends_array)
   let friends_options = []
@@ -36,7 +47,6 @@ function AddExpenseModal() {
     friends_options.push(friend_obj)
   });
 
-
   // error validations
   useEffect(() => {
     let e = {};
@@ -48,29 +58,37 @@ function AddExpenseModal() {
   }, [owerIds, description, amount, expenseDate])
 
 
-  // calculate splitAmount every time when amount and/or owerIds change
-  useEffect(() => {
-    const calculatedSplitAmount = (amount / (owerIds.length + 1)).toFixed(2)
-    setSplitAmount(calculatedSplitAmount)
-  }, [amount, owerIds])
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
 
     // make sure amount only has 2 decimal points
-    amount = parseFloat(amount).toFixed(2)
+    amount = amount.toFixed(2)
 
-    const newExpense = { owerIds, description, amount, expenseDate, errors }
-    // console.log(newExpense)
+    const updatedExpense = { owerIds, description, amount, expenseDate, errors }
+    // console.log(updatedExpense)
 
-    // if no error, we POST the newExpense to db via thunk
+    // if no error, we PUT the updatedExpense to db via thunk
     if (Object.values(errors).length === 0) {
-      const data = await dispatch(postExpenseThunk(newExpense))
+      const data = await dispatch(updateExpenseThunk(updatedExpense))
       closeModal()
     }
   }
+
+  // get sessionUser to confirm current user is the payer,
+  // if not render error message and ok button
+  const sessionUser = useSelector(state => state.session.user)
+  const payerId = expenseDetails.payer.id
+  if (sessionUser.id !== payerId) {
+    return (
+      <>
+        <div>Unfortunately, you do not have permission to edit this expense :(</div>
+        <button onClick={closeModal()}>ok</button>
+      </>
+    )
+  }
+
+  // return EditExpenseModal with pre-filled expense detail info
 
   return (
     <form
@@ -148,7 +166,6 @@ function AddExpenseModal() {
       </div>
     </form>
   )
-
 }
 
-export default AddExpenseModal
+export default EditExpenseModal

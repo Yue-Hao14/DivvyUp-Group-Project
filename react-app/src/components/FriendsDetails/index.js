@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { getFriendExpensesThunk } from "../../store/expenses";
-import ExpenseSummaries from "../ExpenseSummaries";
+import FriendExpenseSummaries from "../ExpenseSummaries";
 import TotalBalance from "../TotalBalance";
 
 function FriendDetails() {
@@ -31,7 +31,7 @@ function FriendDetails() {
                     <div className="friend_details_add_expense_button"></div>
                 </div>
                 <div className="">
-                    {isLoaded && <ExpenseSummaries />}
+                    {isLoaded && <FriendExpenseSummaries />}
                 </div>
             </div>
             <TotalBalance />

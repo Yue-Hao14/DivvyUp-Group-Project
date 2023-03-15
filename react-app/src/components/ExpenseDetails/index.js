@@ -1,26 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getSingleExpenseDetailsThunk } from "../../store/expenses";
 import ExpenseInfo from "./ExpenseInfo";
 import EditAndDeleteButtons from "./EditAndDeleteButtons"
-import ExpenseUserInfo from "./ExpenseInfo";
+import ExpenseUserInfo from "./ExpenseUserInfo";
 import './ExpenseDetails.css'
 
-function ExpenseDetails({ expenseId }) {
-    // dispatch thunk to get spot details added to store
-    const dispatch = useDispatch();
-    // const sessionUser = useSelector(state => state.session.user)
-    const [isLoaded, setIsLoaded] = useState(false)
-
-    useEffect(() => {
-        dispatch(getSingleExpenseDetailsThunk(expenseId))
-            .then(() => setIsLoaded(true))
-    }, [dispatch])
+function ExpenseDetails() {
+    const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
 
     return (
-        <>
-        {isLoaded
-            ? <div className="expense_details_div">
+            <div className="expense_details_div">
                 <div className="expense_details_div_upper">
                     <div className="expense_details_icon"></div>
                     <ExpenseInfo />
@@ -33,8 +23,6 @@ function ExpenseDetails({ expenseId }) {
                     </div>
                 </div>
             </div>
-            : null }
-        </>
     )
 }
 
