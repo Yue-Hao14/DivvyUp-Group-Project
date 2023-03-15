@@ -94,6 +94,11 @@ nav ul.profile-dropdown button:hover {
   color: #fff;
   background-color: #5BC5A7;
 }
+nav ul.profile-dropdown button:active {
+  background-color: #5BC5A7;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.2) inset;
+  transform: translateY(4px);
+}
 
 nav ul.profile-dropdown a {
   color: #fff;
