@@ -29,11 +29,12 @@ function EditExpenseModal({expense}) {
   // set expense details to state variables
   const [owerIds, setOwerIds] = useState(expense ? current_owerIds : [])
   const [description, setDescription] = useState(expense ? expense.description : "")
-  let [amount, setAmount] = useState(expense ? expense.amount : 0)
+  let [amount, setAmount] = useState(expense ? expense.amount.toString() : "")
   const [splitAmount, setSplitAmount] = useState(expense ? calculatedSplitAmount : 0)
   const [expenseDate, setExpenseDate] = useState(expense ? new Date(expense.expenseDate).toISOString().split('T')[0] : "")
   const [errors, setErrors] = useState({})
   const [hasSubmitted, setHasSubmitted] = useState(false)
+
 
   // calculate current splitAmount based on changes in the form
   useEffect(()=>{
@@ -84,8 +85,11 @@ function EditExpenseModal({expense}) {
     // make sure amount only has 2 decimal points
     amount = parseFloat(amount).toFixed(2)
 
+    const updated_at = new Date().toISOString().split('T')[0];
+
+
     const id = expense.id
-    const updatedExpense = { id, owerIds, description, amount, expenseDate }
+    const updatedExpense = { id, owerIds, description, amount, expenseDate, updated_at }
     console.log("updated expense:", updatedExpense)
 
     // if no error, we PUT the updatedExpense to db via thunk
@@ -183,7 +187,7 @@ function EditExpenseModal({expense}) {
           (<div className='error'>{errors.emptyExpenseDate}</div>)}
       </div>
       <div className='add_expense_modal_bottom_container'>
-        <button className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
+        <button type="button" className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
         <button className='add_expense_modal_submit_button' onClick={handleSubmit}>Submit</button>
       </div>
     </form>
