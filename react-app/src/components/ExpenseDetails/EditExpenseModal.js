@@ -35,6 +35,7 @@ function EditExpenseModal({expense}) {
   const [errors, setErrors] = useState({})
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
+
   // calculate current splitAmount based on changes in the form
   useEffect(()=>{
     calculatedSplitAmount = (amount / (owerIds.length + 1)).toFixed(2)
@@ -84,8 +85,11 @@ function EditExpenseModal({expense}) {
     // make sure amount only has 2 decimal points
     amount = parseFloat(amount).toFixed(2)
 
+    const updated_at = new Date().toISOString().split('T')[0];
+
+
     const id = expense.id
-    const updatedExpense = { id, owerIds, description, amount, expenseDate }
+    const updatedExpense = { id, owerIds, description, amount, expenseDate, updated_at }
     console.log("updated expense:", updatedExpense)
 
     // if no error, we PUT the updatedExpense to db via thunk
