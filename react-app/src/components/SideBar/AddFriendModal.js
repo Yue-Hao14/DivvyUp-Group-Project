@@ -28,12 +28,6 @@ function AddFriendModal () {
           <i className='fas a-solid fa-divide add_friend_modal_icon'></i>
           <span className='add_friend_modal_label_text'>Add Friend</span>
         </div>
-        <button
-          className='add_friend_modal_close_button'
-          onClick={() => closeModal()}
-        >
-          <i className='fas fa-times' />
-        </button>
       </div>
       <ul className='add_friend_modal_error_list'>
         {errors.map((error, idx) => (
@@ -48,7 +42,16 @@ function AddFriendModal () {
         placeholder='search...'
         className='add_friend_modal_input'
       />
-      <button className='add_friend_modal_submit_button'>add friend</button>
+      <div className='button_container'>
+        <button
+          type='button'
+          onClick={closeModal}
+          className='add_friend_modal_cancel_button'
+        >
+          Cancel
+        </button>
+        <button className='add_friend_modal_submit_button'>Add Friend</button>
+      </div>
     </form>
   )
 }
