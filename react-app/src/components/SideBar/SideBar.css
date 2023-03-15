@@ -8,18 +8,29 @@
   overflow-x: hidden;
   padding: 16px 8px;
   margin-left: 27px;
-  top: 80px;
+  top: 100px;
 }
 
 .side_bar_dashboard {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 36px;
+
+}
+
+.side_bar_dashboard a {
+  text-decoration: none;
+  color: black;
 }
 
 .side_bar_all_expenses {
   font-size: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
+}
+
+.side_bar_all_expenses a {
+  text-decoration: none;
+  color: black;
 }
 
 .side_bar_friends_label_div {
@@ -27,7 +38,7 @@
   justify-content: space-between;
   align-items: center;
   height: 30px;
-  /* Remove margin-bottom */
+  margin-bottom: 10px;
 }
 
 .side_bar_friends_label {
@@ -37,6 +48,7 @@
   margin-right: 8px;
   flex: 1;
   white-space: nowrap;
+  margin-bottom: 16px;
 }
 
 .side_bar_friends_add_button {
@@ -81,12 +93,12 @@
   background-color: transparent;
 }
 
-.remove_friend_button_container:hover button{
+.remove_friend_button_container:hover button {
   color: #903023;
 }
 
-.remove_friend_button_container:active button{
+.remove_friend_button_container:active button {
   /* background-color: transparent; */
   /* box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); */
-  transform: translateY(4px);
+  transform: translateY(2px);
 }
