@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react"
 import { Redirect } from "react-router-dom";
 import { getAllExpensesThunk } from "../../store/expenses";
 
@@ -7,8 +7,15 @@ function TotalBalance () {
 
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.allExpenses)
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+      if (sessionUser) {
+        dispatch(getAllExpensesThunk());
+      }
+    }, [dispatch, sessionUser]);
 
+    console.log(sessionUser);
     if (!sessionUser) return <Redirect to='/' />
 
     let totalBalance  = 0;
@@ -17,10 +24,12 @@ function TotalBalance () {
 
     for (let i = 0; i < expensesArr.length; i++) {
         const expense = expensesArr[i];
-        if (expense.owers && expense.owers.includes(sessionUser)) {
-          totalBalance += expense.amount / expense.owers.length;
+        // console.log(expense);
+          const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
+          if (userOwer) {
+            totalBalance += expense.amount / (expense.owers.length + 1);
+          }
         }
-      }
 
     return (
         <>

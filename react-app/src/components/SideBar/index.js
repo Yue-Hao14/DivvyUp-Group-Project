@@ -12,6 +12,12 @@ function SideBar () {
   const sessionUser = useSelector(state => state.session.user)
   const friends = useSelector(state => state.friends)
 
+  useEffect(() => {
+    if (sessionUser) {
+      dispatch(getAllFriendsThunk());
+    }
+  }, [dispatch, sessionUser]);
+
   if (!sessionUser) return null // Do not display sidebar if user is not logged in
 
   return (

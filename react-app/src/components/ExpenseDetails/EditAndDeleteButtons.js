@@ -3,6 +3,7 @@ import OpenModalButton from '../OpenModalButton'
 import { DeleteExpenseModal } from "./DeleteExpenseModal"
 import { EditExpenseModal } from "./EditExpenseModal"
 
+
 function EditAndDeleteButtons() {
     const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
     const sessionUser = useSelector(state => state.session.user)
