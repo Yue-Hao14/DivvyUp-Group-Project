@@ -114,7 +114,7 @@ function EditExpenseModal() {
     <form
       className="add_expense_modal_form">
       <div className='add_expense_modal_label_container'>
-        Edit the expense
+        Edit the Expense
       </div>
       <div className='add_expense_modal_payer_and_owers_container'>
         <div className='add_expense_modal_payer_text'>With you and: </div>

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
-import FriendExpenseSummary from "./FriendExpenseSummary";
+import ExpenseSummarySection from "./ExpenseSummarySection";
 
 function FriendExpenseSummaries() {
     const expenses = useSelector(state => state.expenses.currentExpenseSummaries)
@@ -10,7 +10,7 @@ function FriendExpenseSummaries() {
         <div className="expense_summaries_div">
             {Object.values(orderedExpenses).map((expenseList, idx) => {
                 return (
-                    <FriendExpenseSummary key={idx} expenses={expenseList} />
+                    <ExpenseSummarySection key={idx} expenses={expenseList} />
                 )
             })}
         </div>
