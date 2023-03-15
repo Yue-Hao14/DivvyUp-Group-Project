@@ -32,7 +32,7 @@ function ExpenseSummary({ expense }) {
     } else if (!friend) {
         // if the current user is the payer and there is no friend, show how much the current user is owed for that expense
         console.log("Show the total amount the user is owed")
-        owerDescription = <div className="expense_summary_expense_payerInfo">{sessionUser.firstName} {sessionUser.lastName[0]}. is owed <span className="expense_summary_amount">${(expense.amount - payerAmount)}</span></div>
+        owerDescription = <div className="expense_summary_expense_payerInfo">{sessionUser.firstName} {sessionUser.lastName[0]}. is owed <span className="expense_summary_amount">${(expense.amount - payerAmount).toFixed(2)}</span></div>
     } else {
         // else show how much the friend owes the current user
         console.log("The friend is the ower!")
@@ -45,7 +45,7 @@ function ExpenseSummary({ expense }) {
                 <div className="expense_summary_expense_date">{abbrevMonths[date.getMonth()]} {date.getUTCDate()}</div>
                 <div className="expense_summary_expense_icon">icon</div>
                 <div className="expense_summary_expense_description">{expense.description}</div>
-                <div className="expense_summary_expense_payerInfo">{expense.payer.firstName} {expense.payer.lastName[0]}. paid <span className="expense_summary_amount">${expense.amount}</span></div>
+                <div className="expense_summary_expense_payerInfo">{expense.payer.firstName} {expense.payer.lastName[0]}. paid <span className="expense_summary_amount">${expense.amount.toFixed(2)}</span></div>
                 {owerDescription}
             </div>
             {showDetailsId === expense.id && <ExpenseDetails expense={expense} />}

@@ -8,7 +8,7 @@ function ExpenseUserInfo({ expense }) {
             <div className="expense_details_user_info_div">
                 <i className="expense_details_user_icon fa-solid fa-user" />
                 <div className="expense_details_user_info">
-                    <span className="expense_details_user_name">{`${expense.payer.firstName} ${expense.payer.lastName[0]}.`}</span> paid <span className="expense_details_user_amount">${expense.amount}</span>
+                    <span className="expense_details_user_name">{`${expense.payer.firstName} ${expense.payer.lastName[0]}.`}</span> paid <span className="expense_details_user_amount">${expense.amount.toFixed(2)}</span>
                 </div>
             </div>
             {expense.owers.map(ower => {
