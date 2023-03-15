@@ -108,7 +108,7 @@ function AddExpenseModal() {
             value={description}
             onChange={e => setDescription(e.target.value)}
             required
-            placeholder='description'
+            placeholder='Enter a description'
             className='add_expense_modal_description' />
           {hasSubmitted &&
             errors.emptyDescription &&
