@@ -5,33 +5,33 @@ import { useModal } from '../../context/Modal'
 import { updateExpenseThunk } from '../../store/expenses'
 
 
-function EditExpenseModal() {
+function EditExpenseModal({expense}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal()
 
   // get expense details from redux store
-  const expenseDetails = useSelector((store) => store.expenses.currentExpenseDetails);
-  // console.log("expenseDetails:", expenseDetails)
+  // const expense = useSelector((store) => store.expenses.currentexpense);
+  // console.log("expense:", expense)
   // extract owerIds from expense details
-  const current_owers = expenseDetails.owers
+  const current_owers = expense.owers
   let current_owerIds = []
   current_owers.forEach(ower => {
     current_owerIds.push(ower.id)
   });
 
   // calculate old splitAmount
-  let calculatedSplitAmount = (expenseDetails.amount / (current_owerIds.length + 1)).toFixed(2)
+  let calculatedSplitAmount = (expense.amount / (current_owerIds.length + 1)).toFixed(2)
 
   // check expenseDate format
-  // console.log("expenseDetails.expenseDate:", expenseDetails.expenseDate) //Wed, 15 Mar 2023 00:00:00 GMT
-  // console.log("expenseDetails.expenseDate:", new Date(expenseDetails.expenseDate).toISOString().split('T')[0]) //Wed, 15 Mar 2023 00:00:00 GMT
+  // console.log("expense.expenseDate:", expense.expenseDate) //Wed, 15 Mar 2023 00:00:00 GMT
+  // console.log("expense.expenseDate:", new Date(expense.expenseDate).toISOString().split('T')[0]) //Wed, 15 Mar 2023 00:00:00 GMT
 
   // set expense details to state variables
-  const [owerIds, setOwerIds] = useState(expenseDetails ? current_owerIds : [])
-  const [description, setDescription] = useState(expenseDetails ? expenseDetails.description : "")
-  let [amount, setAmount] = useState(expenseDetails ? expenseDetails.amount : 0)
-  const [splitAmount, setSplitAmount] = useState(expenseDetails ? calculatedSplitAmount : 0)
-  const [expenseDate, setExpenseDate] = useState(expenseDetails ? new Date(expenseDetails.expenseDate).toISOString().split('T')[0] : "")
+  const [owerIds, setOwerIds] = useState(expense ? current_owerIds : [])
+  const [description, setDescription] = useState(expense ? expense.description : "")
+  let [amount, setAmount] = useState(expense ? expense.amount : 0)
+  const [splitAmount, setSplitAmount] = useState(expense ? calculatedSplitAmount : 0)
+  const [expenseDate, setExpenseDate] = useState(expense ? new Date(expense.expenseDate).toISOString().split('T')[0] : "")
   const [errors, setErrors] = useState({})
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -84,7 +84,7 @@ function EditExpenseModal() {
     // make sure amount only has 2 decimal points
     amount = parseFloat(amount).toFixed(2)
 
-    const id = expenseDetails.id
+    const id = expense.id
     const updatedExpense = { id, owerIds, description, amount, expenseDate }
     console.log("updated expense:", updatedExpense)
 
@@ -98,7 +98,7 @@ function EditExpenseModal() {
   // get sessionUser to confirm current user is the payer,
   // if not render error message and ok button
   const sessionUser = useSelector(state => state.session.user)
-  const payerId = expenseDetails.payer.id
+  const payerId = expense.payer.id
   if (sessionUser.id !== payerId) {
     return (
       <>

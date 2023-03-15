@@ -100,7 +100,6 @@ def update_an_expense(id):
         return {'errors': 'Expense does not exist'}, 404
     elif form.validate_on_submit():
         ower_ids = data['owerIds']
-        print("ower_ids =============================================================================================", ower_ids)
 
         if current_user.id != expense.payer_id:
             return {'errors': 'Unauthorized to update this expense'}, 401
