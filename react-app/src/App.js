@@ -7,7 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SideBar from "./components/SideBar";
 import FriendDetails from "./components/FriendsDetails";
-import TopBar from "./components/TopBar";
+// import TopBar from "./components/TopBar";
 import SplashPage from "./components/SplashPage"
 import AllExpenses from "./components/AllExpenses";
 
@@ -26,7 +26,7 @@ function App() {
       {isLoaded && (
         <>
           <SideBar />
-          <TopBar />
+          {/* <TopBar /> */}
           <Switch>
             <Route path="/dashboard" >
               <SplashPage />

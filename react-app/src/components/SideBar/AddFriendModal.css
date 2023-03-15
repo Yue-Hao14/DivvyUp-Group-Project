@@ -46,7 +46,7 @@
     width: 95%;
   }
 
-  .add_friend_modal_submit_button {
+  /* .add_friend_modal_submit_button {
     background-color: #5bc5a7;
     color: white;
     border: 2px solid #5bc5a7;
@@ -63,13 +63,8 @@
     background-color: #48a289;
     border: 2px solid #48a289;
     color: white;
-  }
+  } */
 
-  .add_friend_modal_submit_button:active {
-    background-color: #3c7f56;
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
-    transform: translateY(4px);
-  }
 
   .add_friend_modal_form ul {
     list-style-type: none;
@@ -87,4 +82,44 @@
     outline: none;
     border-color: #5bc5a7;
     box-shadow: 0 0 0 3px rgba(91, 197, 167, 0.25);
+  }
+
+  .button_container{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left: 18px;
+  }
+  .add_friend_modal_cancel_button,
+  .add_friend_modal_submit_button {
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .add_friend_modal_cancel_button {
+    background-color: #fff;
+    color: #5bc5a7;
+    border: 2px solid #5bc5a7;
+  }
+
+  .add_friend_modal_submit_button {
+    background-color: #5bc5a7;
+    color: white;
+    border: 2px solid #5bc5a7;
+  }
+  .add_friend_modal_cancel_button:hover,
+  .add_friend_modal_submit_button:hover {
+    background-color: #48a289;
+    border: 2px solid #48a289;
+    color: white;
+  }
+
+  .add_friend_modal_cancel_button:active,
+  .add_friend_modal_submit_button:active {
+    background-color: #3c7f56;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(4px);
   }
