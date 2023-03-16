@@ -10,21 +10,15 @@ function EditExpenseModal({expense}) {
   const { closeModal } = useModal()
 
   // get expense details from redux store
-  // const expense = useSelector((store) => store.expenses.currentexpense);
-  // console.log("expense:", expense)
-  // extract owerIds from expense details
   const current_owers = expense.owers
-  let current_owerIds = []
-  current_owers.forEach(ower => {
-    current_owerIds.push(ower.id)
-  });
+  let current_owerIds = current_owers.map(ower => ower.id)
+  // // extract owerIds from expense details
+  // current_owers.forEach(ower => {
+  //   current_owerIds.push(ower.id)
+  // });
 
   // calculate old splitAmount
   let calculatedSplitAmount = (expense.amount / (current_owerIds.length + 1)).toFixed(2)
-
-  // check expenseDate format
-  // console.log("expense.expenseDate:", expense.expenseDate) //Wed, 15 Mar 2023 00:00:00 GMT
-  // console.log("expense.expenseDate:", new Date(expense.expenseDate).toISOString().split('T')[0]) //Wed, 15 Mar 2023 00:00:00 GMT
 
   // set expense details to state variables
   const [owerIds, setOwerIds] = useState(expense ? current_owerIds : [])
@@ -85,14 +79,9 @@ function EditExpenseModal({expense}) {
     // make sure amount only has 2 decimal points
     amount = parseFloat(amount).toFixed(2)
 
-    const updated_at = new Date().toISOString().split('T')[0];
-
-
     const id = expense.id
 
     const updatedExpense = { id, owerIds, description, amount, expenseDate }
-    // console.log("updated expense:", updatedExpense)
-
 
     // if no error, we PUT the updatedExpense to db via thunk
     if (Object.values(errors).length === 0) {
