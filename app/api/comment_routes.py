@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 
 comment_routes = Blueprint('comments', __name__)
 
+
 @comment_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def update_comment(id):
@@ -32,3 +33,21 @@ def update_comment(id):
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     pass
+
+
+@comment_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_comment(id):
+    """
+    Delete comment by comment id
+    """
+    comment = Comment.query.get(id)
+
+    if not comment:
+        return {"errors": ["Comment could not be found"]}, 404
+    elif comment.user.id != current_user.id:
+        return {"errors": ["User is unauthorized to edit comment"]}, 401
+    else:
+        db.session.delete(comment)
+        db.session.commit()
+        return {"message": "successfully deleted"}

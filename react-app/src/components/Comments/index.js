@@ -37,11 +37,11 @@ function Comments({ expenseId }) {
                             <div className="comment_edit_delete_buttons_div">
                                 <OpenModalButton
                                     buttonText={<i className="edit_comment_button fa-solid fa-pen-to-square" />}
-                                    modalComponent={<CommentFormModal expenseId={expenseId} commentId={comment.id}/>}
+                                    modalComponent={<CommentFormModal expenseId={expenseId} commentId={comment.id} />}
                                 />
                                 <OpenModalButton
                                     buttonText={<i className='remove_comment_button fa-solid fa-trash' />}
-                                    modalComponent={<DeleteCommentConfirmationModal commentId={comment.id} />}
+                                    modalComponent={<DeleteCommentConfirmationModal comment={comment} />}
                                 />
                             </div>
                         )}
