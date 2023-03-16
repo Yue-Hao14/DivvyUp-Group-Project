@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Expense, User
-from app.forms.expense_form import ExpenseForm
+from app.models import db, Expense, User, Comment
+from app.forms import ExpenseForm, CommentForm
 from .auth_routes import validation_errors_to_error_messages
 from datetime import datetime, date
 import json
@@ -164,3 +164,34 @@ def get_expense_comments(id):
         return {'errors': ['Expense does not exist']}, 404
 
     return {"id": id, "comments": [comment.to_dict() for comment in expense.comments]}
+
+
+@expense_routes.route('/<int:id>/comments', methods=["POST"])
+@login_required
+def add_comment_to_expense(id):
+    """
+    Add comment to expense using expense id
+    """
+    data = request.get_json()
+    form = CommentForm()
+    # Get the csrf_token from the request cookie and put it into the
+    # form manually to validate_on_submit can be used
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    # make sure the comment form validates
+    if form.validate_on_submit():
+        expense = Expense.query.get(id)
+        if not expense:
+            return { 'errors': ["Expense could not be found"] }
+
+        new_comment = Comment(
+            user_id = current_user.id,
+            expense_id = id,
+            comment = data["comment"]
+        )
+
+        db.session.add(new_comment)
+        db.session.commit()
+        return {"id": id, "comment": new_comment.to_dict()}, 201
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -13,6 +13,7 @@ function Comments({ expenseId }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const comments = useSelector(state => state.comments[expenseId])
+    // order comments by createdAt date?
     console.log("List of comments for the expense=====================", comments)
 
     useEffect(() => {
@@ -49,8 +50,8 @@ function Comments({ expenseId }) {
                 )
             })}
             <OpenModalButton
-                buttonText="Leave a Comment"
-                modalComponent={<PostCommentModal />}
+                buttonText="Post"
+                modalComponent={<PostCommentModal expenseId={expenseId}/>}
             />
         </>
     )

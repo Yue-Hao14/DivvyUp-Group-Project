@@ -190,7 +190,7 @@ function EditExpenseModal({expense}) {
       </div>
       <div className='add_expense_modal_bottom_container'>
         <button type="button" className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
-        <button className='add_expense_modal_submit_button' onClick={handleSubmit}>Submit</button>
+        <button type='submit' className='add_expense_modal_submit_button' onClick={handleSubmit}>Submit</button>
       </div>
     </form>
   )
