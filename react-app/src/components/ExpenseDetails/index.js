@@ -18,7 +18,7 @@ function ExpenseDetails ({ expense }) {
             {expense.description}
           </div>
           <div className='expense_details_info_expense_amount'>
-            {expense.amount}
+            ${expense.amount.toFixed(2)}
           </div>
           <div className='expense_details_info_added_by'>{`Added by ${expense.payer.firstName} ${expense.payer.lastName[0]}. on ${createdAt}`}</div>
           <div className='expense_details_info_last_updated'>{`Last updated by ${expense.payer.firstName} ${expense.payer.lastName[0]}. on ${updatedAt}`}</div>

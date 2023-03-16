@@ -8,12 +8,7 @@ function ExpenseUserInfo({ expense }) {
     const owerAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2)
     const sessionUser = useSelector(state => state.session.user)
     const settledOwers = expense.settledOwers
-    let settledOwerIds = []
-    settledOwers.forEach(settledOwer => {
-        // console.log("settledOwer.settlledUser", Object.values(settledOwer)[2][0].id)
-        settledOwerIds.push(Object.values(settledOwer)[2][0].id)
-    });
-    // console.log("settledOwers", settledOwers)
+    const settledOwerIds = settledOwers.map(settledOwer => settledOwer.settledUserId)
 
     return (
         <div className="expense_details_info_div">
@@ -24,6 +19,7 @@ function ExpenseUserInfo({ expense }) {
                 </div>
             </div>
             {expense.owers.map(ower => {
+                // can do some logic here to add a class name to the div to show if expense is settled or not
                 return (
                     <div key={ower.id} className="expense_details_user_info_div">
                         <i className="expense_details_user_icon fa-solid fa-user" />
