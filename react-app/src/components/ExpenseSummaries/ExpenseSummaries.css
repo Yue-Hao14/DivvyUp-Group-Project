@@ -7,7 +7,6 @@
     flex-direction: column;
     /* margin: 0 0 1rem 340px; */
     /* border: 1px solid #5BC5A7; */
-    border-radius: 5px;
     margin-right: 330px;
     margin-left: 340px;
     margin-top: 30px;
@@ -27,7 +26,7 @@
     padding: 1rem;
     /* border-top: 1px solid #ddd; */
     border: 1.5px solid #5BC5A7;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 
     cursor: pointer;
     transition: background-color 0.5s ease;
