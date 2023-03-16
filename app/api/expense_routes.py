@@ -111,6 +111,8 @@ def update_an_expense(id):
             expense.description = form.data["description"]
             expense.amount = form.data['amount']
             expense.expense_date= form.data['expenseDate']
+            expense.updated_at = date.utcNow()
+
 
 
             # cast current list of owers to a set

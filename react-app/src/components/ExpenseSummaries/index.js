@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
 import ExpenseSummarySection from "./ExpenseSummarySection";
 
-function FriendExpenseSummaries() {
+function ExpenseSummaries() {
     const expenses = useSelector(state => state.expenses.currentExpenseSummaries)
     const orderedExpenses = groupExpensesByMonth(Object.values(expenses));
 
@@ -17,4 +17,4 @@ function FriendExpenseSummaries() {
     )
 }
 
-export default FriendExpenseSummaries;
+export default ExpenseSummaries;
