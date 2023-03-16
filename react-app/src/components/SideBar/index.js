@@ -30,7 +30,7 @@ function SideBar () {
         <NavLink to={`/all-expenses`}>All Expenses</NavLink>
       </div>
       <div className='side_bar_all_expenses'>
-        <NavLink to={`/all-settled-expenses`}>Payment History</NavLink>
+        <NavLink to={`/payment-history`}>Payment History</NavLink>
       </div>
       <div className='side_bar_friends_label_div'>
         <div className='side_bar_friends_label'>
