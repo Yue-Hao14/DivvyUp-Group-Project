@@ -30,6 +30,7 @@ function ExpenseUserInfo({ expense }) {
                                 <OpenModalButton
                                     modalComponent={<AddPaymentModal expenseId={expense.id} ower={ower} owerAmount={owerAmount} />}
                                     buttonText="Settle Up"
+                                    className="settle_up_button"
                                 />
                             }
                         </div>
