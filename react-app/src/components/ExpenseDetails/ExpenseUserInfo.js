@@ -1,12 +1,19 @@
 import { useSelector } from 'react-redux'
-
+import OpenModalButton from '../OpenModalButton'
+import AddPaymentModal from './AddPaymentModal'
 
 
 function ExpenseUserInfo({ expense }) {
     // might have a type issue here with expense.amount (might be string)
     const owerAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2)
     const sessionUser = useSelector(state => state.session.user)
-
+    const settledOwers = expense.settledOwers
+    let settledOwerIds = []
+    settledOwers.forEach(settledOwer => {
+        // console.log("settledOwer.settlledUser", Object.values(settledOwer)[2][0].id)
+        settledOwerIds.push(Object.values(settledOwer)[2][0].id)
+    });
+    // console.log("settledOwers", settledOwers)
 
     return (
         <div className="expense_details_info_div">
@@ -22,10 +29,13 @@ function ExpenseUserInfo({ expense }) {
                         <i className="expense_details_user_icon fa-solid fa-user" />
                         <div className="expense_details_user_info">
                             <span className="expense_details_user_name">{ower.firstName} {ower.lastName[0]}.</span> owes <span className="expense_details_user_amount">${owerAmount}</span>
-                            {
-                                if （(sessionUser.id === expense.payer.id) && ）
+                            {sessionUser.id === expense.payer.id &&
+                                !settledOwerIds.includes(ower.id) &&
+                                <OpenModalButton
+                                    modalComponent={<AddPaymentModal expenseId={expense.id} ower={ower} owerAmount={owerAmount} />}
+                                    buttonText="Settle Up"
+                                />
                             }
-                            <span> where add a payment button goes</span>
                         </div>
                     </div>
                 )

@@ -86,7 +86,7 @@ function EditExpenseModal({expense}) {
 
     const id = expense.id
     const updatedExpense = { id, owerIds, description, amount, expenseDate }
-    console.log("updated expense:", updatedExpense)
+    // console.log("updated expense:", updatedExpense)
 
     // if no error, we PUT the updatedExpense to db via thunk
     if (Object.values(errors).length === 0) {

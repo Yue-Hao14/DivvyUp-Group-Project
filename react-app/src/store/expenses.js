@@ -131,6 +131,7 @@ export const postExpenseThunk = expense => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(postExpense(data));
+        dispatch(getFriendExpensesThunk(expense.owerId));
         return data;
     } else if (res.status < 500) {
         const data = await res.json();
@@ -233,7 +234,7 @@ export default function reducer(state = initialState, action) {
         case GET_SETTLED_EXPENSES: {
             const settledPayments = {}
             for (const payment of action.payload) {
-                settledPayments[payment.expenseId] = payment
+                settledPayments[payment.Id] = payment
             }
             return {...state, settledExpenses: settledPayments};
         }
