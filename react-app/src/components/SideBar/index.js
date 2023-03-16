@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector, useStore } from 'react-redux'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { getAllFriendsThunk } from '../../store/friends'
 import OpenModalButton from '../OpenModalButton'
 import AddFriendModal from './AddFriendModal'
@@ -24,13 +24,13 @@ function SideBar () {
   return (
     <div className='side_bar'>
       <div className='side_bar_dashboard'>
-        <NavLink to={`/`}>Dashboard</NavLink>
+        <NavLink activeClassName='active_sidebar_link' exact to={`/`}>Dashboard</NavLink>
       </div>
       <div className='side_bar_all_expenses'>
-        <NavLink to={`/all-expenses`}>All Expenses</NavLink>
+        <NavLink activeClassName='active_sidebar_link' to={`/all-expenses`}>All Expenses</NavLink>
       </div>
       <div className='side_bar_all_expenses'>
-        <NavLink to={`/payment-history`}>Payment History</NavLink>
+        <NavLink activeClassName='active_sidebar_link' to={`/payment-history`}>Payment History</NavLink>
       </div>
       <div className='side_bar_friends_label_div'>
         <div className='side_bar_friends_label'>
@@ -46,7 +46,7 @@ function SideBar () {
       <div className='side_bar_friends_list'>
         {Object.values(friends).map(friend => (
             <div key={friend.id} className='side_bar_friend'>
-              <NavLink
+              <NavLink activeClassName='active_sidebar_link'
                 to={`/friends/${friend.id}`}
               >{`${friend.firstName} ${friend.lastName}`}</NavLink>
               <div className='remove_friend_button_container'>
