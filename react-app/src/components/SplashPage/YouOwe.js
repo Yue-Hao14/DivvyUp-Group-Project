@@ -14,7 +14,6 @@ function YouOwe({ friend }) {
         }
     }, [sessionUser]);
 
-    let balance = 0;
     let outstandingWithFriend = 0;
 
     // Calculate the total amount of expenses paid by the user and friend
