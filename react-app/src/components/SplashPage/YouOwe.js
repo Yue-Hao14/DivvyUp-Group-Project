@@ -1,18 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllExpensesThunk } from '../../store/expenses';
+import { getFriendExpensesThunk } from '../../store/expenses';
 
 function YouOwe({ friend }) {
     const expenses = useSelector(state => state.expenses.allExpenses);
     const sessionUser = useSelector(state => state.session.user);
-    // console.log("================", friend.id);
-    // console.log("=========================", friend.firstName);
     const dispatch = useDispatch();
     const expensesArr = Object.values(expenses);
 
     useEffect(() => {
         if (sessionUser) {
-            dispatch(getAllExpensesThunk(friend.id))
+            dispatch(getFriendExpensesThunk(friend.id))
         }
     }, [sessionUser]);
 
@@ -23,7 +21,6 @@ function YouOwe({ friend }) {
     // Calculate the total amount of expenses paid by the user and friend
     for (const expense of expensesArr) {
         const numOwers = expense.owers.length;
-        // console.log("=====================================================");
         const splitAmount = (expense.amount / (numOwers + 1))
 
         if (expense.payer.id === sessionUser.id) {
@@ -44,28 +41,22 @@ function YouOwe({ friend }) {
             const userInOwers = expense.owers.find(userInOwer => userInOwer.id === sessionUser.id)
             if  (userInOwers) {
                 paidByUser += Number.parseFloat(splitAmount.toFixed(2))
-                // console.log("yes2.1", paidByUser);
             }
 
             const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
             if (userInSettledOwers) {
                 paidByUser -= Number.parseFloat(splitAmount.toFixed(2))
-                // console.log("yes2.2", paidByUser);
             }
         }
-        // console.log("owed by friend=======",paidByFriend);
-        // console.log("owed by user======",paidByUser);
+
     }
-
-    balance += (paidByFriend - paidByUser)
-    // console.log("balance==========", balance);
-
+    balance = paidByUser - paidByFriend
     return (
       <>
         {balance > 0 ?
           <div>
               <div>{friend.firstName}</div>
-              <div> owes you ${balance.toFixed(2)}</div>
+              <div> you owe ${balance.toFixed(2)}</div>
           </div> : null}
       </>
     );
