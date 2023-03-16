@@ -10,3 +10,11 @@
     font-size: 25px;
     font-weight: bold;
   }
+
+  .positive_balance {
+    color: #5bc5a7;
+  }
+
+  .negative_balance {
+    color: red;
+  }

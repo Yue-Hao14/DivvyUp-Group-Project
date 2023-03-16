@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { getMMDDYYYY } from '../../utils/utils'
+import { getMMDDYYYY, getMMMYYYYY } from '../../utils/utils'
 
 function PaymentDetails ({ expense }) {
   const sessionUser = useSelector(state => state.session.user)
