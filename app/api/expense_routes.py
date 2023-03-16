@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Expense, User
 from app.forms.expense_form import ExpenseForm
 from .auth_routes import validation_errors_to_error_messages
-from datetime import date
+from datetime import datetime
 
 expense_routes = Blueprint('expenses', __name__)
 
@@ -111,15 +111,8 @@ def update_an_expense(id):
             expense.description = form.data["description"]
             expense.amount = form.data['amount']
             expense.expense_date= form.data['expenseDate']
-            expense.updated_at = date.utcNow()
+            expense.updated_at = datetime.today()
 
-
-
-            # cast current list of owers to a set
-            # cast new owers list to a set
-            # compare the two
-            # remove anyone who is in the current list but not the new list
-            # add anyone who is in the new list but not the current list
             new_owers = set([User.query.get(id) for id in ower_ids])
             current_owers = set(expense.owers)
 
