@@ -1,0 +1,11 @@
+.expense_details_buttons_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit_expense_button, .delete_expense_button {
+    background-color: transparent;
+    border: none;
+  }
