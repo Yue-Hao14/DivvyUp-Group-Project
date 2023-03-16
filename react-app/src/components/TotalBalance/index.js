@@ -64,7 +64,7 @@ function TotalBalance() {
     return (
         <div className="total_balance_div">
             <div>Your Total Balance:</div>
-            <div>${totalBalance.toFixed(2)}</div>
+            <div className={totalBalance >= 0 ? "positive_balance" : "negative_balance"}>${totalBalance.toFixed(2)}</div>
         </div>
     )
 }
