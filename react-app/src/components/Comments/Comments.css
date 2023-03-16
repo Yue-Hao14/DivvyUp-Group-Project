@@ -1,1 +1,16 @@
 /* TODO: Add styling for comments here */
+.comment_div {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 5px 0;
+    border: 1px solid #999;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.comment_edit_delete_buttons_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
