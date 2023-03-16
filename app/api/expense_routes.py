@@ -4,6 +4,7 @@ from app.models import db, Expense, User
 from app.forms.expense_form import ExpenseForm
 from .auth_routes import validation_errors_to_error_messages
 from datetime import datetime, date
+import json
 
 expense_routes = Blueprint('expenses', __name__)
 
@@ -162,4 +163,4 @@ def get_expense_comments(id):
     if not expense:
         return {'errors': ['Expense does not exist']}, 404
 
-    return { f"{id}": [comment.to_dict() for comment in expense.comments] }
+    return {"id": id, "comments": [comment.to_dict() for comment in expense.comments]}

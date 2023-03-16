@@ -34,7 +34,7 @@ export default function reducer(state = initialState, action) {
     switch(action.type) {
         case GET_EXPENSE_COMMENTS: {
             const newState = { ...state };
-            newState[action.payload.id] = action.payload;
+            newState[action.payload.id] = action.payload.comments;
             return newState;
         }
         case RESET: {
