@@ -26,7 +26,7 @@ function ExpenseSummaries() {
             unsettledExpenseArr.push(expense)
         }
     })
-    console.log("unsettledExpenseArr",unsettledExpenseArr)
+    // console.log("unsettledExpenseArr",unsettledExpenseArr)
 
     return (
         <div className="expense_summaries_div">
