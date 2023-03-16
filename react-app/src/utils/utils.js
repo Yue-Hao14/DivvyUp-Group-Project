@@ -3,5 +3,5 @@ export const months = ["January", "February", "March", "April", "May", "June", "
 
 export const getMMDDYYYY = date => {
     const month = months[date.getMonth()]
-    return `${month} ${date.getDate()}, ${date.getFullYear()}`
+    return `${month} ${date.getUTCDate()}, ${date.getFullYear()}`
 }
