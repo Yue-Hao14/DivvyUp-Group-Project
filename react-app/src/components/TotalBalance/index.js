@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react"
 import { Redirect } from "react-router-dom";
 import { getFriendExpensesThunk } from "../../store/expenses";
+import "./TotalBalance.css";
 
 function TotalBalance() {
 
@@ -65,9 +66,10 @@ function TotalBalance() {
     //     }
 
     return (
-        <>
-            <h2>Your Total Balance: {totalBalance.toFixed(2)}</h2>
-        </>
+        <div className="total_balance_div">
+            <div>Your Total Balance:</div>
+            <div>${totalBalance.toFixed(2)}</div>
+        </div>
     )
 }
 

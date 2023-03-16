@@ -45,7 +45,7 @@ function ExpenseSummary({ expense }) {
         <div className={(expense.owers.length === expense.settledOwers.length) ? "settled" : "unsettled"}>
             <div onClick={() => displayDetails(expense)} className="expense_summary_details_container">
                 <div className="expense_summary_expense_date">{abbrevMonths[date.getMonth()]} {date.getUTCDate()}</div>
-                <div className="expense_summary_expense_icon">icon</div>
+                <i className="fa-solid fa-receipt"></i>
                 <div className="expense_summary_expense_description">{expense.description}</div>
                 <div className="expense_summary_expense_payerInfo">{expense.payer.firstName} {expense.payer.lastName[0]}. paid <span className="expense_summary_amount">${expense.amount.toFixed(2)}</span></div>
                 {owerDescription}

@@ -1,11 +1,47 @@
-/* TODO: Add styling for FriendsDetails */
 .friend_details_div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 100vh; */
+    margin-top: auto;
+  }
+
+
+  .friend_details_info_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-bottom: 20px;
+    margin-left: 341px;
+    background-color: rgb(206, 206, 206);
+    margin-right: 330px;
+    height: 52px;
+    font-size: 1.3rem;
 }
 
-.friend_details_info_div,
 .friend_details_user_info_div {
     display: flex;
-    flex-direction: row;
-}
+    align-items: center;
+    margin-left: 10px;
+
+  }
+
+  .expense_details_user_icon {
+    margin-right: 10px;
+  }
+
+/*
+  .total_balance_div {
+    position: fixed;
+    top: 90px;
+    right: 40px;
+    z-index: 9999;
+    text-align: right;
+  }
+
+  .total_balance_div h2 {
+    display: block;
+    margin-bottom: 225px;
+  } */
