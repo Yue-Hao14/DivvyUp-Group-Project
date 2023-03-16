@@ -36,9 +36,10 @@ function PaymentDetails({ expense }) {
         <div className="payment_details_div">
             <div className="payment_details_heading">
                 <div className="payment_details_date">{date}</div>
-                <div className="payment_details_list">
-                    {paymentDetails}
-                </div>
+                <div className="payment_details_description">{expense.description}</div>
+            </div>
+            <div className="payment_details_list">
+                {paymentDetails}
             </div>
         </div>
     )
