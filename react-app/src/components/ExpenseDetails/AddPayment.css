@@ -49,7 +49,8 @@
     border: 2px solid #5BC5A7;
     border-radius: 4px;
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    font-weight: bold;
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease;
