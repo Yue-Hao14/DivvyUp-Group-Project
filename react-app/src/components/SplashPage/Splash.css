@@ -78,14 +78,20 @@
   gap: 2rem;
   margin: 2rem;
 }
-
-.you-owe-details-container,
-.you-are-owed-details-container {
+.you-owe-details-container {
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  flex-basis: calc(50% - 1rem);
+  /* Remove flex-direction: column */
+}
+.are-owed-you-details-container {
   background-color: #f5f5f5;
   border-radius: 0.5rem;
   padding: 1rem;
   flex-basis: calc(50% - 1rem);
 }
+
 
 .you-owe-list,
 .are-owed-you-list {

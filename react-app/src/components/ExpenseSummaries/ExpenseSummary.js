@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { abbrevMonths } from "../../utils/utils";
 import ExpenseDetails from "../ExpenseDetails";
 
@@ -19,6 +19,8 @@ function ExpenseSummary({ expense }) {
         setShowDetailsId(null);
         }
     };
+
+    if (!sessionUser) return Redirect('/');
 
     const splitAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2);
     const payerAmount = (expense.amount - (splitAmount * expense.owers.length)).toFixed(2);
@@ -40,16 +42,16 @@ function ExpenseSummary({ expense }) {
     }
 
     return (
-        <>
+        <div className={(expense.owers.length === expense.settledOwers.length) ? "settled" : "unsettled"}>
             <div onClick={() => displayDetails(expense)} className="expense_summary_details_container">
                 <div className="expense_summary_expense_date">{abbrevMonths[date.getMonth()]} {date.getUTCDate()}</div>
-                <div className="expense_summary_expense_icon">icon</div>
+                <i className="fa-solid fa-receipt"></i>
                 <div className="expense_summary_expense_description">{expense.description}</div>
                 <div className="expense_summary_expense_payerInfo">{expense.payer.firstName} {expense.payer.lastName[0]}. paid <span className="expense_summary_amount">${expense.amount.toFixed(2)}</span></div>
                 {owerDescription}
             </div>
             {showDetailsId === expense.id && <ExpenseDetails expense={expense} />}
-        </>
+        </div>
     )
 }
 

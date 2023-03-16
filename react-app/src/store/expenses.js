@@ -5,6 +5,7 @@ const GET_SINGLE_EXPENSE_DETAILS = 'expenses/GET_SINGLE_EXPENSE_DETAILS'
 const GET_SETTLED_EXPENSES = 'expenses/GET_SETTLED_EXPENSES'
 const GET_FRIEND_EXPENSES = 'expenses/GET_FRIEND_EXPENSES'
 const ADD_EXPENSE = 'expenses/ADD_EXPENSE'
+const ADD_PAYMENT = 'expenses/ADD_PAYMENT'
 const UPDATE_EXPENSE = 'expenses/UPDATE_EXPENSE'
 const DELETE_EXPENSE = 'expenses/DELETE_EXPENSE'
 
@@ -33,6 +34,11 @@ export const getSingleExpenseDetails = expenseDetails => ({
 export const postExpense = expense => ({
     type: ADD_EXPENSE,
     payload: expense
+})
+
+export const postPayment = payment => ({
+    type: ADD_PAYMENT,
+    payload: payment
 })
 
 export const updateExpense = expense => ({
@@ -125,7 +131,28 @@ export const postExpenseThunk = expense => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(postExpense(data));
-        return data;
+        dispatch(getFriendExpensesThunk(expense.owerId));
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An Error occured. Please try again later."]
+    }
+}
+
+export const postPaymentThunk = payment => async (dispatch) => {
+    const res = await fetch('/api/payments/', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payment)
+    })
+
+    if (res.ok) {
+        dispatch(getSettledExpensesThunk())
+        return
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
@@ -205,11 +232,11 @@ export default function reducer(state = initialState, action) {
             return newState;
         }
         case GET_SETTLED_EXPENSES: {
-            const settledExpenses = {}
+            const settledPayments = {}
             for (const expense of action.payload) {
-                settledExpenses[expense.expenseId] = expense
+                settledPayments[expense.id] = expense
             }
-            return {...state, settledExpenses};
+            return {...state, settledExpenses: settledPayments};
         }
         case ADD_EXPENSE: {
             const newState = {...state};

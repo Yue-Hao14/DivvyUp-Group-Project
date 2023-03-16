@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Expense, User
 from app.forms.expense_form import ExpenseForm
 from .auth_routes import validation_errors_to_error_messages
-from datetime import date
+from datetime import datetime, date
 
 expense_routes = Blueprint('expenses', __name__)
 
@@ -28,10 +28,10 @@ def get_all_current_user_payments():
     """
     Return all of the current user's settled expenses (paid and being paid)
     """
-    user_paid_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in current_user.settled_expenses]
-    user_was_paid_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses if len(expense.settled_owers) > 0]
-    # return [{"settledExpenses": [settled_expense.to_dict_wo_user() for settled_expense in current_user.settled_expenses]}]
-    return [*user_paid_expenses, *user_was_paid_expenses]
+    user_debtor_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in current_user.settled_expenses]
+    user_collector_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses if len(expense.settled_owers) == len(expense.owers)]
+    return [*user_debtor_expenses, *user_collector_expenses]
+
 
 @expense_routes.route('/<int:id>')
 @login_required
@@ -111,13 +111,8 @@ def update_an_expense(id):
             expense.description = form.data["description"]
             expense.amount = form.data['amount']
             expense.expense_date= form.data['expenseDate']
+            expense.updated_at = datetime.today()
 
-
-            # cast current list of owers to a set
-            # cast new owers list to a set
-            # compare the two
-            # remove anyone who is in the current list but not the new list
-            # add anyone who is in the new list but not the current list
             new_owers = set([User.query.get(id) for id in ower_ids])
             current_owers = set(expense.owers)
 

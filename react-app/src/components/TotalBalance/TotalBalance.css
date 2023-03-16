@@ -1,0 +1,12 @@
+.total_balance_div {
+    position: fixed;
+    top: 90px;
+    right: 40px;
+    /* z-index: 9999; */
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    /* margin-bottom: 5000px; */
+    font-size: 25px;
+    font-weight: bold;
+  }
