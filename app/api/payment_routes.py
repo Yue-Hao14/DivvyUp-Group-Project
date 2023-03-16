@@ -39,7 +39,7 @@ def create_a_new_payment():
             return {'errors': ['Unauthorized to settle this expense']}, 401
         # cannot settle any more if ower already in settled table
         elif ower in settled_users_list:
-            return {'errors': 'No more settlement needed'}, 401
+            return {'errors': ['No more settlement needed']}, 401
         else:
             new_payment = SettledUserExpense(
               user_id = owerId,

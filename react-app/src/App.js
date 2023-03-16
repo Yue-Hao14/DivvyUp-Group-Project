@@ -10,7 +10,7 @@ import FriendDetails from "./components/FriendsDetails";
 // import TopBar from "./components/TopBar";
 import SplashPage from "./components/SplashPage"
 import AllExpenses from "./components/AllExpenses";
-import SettledExpenses from "./components/SettledExpenses";
+import PaymentHistory from "./components/PaymentHistory"
 
 
 
@@ -44,8 +44,8 @@ function App() {
             <Route path="/all-expenses">
               <AllExpenses />
             </Route>
-            <Route path="/all-settled-expenses">
-              <SettledExpenses />
+            <Route path="/payment-history">
+              <PaymentHistory />
             </Route>
           </Switch>
         </>
