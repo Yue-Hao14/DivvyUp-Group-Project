@@ -16,7 +16,7 @@ function ExpenseSummary({ expense }) {
         if (showDetailsId !== expense.id) {
             setShowDetailsId(expense.id)
         } else {
-        setShowDetailsId(null);
+            setShowDetailsId(null);
         }
     };
 
@@ -29,15 +29,12 @@ function ExpenseSummary({ expense }) {
     let owerDescription;
     if (sessionUser.id !== expense.payer.id) {
     // if current user not payer, then they are the ower
-        console.log("The user is the ower!")
         owerDescription = <div className="expense_summary_expense_payerInfo">{sessionUser.firstName} {sessionUser.lastName[0]}. owes <span className="expense_summary_amount">${splitAmount}</span></div>
     } else if (!friend) {
         // if the current user is the payer and there is no friend, show how much the current user is owed for that expense
-        console.log("Show the total amount the user is owed")
         owerDescription = <div className="expense_summary_expense_payerInfo">{sessionUser.firstName} {sessionUser.lastName[0]}. is owed <span className="expense_summary_amount">${(expense.amount - payerAmount).toFixed(2)}</span></div>
     } else {
         // else show how much the friend owes the current user
-        console.log("The friend is the ower!")
         owerDescription = <div className="expense_summary_expense_payerInfo">{friend.firstName} {friend.lastName[0]}. owes <span className="expense_summary_amount">${splitAmount}</span></div>
     }
 

@@ -8,14 +8,13 @@ function ExpenseSummarySection ({ expenses }) {
   return (
     <div className='expense_summary_container'>
       <div className='expense_summary_month_year'>
-        {months[groupMonthandYear.getMonth()]} {groupMonthandYear.getFullYear()}
+        {months[groupMonthandYear.getUTCMonth()]} {groupMonthandYear.getUTCFullYear()}
       </div>
       {expenses.map((expense) => {
         return (
           <ExpenseSummary
             key={expense.id}
             expense={expense}
-            // className={index === expenses.length - 1 ? 'last-expense' : ''}
           />
         )
       })}
