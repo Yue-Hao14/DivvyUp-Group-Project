@@ -66,8 +66,14 @@ class User(db.Model, UserMixin):
         }
 
     def to_dict_login(self):
+        # all user expenses
         ower_expenses = [expense.to_dict_summary() for expense in self.owed_expenses]
         payer_expenses = [expense.to_dict_summary() for expense in self.payer_expenses]
+
+        # all user settled expenses both where user is debtor and collector
+        user_debtor_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in self.settled_expenses]
+        user_collector_expenses = [expense.to_dict_summary() for expense in self.payer_expenses if len(expense.settled_owers) == len(expense.owers)]
+
         return {
             "User": {
                 "id": self.id,
@@ -78,5 +84,5 @@ class User(db.Model, UserMixin):
             },
             "Friends": [friend.to_dict_id_name() for friend in self.friends],
             "AllExpenses": [*payer_expenses, *ower_expenses],
-            "SettledExpenses": [expense.to_dict_wo_user() for expense in self.settled_expenses],
+            "SettledExpenses": [*user_collector_expenses, *user_debtor_expenses],
         }
