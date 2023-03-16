@@ -10,7 +10,6 @@ function TotalBalance() {
     const userExpenses = useSelector(state => state.expenses.currentExpenseSummaries)
     const dispatch = useDispatch();
     const { friendId } = useParams();
-    console.log("typeeeeeeeeeee", typeof friendId);
 
     useEffect(() => {
         if (sessionUser) {
@@ -18,7 +17,6 @@ function TotalBalance() {
         }
     }, [dispatch, sessionUser]);
 
-    // console.log(sessionUser);
     if (!sessionUser) return <Redirect to='/' />
 
     const expensesArr = Object.values(userExpenses);
@@ -39,36 +37,27 @@ function TotalBalance() {
             //in case your navigate to friend page, we just calculate the balance between sessionUser and the friend
             if (friendId) {
                 const friendInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === Number(friendId))
-                console.log("========================TTTTTTTTTTTTTTTTTTTT==================", friendInSettledOwers);
-                if (friendInSettledOwers.length === 1) {
+                if (friendInSettledOwers) {
                     userOwed = 0;
                 } else {
                     userOwed = Number.parseFloat(splitAmount.toFixed(2))
                 }
-            }
-
-            if (numUnsettledOwers > 0) {
+            } else if (numUnsettledOwers > 0) {
+                // find number of users who still owe, multiply the split amount by number of users who still owe
+                // and add to userOwed
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
-
             }
-            // find number of users who still owe, multiply the split amount by number of users who still owe
-            // and add to userOwed
+
         } else {
-            // If user is not payer, then they must be an ower
-            // If user is an ower, and has not settled their debt, add splitAmount to userDebt
+        // If user is not payer, then they must be an ower
+        // If user is an ower, and has not settled their debt, add splitAmount to userDebt
             const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
             if (!userInSettledOwers) {
                 userDebt += Number.parseFloat(splitAmount.toFixed(2))
-
-                if (friendId) {
-                    userDebt = Number.parseFloat(splitAmount.toFixed(2))
-
-                }
             }
         }
     }
-    console.log("UserOwed", userOwed);
-    console.log("userDebt", userDebt);
+
     totalBalance = userOwed - userDebt
 
 
@@ -79,5 +68,4 @@ function TotalBalance() {
         </div>
     )
 }
-
 export default TotalBalance

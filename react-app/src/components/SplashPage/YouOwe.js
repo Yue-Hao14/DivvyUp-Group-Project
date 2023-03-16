@@ -14,11 +14,8 @@ function YouOwe({ friend }) {
         }
     }, [sessionUser]);
 
-<<<<<<< HEAD
-=======
-    let balance = 0;
 
->>>>>>> cb5b06e3c540fb1a07672c1dc51510bd4752bbf4
+
     let outstandingWithFriend = 0;
 
 
