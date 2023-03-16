@@ -4,6 +4,7 @@
     margin: 0 0 1rem 340px;
     border: 1px solid #ddd;
     border-radius: 0.5rem;
+    margin-right: 330px;
 
   }
 
@@ -18,7 +19,7 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    border-top: 1px solid #ddd;
+    /* border-top: 1px solid #ddd; */
     cursor: pointer;
     transition: background-color 0.2s ease;
   }
@@ -32,12 +33,14 @@
     font-size: 0.9rem;
   }
 
-  .expense_summary_expense_icon {
+  .fa-receipt {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     margin: 0 1rem;
+    color: rgb(181, 179, 179);
+
   }
 
   .expense_summary_expense_description {
@@ -46,10 +49,18 @@
   }
 
   .expense_summary_expense_payerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     flex: 1;
     font-size: 0.9rem;
     text-align: right;
-  }
+}
+
+/* .expense_summary_paid {
+    margin-bottom: 0.25rem;
+} */
+
 
   .expense_summary_amount {
     font-weight: bold;
