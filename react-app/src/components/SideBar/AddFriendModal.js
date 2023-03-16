@@ -50,7 +50,7 @@ function AddFriendModal () {
         >
           Cancel
         </button>
-        <button className='add_friend_modal_submit_button'>Add Friend</button>
+        <button type='submit' className='add_friend_modal_submit_button'>Add Friend</button>
       </div>
     </form>
   )
