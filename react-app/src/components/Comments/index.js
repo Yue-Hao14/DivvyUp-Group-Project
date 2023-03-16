@@ -36,11 +36,11 @@ function Comments({ expenseId }) {
                         {(sessionUser.id === comment.user.id) && (
                             <>
                                 <OpenModalButton
-                                    buttonText="Edit Comment" // change to icon later
+                                    buttonText={<i className="edit_comment_button fa-solid fa-pen-to-square" />}
                                     modalComponent={<UpdateCommentModal />}
                                 />
                                 <OpenModalButton
-                                    buttonText="Delete Comment" // change to icons later
+                                    buttonText={<i className='remove_comment_button fa-solid fa-trash' />}
                                     modalComponent={<DeleteCommentModal />}
                                 />
                             </>
@@ -49,7 +49,7 @@ function Comments({ expenseId }) {
                 )
             })}
             <OpenModalButton
-                buttonText="Add a Comment"
+                buttonText="Leave a Comment"
                 modalComponent={<PostCommentModal />}
             />
         </>
