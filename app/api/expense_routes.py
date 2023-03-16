@@ -22,31 +22,6 @@ def get_all_current_user_expenses():
     return [*payer_expenses, *ower_expenses]
 
 
-@expense_routes.route("/settled")
-@login_required
-def get_all_current_user_payments():
-    """
-    Return all of the current user's settled expenses (paid and being paid)
-    """
-    user_debtor_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in current_user.settled_expenses]
-    user_collector_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses if len(expense.settled_owers) == len(expense.owers)]
-    return [*user_debtor_expenses, *user_collector_expenses]
-
-
-@expense_routes.route('/<int:id>')
-@login_required
-def get_single_expense_details(id):
-  """
-  return the details of a single expense
-  """
-  expense = Expense.query.get(id)
-
-  if not expense:
-    return {"errors": ["Expense not found"]}
-
-  return expense.to_dict()
-
-
 @expense_routes.route('/', methods=['POST'])
 @login_required
 def create_a_new_expense():
@@ -86,6 +61,33 @@ def create_a_new_expense():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@expense_routes.route("/settled")
+@login_required
+def get_all_current_user_payments():
+    """
+    Return all of the current user's settled expenses (paid and being paid)
+    """
+    user_debtor_expenses = [settled_expense.expense.to_dict_summary() for settled_expense in current_user.settled_expenses]
+    user_collector_expenses = [expense.to_dict_summary() for expense in current_user.payer_expenses if len(expense.settled_owers) == len(expense.owers)]
+    return [*user_debtor_expenses, *user_collector_expenses]
+
+
+
+@expense_routes.route('/<int:id>')
+@login_required
+def get_single_expense_details(id):
+  """
+  return the details of a single expense
+  """
+  expense = Expense.query.get(id)
+
+  if not expense:
+    return {"errors": ["Expense not found"]}
+
+  return expense.to_dict()
+
+
+
 @expense_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_an_expense(id):
@@ -99,14 +101,14 @@ def update_an_expense(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     expense = Expense.query.get(id)
     if not expense:
-        return {'errors': 'Expense does not exist'}, 404
+        return {'errors': ['Expense does not exist']}, 404
     elif form.validate_on_submit():
         ower_ids = data['owerIds']
 
         if current_user.id != expense.payer_id:
-            return {'errors': 'Unauthorized to update this expense'}, 401
+            return {'errors': ['Unauthorized to update this expense']}, 401
         elif len(expense.settled_owers) > 0:
-            return {'errors': 'Cannot update an expense when one or more user has settled their expenses'}
+            return {'errors': ['Cannot update an expense when one or more user has settled their expenses']}
         else:
             expense.description = form.data["description"]
             expense.amount = form.data['amount']
@@ -139,12 +141,25 @@ def delete_an_expense(id):
     expense = Expense.query.get(id)
 
     if not expense:
-        return {'errors': 'Expense does not exist'}, 404
+        return {'errors': ['Expense does not exist']}, 404
     elif current_user.id != expense.payer_id:
-            return {'errors': 'Unauthorized to delete this expense'}, 401
+            return {'errors': ['Unauthorized to delete this expense']}, 401
     elif len(expense.settled_owers) > 0:
-        return {'errors': 'Cannot delete an expense when one or more user has settled their expenses'}
+        return {'errors': ['Cannot delete an expense when one or more user has settled their expenses']}
     else:
         db.session.delete(expense)
         db.session.commit()
-        return { "message": "Successfully Removed" }
+        return { "message": "Successfully Removed" }, 200
+
+
+@expense_routes.route('/<int:id>/comments')
+@login_required
+def get_expense_comments(id):
+    """
+    Returns a list of comments for an expense by expense id
+    """
+    expense = Expense.query.get(id)
+    if not expense:
+        return {'errors': ['Expense does not exist']}, 404
+
+    return { f"{id}": [comment.to_dict() for comment in expense.comments] }

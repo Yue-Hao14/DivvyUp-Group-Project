@@ -1,3 +1,5 @@
+import { RESET } from "./session"
+
 // contants
 const GET_EXPENSE_COMMENTS = 'comments/GET_EXPENSE_COMMENTS'
 
@@ -34,6 +36,9 @@ export default function reducer(state = initialState, action) {
             const newState = { ...state };
             newState[action.payload.id] = action.payload;
             return newState;
+        }
+        case RESET: {
+            return initialState;
         }
         default: {
             return state
