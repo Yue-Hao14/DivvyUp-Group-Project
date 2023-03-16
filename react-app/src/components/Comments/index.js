@@ -28,12 +28,6 @@ function Comments({ expenseId }) {
 
                 return (
                     <div key={comment.id} className="comment_div">
-                        <div className="comment">{comment.comment}</div>
-                        <div className="comment_details_div">
-                            <div className="comment_author">{comment.user.firstName} {comment.user.lastName[0]}.</div>
-                            <div className="comment_timestamp">Posted On: {fomattedCreatedAt}</div>
-                            <div className="comment_timestamp">Last Edited: {fomattedUpdatedAt}</div>
-                        </div>
                         {(sessionUser.id === comment.user.id) && (
                             <div className="comment_edit_delete_buttons_div">
                                 <OpenModalButton
@@ -46,6 +40,14 @@ function Comments({ expenseId }) {
                                 />
                             </div>
                         )}
+                        <div className="comment">{comment.comment}</div>
+                        <div className="comment_details_div">
+                            <div className="comment_author">{comment.user.firstName} {comment.user.lastName[0]}.</div>
+                            <div className="comment_timestamp_div">
+                                <div className="comment_timestamp">Posted On: {fomattedCreatedAt}</div>
+                                <div className="comment_timestamp">Last Edited: {fomattedUpdatedAt}</div>
+                            </div>
+                        </div>
                     </div>
                 )
             })}
