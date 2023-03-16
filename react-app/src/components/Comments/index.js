@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getExpenseCommentsThunk } from "../../store/comments";
 import { getMMDDYYYY } from "../../utils/utils";
 import OpenModalButton from "../OpenModalButton";
-import "./Comments.css"
 import PostCommentModal from "./CommentModalComponents/PostCommentModal";
 import UpdateCommentModal from "./CommentModalComponents/UpdateCommentModal";
 import DeleteCommentModal from "./CommentModalComponents/DeleteCommentModal";
+import "./Comments.css"
 
 
 function Comments({ expenseId }) {
@@ -34,7 +34,7 @@ function Comments({ expenseId }) {
                             <div className="comment_timestamp">Updated At: {fomattedUpdatedAt}</div>
                         )}
                         {(sessionUser.id === comment.user.id) && (
-                            <>
+                            <div className="comment_edit_delete_buttons_div">
                                 <OpenModalButton
                                     buttonText={<i className="edit_comment_button fa-solid fa-pen-to-square" />}
                                     modalComponent={<UpdateCommentModal />}
@@ -43,7 +43,7 @@ function Comments({ expenseId }) {
                                     buttonText={<i className='remove_comment_button fa-solid fa-trash' />}
                                     modalComponent={<DeleteCommentModal />}
                                 />
-                            </>
+                            </div>
                         )}
                     </div>
                 )
