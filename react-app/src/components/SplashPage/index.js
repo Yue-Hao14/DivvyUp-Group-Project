@@ -36,7 +36,7 @@ function SplashPage() {
 
     // iterate through each exepense and determine how much user owes and is owed
     for (const expense of expensesArr) {
-        console.log(("=========================", expense.id));
+        // console.log(("=========================", expense.id));
         const numOwers = expense.owers.length;
         const splitAmount = (expense.amount / (numOwers + 1))
 
@@ -44,7 +44,7 @@ function SplashPage() {
         if (expense.payer.id === sessionUser.id) {
             // if length of settled owers is less than numOwers
             const numUnsettledOwers = numOwers - expense.settledOwers.length
-            console.log(("<<<I am payer>>>"));
+            // console.log(("<<<I am payer>>>"));
             if (numUnsettledOwers > 0) {
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
                 console.log("===people owe you", userOwed);
@@ -52,11 +52,11 @@ function SplashPage() {
             // find number of users who still owe, multiply the split amount by number of users who still owe
             // and add to userOwed
         } else {
-            console.log(("<<<I am not payer>>>"));
+            // console.log(("<<<I am not payer>>>"));
             // If user is not payer, then they must be an ower
             // If user is an ower, and has not settled their debt, add splitAmount to userDebt
             const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
-            console.log("yes2=================");
+            // console.log("yes2=================");
             if (!userInSettledOwers) {
                 userDebt += Number.parseFloat(splitAmount.toFixed(2))
             }
