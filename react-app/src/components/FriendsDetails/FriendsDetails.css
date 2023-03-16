@@ -4,7 +4,8 @@
     justify-content: center;
     /* align-items: center; */
     /* height: 100vh; */
-    margin-top: auto;
+    margin-top: 80px;
+    /* position: absolute; */
   }
 
 
@@ -15,7 +16,7 @@
     align-items: left;
     margin-bottom: 20px;
     margin-left: 341px;
-    background-color: rgb(206, 206, 206);
+    background-color: rgb(232, 232, 232);
     margin-right: 330px;
     height: 52px;
     font-size: 1.3rem;

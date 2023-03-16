@@ -3,6 +3,8 @@ import OpenModalButton from '../OpenModalButton'
 import EditExpenseModal from "./EditExpenseModal"
 import DeleteExpenseModal from "./DeleteExpenseModal"
 
+import "./EditAndDelete.css"
+
 
 
 function EditAndDeleteButtons({ expense }) {
@@ -25,10 +27,12 @@ function EditAndDeleteButtons({ expense }) {
             <OpenModalButton
                 modalComponent={<EditExpenseModal expense={expense}/>}
                 buttonText="edit"
+                className="edit_expense_button"
             />
             <OpenModalButton
                 modalComponent={<DeleteExpenseModal />}
                 buttonText={<i className='remove_expense_button fa-solid fa-trash' />}
+                className="delete_expense_button"
             />
         </div>
     )
