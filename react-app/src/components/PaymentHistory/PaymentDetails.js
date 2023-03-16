@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { getMMDDYYYY, getMMMYYYYY } from '../../utils/utils'
+import { getMMDDYYYY, getMMDD } from '../../utils/utils'
 
 function PaymentDetails ({ expense }) {
   const sessionUser = useSelector(state => state.session.user)
@@ -10,9 +10,11 @@ function PaymentDetails ({ expense }) {
 
   const splitAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2)
   const expenseDate = new Date(expense.expenseDate)
+  const formattedExpenseDate = getMMDD(expenseDate)
 
-  let date = expenseDate.getUTCDate()
-  date = date < 10 ? '0' + date.toString() : date.toString()
+
+//   let date = expenseDate.getUTCDate()
+//   date = date < 10 ? '0' + date.toString() : date.toString()
 
   let paymentDetails
   if (sessionUser.id !== expense.payer.id) {
@@ -58,7 +60,8 @@ function PaymentDetails ({ expense }) {
   return (
     <div className='payment_details_div'>
       <div className='payment_details_heading'>
-        <div className='payment_details_date'>{date}</div>
+        <div className='payment_details_date'>{formattedExpenseDate}</div>
+        <i class="fa-solid fa-receipt"></i>
         <div className='payment_details_description'>{expense.description}</div>
       </div>
       <div className='payment_details_list'>{paymentDetails}</div>
