@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom"
 import { getSettledExpensesThunk } from "../../store/expenses";
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
 import SettledExpenses from "./SettledExpenses";
+import "./PaymentHistory.css"
 
 function PaymentHistory() {
     const dispatch = useDispatch();
