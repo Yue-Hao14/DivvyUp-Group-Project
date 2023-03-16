@@ -86,7 +86,11 @@ function EditExpenseModal({expense}) {
     // if no error, we PUT the updatedExpense to db via thunk
     if (Object.values(errors).length === 0) {
       const data = await dispatch(updateExpenseThunk(updatedExpense))
-      closeModal()
+      if (data) {
+        setErrors(data)
+      } else {
+        closeModal()
+      }
     }
   }
 

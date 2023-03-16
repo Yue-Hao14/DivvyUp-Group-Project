@@ -1,12 +1,8 @@
 import { useSelector } from 'react-redux'
-import { getMMDDYYYY, getMMMYYYYY } from '../../utils/utils'
+import { getMMDDYYYY } from '../../utils/utils'
 
 function PaymentDetails ({ expense }) {
   const sessionUser = useSelector(state => state.session.user)
-  console.log(
-    'expnese in payment details ===================================',
-    expense
-  )
 
   const splitAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2)
   const expenseDate = new Date(expense.expenseDate)
@@ -22,6 +18,7 @@ function PaymentDetails ({ expense }) {
       user => user.settledUserId === sessionUser.id
     ).settledDate
     const formattedSettledDate = getMMDDYYYY(new Date(userSettledDate))
+
     paymentDetails = (
       <div className='payment_details'>
         You paid{' '}

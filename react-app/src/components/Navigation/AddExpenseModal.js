@@ -20,11 +20,9 @@ function AddExpenseModal() {
   const friends = useSelector(state => state.friends)
   const sessionUser = useSelector(state => state.session.user)
 
-  // const today = new Date()
-
   // create an array of friendsId to for SELECT element
   const friends_array = Object.values(friends)
-  // console.log(friends_array)
+
   let friends_options = []
   friends_array.forEach(friend => {
     const value = friend.id
