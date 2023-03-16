@@ -41,16 +41,16 @@ function TotalBalance() {
             if (friendId) {
                 const friendInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === Number(friendId))
                 if (friendInSettledOwers) {
-                    userOwed = 0;
+                    userOwed += 0;
                 } else {
-                    userOwed = Number.parseFloat(splitAmount.toFixed(2))
+                    userOwed += Number.parseFloat(splitAmount.toFixed(2))
                 }
             } else if (numUnsettledOwers > 0) {
                 // find number of users who still owe, multiply the split amount by number of users who still owe
                 // and add to userOwed
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
             }
-
+            console.log("expense.id, userOwed",expense.id, userOwed)
         } else {
             // If user is not payer, then they must be an ower
             // If user is an ower, and has not settled their debt, add splitAmount to userDebt
@@ -61,6 +61,8 @@ function TotalBalance() {
         }
     }
 
+    console.log("userOwed", userOwed)
+    console.log("userDebt", userDebt)
     totalBalance = userOwed - userDebt
     console.log("===================totoalbalance", totalBalance);
 
