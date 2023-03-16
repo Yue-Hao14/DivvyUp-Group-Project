@@ -10,6 +10,9 @@ function TotalBalance() {
     const userExpenses = useSelector(state => state.expenses.currentExpenseSummaries)
     const dispatch = useDispatch();
     const { friendId } = useParams();
+    let friends = useSelector(state => state.friends)
+    let friendsArr = Object.values(friends)
+    let friend = friendsArr.find(person => person.id === Number(friendId))
 
     useEffect(() => {
         if (sessionUser) {
@@ -59,12 +62,23 @@ function TotalBalance() {
     }
 
     totalBalance = userOwed - userDebt
+    console.log("===================totoalbalance", totalBalance);
 
 
     return (
         <div className="total_balance_div">
             <div>Your Total Balance:</div>
-            <div className={totalBalance >= 0 ? "positive_balance" : "negative_balance"}>${totalBalance.toFixed(2)}</div>
+            <div className={totalBalance >= 0 ? "positive_balance" : "negative_balance"}>
+                {totalBalance > 0 && friendId ? (
+                    <p>{friend.firstName} owes you ${totalBalance.toFixed(2)}</p>
+                ) : totalBalance < 0 && friendId ? (
+                    <p>You owe {friend.firstName} ${Math.abs(totalBalance).toFixed(2)}</p>
+                ) : totalBalance === 0 && friendId ? (
+                    <p>You are all settled up</p>
+                ) : (
+                    <p>${totalBalance.toFixed(2)}</p>
+                )}
+            </div>
         </div>
     )
 }
