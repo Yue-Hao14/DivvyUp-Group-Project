@@ -1,0 +1,76 @@
+.add_payment_modal_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    /* min-height: 400px; */
+    margin: 0 auto;
+  }
+
+
+  .add_payment_modal_label_container {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add_payment_modal_title{
+    margin-left: 6px;
+  }
+
+  .add_payment_modal_ower_payer,
+  .add_payment_modal_ower_amount {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .add_payment_modal_settled_date {
+    margin-bottom: 20px;
+  }
+
+  .add_payment_modal_buttons_container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.add_payment_modal_buttons_cancel_button,
+.add_payment_modal_buttons_submit_button {
+      margin-left: 10px;
+    background-color: #5BC5A7;
+    color: white;
+    border: 2px solid #5BC5A7;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+
+  }
+
+  .add_payment_modal_buttons_cancel_button {
+    background-color: #fff;
+    color: #5BC5A7;
+  }
+
+  .add_payment_modal_buttons_cancel_button:hover,
+  .add_payment_modal_buttons_submit_button:hover {
+    background-color: #48a289;
+    border: 2px solid #48a289;
+    color: white;
+  }
+
+  .add_payment_modal_buttons_cancel_button:active,
+  .add_payment_modal_buttons_submit_button:active {
+    background-color: #3c7f56;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(4px);
+  }

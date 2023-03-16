@@ -98,6 +98,8 @@
     border: none;
     cursor: pointer;
     font-weight: bold;
+    transition: all 0.3s ease;
+
   }
   .add_friend_modal_cancel_button {
     background-color: #fff;
