@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getMMDDYYYY } from '../../utils/utils'
 import EditAndDeleteButtons from './EditAndDeleteButtons'
 import ExpenseUserInfo from './ExpenseUserInfo'
+import Comments from '../Comments'
 import './ExpenseDetails.css'
 
 function ExpenseDetails ({ expense }) {
@@ -28,7 +29,7 @@ function ExpenseDetails ({ expense }) {
       <div className='expense_details_div_lower'>
         <ExpenseUserInfo expense={expense} />
         <div className='expense_details_comments_div'>
-          {/* This is where a comments component will go */}
+          <Comments expenseId={expense.id}/>
         </div>
       </div>
     </div>

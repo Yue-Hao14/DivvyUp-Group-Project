@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import friends from './friends';
 import expenses from './expenses'
+import comments from './comments'
 
 const rootReducer = combineReducers({
   session,
   friends,
-  expenses
+  expenses,
+  comments
 });
 
 

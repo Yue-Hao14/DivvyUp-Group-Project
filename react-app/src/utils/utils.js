@@ -3,5 +3,10 @@ export const months = ["January", "February", "March", "April", "May", "June", "
 
 export const getMMDDYYYY = date => {
     const month = months[date.getMonth()]
-    return `${month} ${date.getUTCDate()}, ${date.getFullYear()}`
+    return `${month} ${date.getUTCDate()}, ${date.getUTCFullYear()}`
+}
+
+export const getMMMYYYYY = date => {
+    const month = abbrevMonths[date.getUTCMonth()]
+    return `${month} ${date.getUTCFullYear()}`
 }
