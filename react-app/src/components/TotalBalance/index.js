@@ -51,20 +51,6 @@ function TotalBalance() {
     totalBalance = userOwed - userDebt
 
 
-    // let totalBalance  = 0;
-
-    // const expensesArr = Object.values(userExpenses);
-    // // console.log(expensesArr);
-
-    // for (let i = 0; i < expensesArr.length; i++) {
-    //     const expense = expensesArr[i];
-    //     // console.log(expense);
-    //       const userOwer = expense.owers.find(ower => ower.id === sessionUser.id);
-    //       if (userOwer) {
-    //         totalBalance += expense.amount / (expense.owers.length + 1);
-    //       }
-    //     }
-
     return (
         <div className="total_balance_div">
             <div>Your Total Balance:</div>
