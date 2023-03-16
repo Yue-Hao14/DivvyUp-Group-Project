@@ -32,7 +32,7 @@ function PostCommentModal({ expenseId, commentId }) {
 
     return (
         <form onSubmit={handleSubmit} className="post_comment_form">
-            <div className="post_comment_form_title">Leave a Comment</div>
+            <div className="post_comment_form_title">{!!commentToUpdate ? "Update Comment" : "Leave a Comment"}</div>
             <ul className="post_comment_modal_error_list">
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
@@ -43,7 +43,7 @@ function PostCommentModal({ expenseId, commentId }) {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
             />
-            <button type="submit">Post</button>
+            <button type="submit">{!!commentToUpdate ? "Update" : "Post"}</button>
         </form>
     )
 }
