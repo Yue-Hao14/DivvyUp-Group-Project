@@ -98,7 +98,9 @@ export default function reducer(state = initialState, action) {
         }
         case UPDATE_COMMENT: {
             const newState = { ...state };
-            newState[action.payload.id] = [ ...state[action.payload.id], action.payload.comment ]
+            newState[action.payload.id] = [ ...state[action.payload.id] ]
+            const commentIndex = newState[action.payload.id].findIndex(comment => comment.id === action.payload.comment.id);
+            newState[action.payload.id].splice(commentIndex, 1, action.payload.comment)
             return newState
         }
         case RESET: {

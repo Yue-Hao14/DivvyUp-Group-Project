@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getExpenseCommentsThunk } from "../../store/comments";
 import { getMMDDYYYY } from "../../utils/utils";
 import OpenModalButton from "../OpenModalButton";
-import PostCommentModal from "./CommentModalComponents/PostCommentModal";
-import UpdateCommentModal from "./CommentModalComponents/UpdateCommentModal";
-import DeleteCommentModal from "./CommentModalComponents/DeleteCommentModal";
+import CommentFormModal from "./CommentModalComponents/CommentFormModal";
+import DeleteCommentConfirmationModal from "./CommentModalComponents/DeleteCommentConfirmationModal";
 import "./Comments.css"
 
 
@@ -38,11 +37,11 @@ function Comments({ expenseId }) {
                             <div className="comment_edit_delete_buttons_div">
                                 <OpenModalButton
                                     buttonText={<i className="edit_comment_button fa-solid fa-pen-to-square" />}
-                                    modalComponent={<PostCommentModal expenseId={expenseId} commentId={comment.id}/>}
+                                    modalComponent={<CommentFormModal expenseId={expenseId} commentId={comment.id}/>}
                                 />
                                 <OpenModalButton
                                     buttonText={<i className='remove_comment_button fa-solid fa-trash' />}
-                                    modalComponent={<DeleteCommentModal commentId={comment.id} />}
+                                    modalComponent={<DeleteCommentConfirmationModal commentId={comment.id} />}
                                 />
                             </div>
                         )}
@@ -51,7 +50,7 @@ function Comments({ expenseId }) {
             })}
             <OpenModalButton
                 buttonText="Post"
-                modalComponent={<PostCommentModal expenseId={expenseId}/>}
+                modalComponent={<CommentFormModal expenseId={expenseId}/>}
             />
         </>
     )

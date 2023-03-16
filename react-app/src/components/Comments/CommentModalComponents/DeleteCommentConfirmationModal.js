@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-function DeleteCommentModal({ commentId }) {
+function DeleteCommentConfirmationModal({ commentId }) {
     const dispatch = useDispatch();
 
     return (
@@ -8,4 +8,4 @@ function DeleteCommentModal({ commentId }) {
     )
 }
 
-export default DeleteCommentModal;
+export default DeleteCommentConfirmationModal;
