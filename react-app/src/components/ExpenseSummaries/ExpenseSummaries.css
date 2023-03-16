@@ -1,10 +1,16 @@
+.expense_summaries_div{
+  margin-top: 80px;
+}
+
 .expense_summary_container {
     display: flex;
     flex-direction: column;
-    margin: 0 0 1rem 340px;
+    /* margin: 0 0 1rem 340px; */
     /* border: 1px solid #5BC5A7; */
     border-radius: 5px;
     margin-right: 330px;
+    margin-left: 340px;
+    margin-top: 30px;
 
   }
 

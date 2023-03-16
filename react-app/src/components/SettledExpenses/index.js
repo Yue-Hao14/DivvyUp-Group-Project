@@ -1,32 +1,42 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom"
-import { getSettledExpensesThunk } from "../../store/expenses";
-import ExpenseSummarySection from "../ExpenseSummaries/ExpenseSummarySection";
-import { groupExpensesByMonth } from "../../utils/expenseHelpers";
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { getSettledExpensesThunk } from '../../store/expenses'
+import ExpenseSummarySection from '../ExpenseSummaries/ExpenseSummarySection'
+import { groupExpensesByMonth } from '../../utils/expenseHelpers'
 
-function SettledExpenses() {
-    const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
-    const settledExpenses = useSelector(state => state.expenses.settledExpenses);
+import './SettledExpenses.css'
 
-    useEffect(() => {
-        dispatch(getSettledExpensesThunk())
-    }, [dispatch])
+function SettledExpenses () {
+  const dispatch = useDispatch()
+  const sessionUser = useSelector(state => state.session.user)
+  const settledExpenses = useSelector(state => state.expenses.settledExpenses)
 
-    if (!sessionUser) return Redirect("/")
+  useEffect(() => {
+    dispatch(getSettledExpensesThunk())
+  }, [dispatch])
 
-    const orderedSettledExpenses = groupExpensesByMonth(Object.values(settledExpenses));
+  if (!sessionUser) return Redirect('/')
 
-    return (
-        <div className="expense_summaries_div">
-            {Object.values(orderedSettledExpenses).map((expenseList, idx) => {
-                return (
-                    <ExpenseSummarySection key={idx} expenses={expenseList} />
-                )
-            })}
+  const orderedSettledExpenses = groupExpensesByMonth(
+    Object.values(settledExpenses)
+  )
+
+  return (
+    <>
+      <div className='settled_expenses_header_container'>
+        <div className='settled_expenses_header_label'>
+          <i className='fa-solid fa-handshake settled_expenses_icon'></i>
+          <div className='settled_expenses_header'>Settled Expenses</div>
         </div>
-    )
+      </div>
+      <div className='expense_summaries_div'>
+        {Object.values(orderedSettledExpenses).map((expenseList, idx) => {
+          return <ExpenseSummarySection key={idx} expenses={expenseList} />
+        })}
+      </div>
+    </>
+  )
 }
 
-export default SettledExpenses;
+export default SettledExpenses

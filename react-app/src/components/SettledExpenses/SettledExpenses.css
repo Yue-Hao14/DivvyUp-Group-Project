@@ -1,5 +1,5 @@
-/* TODO: ADD STYLING FOR ALLEXPENSES HERE */
-.all_expenses_header_container {
+/* TODO: ADD STYLING FOR settledEXPENSES HERE */
+.settled_expenses_header_container {
     display: flex;
     flex-direction: row;
     /* justify-content: center; */
@@ -12,7 +12,7 @@
     /* font-size: 1.3rem; */
 }
 
-.all_expenses_header_label{
+.settled_expenses_header_label{
     display: flex;
     flex-direction: row;
     /* justify-content: center; */
@@ -23,10 +23,10 @@
 
 }
 
-.all_expenses_header{
+.settled_expenses_header{
     margin-left: 6px;
 }
 
-.all_expenses_icon{
+.settled_expenses_icon{
   color: #5BC5A7;
 }
