@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import TotalBalance from '../TotalBalance'
 import { getAllExpensesThunk } from '../../store/expenses'
-import ExpenseSummarySection from '../ExpenseSummaries/ExpenseSummarySection'
 import ExpenseSummaries from '../ExpenseSummaries'
 
 import './AllExpenses.css'

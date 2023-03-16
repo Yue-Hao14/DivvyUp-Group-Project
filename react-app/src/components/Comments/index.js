@@ -17,7 +17,6 @@ function Comments({ expenseId }) {
     const orderedComments = comments?.sort((a,b) => {
         return (new Date(a.createdAt)).valueOf() - (new Date(b.createdAt)).valueOf()
     })
-    // order comments by createdAt date?
 
     useEffect(() => {
         dispatch(getExpenseCommentsThunk(expenseId));
