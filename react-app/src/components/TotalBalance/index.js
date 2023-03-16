@@ -49,8 +49,8 @@ function TotalBalance() {
             }
 
         } else {
-        // If user is not payer, then they must be an ower
-        // If user is an ower, and has not settled their debt, add splitAmount to userDebt
+            // If user is not payer, then they must be an ower
+            // If user is an ower, and has not settled their debt, add splitAmount to userDebt
             const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
             if (!userInSettledOwers) {
                 userDebt += Number.parseFloat(splitAmount.toFixed(2))
