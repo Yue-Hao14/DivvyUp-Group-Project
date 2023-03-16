@@ -37,7 +37,7 @@ function SplashPage() {
 
     // iterate through each exepense and determine how much user owes and is owed
     for (const expense of expensesArr) {
-        console.log(("=========================", expense.id));
+        // console.log(("=========================", expense.id));
         const numOwers = expense.owers.length;
         const splitAmount = (expense.amount / (numOwers + 1))
 
@@ -93,7 +93,7 @@ function SplashPage() {
                             <h3>You owe</h3>
                         </div>
                         <div>
-                            {userDebt.toFixed(2)}
+                            {userDebt}
                         </div>
                     </div>
                     <div className="splash-page-are-owe-container">
@@ -101,7 +101,7 @@ function SplashPage() {
                             <h3>You are owed</h3>
                         </div>
                         <div>
-                            {userOwed.toFixed(2)}
+                            {userOwed}
                         </div>
                     </div>
                 </div>

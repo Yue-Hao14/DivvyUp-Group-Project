@@ -6,11 +6,37 @@ def seed_friends():
     demo = User.query.filter_by(username='Demo').first()
     john = User.query.filter_by(username='JohnSmith').first()
     jane = User.query.filter_by(username='JaneDoe').first()
+    nick = User.query.filter_by(username='NickArakaki').first()
+    yue = User.query.filter_by(username='YueHao').first()
+    tuan = User.query.filter_by(username='TuanTran').first()
+    troy = User.query.filter_by(username='TroyLee').first()
+
 
     demo.friends.append(john)
-    john.friends.append(demo)
+    demo.friends.append(nick)
     demo.friends.append(jane)
+    demo.friends.append(troy)
+
+    troy.friends.append(demo)
+
+    nick.friends.append(demo)
+    nick.friends.append(john)
+
+    john.friends.append(jane)
+    john.friends.append(demo)
+    john.friends.append(nick)
+
+
     jane.friends.append(demo)
+    jane.friends.append(yue)
+    jane.friends.append(tuan)
+    jane.friends.append(john)
+
+    yue.friends.append(jane)
+
+    tuan.friends.append(jane)
+
+
 
     db.session.commit()
 
