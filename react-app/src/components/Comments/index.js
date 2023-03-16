@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getExpenseCommentsThunk } from "../../store/comments";
 import { getMMDDYYYY } from "../../utils/utils";
 import OpenModalButton from "../OpenModalButton";
+import CommentFormModal from "./CommentModalComponents/CommentFormModal";
+import DeleteCommentConfirmationModal from "./CommentModalComponents/DeleteCommentConfirmationModal";
 import "./Comments.css"
-import PostCommentModal from "./CommentModalComponents/PostCommentModal";
-import UpdateCommentModal from "./CommentModalComponents/UpdateCommentModal";
-import DeleteCommentModal from "./CommentModalComponents/DeleteCommentModal";
 
 
 function Comments({ expenseId }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const comments = useSelector(state => state.comments[expenseId])
+    // order comments by createdAt date?
     console.log("List of comments for the expense=====================", comments)
 
     useEffect(() => {
@@ -34,23 +34,23 @@ function Comments({ expenseId }) {
                             <div className="comment_timestamp">Updated At: {fomattedUpdatedAt}</div>
                         )}
                         {(sessionUser.id === comment.user.id) && (
-                            <>
+                            <div className="comment_edit_delete_buttons_div">
                                 <OpenModalButton
-                                    buttonText="Edit Comment" // change to icon later
-                                    modalComponent={<UpdateCommentModal />}
+                                    buttonText={<i className="edit_comment_button fa-solid fa-pen-to-square" />}
+                                    modalComponent={<CommentFormModal expenseId={expenseId} commentId={comment.id}/>}
                                 />
                                 <OpenModalButton
-                                    buttonText="Delete Comment" // change to icons later
-                                    modalComponent={<DeleteCommentModal />}
+                                    buttonText={<i className='remove_comment_button fa-solid fa-trash' />}
+                                    modalComponent={<DeleteCommentConfirmationModal commentId={comment.id} />}
                                 />
-                            </>
+                            </div>
                         )}
                     </div>
                 )
             })}
             <OpenModalButton
-                buttonText="Add a Comment"
-                modalComponent={<PostCommentModal />}
+                buttonText="Post"
+                modalComponent={<CommentFormModal expenseId={expenseId}/>}
             />
         </>
     )
