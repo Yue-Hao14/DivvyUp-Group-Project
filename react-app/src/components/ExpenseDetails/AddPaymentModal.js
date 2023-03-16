@@ -3,6 +3,7 @@ import Select from "react-select"
 import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../context/Modal'
 import { postPaymentThunk } from '../../store/expenses'
+import './AddPayment.css'
 
 // TO DO: figure out how to re-render expense details after adding a new payment
 
