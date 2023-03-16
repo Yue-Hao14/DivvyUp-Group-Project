@@ -1,19 +1,26 @@
-import { months } from "../../utils/utils";
-import ExpenseSummary from "./ExpenseSummary";
-import "./ExpenseSummaries.css";
+import { months } from '../../utils/utils'
+import ExpenseSummary from './ExpenseSummary'
+import './ExpenseSummaries.css'
 
-function ExpenseSummarySection({ expenses }) {
+function ExpenseSummarySection ({ expenses }) {
   const groupMonthandYear = new Date(expenses[0].expenseDate)
 
-
   return (
-    <div className="expense_summary_container">
-        <div className="expense_summary_month_year">{months[groupMonthandYear.getMonth()]} {groupMonthandYear.getFullYear()}</div>
-        {expenses.map((expense) => {
-            return <ExpenseSummary key={expense.id} expense={expense} />
-        })}
+    <div className='expense_summary_container'>
+      <div className='expense_summary_month_year'>
+        {months[groupMonthandYear.getMonth()]} {groupMonthandYear.getFullYear()}
+      </div>
+      {expenses.map((expense) => {
+        return (
+          <ExpenseSummary
+            key={expense.id}
+            expense={expense}
+            // className={index === expenses.length - 1 ? 'last-expense' : ''}
+          />
+        )
+      })}
     </div>
-  );
+  )
 }
 
-export default ExpenseSummarySection;
+export default ExpenseSummarySection

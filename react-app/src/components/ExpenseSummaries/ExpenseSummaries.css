@@ -18,6 +18,8 @@
     background-color: #5BC5A7;
     font-weight: bold;
     text-align: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
   }
 
   .expense_summary_details_container {
@@ -29,8 +31,19 @@
     /* border-radius: 5px; */
 
     cursor: pointer;
+
     transition: background-color 0.5s ease;
   }
+  /* .expense_summary_details_container:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  } */
+  /* .last-expense {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-size: 100px;
+  } */
+
 
   .expense_summary_details_container:hover {
     background-color: #c7fdee;
@@ -74,3 +87,13 @@
   .expense_summary_amount {
     font-weight: bold;
   }
+
+  /* .expense_summary_container:first-of-type .expense_summary_details_container:first-child {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  } */
+
+  /* .expense_summary_container .expense_summary_details_container:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  } */

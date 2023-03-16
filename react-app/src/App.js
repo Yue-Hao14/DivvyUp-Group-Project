@@ -11,6 +11,7 @@ import FriendDetails from "./components/FriendsDetails";
 import SplashPage from "./components/SplashPage"
 import AllExpenses from "./components/AllExpenses";
 import PaymentHistory from "./components/PaymentHistory"
+import Footer from "./components/Footer";
 
 
 
@@ -27,7 +28,6 @@ function App() {
       {isLoaded && (
         <>
           <SideBar />
-          {/* <TopBar /> */}
           <Switch>
             <Route exact path="/" >
               <SplashPage />
@@ -48,6 +48,7 @@ function App() {
               <PaymentHistory />
             </Route>
           </Switch>
+          <Footer />
         </>
       )}
     </>
