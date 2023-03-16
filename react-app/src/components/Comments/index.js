@@ -12,8 +12,12 @@ function Comments({ expenseId }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const comments = useSelector(state => state.comments[expenseId])
+
+    // sort comments from oldest to newest
+    const orderedComments = comments?.sort((a,b) => {
+        return (new Date(a.createdAt)).valueOf() - (new Date(b.createdAt)).valueOf()
+    })
     // order comments by createdAt date?
-    console.log("List of comments for the expense=====================", comments)
 
     useEffect(() => {
         dispatch(getExpenseCommentsThunk(expenseId));
@@ -22,7 +26,7 @@ function Comments({ expenseId }) {
     return (
         <>
             <div className="comments_heading">COMMENTS</div>
-            {comments && comments.map(comment => {
+            {orderedComments && orderedComments.map(comment => {
                 const fomattedCreatedAt = getMMDDYYYY(new Date(comment.createdAt))
                 const fomattedUpdatedAt = getMMDDYYYY(new Date(comment.updatedAt))
 
