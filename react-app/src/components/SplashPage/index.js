@@ -8,6 +8,9 @@ import './Splash.css'
 import OweYou from './oweYou'
 import YouOwe from './YouOwe'
 
+import { NavLink } from 'react-router-dom'
+
+
 function SplashPage() {
     // const [totalBalance, setTotalBalance] = useState(0);
     // const [totalOwe, setTotalOwe] = useState(0);
@@ -44,7 +47,9 @@ function SplashPage() {
         if (expense.payer.id === sessionUser.id) {
             // if length of settled owers is less than numOwers
             const numUnsettledOwers = numOwers - expense.settledOwers.length
-            // console.log(("<<<I am payer>>>"));
+
+            console.log(("<<<I am payer>>>"));
+
             if (numUnsettledOwers > 0) {
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
                 console.log("===people owe you", userOwed);
@@ -52,11 +57,13 @@ function SplashPage() {
             // find number of users who still owe, multiply the split amount by number of users who still owe
             // and add to userOwed
         } else {
-            // console.log(("<<<I am not payer>>>"));
+
+            console.log(("<<<I am not payer>>>"));
             // If user is not payer, then they must be an ower
             // If user is an ower, and has not settled their debt, add splitAmount to userDebt
             const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
-            // console.log("yes2=================");
+            console.log("yes2=================");
+
             if (!userInSettledOwers) {
                 userDebt += Number.parseFloat(splitAmount.toFixed(2))
             }
@@ -92,7 +99,7 @@ function SplashPage() {
                             <h3>You owe</h3>
                         </div>
                         <div>
-                            {userDebt.toFixed(2)}
+                            {userDebt}
                         </div>
                     </div>
                     <div className="splash-page-are-owe-container">
@@ -100,7 +107,7 @@ function SplashPage() {
                             <h3>You are owed</h3>
                         </div>
                         <div>
-                            {userOwed.toFixed(2)}
+                            {userOwed}
                         </div>
                     </div>
                 </div>
@@ -112,9 +119,11 @@ function SplashPage() {
                         <div className="you-owe-list">
                             <div className="you-owe-list">
                                 {friends.map((friend) => (
-                                    <div key={friend.id}>
+
+                                    <NavLink key={friend.id} to={`/friends/${friend.id}`}>
                                         <YouOwe friend={friend} />
-                                    </div>
+                                    </NavLink>
+
                                 ))}
                             </div>
                         </div>
@@ -125,9 +134,11 @@ function SplashPage() {
                             <div className="are-owed-you-list">
                                 <div className="you-owe-list">
                                     {friends.map((friend) => (
-                                        <div key={friend.id}>
+
+                                        <NavLink key={friend.id} to={`/friends/${friend.id}`}>
                                             <OweYou friend={friend} />
-                                        </div>
+                                        </NavLink>
+
                                     ))}
                                 </div>
                             </div>
