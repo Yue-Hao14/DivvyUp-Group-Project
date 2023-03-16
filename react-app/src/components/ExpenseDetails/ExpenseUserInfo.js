@@ -8,12 +8,7 @@ function ExpenseUserInfo({ expense }) {
     const owerAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2)
     const sessionUser = useSelector(state => state.session.user)
     const settledOwers = expense.settledOwers
-    let settledOwerIds = []
-    settledOwers.forEach(settledOwer => {
-        // console.log("settledOwer.settlledUser", Object.values(settledOwer)[2][0].id)
-        settledOwerIds.push(Object.values(settledOwer)[2][0].id)
-    });
-    // console.log("settledOwers", settledOwers)
+    let settledOwerIds = settledOwers.map(settledOwer => settledOwer.settledUserId)
 
     return (
         <div className="expense_details_info_div">
