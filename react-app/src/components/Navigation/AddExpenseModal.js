@@ -68,7 +68,11 @@ function AddExpenseModal() {
     // if no error, we POST the newExpense to db via thunk
     if (Object.values(errors).length === 0) {
       const data = await dispatch(postExpenseThunk(newExpense))
-      closeModal()
+      if (data) {
+        setErrors(data)
+      } else {
+        closeModal()
+      }
     }
   }
 

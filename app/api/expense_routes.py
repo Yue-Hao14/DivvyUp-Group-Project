@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Expense, User
 from app.forms.expense_form import ExpenseForm
 from .auth_routes import validation_errors_to_error_messages
-from datetime import datetime
+from datetime import datetime, date
 
 expense_routes = Blueprint('expenses', __name__)
 

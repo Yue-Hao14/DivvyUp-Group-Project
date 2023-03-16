@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { abbrevMonths } from "../../utils/utils";
 import ExpenseDetails from "../ExpenseDetails";
 
@@ -19,6 +19,8 @@ function ExpenseSummary({ expense }) {
         setShowDetailsId(null);
         }
     };
+
+    if (!sessionUser) return Redirect('/');
 
     const splitAmount = (expense.amount / (expense.owers.length + 1)).toFixed(2);
     const payerAmount = (expense.amount - (splitAmount * expense.owers.length)).toFixed(2);

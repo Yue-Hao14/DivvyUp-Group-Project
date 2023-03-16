@@ -132,7 +132,7 @@ export const postExpenseThunk = expense => async (dispatch) => {
         const data = await res.json();
         dispatch(postExpense(data));
         dispatch(getFriendExpensesThunk(expense.owerId));
-        return data;
+        return null;
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
