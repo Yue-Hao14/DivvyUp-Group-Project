@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../../context/Modal'
-import { addCommentToExpenseThunk } from '../../../store/comments';
+import { addCommentToExpenseThunk, updateCommentThunk } from '../../../store/comments';
 import "./CommentModals.css"
 
-function PostCommentModal({expenseId}) {
-    const [comment, setComment] = useState("");
+function PostCommentModal({ expenseId, commentId }) {
+    const commentToUpdate = useSelector(state => state.comments[expenseId].find(comment => comment.id === commentId))
+    const [comment, setComment] = useState(commentToUpdate ? commentToUpdate.comment : "");
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
     const dispatch = useDispatch();
@@ -13,7 +14,14 @@ function PostCommentModal({expenseId}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = await dispatch(addCommentToExpenseThunk(expenseId, {comment}))
+        let data;
+
+        if (commentToUpdate) {
+            commentToUpdate.comment = comment;
+            data = await dispatch(updateCommentThunk(commentToUpdate))
+        } else {
+            data = await dispatch(addCommentToExpenseThunk(expenseId, {comment}))
+        }
 
         if (data) {
             setErrors(data)

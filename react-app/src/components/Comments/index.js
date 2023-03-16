@@ -38,7 +38,7 @@ function Comments({ expenseId }) {
                             <div className="comment_edit_delete_buttons_div">
                                 <OpenModalButton
                                     buttonText={<i className="edit_comment_button fa-solid fa-pen-to-square" />}
-                                    modalComponent={<UpdateCommentModal commentId={comment.id}/>}
+                                    modalComponent={<PostCommentModal expenseId={expenseId} commentId={comment.id}/>}
                                 />
                                 <OpenModalButton
                                     buttonText={<i className='remove_comment_button fa-solid fa-trash' />}
