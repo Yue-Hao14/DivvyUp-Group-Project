@@ -3,7 +3,7 @@ import ExpenseSummary from './ExpenseSummary'
 import './ExpenseSummaries.css'
 
 function ExpenseSummarySection ({ expenses }) {
-  const groupMonthandYear = new Date(expenses[0].expenseDate)
+  const groupMonthandYear = new Date(expenses[0]?.expenseDate)
 
   return (
     <div className='expense_summary_container'>
