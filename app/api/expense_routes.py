@@ -13,7 +13,7 @@ expense_routes = Blueprint('expenses', __name__)
 @login_required
 def get_all_current_user_expenses():
     """
-    return current users' all pending expenses
+    return all current user expenses
     """
     #   payer_expenses = current_user.payer_expenses
     ower_expenses = [expense.to_dict_summary() for expense in current_user.owed_expenses]
@@ -56,7 +56,7 @@ def create_a_new_expense():
             new_expense.owers.append(user)
 
         db.session.commit()
-        return new_expense.to_dict(), 201
+        return new_expense.to_dict_summary(), 201
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
