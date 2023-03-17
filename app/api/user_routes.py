@@ -55,13 +55,13 @@ def add_a_friend():
         current_user.friends.append(friend)
         friend.friends.append(current_user)
         db.session.commit()
-        return friend.to_dict()
+        return friend.to_dict(), 201
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@user_routes.route('/friends/<int:id>')
+@user_routes.route('/friends/<int:id>/expenses')
 @login_required
 def get_friend_expenses(id):
     """
@@ -96,9 +96,11 @@ def remove_friend(id):
     the other user's friends list to remove current user
     """
     friend = User.query.get(id)
-    if friend not in current_user.friends:
-        return { 'errors': 'Cannot remove friend who is not in friends list' }
+    if not friend:
+        return { "errors": ["Cannot find user"]}, 404
+    elif friend not in current_user.friends:
+        return { 'errors': ['Cannot remove friend who is not in friends list'] }, 401
     current_user.friends.remove(friend)
     friend.friends.remove(current_user)
     db.session.commit()
-    return { "message": "successfuly removed" }
+    return { "message": "successfuly removed" }, 200

@@ -13,7 +13,7 @@ expense_routes = Blueprint('expenses', __name__)
 @login_required
 def get_all_current_user_expenses():
     """
-    return current users' all pending expenses
+    return all current user expenses
     """
     #   payer_expenses = current_user.payer_expenses
     ower_expenses = [expense.to_dict_summary() for expense in current_user.owed_expenses]
@@ -56,7 +56,7 @@ def create_a_new_expense():
             new_expense.owers.append(user)
 
         db.session.commit()
-        return new_expense.to_dict(), 201
+        return new_expense.to_dict_summary(), 201
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -139,10 +139,14 @@ def update_an_expense(id):
 @expense_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_an_expense(id):
+    """
+    Deletes an existing expense if the current user is the payer and
+    there are no settled users yet
+    """
     expense = Expense.query.get(id)
 
     if not expense:
-        return {'errors': ['Expense does not exist']}, 404
+        return {'errors': ['Expense could not be found']}, 404
     elif current_user.id != expense.payer_id:
             return {'errors': ['Unauthorized to delete this expense']}, 401
     elif len(expense.settled_owers) > 0:
