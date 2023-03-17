@@ -109,13 +109,31 @@
 
 ## 4. Expenses (full CRUD)
 
-### Viewing all expenses
+### Viewing all pending expenses with all friends
 
 * As a logged in user, I want to be able to view all my pending expenses when on `/dashboard` page
   * When viewing `/dashboard` page:
     * I want to see a summary of total balance, how much I owe and how much I am owed
     * Below the summary, I want to see who owes me money and how much by decending order (latest at top)
     * Below the summary, I want to see who I owe money to and how much by decending order (latest at top)
+
+
+### Viewing all pending expenses with a specific friend
+
+* As a logged in user, I want to be able to view all my pending expenses with this specific friend when on `/friends/:friendsId` page
+  * When viewing `/friends/:friendsId` page:
+    * I want to see the list of pending expenses broken down by month
+    * I want to see summary of each expense
+    * When I click on each expense, it will show me more details
+
+
+### Viewing all expenses with a specific friend
+
+* As a logged in user, I want to be able to view all my pending and settled expenses when on `/all-expenses` page
+  * When viewing `/all-expenses` page:
+    * I want to see the list of all expenses broken down by month
+    * I want to see summary of each expense
+    * When I click on each expense, it will show me more details
 
 
 ### Viewing individual expense
