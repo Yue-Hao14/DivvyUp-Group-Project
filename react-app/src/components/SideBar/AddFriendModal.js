@@ -42,6 +42,13 @@ function AddFriendModal () {
         placeholder='enter user email...'
         className='add_friend_modal_input'
       />
+      <div className='add_friend_suggestions_div'>
+        Add one of the devs as a friend!
+        <div className='add_friend_suggestion'>Nick Arakaki: nickarakaki@user.com</div>
+        <div className='add_friend_suggestion'>Troy Lee: troylee@user.com</div>
+        <div className='add_friend_suggestion'>Yue Hao: yuehao@user.com</div>
+        <div className='add_friend_suggestion'>Tuan Tran: tuantran@user.com</div>
+      </div>
       <div className='button_container'>
         <button
           type='button'
