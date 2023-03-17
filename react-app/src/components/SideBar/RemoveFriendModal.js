@@ -10,7 +10,7 @@ function RemoveFriendModal({ user }) {
     const dispatch = useDispatch();
     const sessionUserId = useSelector(state => state.session.user.id)
     const friendId = user.id
-    const allExpensesArr = Object.values(useSelector(state => state.expenses.currentExpenseSummaries))
+    const allExpensesArr = Object.values(useSelector(state => state.expenses.allExpenses))
     // console.log("sessionUserId",sessionUserId)
 
     const confirmDelete = async () => {
