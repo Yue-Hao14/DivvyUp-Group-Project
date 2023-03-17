@@ -50,7 +50,7 @@ function TotalBalance() {
                 // and add to userOwed
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
             }
-            console.log("expense.id, userOwed",expense.id, userOwed)
+            console.log("expense.id, userOwed", expense.id, userOwed)
         } else {
             // If user is not payer, then they must be an ower
             // If user is an ower, and has not settled their debt, add splitAmount to userDebt
@@ -77,9 +77,11 @@ function TotalBalance() {
                     <p>You owe {friend.firstName} ${Math.abs(totalBalance).toFixed(2)}</p>
                 ) : totalBalance === 0 && friendId ? (
                     <p>You are all settled up</p>
-                ) : (
-                    <p>${totalBalance.toFixed(2)}</p>
-                )}
+                ) : totalBalance > 0 ? (
+                    <p>you are owed ${totalBalance.toFixed(2)}</p>
+                ) : totalBalance < 0 ? (<p>you owe ${Math.abs(totalBalance.toFixed(2))}</p>
+                ) : (<p>You are all settled up</p>)
+                }
             </div>
         </div>
     )
