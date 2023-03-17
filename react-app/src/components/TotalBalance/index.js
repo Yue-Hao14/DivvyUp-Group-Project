@@ -8,17 +8,10 @@ function TotalBalance() {
 
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.currentExpenseSummaries)
-    const dispatch = useDispatch();
     const { friendId } = useParams();
     let friends = useSelector(state => state.friends)
     let friendsArr = Object.values(friends)
     let friend = friendsArr.find(person => person.id === Number(friendId))
-
-    useEffect(() => {
-        if (sessionUser) {
-            dispatch(getFriendExpensesThunk());
-        }
-    }, [dispatch, sessionUser]);
 
     if (!sessionUser) return <Redirect to='/' />
 
