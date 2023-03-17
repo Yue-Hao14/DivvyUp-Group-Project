@@ -40,7 +40,6 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
       <input
         type='date'
         value={settledDate}
-        defaultValue={settledDate}
         onChange={e => setSettledDate(e.target.value)}
         required
         className='add_payment_modal_settled_date'

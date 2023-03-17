@@ -7,11 +7,12 @@ import './AddExpenseModal.css'
 
 
 function AddExpenseModal() {
+  const today = new Date().toISOString().split('T')[0]
   const [owerIds, setOwerIds] = useState([])
   const [description, setDescription] = useState("")
   let [amount, setAmount] = useState(0)
   const [splitAmount, setSplitAmount] = useState(0)
-  const [expenseDate, setExpenseDate] = useState("")
+  const [expenseDate, setExpenseDate] = useState(today)
   const [errors, setErrors] = useState({})
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
