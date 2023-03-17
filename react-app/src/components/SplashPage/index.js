@@ -5,7 +5,7 @@ import AddExpenseModal from '../Navigation/AddExpenseModal'
 import LoggedOutSplashPage from '../LoggedOutSplashPage'
 import { getAllExpensesThunk } from '../../store/expenses'
 import './Splash.css'
-import OweYou from './oweYou'
+import OweYou from './OweYou.js'
 import YouOwe from './YouOwe'
 
 import { NavLink } from 'react-router-dom'
