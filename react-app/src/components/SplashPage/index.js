@@ -86,7 +86,7 @@ function SplashPage() {
                             <h3>Total balance</h3>
                         </div>
                         <div>
-                            {totalBalance.toFixed(2)}
+                            ${totalBalance.toFixed(2)}
                         </div>
                     </div>
                     <div className="splash-page-owe-container">
@@ -94,7 +94,7 @@ function SplashPage() {
                             <h3>You owe</h3>
                         </div>
                         <div>
-                            {userDebt}
+                            ${userDebt.toFixed(2)}
                         </div>
                     </div>
                     <div className="splash-page-are-owe-container">
@@ -102,7 +102,7 @@ function SplashPage() {
                             <h3>You are owed</h3>
                         </div>
                         <div>
-                            {userOwed}
+                            ${userOwed.toFixed(2)}
                         </div>
                     </div>
                 </div>
