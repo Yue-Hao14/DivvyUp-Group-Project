@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal"
 import { deleteExpenseThunk } from "../../store/expenses";
 
-function DeleteExpenseModal() {
+function DeleteExpenseModal({ expense }) {
     const { closeModal }  = useModal();
     const [errors, setErrors] = useState([]);
-    const expenseDetails = useSelector(state => state.expenses.currentExpenseDetails)
     const dispatch = useDispatch();
 
     const confirmDelete = async () => {
         // dispatch remove friend thunk
-        const data = await dispatch(deleteExpenseThunk(expenseDetails.id))
+        const data = await dispatch(deleteExpenseThunk(expense.id))
         if (data) {
             // if there were any errors display them although there shouldn't be
             setErrors(data);

@@ -6,6 +6,7 @@ import { updateExpenseThunk } from '../../store/expenses'
 
 
 function EditExpenseModal({expense}) {
+  const today = new Date().toISOString().split('T')[0]
   const dispatch = useDispatch();
   const { closeModal } = useModal()
 
@@ -25,7 +26,7 @@ function EditExpenseModal({expense}) {
   const [description, setDescription] = useState(expense ? expense.description : "")
   let [amount, setAmount] = useState(expense ? expense.amount.toString() : "")
   const [splitAmount, setSplitAmount] = useState(expense ? calculatedSplitAmount : 0)
-  const [expenseDate, setExpenseDate] = useState(expense ? new Date(expense.expenseDate).toISOString().split('T')[0] : "")
+  const [expenseDate, setExpenseDate] = useState(expense ? new Date(expense.expenseDate).toISOString().split('T')[0] : today)
   const [errors, setErrors] = useState({})
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -173,7 +174,6 @@ function EditExpenseModal({expense}) {
         <input
           type="date"
           value={expenseDate}
-          defaultValue={expenseDate}
           onChange={e => setExpenseDate(e.target.value)}
           required
           className='add_expense_modal_expense_date' />

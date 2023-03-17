@@ -19,7 +19,7 @@ function FriendDetails () {
     dispatch(getFriendExpensesThunk(friendId)).then(() => setIsLoaded(true))
   }, [dispatch, friendId])
 
-  if (!sessionUser) return Redirect('/') // redirect to dashboard if the user is not in the current_user's friends list or there is no logged in user
+  if (!sessionUser || (isLoaded && !friend)) return Redirect('/') // redirect to dashboard if the user is not in the current_user's friends list or there is no logged in user
 
   return (
     <>
