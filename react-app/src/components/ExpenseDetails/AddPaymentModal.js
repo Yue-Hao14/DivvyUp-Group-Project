@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
-import Select from 'react-select'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useModal } from '../../context/Modal'
 import { postPaymentThunk } from '../../store/expenses'
 import './AddPayment.css'
@@ -11,15 +10,12 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
   const dispatch = useDispatch()
   const { closeModal } = useModal()
   const today = new Date().toISOString().split('T')[0]
-  // console.log("today", today)
 
   // set state variables
   const [settledDate, setSettledDate] = useState(today) // can default to today first
-  const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const handleSubmit = async e => {
     e.preventDefault()
-    setHasSubmitted(true)
 
     const payment = {
       owerId: ower.id,
@@ -44,7 +40,6 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
       <input
         type='date'
         value={settledDate}
-        defaultValue={settledDate}
         onChange={e => setSettledDate(e.target.value)}
         required
         className='add_payment_modal_settled_date'
