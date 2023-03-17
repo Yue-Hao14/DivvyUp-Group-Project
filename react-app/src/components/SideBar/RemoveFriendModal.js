@@ -52,7 +52,7 @@ function RemoveFriendModal({ user }) {
             pendingExpense = true
             break
         }
-        // else if user is not payer, then check if user is in settledOwers, if not break
+        // else if friend is payer, then check if user is in settledOwers, if not break
         else if ((payerId === friendId) && !(settledOwersIds.includes(sessionUserId))) {
             pendingExpense = true
             break
@@ -62,8 +62,6 @@ function RemoveFriendModal({ user }) {
     }
 
     console.log("boolean", pendingExpense)
-
-
 
     return (
         <div className="delete_confirmation_modal_div">
