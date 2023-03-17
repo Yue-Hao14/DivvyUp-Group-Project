@@ -1,28 +1,137 @@
 /* TODO: Add styling for comments here */
 .comment_div {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    margin: 5px 0;
-    border: 1px solid #999;
-    border-radius: 15px;
-    padding: 5px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  margin: 5px 0;
+  border: 2px solid rgb(193, 191, 191);
+  border-radius: 8px;
+  padding: 5px;
+  width: 400px;
+  /* justify-content: center; */
+  /* align-items: flex-start; */
 }
 
-.comment_edit_delete_buttons_div {
+
+.comment_edit_delete_buttons_div{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+
+}
+.comment_edit_delete_buttons_div button{
+  background-color: transparent;
+  border: none;
+
+}
+.edit_comment_button,
+.remove_comment_button {
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
 }
 
-.comment_details_div {
+.edit_comment_button {
+  font-weight: 520;
+  color: rgb(116, 116, 116);
+}
+
+.edit_comment_button:hover {
+  font-weight: bolder;
+  color: rgb(80, 80, 80);
+}
+
+.edit_comment_button:active,
+.remove_comment_button:active {
+  transform: translateY(2px);
+}
+
+.remove_comment_button {
+  color: #dd4b39;
+}
+
+.remove_comment_button:hover {
+  color: #903023;
+}
+
+.comment_wrapper{
+    margin-top: 16px;
     display: flex;
-    flex-direction: row;
-    font-size: x-small;
-    justify-content: space-between;
-    margin-top: 10px;
+    align-items: center;
+}
+
+.comment_wrapper_with_buttons{
+    margin-top: 4px;
+}
+.comment {
+  font-weight: light;
+  margin-left: 6px;
+  margin-right: 5px;
+  /* align-self: center; */
+}
+
+.comment_timestamp_div {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment_timestamp {
+  color: #999;
+}
+.comment_details_div {
+  display: flex;
+  flex-direction: row;
+  font-size: x-small;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .comment_author {
+  align-self: flex-end;
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+.comments_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post_comment_button {
     align-self: flex-end;
+    margin: 10px 0;
+    background-color: transparent;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #5bc5a7;
+    border: 2px solid #5bc5a7;
+    cursor: pointer;
+  }
+
+  .post_comment_button:hover {
+    background-color: #5bc5a7;
+    border: 2px solid #5bc5a7;
+    color: white;
+  }
+
+  .post_comment_button:active {
+    background-color: #5bc5a7;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);
+  }
+
+  .comments_heading{
+    font-weight: bold;
+  }
+
+  .no_comments_heading{
+    font-size: 16px;
+    border: 2px solid rgb(193, 191, 191);
+    border-radius: 8px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 200px;
+    font-weight: lighter;
 }
