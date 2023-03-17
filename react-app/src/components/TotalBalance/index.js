@@ -64,7 +64,6 @@ function TotalBalance() {
     console.log("userOwed", userOwed)
     console.log("userDebt", userDebt)
     totalBalance = userOwed - userDebt
-    console.log("===================totoalbalance", totalBalance);
 
 
     return (

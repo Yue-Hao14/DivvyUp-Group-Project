@@ -5,8 +5,6 @@ import { getAllExpensesThunk } from '../../store/expenses';
 function YouOwe({ friend }) {
     const expenses = useSelector(state => state.expenses.allExpenses);
     const sessionUser = useSelector(state => state.session.user);
-    // console.log("================", friend.id);
-    // console.log("=========================", friend.firstName);
     const dispatch = useDispatch();
     const expensesArr = Object.values(expenses);
 
@@ -23,7 +21,6 @@ function YouOwe({ friend }) {
     // Calculate the total amount of expenses paid by the user and friend
     for (const expense of expensesArr) {
         const numOwers = expense.owers.length;
-
 
         const splitAmount = (expense.amount / (numOwers + 1))
 

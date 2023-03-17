@@ -14,10 +14,9 @@ function ExpenseSummaries() {
     expenseArr.forEach(expense => {
         const settledOwersArr = expense.settledOwers
 
-        // if there is settledOwers, we check if this friend is part of settledOwers
+        // if there is at least one settledOwer, we check if this friend is part of settledOwers
         if (settledOwersArr.length > 0) {
             let settledOwersIds = settledOwersArr.map(settledOwer => settledOwer.settledUserId)
-            // console.log("settledOwersIds", settledOwersIds)
 
             // if friend is not part of the settledOwers, we add this expense to unsettledExpenseArr
             if (!settledOwersIds.includes(Number(friendId))) unsettledExpenseArr.push(expense)
@@ -26,16 +25,13 @@ function ExpenseSummaries() {
             unsettledExpenseArr.push(expense)
         }
     })
-    // console.log("unsettledExpenseArr",unsettledExpenseArr)
 
     return (
         <div className="expense_summaries_div">
             { // check if we are on friend page
                 friendId ?
-                // if on friend page, only show unsettledExpense with this friend
-                    [unsettledExpenseArr].map(expense => {
-                        return (<ExpenseSummarySection expenses={expense} />)
-                    })
+                    // if on friend page, only show unsettledExpense with this friend
+                    <ExpenseSummarySection expenses={unsettledExpenseArr} />
                     // if we are not on a friend page(i.e. on "All Expenses" page, then show settled and unsettled expenses)
                     :
                     Object.values(orderedExpenses).map((expenseList, idx) => {

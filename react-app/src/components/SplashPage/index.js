@@ -12,10 +12,6 @@ import { NavLink } from 'react-router-dom'
 
 
 function SplashPage() {
-    // const [totalBalance, setTotalBalance] = useState(0);
-    // const [totalOwe, setTotalOwe] = useState(0);
-    // const [totalOwed, setTotalOwed] = useState(0);
-
     const userExpenses = useSelector(state => state.expenses.allExpenses)
     const sessionUser = useSelector(state => state.session.user)
     const friendsObj = useSelector(state => state.friends)
@@ -39,7 +35,6 @@ function SplashPage() {
 
     // iterate through each exepense and determine how much user owes and is owed
     for (const expense of expensesArr) {
-        // console.log(("=========================", expense.id));
         const numOwers = expense.owers.length;
         const splitAmount = (expense.amount / (numOwers + 1))
 
