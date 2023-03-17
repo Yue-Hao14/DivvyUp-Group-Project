@@ -10,3 +10,13 @@ export const getMMMYYYYY = date => {
     const month = abbrevMonths[date.getUTCMonth()]
     return `${month} ${date.getUTCFullYear()}`
 }
+
+
+export const getMMDD = date => {
+    const month = abbrevMonths[date.getUTCMonth()]
+    const day = date.getUTCDate()
+    const formattedDay = day < 10 ? `0${day}` : day
+    return `${month} ${formattedDay}`
+}
+
+

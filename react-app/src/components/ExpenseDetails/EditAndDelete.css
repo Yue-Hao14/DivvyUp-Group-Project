@@ -1,11 +1,45 @@
 .expense_details_buttons_div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
-  .edit_expense_button, .delete_expense_button {
+.delete_expense_button {
+  font-size: 18px;
+  color: #dd4b39;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.delete_expense_button:hover {
+  color: #903023;
+}
+
+.delete_expense_button:active {
+  /* background-color: transparent; */
+  /* box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); */
+  transform: translateY(2px);
+}
+
+.edit_expense_button {
+font-size: 18px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 520;
+  color: rgb(116, 116, 116);
+}
+
+.edit_expense_button:hover {
+    font-weight: bolder;
+    color: rgb(80, 80, 80);
+
+}
+
+.edit_expense_button:active {
     background-color: transparent;
-    border: none;
+    /* box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); */
+    transform: translateY(2px);
   }
