@@ -29,7 +29,6 @@ function PaymentHistory () {
           <div className='settled_expenses_header'>Payment History</div>
         </div>
       </div>
-      {/* <div className='payment_history_title'>Payment History</div> */}
       <div className='expense_summaries_div'>
         {Object.values(orderedSettledExpenses).map((expenseList, idx) => {
           return (

@@ -1,10 +1,11 @@
 import React from "react";
+import "./Footer.css"
 
 function Footer() {
   return (
     <footer className="footer-container">
       <div className="contact-us">
-        <div>Contact us</div>
+        <div>About Us</div>
         <div>
           <a href="https://github.com/Yue-Hao14/DivvyUp-Group-Project">
             DivvyUp 2023

@@ -44,6 +44,8 @@
   border: none;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s ease;
+
 }
 .delete_confirmation_modal_cancel_button {
   background-color: #fff;
@@ -52,24 +54,33 @@
 }
 
 .delete_confirmation_modal_confirm_button {
-  background-color: #5bc5a7;
+  background-color: rgb(255, 94, 94);
   color: white;
-  border: 2px solid #5bc5a7;
+  border: 2px solid rgb(255, 94, 94);
 }
-.delete_confirmation_modal_cancel_button:hover,
-.delete_confirmation_modal_confirm_button:hover {
+.delete_confirmation_modal_cancel_button:hover{
   background-color: #48a289;
   border: 2px solid #48a289;
 
   color: white;
 }
+.delete_confirmation_modal_confirm_button:hover {
+  background-color: rgb(232, 7, 7);
+  border: 2px solid rgb(232, 7, 7);
+  color: white;
+}
+
 .delete_confirmation_modal_cancel_button:active,
 .delete_confirmation_modal_confirm_button:active {
   background-color: #3c7f56;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
-  transform: translateY(2px);
+  transform: translateY(3px);
 }
-
+.delete_confirmation_modal_confirm_button:active {
+  background-color: rgb(232, 7, 7);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(3px);
+}
 /* .delete_confirmation_modal_confirm_button {
   margin-left: 1rem;
 } */
