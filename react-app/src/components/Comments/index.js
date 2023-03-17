@@ -85,7 +85,7 @@ function Comments({ expenseId }) {
           })}
         <OpenModalButton
           className='post_comment_button'
-          buttonText='Post '
+          buttonText='Add a Comment'
           modalComponent={<CommentFormModal expenseId={expenseId} />}
         />
       </div>
