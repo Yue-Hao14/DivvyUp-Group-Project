@@ -11,27 +11,32 @@ function ExpenseSummaries() {
 
     // gathering unsettled expense between user and this friend
     let unsettledExpenseArr = []
-    expenseArr.forEach(expense => {
-        const settledOwersArr = expense.settledOwers
+    if (expenseArr) {
+        expenseArr.forEach(expense => {
+            const settledOwersArr = expense.settledOwers
 
-        // if there is at least one settledOwer, we check if this friend is part of settledOwers
-        if (settledOwersArr.length > 0) {
-            let settledOwersIds = settledOwersArr.map(settledOwer => settledOwer.settledUserId)
+            // if there is at least one settledOwer, we check if this friend is part of settledOwers
+            if (settledOwersArr.length > 0) {
+                let settledOwersIds = settledOwersArr.map(settledOwer => settledOwer.settledUserId)
 
-            // if friend is not part of the settledOwers, we add this expense to unsettledExpenseArr
-            if (!settledOwersIds.includes(Number(friendId))) unsettledExpenseArr.push(expense)
-        } else {
-            // when there is no settled owers at all, just add this expense to unsettledExpenseArr
-            unsettledExpenseArr.push(expense)
-        }
-    })
+                // if friend is not part of the settledOwers, we add this expense to unsettledExpenseArr
+                if (!settledOwersIds.includes(Number(friendId))) unsettledExpenseArr.push(expense)
+            } else {
+                // when there is no settled owers at all, just add this expense to unsettledExpenseArr
+                unsettledExpenseArr.push(expense)
+            }
+        })
+    }
+    // console.log("unsettledExpenseArr",unsettledExpenseArr)
 
     return (
         <div className="expense_summaries_div">
             { // check if we are on friend page
                 friendId ?
                     // if on friend page, only show unsettledExpense with this friend
-                    <ExpenseSummarySection expenses={unsettledExpenseArr} />
+                    unsettledExpenseArr.length > 0 ?
+                    <ExpenseSummarySection expenses={unsettledExpenseArr} /> :
+                    <h1>No pending expenses</h1>
                     // if we are not on a friend page(i.e. on "All Expenses" page, then show settled and unsettled expenses)
                     :
                     Object.values(orderedExpenses).map((expenseList, idx) => {
