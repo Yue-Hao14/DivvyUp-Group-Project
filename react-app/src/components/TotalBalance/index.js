@@ -5,7 +5,6 @@ import { getFriendExpensesThunk } from "../../store/expenses";
 import "./TotalBalance.css";
 
 function TotalBalance() {
-
     const sessionUser = useSelector(state => state.session.user)
     const userExpenses = useSelector(state => state.expenses.currentExpenseSummaries)
     const { friendId } = useParams();
