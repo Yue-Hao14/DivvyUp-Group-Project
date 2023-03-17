@@ -23,6 +23,7 @@ function Comments({ expenseId }) {
 
   return (
     <>
+    {/* <div className="comment_heading_container"></div> */}
       <div className={`comments_heading ${comments && comments.length === 0 ? 'no_comments_heading' : ''}`}>
       {comments && comments.length === 0 ? 'Be the first to comment!' : 'COMMENTS'}
     </div>
@@ -84,7 +85,7 @@ function Comments({ expenseId }) {
           })}
         <OpenModalButton
           className='post_comment_button'
-          buttonText='Post'
+          buttonText='Post '
           modalComponent={<CommentFormModal expenseId={expenseId} />}
         />
       </div>

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllExpensesThunk } from '../../store/expenses';
 
-function YouOwe({ friend }) {
+function OweYou({ friend }) {
     const expenses = useSelector(state => state.expenses.allExpenses);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
@@ -25,7 +25,6 @@ function YouOwe({ friend }) {
         const splitAmount = (expense.amount / (numOwers + 1))
 
         if (expense.payer.id === sessionUser.id) {
-            console.log("yes1");
             const friendInOwers = expense.owers.find(friendOwer => friendOwer.id === friend.id)
             if (friendInOwers) {
 
@@ -54,4 +53,4 @@ function YouOwe({ friend }) {
     );
 }
 
-export default YouOwe;
+export default OweYou;
