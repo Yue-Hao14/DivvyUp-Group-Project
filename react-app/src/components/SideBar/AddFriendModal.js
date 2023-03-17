@@ -39,7 +39,7 @@ function AddFriendModal () {
         value={email}
         onChange={e => setEmail(e.target.value)}
         required
-        placeholder='search...'
+        placeholder='enter user email...'
         className='add_friend_modal_input'
       />
       <div className='button_container'>

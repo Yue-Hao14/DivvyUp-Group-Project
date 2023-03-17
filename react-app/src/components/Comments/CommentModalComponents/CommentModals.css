@@ -28,6 +28,7 @@
 
   .post_comment_form textarea {
     font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
     padding: 8px;
     margin-bottom: 1rem;
     width: 100%;
