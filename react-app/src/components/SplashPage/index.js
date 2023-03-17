@@ -82,19 +82,19 @@ function SplashPage () {
             <div>
               <h3>Total balance</h3>
             </div>
-            <div>{totalBalance.toFixed(2)}</div>
+            <div>{totalBalance < 0 ? "- $" : "$"}{Math.abs(totalBalance).toFixed(2)}</div>
           </div>
           <div className='splash-page-owe-container'>
             <div>
               <h3>You owe</h3>
             </div>
-            <div>{userDebt}</div>
+            <div>${userDebt.toFixed(2)}</div>
           </div>
           <div className='splash-page-are-owe-container'>
             <div>
               <h3>You are owed</h3>
             </div>
-            <div>{userOwed}</div>
+            <div>${userOwed.toFixed(2)}</div>
           </div>
         </div>
         <div className='splash-page-content-container'>
