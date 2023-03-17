@@ -36,7 +36,7 @@ function ExpenseSummaries() {
                     // if on friend page, only show unsettledExpense with this friend
                     unsettledExpenseArr.length > 0 ?
                     <ExpenseSummarySection expenses={unsettledExpenseArr} /> :
-                    <h1>No pending expenses</h1>
+                    <h1 className="no_pending_expenses">No pending expenses</h1>
                     // if we are not on a friend page(i.e. on "All Expenses" page, then show settled and unsettled expenses)
                     :
                     Object.values(orderedExpenses).map((expenseList, idx) => {
