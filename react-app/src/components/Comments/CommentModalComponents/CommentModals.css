@@ -1,1 +1,61 @@
 /* TODO: add styling for comment modals */
+.post_comment_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .post_comment_form_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .post_comment_modal_error_list {
+    list-style-type: none;
+    color: red;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .post_comment_modal_error_list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .post_comment_form textarea {
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 50px;
+    resize: none;
+    border-radius: 10px;
+  }
+
+  .post_comment_form button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 2px solid #5bc5a7;
+    background-color: #fff;
+    color: #5bc5a7;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .post_comment_form button:hover {
+    background-color: #48a289;
+    border: 2px solid #48a289;
+    color: white;
+    border-radius: 6px;
+  }
+
+  .post_comment_form button:active {
+    background-color: #3c7f56;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(4px);
+  }

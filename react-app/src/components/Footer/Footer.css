@@ -1,0 +1,10 @@
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    /* background-color: #5bc5a7; */
+    padding: 1rem;
+    /* Add the properties below */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
