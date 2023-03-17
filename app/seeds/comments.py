@@ -1,5 +1,6 @@
 from app.models import db, Comment, environment, SCHEMA
 from sqlalchemy.sql import text
+from datetime import date
 from faker import Faker
 
 fake = Faker()
@@ -10,26 +11,31 @@ def seed_comments():
         user_id=1,
         expense_id=1,
         comment=fake.sentence(),
+        created_at=date.fromisoformat("2022-02-14")
     )
     comment2 = Comment(
         user_id=2,
         expense_id=2,
         comment=fake.sentence(),
+        created_at=date.fromisoformat("2022-01-31")
     )
     comment3 = Comment(
         user_id=1,
         expense_id=2,
         comment=fake.sentence(),
+        created_at=date.fromisoformat("2022-03-31")
     )
     comment4 = Comment(
         user_id=3,
         expense_id=3,
         comment=fake.sentence(),
+        created_at=date.fromisoformat("2021-01-31")
     )
     comment5 = Comment(
         user_id=2,
         expense_id=3,
         comment=fake.sentence(),
+        created_at=date.fromisoformat("2023-01-31")
     )
 
     db.session.add_all([comment1, comment2, comment3, comment4, comment5])

@@ -26,7 +26,6 @@ function YouOwe({ friend }) {
 
 
         if (expense.payer.id === friend.id) {
-            // console.log("yes2");
             const userInOwers = expense.owers.find(userInOwer => userInOwer.id === sessionUser.id)
             if  (userInOwers) {
                 outstandingWithFriend += Number.parseFloat(splitAmount.toFixed(2))

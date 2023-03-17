@@ -7,16 +7,19 @@ import CommentFormModal from './CommentModalComponents/CommentFormModal'
 import DeleteCommentConfirmationModal from './CommentModalComponents/DeleteCommentConfirmationModal'
 import './Comments.css'
 
-function Comments ({ expenseId }) {
-  const dispatch = useDispatch()
-  const sessionUser = useSelector(state => state.session.user)
-  const comments = useSelector(state => state.comments[expenseId])
-  // order comments by createdAt date?
-  console.log('List of comments for the expense=====================', comments)
+function Comments({ expenseId }) {
+    const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user)
+    const comments = useSelector(state => state.comments[expenseId])
 
-  useEffect(() => {
-    dispatch(getExpenseCommentsThunk(expenseId))
-  }, [dispatch])
+    // sort comments from oldest to newest
+    const orderedComments = comments?.sort((a,b) => {
+        return (new Date(a.createdAt)).valueOf() - (new Date(b.createdAt)).valueOf()
+    })
+
+    useEffect(() => {
+      dispatch(getExpenseCommentsThunk(expenseId))
+    }, [dispatch])
 
   return (
     <>

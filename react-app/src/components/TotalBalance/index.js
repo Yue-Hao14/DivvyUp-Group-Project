@@ -50,7 +50,8 @@ function TotalBalance() {
                 // and add to userOwed
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
             }
-            console.log("expense.id, userOwed", expense.id, userOwed)
+            // console.log("expense.id, userOwed",expense.id, userOwed)
+
         } else {
             // If user is not payer, then they must be an ower
             // If user is an ower, and has not settled their debt, add splitAmount to userDebt
@@ -61,10 +62,9 @@ function TotalBalance() {
         }
     }
 
-    console.log("userOwed", userOwed)
-    console.log("userDebt", userDebt)
+    // console.log("userOwed", userOwed)
+    // console.log("userDebt", userDebt)
     totalBalance = userOwed - userDebt
-    console.log("===================totoalbalance", totalBalance);
 
 
     return (

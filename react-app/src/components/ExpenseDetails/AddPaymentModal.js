@@ -57,6 +57,7 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
           Cancel
         </button>
         <button
+          type='submit'
           className='add_payment_modal_buttons_submit_button'
           onClick={handleSubmit}
         >
