@@ -15,28 +15,33 @@ function FriendDetails () {
 
   // dispatch getFriendExpenses thunk on load, or when we switch friend pages
   useEffect(() => {
+    console.log("Friend id in Friend details, this is when the use effect is firing =====================================", friendId)
     dispatch(getFriendExpensesThunk(friendId)).then(() => setIsLoaded(true))
   }, [dispatch, friendId])
 
-  if (!friend || !sessionUser) return Redirect('/') // redirect to dashboard if the user is not in the current_user's friends list or there is no logged in user
+  if (!sessionUser) return Redirect('/') // redirect to dashboard if the user is not in the current_user's friends list or there is no logged in user
 
   return (
     <>
-      <div className='friend_details_div'>
-        <div className='friend_details_info_div'>
-          <div className='friend_details_user_info_div'>
-            <i className='expense_details_user_icon fa-solid fa-user' />
-            <div className='friend_details_user_info'>
-              {friend.firstName} {friend.lastName}
+    {isLoaded && (
+      <>
+          <div className='friend_details_div'>
+            <div className='friend_details_info_div'>
+              <div className='friend_details_user_info_div'>
+                <i className='expense_details_user_icon fa-solid fa-user' />
+                <div className='friend_details_user_info'>
+                  {friend.firstName} {friend.lastName}
+                </div>
+              </div>
+              <div className='friend_details_add_expense_button'></div>
             </div>
+            <div className=''>{isLoaded && <ExpenseSummaries />}</div>
           </div>
-          <div className='friend_details_add_expense_button'></div>
-        </div>
-        <div className=''>{isLoaded && <ExpenseSummaries />}</div>
-      </div>
-      <div className='total_balance_div'>
-        <TotalBalance />
-      </div>
+          <div className='total_balance_div'>
+            <TotalBalance />
+          </div>
+        </>
+      )}
     </>
   )
 }
