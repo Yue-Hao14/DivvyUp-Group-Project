@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useParams } from 'react-router-dom'
-import { getFriendExpensesThunk } from '../../store/expenses'
+import { getAllExpensesThunk, getFriendExpensesThunk } from '../../store/expenses'
 import ExpenseSummaries from '../ExpenseSummaries'
 import TotalBalance from '../TotalBalance'
 import './FriendsDetails.css'
@@ -16,7 +16,9 @@ function FriendDetails () {
   // dispatch getFriendExpenses thunk on load, or when we switch friend pages
   useEffect(() => {
     console.log("Friend id in Friend details, this is when the use effect is firing =====================================", friendId)
-    dispatch(getFriendExpensesThunk(friendId)).then(() => setIsLoaded(true))
+    dispatch(getAllExpensesThunk()).then(() => dispatch(getFriendExpensesThunk(friendId))).then(() => setIsLoaded(true))
+    // dispatch(getFriendExpensesThunk(friendId)).then(() => setIsLoaded(true))
+
   }, [dispatch, friendId])
 
   if (!sessionUser || (isLoaded && !friend)) return Redirect('/') // redirect to dashboard if the user is not in the current_user's friends list or there is no logged in user
