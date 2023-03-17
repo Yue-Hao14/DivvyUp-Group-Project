@@ -38,7 +38,8 @@ function SideBar () {
           <div className='side_bar_friends_add_button'>
             <OpenModalButton
               modalComponent={<AddFriendModal />}
-              buttonText='+ add'
+              // buttonText='+ add'
+              className="fa-solid fa-user-plus"
             />
           </div>
         </div>
