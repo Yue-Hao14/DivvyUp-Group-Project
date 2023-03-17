@@ -30,7 +30,7 @@ function EditAndDeleteButtons({ expense }) {
                 className="edit_expense_button"
             />
             <OpenModalButton
-                modalComponent={<DeleteExpenseModal />}
+                modalComponent={<DeleteExpenseModal expense={expense}/>}
                 buttonText={<i className='remove_expense_button fa-solid fa-trash' />}
                 className="delete_expense_button"
             />
