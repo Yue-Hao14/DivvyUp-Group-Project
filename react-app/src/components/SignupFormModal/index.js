@@ -43,7 +43,7 @@ function SignupFormModal() {
         <label className="signup-modal-label">
           Email
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="signup-modal-input"
