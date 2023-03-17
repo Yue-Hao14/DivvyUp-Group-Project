@@ -48,12 +48,12 @@ function RemoveFriendModal({ user }) {
         }
         console.log("settledOwersIds", settledOwersIds)
         // if user is payer, then check if friend is in OwerIds, if yes, then check if friend is in settledOwers, if not break
-        if (payerId === sessionUserId && owerIds.includes(friendId) && (settledOwersIds || !settledOwersIds.includes(friendId))) {
+        if ((payerId === sessionUserId) && owerIds.includes(friendId) && !(settledOwersIds.includes(friendId))) {
             pendingExpense = true
             break
         }
         // else if user is not payer, then check if user is in settledOwers, if not break
-        else if (payerId !== sessionUserId && settledOwersIds && !settledOwersIds.includes(sessionUserId)) {
+        else if ((payerId !== sessionUserId) && settledOwersIds.length && !(settledOwersIds.includes(sessionUserId))) {
             pendingExpense = true
             break
         }
