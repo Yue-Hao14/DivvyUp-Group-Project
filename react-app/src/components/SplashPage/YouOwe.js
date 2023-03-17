@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFriendExpensesThunk } from '../../store/expenses';
+import { Link } from 'react-router-dom';
 
 function YouOwe({ friend }) {
     const expenses = useSelector(state => state.expenses.allExpenses);
@@ -46,11 +47,13 @@ function YouOwe({ friend }) {
     return (
       <>
         {outstandingWithFriend > 0 ?
-          <div>
-              <div>{friend.firstName}</div>
-              <div> you owe ${outstandingWithFriend.toFixed(2)}</div>
-
-          </div> : null}
+        <Link key={friend.id} to={`/friends/${friend.id}`}>
+                <div>
+                    <div>{friend.firstName}</div>
+                    <div> you owe ${outstandingWithFriend.toFixed(2)}</div>
+                </div>
+        </Link>
+          : null}
       </>
     );
 }
