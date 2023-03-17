@@ -25,7 +25,6 @@ function OweYou({ friend }) {
         const splitAmount = (expense.amount / (numOwers + 1))
 
         if (expense.payer.id === sessionUser.id) {
-            console.log("yes1");
             const friendInOwers = expense.owers.find(friendOwer => friendOwer.id === friend.id)
             if (friendInOwers) {
 
