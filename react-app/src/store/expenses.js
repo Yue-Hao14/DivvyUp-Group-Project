@@ -88,7 +88,7 @@ export const getSettledExpensesThunk = () => async (dispatch) => {
 }
 
 export const getFriendExpensesThunk = (friendId) => async (dispatch) => {
-    const res = await fetch(`/api/users/friends/${friendId}`);
+    const res = await fetch(`/api/users/friends/${friendId}/expenses`);
 
     if (res.ok) {
         const data = await res.json();

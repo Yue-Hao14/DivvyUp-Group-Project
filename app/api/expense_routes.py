@@ -139,10 +139,14 @@ def update_an_expense(id):
 @expense_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_an_expense(id):
+    """
+    Deletes an existing expense if the current user is the payer and
+    there are no settled users yet
+    """
     expense = Expense.query.get(id)
 
     if not expense:
-        return {'errors': ['Expense does not exist']}, 404
+        return {'errors': ['Expense could not be found']}, 404
     elif current_user.id != expense.payer_id:
             return {'errors': ['Unauthorized to delete this expense']}, 401
     elif len(expense.settled_owers) > 0:
