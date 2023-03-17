@@ -131,7 +131,9 @@ export const postExpenseThunk = expense => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(postExpense(data));
-        dispatch(getFriendExpensesThunk(expense.owerId));
+        expense.owerIds.forEach(owerId => {
+            dispatch(getFriendExpensesThunk(owerId));
+        })
         return null;
     } else if (res.status < 500) {
         const data = await res.json();
