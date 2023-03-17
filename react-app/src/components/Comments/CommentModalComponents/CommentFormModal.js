@@ -43,7 +43,7 @@ function PostCommentModal({ expenseId, commentId }) {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
             />
-            <button type="submit">{!!commentToUpdate ? "Update" : "Post"}</button>
+            <button type="submit">{!!commentToUpdate ? "Update" : "Post comment"}</button>
         </form>
     )
 }

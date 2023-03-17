@@ -12,6 +12,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+    border-bottom: 1px solid grey;
 }
 
 .fa-divide {
@@ -87,16 +88,16 @@
     margin-left: 6px;
     transition: all 0.3s ease;
 
-  }
+}
 
-  .settle_up_button:hover {
+.settle_up_button:hover {
     background-color: red;
     color: white;
-  }
+}
 
-  .settle_up_button:active {
+.settle_up_button:active {
     background-color: red;
     color: white;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
     transform: translateY(3px);
-  }
+}
