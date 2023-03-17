@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllExpensesThunk } from '../../store/expenses';
+import { Link } from 'react-router-dom';
+import { getFriendExpensesThunk } from '../../store/expenses';
 
 function OweYou({ friend }) {
     const expenses = useSelector(state => state.expenses.allExpenses);
@@ -10,7 +11,7 @@ function OweYou({ friend }) {
 
     useEffect(() => {
         if (sessionUser) {
-            dispatch(getAllExpensesThunk(friend.id))
+            dispatch(getFriendExpensesThunk(friend.id))
         }
     }, [sessionUser]);
 
@@ -44,11 +45,13 @@ function OweYou({ friend }) {
     return (
       <>
         {friendOwed > 0 ?
-          <div>
-              <div>{friend.firstName}</div>
-              <div> owes you ${friendOwed.toFixed(2)}</div>
-
-          </div> : null}
+            <Link key={friend.id} to={`/friends/${friend.id}`}>
+            <div>
+                <div>{friend.firstName}</div>
+                <div> owes you ${friendOwed.toFixed(2)}</div>
+            </div>
+            </Link>
+          : null}
       </>
     );
 }

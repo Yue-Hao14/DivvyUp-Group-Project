@@ -30,7 +30,8 @@ function SplashPage () {
   let userOwed = 0
   let userDebt = 0
   let totalBalance = 0
-
+  const userOwesFriend = [];
+  const friendOwesUser = [];
   // iterate through each exepense and determine how much user owes and is owed
   for (const expense of expensesArr) {
     const numOwers = expense.owers.length
@@ -41,24 +42,19 @@ function SplashPage () {
       // if length of settled owers is less than numOwers
       const numUnsettledOwers = numOwers - expense.settledOwers.length
 
-      console.log('<<<I am payer>>>')
-
       if (numUnsettledOwers > 0) {
         userOwed += Number.parseFloat(
           (splitAmount * numUnsettledOwers).toFixed(2)
         )
-        console.log('===people owe you', userOwed)
       }
       // find number of users who still owe, multiply the split amount by number of users who still owe
       // and add to userOwed
     } else {
-      console.log('<<<I am not payer>>>')
       // If user is not payer, then they must be an ower
       // If user is an ower, and has not settled their debt, add splitAmount to userDebt
       const userInSettledOwers = expense.settledOwers.find(
         settledOwerId => settledOwerId.settledUserId === sessionUser.id
       )
-      console.log('yes2=================')
 
       if (!userInSettledOwers) {
         userDebt += Number.parseFloat(splitAmount.toFixed(2))
@@ -108,9 +104,7 @@ function SplashPage () {
             </div>
             <div className='you-owe-list'>
               {friends.map(friend => (
-                <NavLink key={friend.id} to={`/friends/${friend.id}`}>
-                  <YouOwe friend={friend} />
-                </NavLink>
+                  <YouOwe key={friend.id} friend={friend} />
               ))}
             </div>
           </div>
@@ -120,9 +114,7 @@ function SplashPage () {
             </div>
             <div className='you-are-owed-list'>
               {friends.map(friend => (
-                <NavLink key={friend.id} to={`/friends/${friend.id}`}>
-                  <OweYou friend={friend} />
-                </NavLink>
+                  <OweYou key={friend.id} friend={friend} />
               ))}
             </div>
           </div>
