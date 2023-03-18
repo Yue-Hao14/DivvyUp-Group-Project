@@ -36,7 +36,7 @@ def create_a_new_expense():
     form['csrf_token'].data = request.cookies['csrf_token']
     # Validate that the current user (payer) is not in the list of owers
     if current_user.id in ower_ids:
-        return {"errors": ["Current User cannot be in ower's list"]}
+        return {"errors": ["Current User cannot be in ower's list"]}, 401
 
     if form.validate_on_submit():
         new_expense = Expense(
@@ -102,14 +102,14 @@ def update_an_expense(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     expense = Expense.query.get(id)
     if not expense:
-        return {'errors': ['Expense does not exist']}, 404
+        return {'errors': ['Expense could not be found']}, 404
     elif form.validate_on_submit():
         ower_ids = data['owerIds']
 
         if current_user.id != expense.payer_id:
             return {'errors': ['Unauthorized to update this expense']}, 401
         elif len(expense.settled_owers) > 0:
-            return {'errors': ['Cannot update an expense when one or more user has settled their expenses']}
+            return {'errors': ['Cannot update an expense when one or more user has settled their expenses']}, 401
         else:
             expense.description = form.data["description"]
             expense.amount = form.data['amount']
@@ -150,7 +150,7 @@ def delete_an_expense(id):
     elif current_user.id != expense.payer_id:
             return {'errors': ['Unauthorized to delete this expense']}, 401
     elif len(expense.settled_owers) > 0:
-        return {'errors': ['Cannot delete an expense when one or more user has settled their expenses']}
+        return {'errors': ['Cannot delete an expense when one or more user has settled their expenses']}, 401
     else:
         db.session.delete(expense)
         db.session.commit()
@@ -165,7 +165,7 @@ def get_expense_comments(id):
     """
     expense = Expense.query.get(id)
     if not expense:
-        return {'errors': ['Expense does not exist']}, 404
+        return {'errors': ['Expense could not be found']}, 404
 
     return {"id": id, "comments": [comment.to_dict() for comment in expense.comments]}
 

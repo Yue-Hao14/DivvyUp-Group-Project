@@ -1,7 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react"
+import { useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { getFriendExpensesThunk } from "../../store/expenses";
 import "./TotalBalance.css";
 
 function TotalBalance() {
@@ -42,7 +40,6 @@ function TotalBalance() {
                 // and add to userOwed
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
             }
-            // console.log("expense.id, userOwed",expense.id, userOwed)
 
         } else {
             // If user is not payer, then they must be an ower
@@ -54,10 +51,7 @@ function TotalBalance() {
         }
     }
 
-    // console.log("userOwed", userOwed)
-    // console.log("userDebt", userDebt)
     totalBalance = userOwed - userDebt
-
 
     return (
         <div className="total_balance_div">

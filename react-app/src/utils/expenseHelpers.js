@@ -11,7 +11,6 @@ export const groupExpensesByMonth = (expensesList) => {
     for (const expense of sorted) {
         const date = new Date(expense.expenseDate);
         const monthYear = `${date.getFullYear()}-${date.getMonth() + 1}`;
-        console.log(monthYear)
 
         if (!(monthYear in groupedByMonthSet)) {
             groupedByMonthSet[monthYear] = [expense]
