@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect, useParams } from 'react-router-dom'
-import { abbrevMonths, getMMDD } from '../../utils/utils'
+import { getMMDD } from '../../utils/utils'
 import ExpenseDetails from '../ExpenseDetails'
 
 function ExpenseSummary ({ expense }) {
@@ -32,7 +32,6 @@ function ExpenseSummary ({ expense }) {
   let owerDescription
   if (sessionUser.id !== expense.payer.id) {
     // if current user not payer, then they are the ower
-    console.log('The user is the ower!')
     owerDescription = (
       <div className='expense_summary_expense_payerInfo'>
         {sessionUser.firstName} {sessionUser.lastName[0]}. owes{' '}
@@ -41,7 +40,6 @@ function ExpenseSummary ({ expense }) {
     )
   } else if (!friend) {
     // if the current user is the payer and there is no friend, show how much the current user is owed for that expense
-    console.log('Show the total amount the user is owed')
     owerDescription = (
       <div className='expense_summary_expense_payerInfo'>
         {sessionUser.firstName} {sessionUser.lastName[0]}. is owed{' '}
@@ -52,7 +50,6 @@ function ExpenseSummary ({ expense }) {
     )
   } else {
     // else show how much the friend owes the current user
-    console.log('The friend is the ower!')
     owerDescription = (
       <div className='expense_summary_expense_payerInfo'>
         {friend.firstName} {friend.lastName[0]}. owes{' '}
@@ -76,7 +73,7 @@ function ExpenseSummary ({ expense }) {
         <div className='expense_summary_expense_date'>
           {formattedExpenseDate}
         </div>
-        <i class='fa-solid fa-receipt'></i>{' '}
+        <i className='fa-solid fa-receipt' />{' '}
         <div className='expense_summary_expense_description'>
           {expense.description}
         </div>
