@@ -8,7 +8,7 @@ from app.models import Expense
 # THEN BACKEND CAN CONVERT IT TO A STRING
 
 class ExpenseForm(FlaskForm):
-    owerIds = StringField("Owers", validators=[DataRequired()])
-    description = StringField("Description", validators=[DataRequired()])
-    amount = FloatField("Amount", validators=[DataRequired()])
-    expenseDate = DateField("Expense Date", validators=[DataRequired()])
+    owerIds = StringField("Owers", validators=[DataRequired("Must be at least one other person for an Expense")])
+    description = StringField("Description", validators=[DataRequired("Description Required")])
+    amount = FloatField("Amount", validators=[DataRequired("Amount Required")])
+    expenseDate = DateField("Expense Date", validators=[DataRequired("Expense Date Required")])
