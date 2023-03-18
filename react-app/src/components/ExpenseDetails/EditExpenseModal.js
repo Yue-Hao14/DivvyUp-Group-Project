@@ -33,8 +33,8 @@ function EditExpenseModal({expense}) {
 
   // calculate current splitAmount based on changes in the form
   useEffect(()=>{
-    calculatedSplitAmount = (amount / (owerIds.length + 1)).toFixed(2)
-    setSplitAmount(calculatedSplitAmount)
+    const newSplitAmount = (amount / (owerIds.length + 1)).toFixed(2)
+    setSplitAmount(newSplitAmount)
   },[amount, owerIds])
 
   // create an array of friendsId to for SELECT element

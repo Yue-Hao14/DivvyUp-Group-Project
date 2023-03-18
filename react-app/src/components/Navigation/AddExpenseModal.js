@@ -76,6 +76,7 @@ function AddExpenseModal() {
 
   return (
     <form
+      onSubmit={handleSubmit}
       className="add_expense_modal_form">
       <div className='add_expense_modal_label_container'>
         Add an Expense
@@ -144,8 +145,8 @@ function AddExpenseModal() {
           (<div className='error'>{errors.emptyExpenseDate}</div>)}
       </div>
       <div className='add_expense_modal_bottom_container'>
-        <button className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
-        <button className='add_expense_modal_submit_button' onClick={handleSubmit}>Submit</button>
+        <button type='button' className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
+        <button type='submit' className='add_expense_modal_submit_button'>Submit</button>
       </div>
     </form>
   )

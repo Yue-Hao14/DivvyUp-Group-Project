@@ -27,7 +27,7 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
   }
 
   return (
-    <form className='add_payment_modal_form'>
+    <form onSubmit={handleSubmit} className='add_payment_modal_form'>
       <div className='add_payment_modal_label_container'>
         <i className='fa-solid fa-handshake settled_expenses_icon' />
         <div className='add_payment_modal_title'>Settle Up</div>
@@ -45,6 +45,7 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
       />
       <div className='add_payment_modal_buttons_container'>
         <button
+          type='button'
           className='add_payment_modal_buttons_cancel_button'
           onClick={closeModal}
         >
@@ -53,7 +54,6 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
         <button
           type='submit'
           className='add_payment_modal_buttons_submit_button'
-          onClick={handleSubmit}
         >
           Submit
         </button>
