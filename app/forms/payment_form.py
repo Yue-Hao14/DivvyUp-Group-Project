@@ -3,6 +3,6 @@ from wtforms import StringField, SelectField, FloatField, IntegerField, DateFiel
 from wtforms.validators import DataRequired, ValidationError
 
 class PaymentForm(FlaskForm):
-    owerId = StringField("Owers", validators=[DataRequired()])
-    expenseId = StringField("Expense", validators=[DataRequired()])
-    settledDate = DateField("Settled Date", validators=[DataRequired()])
+    owerId = StringField("Owers", validators=[DataRequired("Ower Id Required")])
+    expenseId = StringField("Expense", validators=[DataRequired("Expense Id Required")])
+    settledDate = DateField("Settled Date", validators=[DataRequired("Settled Date Required")])

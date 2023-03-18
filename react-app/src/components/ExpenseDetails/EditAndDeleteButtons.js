@@ -14,7 +14,7 @@ function EditAndDeleteButtons({ expense }) {
         Render the buttons only if the current user is the payer of the expense
         AND there are nobody has settled their expense yet
      */
-    if ((expense.payer.id != sessionUser.id) || expense.settledOwers.length > 0) return null
+    if ((expense.payer.id !== sessionUser.id) || expense.settledOwers.length > 0) return null
 
 
 

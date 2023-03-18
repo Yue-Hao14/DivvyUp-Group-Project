@@ -49,7 +49,7 @@ def create_a_new_payment():
             db.session.add(new_payment)
             db.session.commit()
 
-            return new_payment.to_dict()
+            return new_payment.to_dict(), 201
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401

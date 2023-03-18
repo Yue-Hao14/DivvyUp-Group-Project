@@ -4,7 +4,6 @@ import './ExpenseSummaries.css'
 
 function ExpenseSummarySection ({ expenses }) {
   const groupMonthandYear = new Date(expenses[0]?.expenseDate)
-  console.log(groupMonthandYear)
   return (
     <div className='expense_summary_container'>
       {groupMonthandYear &&

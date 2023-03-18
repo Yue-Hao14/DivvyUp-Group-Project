@@ -22,7 +22,8 @@ function LoginFormModal() {
   };
 
   const loginDemo = async () => {
-    dispatch(login("demo@user.com", "password")).then(closeModal)
+    dispatch(login("demo@user.com", "password"));
+    closeModal();
   }
 
   return (

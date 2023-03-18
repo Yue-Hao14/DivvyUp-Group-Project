@@ -13,4 +13,4 @@ def email_exists(form, field):
 # TODO: ADD VALIDATION TO MAKE SURE THE USER BEING ADDED IS NOT ALREADY FRIENDED
 # FRONT END SHOULD VALIDATE THAT THE CURRENT USER IS NOT TYRING TO ADD THEMSELVES
 class FriendForm(FlaskForm):
-    email = StringField("Email", validators=[DataRequired(), email_exists])
+    email = StringField("Email", validators=[DataRequired("Email Required"), email_exists])
