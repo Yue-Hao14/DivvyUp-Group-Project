@@ -28,8 +28,8 @@ function Comments({ expenseId }) {
       {comments && comments.length === 0 ? 'Be the first to comment!' : 'COMMENTS'}
     </div>
       <div className='comments_container'>
-        {comments &&
-          comments.map(comment => {
+        {orderedComments &&
+          orderedComments.map(comment => {
             const fomattedCreatedAt = getMMDDYYYY(new Date(comment.createdAt))
             const fomattedUpdatedAt = getMMDDYYYY(new Date(comment.updatedAt))
 
