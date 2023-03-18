@@ -29,17 +29,13 @@
   cursor: pointer;
   color: #5BC5A7;
   transition: color 0.3s ease, font-weight 0.3s ease;
+  font-size: 20px;
+  padding-right: 10px;
 }
 
 .footer_container a:hover {
   color: #48a289;
   font-weight: bold;
-}
-
-.contact_us_linkedin_icon,
-.contact_us_github_icon {
-  font-size: 20px;
-  padding: 0 5px;
 }
 
 .about_us_title {
