@@ -54,10 +54,7 @@ function TotalBalance() {
         }
     }
 
-    // console.log("userOwed", userOwed)
-    // console.log("userDebt", userDebt)
     totalBalance = userOwed - userDebt
-
 
     return (
         <div className="total_balance_div">

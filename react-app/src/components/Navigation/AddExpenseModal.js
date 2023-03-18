@@ -62,7 +62,6 @@ function AddExpenseModal() {
     amount = parseFloat(amount).toFixed(2)
 
     const newExpense = { owerIds, description, amount, expenseDate }
-    console.log("newExpense:", newExpense)
 
     // if no error, we POST the newExpense to db via thunk
     if (Object.values(errors).length === 0) {
