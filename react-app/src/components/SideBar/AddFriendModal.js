@@ -43,7 +43,7 @@ function AddFriendModal () {
         className='add_friend_modal_input'
       />
       <div className='add_friend_suggestions_div'>
-        Add one of the devs!
+        <div className='add_friend_suggestion_title'>Add one of the devs!</div>
         <div className='add_friend_suggestion'>Nick Arakaki: nickarakaki@user.com</div>
         <div className='add_friend_suggestion'>Troy Lee: troylee@user.com</div>
         <div className='add_friend_suggestion'>Yue Hao: yuehao@user.com</div>
