@@ -30,15 +30,15 @@ Returns the information about the current user that is logged in.
     * Headers:
         * Content-Type: application/json
     * Body:
-```json
-          {
-            "id": 1,
-            "username": "DemoUser",
-            "firstName": "Demo",
-            "lastName": "User",
-            "email": "demo@user.com"
-          }
-```
+    ```json
+              {
+                "id": 1,
+                "username": "DemoUser",
+                "firstName": "Demo",
+                "lastName": "User",
+                "email": "demo@user.com"
+              }
+    ```
 
 ### Log In a User
 
@@ -52,12 +52,12 @@ Logs in a current user with valid credentials and returns the current user's inf
     * Content-Type: application/json
   * Body:
 
-    ```json
-    {
-      "email": "demo@user.com",
-      "password": "password"
-    }
-    ```
+  ```json
+  {
+    "email": "demo@user.com",
+    "password": "password"
+  }
+  ```
 
 * Successful Response
   * Status Code: 200
@@ -145,30 +145,29 @@ Logs in a current user with valid credentials and returns the current user's inf
   * Headers:
     * Content-Type: application/json
   * Body:
+  ```json
+    {
+      "errors": [
+                  "Email provided not found.",
+                  "No such user exists.",
+                  "Password was incorrect."
+                ]
+    }
+  ```
 
-    ```json
-      {
-        "errors": [
-                    "Email provided not found.",
-                    "No such user exists.",
-                    "Password was incorrect."
-                  ]
-      }
-    ```
 * Error response: Body validation errors
   * Status Code: 400
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-      {
-        "errors": [
-                    "Email is required.",
-                    "Password is required.",
-                  ]
-      }
-    ```
+  ```json
+    {
+      "errors": [
+                  "Email is required.",
+                  "Password is required.",
+                ]
+    }
+  ```
 
 ### Sign Up a User
 
@@ -182,16 +181,15 @@ user's information.
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-      {
-        "username": "DemoUser",
-        "firstName": "Demo",
-        "lastName": "User",
-        "email": "demo@user.com",
-        "password": "password"
-      }
-    ```
+  ```json
+    {
+      "username": "DemoUser",
+      "firstName": "Demo",
+      "lastName": "User",
+      "email": "demo@user.com",
+      "password": "password"
+    }
+  ```
 
 * Successful Response:
   * Status Code: 200
@@ -213,42 +211,39 @@ user's information.
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    {
-      "errors": ["Email address already in use."]
-    }
-    ```
+  ```json
+  {
+    "errors": ["Email address already in use."]
+  }
+  ```
 
 * Error response: User already exists with the specified username
   * Status Code: 401
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    {
-      "errors": ["Username already in use."]
-    }
-    ```
+  ```json
+  {
+    "errors": ["Username already in use."]
+  }
+  ```
 
 * Error response: Body validation errors
   * Status Code: 401
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    {
-      "errors": [
-                  "Username Required",
-                  "First Name Required",
-                  "Last Name Required",
-                  "Email Required",
-                  "Password Required"
-                ]
-    }
-    ```
+  ```json
+  {
+    "errors": [
+                "Username Required",
+                "First Name Required",
+                "Last Name Required",
+                "Email Required",
+                "Password Required"
+              ]
+  }
+  ```
 
 
 ## Users
@@ -346,17 +341,17 @@ Return user to be added to user's friends list
   ```
 
 * Successful Response
-    * Status Code: 201
-    * Headers:
-        * Content-Type: application/json
-    * Body:
-    ```json
-    {
-        "id": 2,
-        "firstName": "John",
-        "lastName": "Smith",
-    }
-    ```
+  * Status Code: 201
+  * Headers:
+      * Content-Type: application/json
+  * Body:
+  ```json
+  {
+      "id": 2,
+      "firstName": "John",
+      "lastName": "Smith",
+  }
+  ```
 
 * Error Response: Validation Errors
   * Status Code: 401
@@ -410,38 +405,37 @@ Returns all Current User expenses
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    [
-        {
-            "id": 1,
-            "description": "Expense Description",
-            "payer": {
-                "id": 1,
-                "firstName": "Demo",
-                "lastName": "User",
-            },
-            "owers": [
-                {
-                    "id": 2,
-                    "firstName": "John",
-                    "lastName": "Smith",
-                }
-            ],
-            "settledOwers": [
-                {
-                    "id": 2,
-                    "firstName": "John",
-                    "lastName": "Smith",
-                }
-            ],
-            "amount": 45,
-            "expenseDate": "2022-25-12",
-            "createdAt": "2022-25-12",
-            "updatedAt": "2022-25-12"
-        }
-    ]
-    ```
+  ```json
+  [
+      {
+          "id": 1,
+          "description": "Expense Description",
+          "payer": {
+              "id": 1,
+              "firstName": "Demo",
+              "lastName": "User",
+          },
+          "owers": [
+              {
+                  "id": 2,
+                  "firstName": "John",
+                  "lastName": "Smith",
+              }
+          ],
+          "settledOwers": [
+              {
+                  "id": 2,
+                  "firstName": "John",
+                  "lastName": "Smith",
+              }
+          ],
+          "amount": 45,
+          "expenseDate": "2022-25-12",
+          "createdAt": "2022-25-12",
+          "updatedAt": "2022-25-12"
+      }
+  ]
+  ```
 
 ### Get Single Expense
 Returns details of a single expense by expense id
@@ -492,7 +486,6 @@ Returns details of a single expense by expense id
   * Headers:
     * Content-Type: application/json
   * Body:
-
     ```json
     { "errors": "Expense not found" }
     ```
@@ -605,61 +598,60 @@ Creates and returns a new Expense
   * Headers:
     * Content-Type: application/json
   * Body:
-    ```json
-    {
-      "owerIds": [2],
-      "description": "Expense Description",
-      "amount": 45,
-      "expenseDate": "2022-12-25"
-    }
-    ```
+  ```json
+  {
+    "owerIds": [2],
+    "description": "Expense Description",
+    "amount": 45,
+    "expenseDate": "2022-12-25"
+  }
+  ```
 
 * Successful Response
   * Status Code: 201
   * Headers:
     * Content-Type: application/json
   * Body:
-    ```json
-        {
-            "id": 1,
-            "description": "Expense Description",
-            "payer": {
-                "id": 1,
-                "firstName": "Demo",
-                "lastName": "User",
-            },
-            "owers": [
-                {
-                    "id": 2,
-                    "firstName": "John",
-                    "lastName": "Smith",
-                }
-            ],
-            "settledOwers": [],
-            "amount": 45,
-            "expenseDate": "2022-25-12",
-            "createdAt": "2022-25-12",
-            "updatedAt": "2022-25-12"
-        }
-    ```
+  ```json
+      {
+          "id": 1,
+          "description": "Expense Description",
+          "payer": {
+              "id": 1,
+              "firstName": "Demo",
+              "lastName": "User",
+          },
+          "owers": [
+              {
+                  "id": 2,
+                  "firstName": "John",
+                  "lastName": "Smith",
+              }
+          ],
+          "settledOwers": [],
+          "amount": 45,
+          "expenseDate": "2022-25-12",
+          "createdAt": "2022-25-12",
+          "updatedAt": "2022-25-12"
+      }
+  ```
 
 * Error Response: Body validation error
   * Status Code: 401
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-      {
-        "errors": [
-                    "Must be at least one other person for an Expense",
-                    "Description Required",
-                    "Amount Required",
-                    "Expense Date Required",
-                    "Current User cannot be in ower's list"
-                  ]
-      }
-    ```
+  ```json
+    {
+      "errors": [
+                  "Must be at least one other person for an Expense",
+                  "Description Required",
+                  "Amount Required",
+                  "Expense Date Required",
+                  "Current User cannot be in ower's list"
+                ]
+    }
+  ```
 
 ### Update Expense
 Updates and returns an existing expense
@@ -672,74 +664,70 @@ Updates and returns an existing expense
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    {
-      "owerIds": [2, 3],
-      "description": "Updated Expense Description",
-      "amount": 45,
-      "expenseDate": "2022-12-25"
-    }
-    ```
+  ```json
+  {
+    "owerIds": [2, 3],
+    "description": "Updated Expense Description",
+    "amount": 45,
+    "expenseDate": "2022-12-25"
+  }
+  ```
 
 * Successful Response
   * Status Code: 200
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-        {
-            "id": 1,
-            "description": "Updated Expense Description",
-            "payer": {
-                "id": 1,
-                "firstName": "Demo",
-                "lastName": "User",
-            },
-            "owers": [
-                {
-                    "id": 2,
-                    "firstName": "John",
-                    "lastName": "Smith",
-                },
-                {
-                    "id": 3,
-                    "firstName": "Jane",
-                    "lastName": "Doe"
-                }
-            ],
-            "settledOwers": [
-                {
-                    "id": 2,
-                    "firstName": "John",
-                    "lastName": "Smith",
-                }
-            ],
-            "amount": 45,
-            "expenseDate": "2022-25-12",
-            "createdAt": "2022-25-12",
-            "updatedAt": "2022-31-12"
-        }
-
-    ```
+  ```json
+      {
+          "id": 1,
+          "description": "Updated Expense Description",
+          "payer": {
+              "id": 1,
+              "firstName": "Demo",
+              "lastName": "User",
+          },
+          "owers": [
+              {
+                  "id": 2,
+                  "firstName": "John",
+                  "lastName": "Smith",
+              },
+              {
+                  "id": 3,
+                  "firstName": "Jane",
+                  "lastName": "Doe"
+              }
+          ],
+          "settledOwers": [
+              {
+                  "id": 2,
+                  "firstName": "John",
+                  "lastName": "Smith",
+              }
+          ],
+          "amount": 45,
+          "expenseDate": "2022-25-12",
+          "createdAt": "2022-25-12",
+          "updatedAt": "2022-31-12"
+      }
+  ```
 
 * Error Response: Body validation error
   * Status Code: 401
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    {
-      "errors": [
-                  "Must be at least one other person for an Expense",
-                  "Description Required",
-                  "Amount Required",
-                  "Expense Date Required"
-                ]
-    }
-    ```
+  ```json
+  {
+    "errors": [
+                "Must be at least one other person for an Expense",
+                "Description Required",
+                "Amount Required",
+                "Expense Date Required"
+              ]
+  }
+  ```
 
 * Error Response: User is not the payer of the expense, or the expese already has at least one settled ower
   * Status Code: 401
@@ -759,10 +747,9 @@ Updates and returns an existing expense
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    { "errors": ["Expense could not be found"] }
-    ```
+  ```json
+  { "errors": ["Expense could not be found"] }
+  ```
 
 ### Delete an Expense
 Deletes an existing expense
@@ -779,25 +766,23 @@ Deletes an existing expense
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    {
-      "message": "Successfully Removed",
-    }
-    ```
+  ```json
+  {
+    "message": "Successfully Removed",
+  }
+  ```
 
 * Error response: Couldn't find an Expense with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
   * Body:
-
-    ```json
-    {
-      "message": "Expense could not be found",
-      "statusCode": 404
-    }
-    ```
+  ```json
+  {
+    "message": "Expense could not be found",
+    "statusCode": 404
+  }
+  ```
 
 * Error response: User is not the payer of the expense, or the expese already has at least one settled ower
   * Status Code: 401
@@ -921,6 +906,7 @@ Return all current user's settled expenses (fully and partially paid)
             "updatedAt": "2022-12-25"
         },
   ]
+  ```
 
 
 ## Comments
