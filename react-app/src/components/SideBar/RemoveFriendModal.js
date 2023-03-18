@@ -27,7 +27,7 @@ function RemoveFriendModal({ user }) {
     }
 
     // check if there is still outstanding expense between user and this friend
-    let pendingExpense = true
+    let pendingExpense = false
     for (let i = 0; i < allExpensesArr.length; i++) {
         const expenseObj = allExpensesArr[i]
         const payerId = expenseObj.payer.id
