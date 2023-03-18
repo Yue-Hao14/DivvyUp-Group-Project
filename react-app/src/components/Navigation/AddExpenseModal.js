@@ -87,7 +87,6 @@ function AddExpenseModal() {
           isMulti
           options={friends_options}
           onChange={e => {
-            // console.log('e:', e)
             let temp_owers_arr = []
             e.forEach(ower => {
               temp_owers_arr.push(ower.value)

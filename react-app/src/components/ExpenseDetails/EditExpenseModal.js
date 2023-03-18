@@ -40,7 +40,6 @@ function EditExpenseModal({expense}) {
   // create an array of friendsId to for SELECT element
   const friends = useSelector(state => state.friends)
   const friends_array = Object.values(friends)
-  // console.log(friends_array)
   let friends_options = []
   friends_array.forEach(friend => {
     const value = friend.id
@@ -124,7 +123,6 @@ function EditExpenseModal({expense}) {
           options={friends_options}
           defaultValue={owerIdsNames}
           onChange={e => {
-            // console.log('e:', e)
             let temp_owers_arr = []
             e.forEach(ower => {
               temp_owers_arr.push(ower.value)

@@ -42,7 +42,6 @@ function TotalBalance() {
                 // and add to userOwed
                 userOwed += Number.parseFloat(((splitAmount * numUnsettledOwers).toFixed(2)));
             }
-            // console.log("expense.id, userOwed",expense.id, userOwed)
 
         } else {
             // If user is not payer, then they must be an ower
