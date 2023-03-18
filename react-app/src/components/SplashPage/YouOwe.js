@@ -13,18 +13,14 @@ function YouOwe({ friend }) {
         if (sessionUser) {
             dispatch(getFriendExpensesThunk(friend.id))
         }
-    }, [sessionUser]);
-
-
+    }, [dispatch, friend.id, sessionUser]);
 
     let outstandingWithFriend = 0;
-
 
     // Calculate the total amount of expenses paid by the user and friend
     for (const expense of expensesArr) {
         const numOwers = expense.owers.length;
         const splitAmount = (expense.amount / (numOwers + 1))
-
 
         if (expense.payer.id === friend.id) {
             const userInOwers = expense.owers.find(userInOwer => userInOwer.id === sessionUser.id)
@@ -35,14 +31,10 @@ function YouOwe({ friend }) {
 
             const userInSettledOwers = expense.settledOwers.find(settledOwerId => settledOwerId.settledUserId === sessionUser.id)
             if (userInSettledOwers) {
-
                 outstandingWithFriend -= Number.parseFloat(splitAmount.toFixed(2))
-
             }
         }
-
     }
-
 
     return (
       <>

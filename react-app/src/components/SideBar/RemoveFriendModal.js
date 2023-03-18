@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
 import { removeFriendThunk } from "../../store/friends";
-import { getAllExpensesThunk} from '../../store/expenses'
 
 import "./RemoveFriendModal.css"
 function RemoveFriendModal({ user }) {
@@ -12,7 +11,6 @@ function RemoveFriendModal({ user }) {
     const sessionUserId = useSelector(state => state.session.user.id)
     const friendId = user.id
     const allExpensesArr = Object.values(useSelector(state => state.expenses.allExpenses))
-    console.log("allExpensesArr",allExpensesArr)
 
     const confirmDelete = async () => {
         // dispatch remove friend thunk
@@ -31,14 +29,10 @@ function RemoveFriendModal({ user }) {
     for (let i = 0; i < allExpensesArr.length; i++) {
         const expenseObj = allExpensesArr[i]
         const payerId = expenseObj.payer.id
-        console.log("payerId", payerId)
-        console.log("friendId", friendId)
-        console.log(expenseObj)
 
         // gather owerIds
         const owersArr = expenseObj.owers
         let owerIds = owersArr.map(ower => ower.id)
-        console.log("owerIds", owerIds)
 
         // gather settled owerId into an array
         const settledOwersArr = expenseObj.settledOwers
@@ -46,7 +40,6 @@ function RemoveFriendModal({ user }) {
         if (settledOwersArr.length > 0) {
             settledOwersIds = settledOwersArr.map(settledOwer => settledOwer.settledUserId)
         }
-        console.log("settledOwersIds", settledOwersIds)
         // if user is payer, then check if friend is in OwerIds, if yes, then check if friend is in settledOwers, if not break
         if ((payerId === sessionUserId) && owerIds.includes(friendId) && !(settledOwersIds.includes(friendId))) {
             pendingExpense = true
@@ -61,8 +54,6 @@ function RemoveFriendModal({ user }) {
         else pendingExpense = false
     }
 
-    console.log("boolean", pendingExpense)
-
     return (
         <div className="delete_confirmation_modal_div">
             <h2 className="delete_confirmation_modal_title">Unfriend {`${user.firstName}`}</h2>
@@ -70,7 +61,7 @@ function RemoveFriendModal({ user }) {
                 <p className="delete_confirmation_modal_info">Are you sure you want to remove {`${user.firstName} from your friends list?`}</p>
             }
             {pendingExpense &&
-                <p className="delete_confirmation_modal_info"> Unfortunately, you cannot remove {`${user.firstName} from your friends list as there are still pending expenses between you two.`} </p>
+                <p className="delete_confirmation_modal_info"> Unfortunately, you cannot remove {`${user.firstName} from your friends list as there are still unsettled expenses between you two.`} </p>
             }
             <ul className="delete_confirmation_modal_errors_list">
                 {errors.map((error, idx) => (

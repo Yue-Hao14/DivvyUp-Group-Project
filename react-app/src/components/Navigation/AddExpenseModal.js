@@ -62,7 +62,6 @@ function AddExpenseModal() {
     amount = parseFloat(amount).toFixed(2)
 
     const newExpense = { owerIds, description, amount, expenseDate }
-    console.log("newExpense:", newExpense)
 
     // if no error, we POST the newExpense to db via thunk
     if (Object.values(errors).length === 0) {
@@ -77,6 +76,7 @@ function AddExpenseModal() {
 
   return (
     <form
+      onSubmit={handleSubmit}
       className="add_expense_modal_form">
       <div className='add_expense_modal_label_container'>
         Add an Expense
@@ -88,7 +88,6 @@ function AddExpenseModal() {
           isMulti
           options={friends_options}
           onChange={e => {
-            // console.log('e:', e)
             let temp_owers_arr = []
             e.forEach(ower => {
               temp_owers_arr.push(ower.value)
@@ -146,8 +145,8 @@ function AddExpenseModal() {
           (<div className='error'>{errors.emptyExpenseDate}</div>)}
       </div>
       <div className='add_expense_modal_bottom_container'>
-        <button className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
-        <button className='add_expense_modal_submit_button' onClick={handleSubmit}>Submit</button>
+        <button type='button' className='add_expense_modal_cancel_button' onClick={closeModal}>Cancel</button>
+        <button type='submit' className='add_expense_modal_submit_button'>Submit</button>
       </div>
     </form>
   )

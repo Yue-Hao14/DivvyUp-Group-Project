@@ -1,14 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import OpenModalButton from '../OpenModalButton'
-import AddExpenseModal from '../Navigation/AddExpenseModal'
 import LoggedOutSplashPage from '../LoggedOutSplashPage'
 import { getAllExpensesThunk } from '../../store/expenses'
 import './Splash.css'
 import OweYou from './oweYou'
 import YouOwe from './YouOwe'
-
-import { NavLink } from 'react-router-dom'
 
 function SplashPage () {
   const userExpenses = useSelector(state => state.expenses.allExpenses)
@@ -23,15 +19,14 @@ function SplashPage () {
     if (sessionUser) {
       dispatch(getAllExpensesThunk())
     }
-  }, [sessionUser])
+  }, [dispatch, sessionUser])
 
   if (!sessionUser) return <LoggedOutSplashPage /> // account for if the user logs out on this page
 
   let userOwed = 0
   let userDebt = 0
   let totalBalance = 0
-  const userOwesFriend = [];
-  const friendOwesUser = [];
+
   // iterate through each exepense and determine how much user owes and is owed
   for (const expense of expensesArr) {
     const numOwers = expense.owers.length

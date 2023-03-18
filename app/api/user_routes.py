@@ -34,7 +34,7 @@ def get_current_users_friends():
     Return list of all current user's friends
     """
     friends = current_user.friends
-    return [friend.to_dict() for friend in friends]
+    return [friend.to_dict_id_name() for friend in friends]
 
 
 @user_routes.route('/friends', methods=["POST"])
@@ -51,11 +51,11 @@ def add_a_friend():
     if form.validate_on_submit():
         friend = User.query.filter(User.email == form.data["email"]).first()
         if friend.id == current_user.id:
-            return { "errors": ["Cannot friend self"] }, 401
+            return { "errors": ["Cannot add yourself to friends list"] }, 401
         current_user.friends.append(friend)
         friend.friends.append(current_user)
         db.session.commit()
-        return friend.to_dict(), 201
+        return friend.to_dict_id_name(), 201
     else:
         # return error
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -96,10 +96,6 @@ def remove_friend(id):
     the other user's friends list to remove current user
     """
     friend = User.query.get(id)
-    if not friend:
-        return { "errors": ["Cannot find user"]}, 404
-    elif friend not in current_user.friends:
-        return { 'errors': ['Cannot remove friend who is not in friends list'] }, 401
     current_user.friends.remove(friend)
     friend.friends.remove(current_user)
     db.session.commit()

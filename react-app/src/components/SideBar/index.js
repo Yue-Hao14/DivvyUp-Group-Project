@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { getAllFriendsThunk } from '../../store/friends'
 import OpenModalButton from '../OpenModalButton'

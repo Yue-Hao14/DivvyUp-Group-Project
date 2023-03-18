@@ -15,9 +15,7 @@ function ExpenseSummaries() {
 
             const settledOwers = expense.settledOwers.map(settledOwer => settledOwer.settledUserId)
 
-            if (!(settledOwers.includes(sessionUser.id) || settledOwers.includes(Number(friendId)))) {
-                return expense;
-            }
+            return (!(settledOwers.includes(sessionUser.id) || settledOwers.includes(Number(friendId))))
         });
 
         orderedExpenses = groupExpensesByMonth(unsettledFriendExpenses);

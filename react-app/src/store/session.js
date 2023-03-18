@@ -1,4 +1,3 @@
-import { Redirect } from "react-router-dom";
 import { getAllExpenses, getSettledExpenses } from "./expenses"
 import { getAllFriends } from "./friends"
 
