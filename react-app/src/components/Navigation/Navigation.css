@@ -6,6 +6,8 @@
   display: none;
 }
 
+
+
 .navigation-container {
   position: fixed;
   width: 100%;
@@ -28,6 +30,7 @@
   font-weight: bold;
   text-decoration: none;
   margin-left: 2rem;
+  /* margin-top: 18px; */
 }
 
 .navigation-links {
