@@ -19,7 +19,7 @@ function Comments({ expenseId }) {
 
     useEffect(() => {
       dispatch(getExpenseCommentsThunk(expenseId))
-    }, [dispatch])
+    }, [dispatch, expenseId])
 
   return (
     <>
