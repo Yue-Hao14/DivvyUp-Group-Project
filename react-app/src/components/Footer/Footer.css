@@ -21,7 +21,7 @@
   width: 60%;
   flex-direction: row;
   justify-content: center;
-  padding-left: 35px;
+  padding-left: 20px;
 }
 
 .footer_container a {
@@ -39,11 +39,11 @@
 }
 
 .about_us_title {
-  font-size: 16px;
+  font-size: 14px;
   justify-self: center;
 }
 
 .project_repo_title,
 .about_us_dev_name {
-  font-size: 14px;
+  font-size: 12px;
 }
