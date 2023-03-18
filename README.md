@@ -1,148 +1,29 @@
-# Flask React Project
+# DivvyUp-Group-Project
+DivvyUp, a SplitWise clone, is a website for users to track bills and share expenses with friends and family, so that everyone gets paid back. We organize all your shared expenses in one place, so that everyone can see who they owe. Whether you are sharing a ski vacation, splitting rent with roommates, or paying someone back for lunch, Divvyup makes life easier.
 
-This is the starter for the Flask React project.
+Live site: [DivvyUp](https://divvyup.onrender.com/)
 
-## Getting started
-1. Clone this repository (only this branch)
+# Wiki Link
+* Backend Routes
+* [Database Schema](https://github.com/Yue-Hao14/DivvyUp-Group-Project/wiki)
+* [Feature List](https://github.com/Yue-Hao14/DivvyUp-Group-Project/blob/main/dev_documentation/feature_list.md)
 
-2. Install dependencies
+# Tech Stack
+* Back-end: Python, Postgres, Flask, SQLite
+* Front-end: JavaScript, React, Redux, HTML, CSS
+* Hosting: Render
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+# Expense and Payment Features
+## Expense Feature
+Our team has thorough think through this feature when we design our website.
+* The expense feature allow user to track all their own expenses in one place and breakdown their expenses with friends and family on the inidivdual friends page as well for easy tracking and monitoring.
+* User can add an expense whereever they are on our wevsite since this is the core function of our site. User can choose to add a past expense or a future expense and share it with any numbers of friends with a good description they desire for easy tracking.
+* When thinking about who can edit existing expense, we put ourself in user's shoes and decided that only the payer of the expense should have rights to change details of the expense, instead of people who owes money on this transaction. The same thought goes to deleting an expense function.
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+## Payment Feature
+When we design this feature, we focused on the relationship between payment and expense to make a smooth and cohesive user experience.
+* The payment feature allow user to easily track all the payments between friends, including money they paid to friends as well as money repaid by their friends.
+* When thinking about who can initiate a settlement, from a fairness perspective, we decided that only payer of the expense has the right to confirm this expense has been repaid and settle up with individual friends accordingly.
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
-
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
-
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-
-## Deployment through Render.com
-
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
-
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
-
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Part A: Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
-
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
-
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
-```
-
-_If you are using websockets, use the following start command instead for increased performance:_
-
-`gunicorn --worker-class eventlet -w 1 app:app`
-
-### Part B: Add the Environment Variables
-
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
-
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
-
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+# Landing Page
+You can access to Login page, Signup Page. Also we have a demo user button for you to check the website.
