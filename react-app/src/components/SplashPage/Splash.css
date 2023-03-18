@@ -13,6 +13,7 @@
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 20px;
+  padding-left: 20px;
 }
 
 .you-owe-details-container a,
@@ -21,25 +22,33 @@
   color: inherit;
 }
 
-
 .you-owe-list > a,
-.are-owed-you-list > a {
+.you-are-owed-list > a {
   display: block;
   border-bottom: 1px solid #5bc5a7;
   padding: 10px;
   color: inherit;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+.you-owe-list > a:hover,
+.you-are-owed-list > a:hover {
+  background-color: #e8fff5;
 }
 
 .you-owe-list > a:last-child,
-.are-owed-you-list > a:last-child {
+.you-are-owed-list > a:last-child {
   border-bottom: none;
 }
+
 
 
 .splash-page-balance-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .splash-page-total-balance-container,
@@ -50,8 +59,12 @@
   align-items: center;
   border: 2px solid #5bc5a7;
   border-radius: 5px;
-  padding: 10px;
-  width: 200px;
+  /* padding: 10px; */
+  padding-bottom: 16px;
+  margin-left: 9px;
+  margin-right: 9px;
+
+  width: 300px;
 }
 
 .splash-page-total-balance-container h3,
@@ -73,4 +86,38 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  margin-left: 9px;
+  margin-right: 10px;
+  background-color: rgb(232, 232, 232);
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.total-balance-positive {
+  color: green;
+  /* font-size: 20px; */
+}
+
+.total-balance-negative {
+  color: red;
+}
+
+.you-are-owed-list .friend-name {
+  font-weight: bold;
+}
+
+.splash-page-title {
+  display: inline;
+}
+
+.splash-page-header-button{
+  display: flex;
+  align-items: center;
+}
+
+.fa-table{
+  color: #5bc5a7;
+  font-size: 35px;
+
+  margin-right: 10px ;
 }

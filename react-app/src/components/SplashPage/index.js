@@ -30,8 +30,8 @@ function SplashPage () {
   let userOwed = 0
   let userDebt = 0
   let totalBalance = 0
-  const userOwesFriend = [];
-  const friendOwesUser = [];
+  const userOwesFriend = []
+  const friendOwesUser = []
   // iterate through each exepense and determine how much user owes and is owed
   for (const expense of expensesArr) {
     const numOwers = expense.owers.length
@@ -61,6 +61,7 @@ function SplashPage () {
       }
     }
   }
+
   totalBalance = userOwed - userDebt
 
   return (
@@ -68,6 +69,7 @@ function SplashPage () {
       <div className='splash-page-wrapper'>
         <div className='splash-page-header-container'>
           <div className='splash-page-header-button'>
+            <i class='fa-solid fa-table'></i>
             <h1 className='splash-page-title'>Dashboard</h1>
             {/* <div className='splash-page-button'>
               <OpenModalButton
@@ -82,7 +84,16 @@ function SplashPage () {
             <div>
               <h3>Total balance</h3>
             </div>
-            <div>{totalBalance < 0 ? "- $" : "$"}{Math.abs(totalBalance).toFixed(2)}</div>
+            <div
+              className={
+                totalBalance < 0
+                  ? 'total-balance-negative'
+                  : 'total-balance-positive'
+              }
+            >
+              {totalBalance < 0 ? '- $' : '$'}
+              {Math.abs(totalBalance).toFixed(2)}
+            </div>
           </div>
           <div className='splash-page-owe-container'>
             <div>
@@ -104,7 +115,7 @@ function SplashPage () {
             </div>
             <div className='you-owe-list'>
               {friends.map(friend => (
-                  <YouOwe key={friend.id} friend={friend} />
+                <YouOwe key={friend.id} friend={friend} />
               ))}
             </div>
           </div>
@@ -114,7 +125,7 @@ function SplashPage () {
             </div>
             <div className='you-are-owed-list'>
               {friends.map(friend => (
-                  <OweYou key={friend.id} friend={friend} />
+                <OweYou key={friend.id} friend={friend} />
               ))}
             </div>
           </div>
