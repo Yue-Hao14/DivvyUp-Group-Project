@@ -16,7 +16,7 @@ function Footer() {
         <div className="contact-name">
           Nick Arakaki
           <div className="contact-links">
-            <a href="#">
+            <a href="https://www.linkedin.com/in/nicholas-arakaki-10aa66149">
               LinkedIn
             </a>
           </div>
