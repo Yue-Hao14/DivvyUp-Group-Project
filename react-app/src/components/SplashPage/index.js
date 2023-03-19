@@ -63,7 +63,7 @@ function SplashPage () {
       <div className='splash-page-wrapper'>
         <div className='splash-page-header-container'>
           <div className='splash-page-header-button'>
-            <i class='fa-solid fa-table'></i>
+            <i className='fa-solid fa-table'></i>
             <h1 className='splash-page-title'>Dashboard</h1>
             {/* <div className='splash-page-button'>
               <OpenModalButton

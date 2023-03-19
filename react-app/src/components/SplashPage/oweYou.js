@@ -13,7 +13,7 @@ function OweYou ({ friend }) {
     if (sessionUser) {
       dispatch(getFriendExpensesThunk(friend.id))
     }
-  }, [sessionUser])
+  }, [sessionUser, friend.id, dispatch])
 
   let friendOwed = 0
 
