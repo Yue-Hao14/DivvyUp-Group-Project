@@ -16,6 +16,7 @@
   .login-modal-heading {
     font-size: 2.5rem;
     margin: 0rem 0;
+    color: black
   }
 
   .login-modal-form {
@@ -51,7 +52,7 @@
     color: red;
     margin-bottom: 1rem;
   }
-/* 
+/*
   .login-modal-button {
     padding: 0.8rem;
     margin: 0.6rem 0;
