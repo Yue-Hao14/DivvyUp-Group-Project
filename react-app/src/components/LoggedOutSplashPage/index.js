@@ -58,13 +58,13 @@ function LoggedOutSplashPage() {
                             </div>
                             <div>
                                 <span>
-                                    <i className="fa-regular fa-pen-nib"></i>
+                                <i className="fa-solid fa-eraser"></i>
                                 </span>
                                 Be able to create, update and delete expenses
                             </div>
                             <div>
                                 <span>
-                                    <i className="fa-solid fa-eraser"></i>
+                                <i class="fa-solid fa-lock"></i>
                                 </span>
                                 Offers secure your private information
                             </div>
