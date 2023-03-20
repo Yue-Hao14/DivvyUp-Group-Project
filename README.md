@@ -27,3 +27,4 @@ When we design this feature, we focused on the relationship between payment and 
 
 # Landing Page
 You can access to Login page, Signup Page. Also we have a demo user button for you to check the website.
+![Screenshot 2023-03-20 at 10 49 21 AM](https://user-images.githubusercontent.com/105403119/226377084-e2e65ce3-2d28-45dd-b2d4-ec556cf38731.png)
