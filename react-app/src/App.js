@@ -10,7 +10,7 @@ import SplashPage from "./components/SplashPage"
 import AllExpenses from "./components/AllExpenses";
 import PaymentHistory from "./components/PaymentHistory"
 import Footer from "./components/Footer";
-
+// import "./App.css"
 
 
 function App() {
@@ -23,26 +23,28 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <>
-          <SideBar />
-          <Switch>
-            <Route exact path="/" >
-              <SplashPage />
-            </Route>
-            <Route path="/friends/:friendId">
-              <FriendDetails />
-            </Route>
-            <Route path="/all-expenses">
-              <AllExpenses />
-            </Route>
-            <Route path="/payment-history">
-              <PaymentHistory />
-            </Route>
-          </Switch>
-          <Footer />
-        </>
-      )}
+      {/* <div className="app-content-wrapper"> */}
+        {isLoaded && (
+          <>
+            <SideBar />
+            <Switch>
+              <Route exact path="/" >
+                <SplashPage />
+              </Route>
+              <Route path="/friends/:friendId">
+                <FriendDetails />
+              </Route>
+              <Route path="/all-expenses">
+                <AllExpenses />
+              </Route>
+              <Route path="/payment-history">
+                <PaymentHistory />
+              </Route>
+            </Switch>
+          </>
+        )}
+      {/* </div> */}
+      <Footer />
     </>
   );
 }
