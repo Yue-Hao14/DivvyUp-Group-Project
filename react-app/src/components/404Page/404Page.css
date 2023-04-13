@@ -10,12 +10,12 @@
     left: 0;
 }
 
-.page-not-found-content {
+/* .page-not-found-content {
     position: relative;
     top: 100px;
     left: 50%;
     z-index: 1;
-}
+} */
 
 .page-not-found-wrapper {
     margin-left: 295px;
