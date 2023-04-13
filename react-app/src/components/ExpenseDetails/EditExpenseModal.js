@@ -5,7 +5,7 @@ import { useModal } from '../../context/Modal'
 import { updateExpenseThunk } from '../../store/expenses'
 
 
-function EditExpenseModal({expense}) {
+function EditExpenseModal({ expense }) {
   const today = new Date().toISOString().split('T')[0]
   const dispatch = useDispatch();
   const { closeModal } = useModal()
@@ -32,10 +32,10 @@ function EditExpenseModal({expense}) {
 
 
   // calculate current splitAmount based on changes in the form
-  useEffect(()=>{
+  useEffect(() => {
     const newSplitAmount = (amount / (owerIds.length + 1)).toFixed(2)
     setSplitAmount(newSplitAmount)
-  },[amount, owerIds])
+  }, [amount, owerIds])
 
   // create an array of friendsId to for SELECT element
   const friends = useSelector(state => state.friends)
@@ -67,6 +67,7 @@ function EditExpenseModal({expense}) {
     if (!owerIds.length > 0) e.emptyOwerIds = "Ower is required"
     if (!description.length > 0) e.emptyDescription = "Description is required"
     if (!amount.length > 0) e.emptyAmount = "Amount is required"
+    if (amount <= 0) e.invalidAmount = "Amount must be a positive number"
     if (!expenseDate.length > 0) e.emptyExpenseDate = "Expense date is required"
     setErrors(e)
   }, [owerIds, description, amount, expenseDate])
@@ -160,6 +161,9 @@ function EditExpenseModal({expense}) {
           {hasSubmitted &&
             errors.emptyAmount &&
             (<div className='error'>{errors.emptyAmount}</div>)}
+          {hasSubmitted && errors.invalidAmount && (
+            <div className='error'>{errors.invalidAmount}</div>
+          )}
         </div>
       </div>
       <div className='add_expense_modal_lower_middle_container'>
