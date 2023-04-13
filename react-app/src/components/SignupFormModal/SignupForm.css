@@ -5,10 +5,12 @@
     width: 80%;
     max-width: 400px;
     margin: auto;
-    min-width: 600px;
+    width: 600px;
     border: 1px solid gray;
     padding: 1.5rem; /* Reduced padding */
     overflow: hidden;
+    background-color: white;
+    border-radius: 10px;
   }
 
   .signup-modal-heading {
@@ -77,4 +79,29 @@
     background-color: #48a289;
     box-shadow: 0 2px rgba(0, 0, 0, 0.2) inset;
     transform: translateY(4px);
+  }
+
+  @media screen and (max-width: 601px) {
+
+    .signup-modal-container {
+      width: 90%;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    .signup-modal-heading {
+      font-size: 2rem;
+    }
+
+    .signup-modal-input {
+      height: 35px;
+      font-size: 0.9rem;
+    }
+
+    .signup-modal-button {
+      font-size: 1rem;
+      padding: 0.4rem 0.8rem;
+      margin: 0.5rem 0;
+    }
   }
