@@ -22,10 +22,10 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <SideBar />
       {/* <div className="app-content-wrapper"> */}
         {isLoaded && (
           <>
-            <SideBar />
             <Switch>
               <Route exact path="/" >
                 <SplashPage />

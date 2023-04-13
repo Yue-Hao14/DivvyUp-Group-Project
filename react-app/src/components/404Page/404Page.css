@@ -3,14 +3,18 @@
     background-image: url("../../assets/empty-wallet.jpg");
     background-repeat: no-repeat;
     filter: contrast(50%);
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
-    position: relative;
+}
+
+.page-not-found-content-div {
+    font-size: 50px;
+    padding-top: 25%;
+    padding-left: 5%;
 }
 
 .page-not-found-wrapper {
-    margin-top: 100px;
-    margin-left: 295px;
+    margin-left: 293px;
 }
 
 @media (min-width: 1024px) {
