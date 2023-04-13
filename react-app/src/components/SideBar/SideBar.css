@@ -15,10 +15,30 @@
 
 .side_bar_dashboard {
   font-size: 20px;
-  font-weight: 700;
+  /* font-weight: 700; */
   margin-bottom: 36px;
+}
+
+.active_sidebar_link {
+  font-weight: bold;
+  color: #5bc5a7;
+  /* background-color: rgb(238, 235, 235); */
+  /* width: 100%; */
+  display: inline-block;
+  /* line-height: 2; */
+  /* padding-left: 8px; */
 
 }
+
+.side_bar_dashboard .active_sidebar_link,
+.side_bar_friend .active_sidebar_link {
+  font-weight: bold;
+  color: #5bc5a7;
+  width: 100%;
+  display: inline-block;
+  /* line-height: 2; */
+}
+
 
 .side_bar_dashboard a {
   text-decoration: none;
@@ -33,6 +53,35 @@
 .side_bar_all_expenses a {
   text-decoration: none;
   color: black;
+  display: inline-block;
+  line-height: 2;
+  position: relative;
+}
+
+.side_bar_all_expenses a::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+}
+
+.side_bar_all_expenses .active_sidebar_link a {
+  font-weight: bold;
+  color: #5bc5a7;
+  /* background-color: rgb(238, 235, 235); */
+  width: 100%;
+}
+
+.active_sidebar_link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  /* background-color: rgb(238, 235, 235); */
 }
 
 .side_bar_friends_label_div {
@@ -41,6 +90,10 @@
   align-items: center;
   height: 30px;
   margin-bottom: 10px;
+  /* background-color: #f2f0f0;
+  padding-top:9px;
+  padding-left: 5px;
+  padding-right: 10px; */
 }
 
 .side_bar_friends_label {
@@ -51,21 +104,20 @@
   flex: 1;
   white-space: nowrap;
   margin-bottom: 16px;
+  font-weight: 600;
 }
 
 .side_bar_friends_add_button {
   margin-left: 151px;
 }
 
-
-.fa-user-plus{
+.fa-user-plus {
   color: #5bc5a7;
   border: none;
   cursor: pointer;
   background-color: transparent;
   font-size: 16px;
   transition: color 0.3s ease, font-weight 0.3s ease;
-
 }
 
 .fa-user-plus:hover {
@@ -93,7 +145,7 @@
 .side_bar_friend a {
   color: #000000;
   text-decoration: none;
-  font-weight: 540;
+  /* font-weight: 540; */
 }
 
 .remove_friend_button_container button {
