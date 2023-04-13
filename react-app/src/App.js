@@ -5,12 +5,11 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SideBar from "./components/SideBar";
 import FriendDetails from "./components/FriendsDetails";
-// import TopBar from "./components/TopBar";
 import SplashPage from "./components/SplashPage"
 import AllExpenses from "./components/AllExpenses";
 import PaymentHistory from "./components/PaymentHistory"
 import Footer from "./components/Footer";
-// import "./App.css"
+import PageNotFound from "./components/404Page";
 
 
 function App() {
@@ -39,6 +38,9 @@ function App() {
               </Route>
               <Route path="/payment-history">
                 <PaymentHistory />
+              </Route>
+              <Route path="*">
+                <PageNotFound />
               </Route>
             </Switch>
           </>

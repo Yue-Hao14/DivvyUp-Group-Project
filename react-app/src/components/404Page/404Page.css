@@ -1,0 +1,5 @@
+/* TODO: Add styling for 404 Page */
+.page-not-found-div {
+    background-image: url("../../assets/empty-wallet.jpg");
+    background-repeat: no-repeat;
+}
