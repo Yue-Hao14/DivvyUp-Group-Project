@@ -102,3 +102,15 @@
   .no_pending_expenses{
     margin-left: 340px;
   }
+
+  @media (min-width: 1024px) {
+    .expense_summaries_div {
+      min-height: 1200px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .expense_summaries_div {
+      min-height: calc(100vh - 221px);
+    }
+  }
