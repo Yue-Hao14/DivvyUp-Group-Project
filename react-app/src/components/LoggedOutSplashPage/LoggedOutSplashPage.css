@@ -9,7 +9,18 @@
     margin-top: 90px;
     padding: 0px 50px ;
     padding-bottom: 70px;
-    min-height: 990px;
+  }
+
+  @media (min-width: 1024px) {
+    .log-out-splash-page-wrapper {
+      min-height: 990px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .log-out-splash-page-wrapper {
+      min-height: 1100px;
+    }
   }
 
   h1{
