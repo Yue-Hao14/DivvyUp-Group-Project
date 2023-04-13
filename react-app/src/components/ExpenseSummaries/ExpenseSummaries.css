@@ -101,6 +101,7 @@
 
   .no_pending_expenses{
     margin-left: 340px;
+    color: black;
   }
 
   @media (min-width: 1024px) {
