@@ -63,7 +63,6 @@
   padding-bottom: 16px;
   margin-left: 9px;
   margin-right: 9px;
-
   width: 300px;
 }
 
@@ -80,6 +79,18 @@
   margin-right: 300px;
   margin-top: 81px;
   min-height: 1050px;
+}
+
+@media (min-width: 1024px) {
+  .splash-page-wrapper {
+    min-height: 1050px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .splash-page-wrapper {
+    min-height: calc(100vh - 180px);
+  }
 }
 
 .splash-page-header-container {

@@ -50,7 +50,7 @@ function Footer() {
         <div className="about_us_dev_container">
           <div className="about_us_dev_name">Tuan Tran</div>
           <div className="about_us_dev_contact_links">
-            <a href="https://www.linkedin.com/in/tuan-tran-quoc-163853117/" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/tuan-tran-163853117/" target="_blank" rel="noreferrer">
               <i className="contact_us_linkedin_icon fa-brands fa-linkedin" />
             </a>
             <a href="https://github.com/kutun0901" target="_blank" rel="noreferrer">
