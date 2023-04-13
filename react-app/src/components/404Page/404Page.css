@@ -1,0 +1,14 @@
+/* TODO: Add styling for 404 Page */
+.page-not-found-background {
+    background-image: url("../../assets/empty-wallet.jpg");
+    background-repeat: no-repeat;
+    filter: contrast(50%);
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.page-not-found-wrapper {
+    margin-top: 100px;
+    margin-left: 295px;
+}
