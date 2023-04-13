@@ -12,3 +12,15 @@
     margin-top: 100px;
     margin-left: 295px;
 }
+
+@media (min-width: 1024px) {
+    .page-not-found-wrapper {
+      min-height: 1200px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .page-not-found-wrapper {
+      min-height: calc(100vh - 221px);
+    }
+  }
