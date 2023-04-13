@@ -1,5 +1,6 @@
 .expense_summaries_div{
   margin-top: 0px;
+  min-height: 950px;
 }
 
 .expense_summary_container {

@@ -6,8 +6,8 @@
   justify-content: space-between;
   width: 100%;
   margin-top: auto;
-  position: absolute;
   bottom: 20px;
+  margin-top: 10px;
 }
 
 .about_us_container {
