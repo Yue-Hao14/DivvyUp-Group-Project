@@ -1,6 +1,6 @@
 
 .log-out-splash-page-wrapper {
-    max-height: 50%;
+    /* max-height: 50%; */
     display: flex;
     flex-direction: column;
     background-color: #CCCCCC;
@@ -9,6 +9,7 @@
     margin-top: 90px;
     padding: 0px 50px ;
     padding-bottom: 70px;
+    min-height: 990px;
   }
 
   h1{
