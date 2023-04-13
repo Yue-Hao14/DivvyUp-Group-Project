@@ -8,7 +8,7 @@ def email_exists(form, field):
     email = field.data
     user = User.query.filter(User.email == email).first()
     if not user:
-        raise ValidationError('User does not exist.')
+        raise ValidationError('User with that email could not be found.')
 
 # TODO: ADD VALIDATION TO MAKE SURE THE USER BEING ADDED IS NOT ALREADY FRIENDED
 # FRONT END SHOULD VALIDATE THAT THE CURRENT USER IS NOT TYRING TO ADD THEMSELVES
