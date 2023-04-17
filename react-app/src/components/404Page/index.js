@@ -7,6 +7,7 @@ function PageNotFound() {
             <div className="page-not-found-background">
                 <div className="page-not-found-content-div">
                     <h2>404 Page Not Found</h2>
+                    <Link to="/">Return Home</Link>
                 </div>
             </div>
         </div>
