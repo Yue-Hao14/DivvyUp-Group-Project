@@ -60,25 +60,25 @@ function SideBar () {
             />
           </div>
         </div>
-      </div>
-      <div className='side_bar_friends_list'>
-        {Object.values(friends).map(friend => (
-          <div key={friend.id} className='side_bar_friend'>
-            <NavLink
-              activeClassName='active_sidebar_link'
-              to={`/friends/${friend.id}`}
-            >{`${friend.firstName} ${friend.lastName}`}</NavLink>
+        <div className='side_bar_friends_list'>
+          {Object.values(friends).map(friend => (
+            <div key={friend.id} className='side_bar_friend'>
+              <NavLink
+                activeClassName='active_sidebar_link'
+                to={`/friends/${friend.id}`}
+              >{`${friend.firstName} ${friend.lastName}`}</NavLink>
 
-            <div className='remove_friend_button_container'>
-              <OpenModalButton
-                modalComponent={<RemoveFriendModal user={friend} />}
-                buttonText={
-                  <i className='remove_friend_button fa-solid fa-trash' />
-                }
-              />
+              <div className='remove_friend_button_container'>
+                <OpenModalButton
+                  modalComponent={<RemoveFriendModal user={friend} />}
+                  buttonText={
+                    <i className='remove_friend_button fa-solid fa-trash' />
+                  }
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
