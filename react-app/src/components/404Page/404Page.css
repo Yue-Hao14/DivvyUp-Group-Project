@@ -1,23 +1,86 @@
 /* TODO: Add styling for 404 Page */
+.page-not-found-wrapper {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3c3c3c;
+}
+
 .page-not-found-background {
-    background-image: url("../../assets/empty-wallet.jpg");
-    background-repeat: no-repeat;
-    filter: contrast(50%);
-    min-height: 100vh;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .page-not-found-content-div {
-    font-size: 50px;
-    padding-top: 25%;
-    padding-left: 5%;
+  text-align: center;
 }
 
-.page-not-found-wrapper {
-    margin-left: 293px;
+
+.page-not-found-content-div a {
+  text-decoration: none;
+  color: #fff;
+  border-bottom: 1px dashed #fff;
 }
 
-@media (min-width: 1024px) {
+.page-not-found-content-div a:hover {
+  text-decoration: none;
+  border-bottom: 2px dashed #fff;
+}
+
+.page-not-found-content-div h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.page-not-found-content-div h4 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.page-not-found-suggestion {
+  margin-top: 32px;
+  text-align: left;
+  background: rgba(255,255,255,0.1);
+  padding: 15px 30px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.page-not-found-suggestion ul {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+  padding-left: 0;
+}
+
+.page-not-found-suggestion li {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.page-not-found-suggestion li a {
+  text-decoration: none;
+  color: #fff;
+  border-bottom: 1px dashed #fff;
+}
+
+.page-not-found-suggestion li a:hover {
+  text-decoration: none;
+  border-bottom: 2px dashed #fff;
+}
+
+/* @media (min-width: 1024px) {
     .page-not-found-wrapper {
       min-height: 1200px;
     }
@@ -27,4 +90,4 @@
     .page-not-found-wrapper {
       min-height: calc(100vh - 221px);
     }
-  }
+  } */
