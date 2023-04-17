@@ -1,7 +1,9 @@
+/* Main Content Wrapper */
+
 .friend_details_div {
     display: grid;
     grid-template-columns: 1.3fr .3fr;
-    grid-template-rows: .3fr 1fr;
+    grid-template-rows: 1fr auto;
     gap: 1.75rem;
     grid-template-areas:
     "friend_info total_balance"
@@ -13,6 +15,7 @@
     width: calc(100% - 300px);
   }
 
+/* Header */
 
 .friend_details_info_div {
   grid-area: friend_info;
@@ -25,6 +28,7 @@
 .friend_details_user_info_div {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 1rem;
     width: 100%;
     background-color: rgb(232, 232, 232);
@@ -35,6 +39,8 @@
   margin-right: 10px;
 }
 
+
+/* Total Balance */
 .friend_total_balance_div {
   grid-area: total_balance;
   display: flex;
@@ -42,6 +48,7 @@
   margin-top: 1.5rem;
 }
 
+/* Expense Summaries */
 .friend_details_expense_summaries_div {
   grid-area: expense_summaries;
 }

@@ -21,17 +21,21 @@ function AllExpenses () {
   }
 
   return (
-    <>
-      <div className='all_expenses_header_container'>
+    <div className='all_expenses_container'>
+      <section className='all_expenses_header_container'>
         <div className='all_expenses_header_label'>
           <i className='fa-solid fa-coins all_expenses_icon'></i>
           <div className='all_expenses_header'>All Expenses</div>
         </div>
-      </div>
-      <ExpenseSummaries />
-      <TotalBalance />
-    </>
+      </section>
+      <section className='all_expenses_total_balance'>
+        <TotalBalance />
+      </section>
+      <section className='all_expenses_expense_summaries'>
+        <ExpenseSummaries />
+      </section>
+    </div>
   )
 }
 
-export default AllExpenses
+export default AllExpenses;
