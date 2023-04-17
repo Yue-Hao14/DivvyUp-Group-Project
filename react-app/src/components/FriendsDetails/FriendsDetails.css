@@ -1,16 +1,21 @@
 .friend_details_div {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    display: grid;
+    grid-template-columns: 1.3fr .3fr;
+    grid-template-rows: .3fr 1fr;
+    grid-template-areas:
+    "friend_info total_balance"
+    "expense_summaries total_balance";
     margin-top: 80px;
     margin-left: 300px;
+    margin-right: 15rem;
     padding: 1rem;
   }
 
 
 .friend_details_info_div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  grid-area: friend_info;
   margin-top: .5rem;
   margin-bottom: 1.5rem;
   height: 3rem;
@@ -21,13 +26,24 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    width: 66%;
+    width: 95%;
     background-color: rgb(232, 232, 232);
     border-radius: .5rem;
 }
 
 .expense_details_user_icon {
   margin-right: 10px;
+}
+
+.friend_total_balance_div {
+  grid-area: total_balance;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.friend_details_expense_summaries_div {
+  grid-area: expense_summaries;
 }
 
 /* Mobile Styling */

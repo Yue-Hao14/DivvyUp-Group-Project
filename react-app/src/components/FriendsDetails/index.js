@@ -34,9 +34,9 @@ function FriendDetails () {
                   {friend.firstName} {friend.lastName}
                 </div>
               </div>
-              <div className='friend_total_balance_div'>
-                <TotalBalance />
-              </div>
+            </section>
+            <section className='friend_total_balance_div'>
+              <TotalBalance />
             </section>
             <section className='friend_details_expense_summaries_div'>
               <ExpenseSummaries />

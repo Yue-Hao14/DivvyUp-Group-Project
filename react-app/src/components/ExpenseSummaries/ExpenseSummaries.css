@@ -1,5 +1,4 @@
 .expense_summaries_div{
-  margin-top: 0px;
   min-height: 950px;
 }
 
@@ -8,9 +7,10 @@
     flex-direction: column;
     /* margin: 0 0 1rem 340px; */
     /* border: 1px solid #5BC5A7; */
-    margin-right: 330px;
+    width: 66%;
+    /* margin-right: 330px;
     margin-left: 340px;
-    margin-top: 30px;
+    margin-top: 30px; */
 
   }
 
