@@ -21,8 +21,9 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    width: 75%;
+    width: 66%;
     background-color: rgb(232, 232, 232);
+    border-radius: .5rem;
 }
 
 .expense_details_user_icon {
