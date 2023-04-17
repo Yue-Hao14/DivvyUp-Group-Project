@@ -10,32 +10,32 @@ def seed_comments():
     comment1 = Comment(
         user_id=1,
         expense_id=1,
-        comment=fake.sentence(),
+        comment="Great time together. Let's do it again next week!",
         created_at=date.fromisoformat("2022-02-14")
     )
     comment2 = Comment(
         user_id=2,
         expense_id=2,
-        comment=fake.sentence(),
-        created_at=date.fromisoformat("2022-01-31")
+        comment="Water bill for Dec 2021",
+        created_at=date.fromisoformat("2022-01-24")
     )
     comment3 = Comment(
         user_id=1,
         expense_id=2,
-        comment=fake.sentence(),
-        created_at=date.fromisoformat("2022-03-31")
+        comment="Another bill to pay during adulthood...",
+        created_at=date.fromisoformat("2022-01-31")
     )
     comment4 = Comment(
         user_id=3,
         expense_id=3,
-        comment=fake.sentence(),
-        created_at=date.fromisoformat("2021-01-31")
+        comment="Admission ticket costs",
+        created_at=date.fromisoformat("2023-01-31")
     )
     comment5 = Comment(
         user_id=2,
         expense_id=3,
-        comment=fake.sentence(),
-        created_at=date.fromisoformat("2023-01-31")
+        comment="It was a great show and thanks for organizing it!",
+        created_at=date.fromisoformat("2023-02-08")
     )
 
     db.session.add_all([comment1, comment2, comment3, comment4, comment5])

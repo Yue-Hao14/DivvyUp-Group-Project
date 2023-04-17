@@ -29,7 +29,6 @@ def seed_expense_owers():
 
     expense4.owers.append(user7)
 
-
     db.session.commit()
 
 
