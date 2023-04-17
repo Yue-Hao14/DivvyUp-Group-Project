@@ -39,6 +39,7 @@
   grid-area: total_balance;
   display: flex;
   flex-direction: column;
+  margin-top: 1.5rem;
 }
 
 .friend_details_expense_summaries_div {

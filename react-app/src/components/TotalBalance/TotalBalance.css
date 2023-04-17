@@ -1,5 +1,5 @@
 .total_balance_div {
-    text-align: right;
+    text-align: left;
     display: flex;
     flex-direction: column;
     font-size: 1.25rem;

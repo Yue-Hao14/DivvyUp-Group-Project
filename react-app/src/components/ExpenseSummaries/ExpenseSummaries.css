@@ -34,7 +34,6 @@
 
   .expense_summary_details_container:hover {
     background-color: #c7fdee;
-    /* opacity: 20%; */
   }
 
   .expense_summary_expense_date {
