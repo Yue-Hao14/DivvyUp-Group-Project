@@ -27,6 +27,7 @@ def seed_expense_owers():
     expense3.owers.append(user5)
     expense3.owers.append(user6)
 
+    expense4.owers.append(user3)
     expense4.owers.append(user7)
 
     db.session.commit()
