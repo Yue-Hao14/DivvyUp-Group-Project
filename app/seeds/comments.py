@@ -16,7 +16,7 @@ def seed_comments():
     comment2 = Comment(
         user_id=2,
         expense_id=2,
-        comment="Water bill for Dec 2021",
+        comment="Another utility bill...",
         created_at=date.fromisoformat("2022-01-24")
     )
     comment3 = Comment(
@@ -28,7 +28,7 @@ def seed_comments():
     comment4 = Comment(
         user_id=3,
         expense_id=3,
-        comment="Admission ticket costs",
+        comment="Time to pay for the amazing experience",
         created_at=date.fromisoformat("2023-01-31")
     )
     comment5 = Comment(
