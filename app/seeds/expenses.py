@@ -9,25 +9,25 @@ fake = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_expenses():
     expense1 = Expense(
-        description=fake.sentence(),
+        description="Valentine's day dinner",
         amount=33.33,
         payer_id=1,
-        expense_date=date.fromisoformat(fake.date()),
+        expense_date=date.fromisoformat("2022-02-14"),
     )
     expense2 = Expense(
-        description=fake.sentence(),
+        description="Water bill for Dec 2021",
         amount=66.66,
         payer_id=2,
-        expense_date=date.fromisoformat(fake.date()),
+        expense_date=date.fromisoformat("2022-01-24"),
     )
     expense3 = Expense(
-        description=fake.sentence(),
+        description="Admission ticket costs",
         amount=99.99,
         payer_id=3,
-        expense_date=date.fromisoformat(fake.date()),
+        expense_date=date.fromisoformat("2021-01-31"),
     )
     expense4 = Expense(
-        description=fake.sentence(),
+        description="Snow trip airbnb cost",
         amount=133.32,
         payer_id=1,
         expense_date=date.fromisoformat(fake.date()),
