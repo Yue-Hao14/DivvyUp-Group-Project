@@ -12,19 +12,19 @@ def seed_expenses():
         description=fake.sentence(),
         amount=33.33,
         payer_id=1,
-        expense_date=date.fromisoformat(fake.date()),
+        expense_date=date.fromisoformat("2022-02-14"),
     )
     expense2 = Expense(
         description=fake.sentence(),
         amount=66.66,
         payer_id=2,
-        expense_date=date.fromisoformat(fake.date()),
+        expense_date=date.fromisoformat("2022-01-24"),
     )
     expense3 = Expense(
         description=fake.sentence(),
         amount=99.99,
         payer_id=3,
-        expense_date=date.fromisoformat(fake.date()),
+        expense_date=date.fromisoformat("2021-01-31"),
     )
     expense4 = Expense(
         description=fake.sentence(),
