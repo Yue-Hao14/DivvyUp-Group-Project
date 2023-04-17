@@ -1,22 +1,29 @@
 /* TODO: ADD STYLING FOR settledEXPENSES HERE */
+.payment_history_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-left: 300px;
+  margin-right: 15rem;
+  padding: 1rem;
+  width: calc(100% - 300px);
+}
+
 .settled_expenses_header_container {
   display: flex;
-  flex-direction: row;
-  /* justify-content: center; */
   align-items: center;
-  margin-top: 81px;
-  margin-left: 340px;
-  margin-right: 330px;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
   background-color: rgb(232, 232, 232);
-  height: 52px;
-  border-radius: 6px;
-  /* font-size: 1.3rem; */
+  border-radius: .5rem;
 }
 
 .settled_expenses_header_label {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
   align-items: center;
   margin-left: 10px;
   font-size: 1.3rem;
@@ -31,10 +38,12 @@
   font-size: 1.5rem;
 }
 
+.settled_expense_summaries_div {
+  width: 100%;
+}
+
 .settled_expenses_div {
-  margin-top: 15px;
-  margin-left: 340px;
-  margin-right: 330px;
+  margin: 1rem 0;
 }
 
 .settled_expenses_date_heading {
@@ -46,6 +55,7 @@
   text-align: center;
 }
 
+/* Payment Details */
 .payment_details_div {
   display: flex;
   flex-direction: row;
@@ -53,10 +63,7 @@
   justify-content: center;
   padding: 1rem;
   border: 1.5px solid #5bc5a7;
-  /* cursor: pointer; */
   transition: background-color 0.4s ease;
-  /* border-bottom-left-radius: 20px; */
-  /* height: auto; */
 }
 
 .payment_details_div:hover {
@@ -95,11 +102,6 @@
 .payment_details_bold {
   font-weight: bold;
 }
-
-/* .settled_expenses_div .payment_details_div:first-child {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-  } */
 
 .settled_expenses_div .payment_details_div:last-child {
   border-bottom-left-radius: 10px;

@@ -28,7 +28,6 @@
 .friend_details_user_info_div {
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 1rem;
     width: 100%;
     background-color: rgb(232, 232, 232);
