@@ -88,6 +88,10 @@
   /* background-color: rgb(238, 235, 235); */
 }
 
+.side_bar_friend .active_sidebar_link {
+  font-size: 1rem;
+}
+
 .side_bar_friends_label_div {
   display: flex;
   justify-content: space-between;
