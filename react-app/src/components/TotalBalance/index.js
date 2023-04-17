@@ -55,7 +55,7 @@ function TotalBalance() {
 
     return (
         <div className="total_balance_div">
-            <div>Your Total Balance:</div>
+            <div className="total_balance_label_div">Your Total Balance:</div>
             <div className={totalBalance >= 0 ? "positive_balance" : "negative_balance"}>
                 {totalBalance > 0 && friendId ? (
                     <p>{friend.firstName} owes you ${totalBalance.toFixed(2)}</p>

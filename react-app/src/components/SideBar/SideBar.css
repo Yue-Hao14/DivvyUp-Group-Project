@@ -7,7 +7,7 @@
   /* z-index: 2; */
   overflow-x: hidden;
   padding: 16px 8px;
-  padding-right: 18px;
+  padding-right: 15px;
   margin-left: 27px;
   top: 80px;
   border-right: 1px solid rgb(224, 224, 224);
@@ -107,16 +107,14 @@
 .side_bar_friends_label {
   display: flex;
   align-items: center;
-  font-size: 16px;
-  margin-right: 8px;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1rem;
+  padding-right: 15px;
   flex: 1;
   white-space: nowrap;
   margin-bottom: 16px;
   font-weight: 600;
-}
-
-.side_bar_friends_add_button {
-  margin-left: 151px;
 }
 
 .fa-user-plus {
@@ -124,7 +122,7 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 1rem;
   transition: color 0.3s ease, font-weight 0.3s ease;
 }
 
@@ -173,3 +171,11 @@
   /* box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); */
   transform: translateY(2px);
 }
+
+
+/* Mobile Styling */
+/* @media screen and (max-width:80rem) {
+  body {
+    color: red;
+  }
+} */

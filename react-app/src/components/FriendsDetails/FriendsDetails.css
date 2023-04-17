@@ -14,6 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: left;
+    margin-top: 5px;
     margin-bottom: 20px;
     margin-left: 341px;
     background-color: rgb(232, 232, 232);
@@ -33,16 +34,15 @@
     margin-right: 10px;
   }
 
-/*
-  .total_balance_div {
-    position: fixed;
-    top: 90px;
-    right: 40px;
-    z-index: 9999;
-    text-align: right;
-  }
-
-  .total_balance_div h2 {
-    display: block;
-    margin-bottom: 225px;
+/* Mobile Styling */
+@media screen and (max-width:80rem) {
+  /* body {
+    color: red;
   } */
+
+  /* Get the total balance to display under the friend name*/
+  /* .friend_details_info_div {
+    display: flex;
+    flex-direction: row;
+  } */
+}
