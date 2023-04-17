@@ -19,18 +19,17 @@ function ExpenseSummaries() {
         });
 
         orderedExpenses = groupExpensesByMonth(unsettledFriendExpenses);
-
     } else {
         orderedExpenses = groupExpensesByMonth(expenses);
     }
 
     return (
-        <div className="expense_summaries_div">
+        <div className="expense_summaries_div" >
             {Object.values(orderedExpenses).length > 0 ?
                 Object.values(orderedExpenses).map((expenseList, idx) => {
                     return <ExpenseSummarySection key={idx} expenses={expenseList} />
                 })
-            :
+                :
                 <h1 className="no_pending_expenses">No pending expenses</h1>
             }
         </div>

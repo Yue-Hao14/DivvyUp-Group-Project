@@ -5,19 +5,23 @@ import { getAllExpensesThunk } from '../../store/expenses'
 import './Splash.css'
 import OweYou from './oweYou'
 import YouOwe from './YouOwe'
+import { useState } from 'react'
+import Loading from '../Loading'
 
-function SplashPage () {
+function SplashPage() {
   const userExpenses = useSelector(state => state.expenses.allExpenses)
   const sessionUser = useSelector(state => state.session.user)
   const friendsObj = useSelector(state => state.friends)
   const friends = Object.values(friendsObj)
   const dispatch = useDispatch()
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const expensesArr = Object.values(userExpenses)
 
   useEffect(() => {
     if (sessionUser) {
       dispatch(getAllExpensesThunk())
+        .then(() => setIsLoaded(true))
     }
   }, [dispatch, sessionUser])
 
@@ -60,71 +64,75 @@ function SplashPage () {
 
   return (
     <>
-      <div className='splash-page-wrapper'>
-        <div className='splash-page-header-container'>
-          <div className='splash-page-header-button'>
-            <i className='fa-solid fa-table'></i>
-            <h1 className='splash-page-title'>Dashboard</h1>
-            {/* <div className='splash-page-button'>
+      {isLoaded ? (
+        <>
+          <div className='splash-page-wrapper'>
+            <div className='splash-page-header-container'>
+              <div className='splash-page-header-button'>
+                <i className='fa-solid fa-table'></i>
+                <h1 className='splash-page-title'>Dashboard</h1>
+                {/* <div className='splash-page-button'>
               <OpenModalButton
                 modalComponent={<AddExpenseModal />}
                 buttonText='Add an Expense'
               />
             </div> */}
+              </div>
+            </div>
+            <div className='splash-page-balance-container'>
+              <div className='splash-page-total-balance-container'>
+                <div>
+                  <h3>Total balance</h3>
+                </div>
+                <div
+                  className={
+                    totalBalance < 0
+                      ? 'total-balance-negative'
+                      : 'total-balance-positive'
+                  }
+                >
+                  {totalBalance < 0 ? '- $' : '$'}
+                  {Math.abs(totalBalance).toFixed(2)}
+                </div>
+              </div>
+              <div className='splash-page-owe-container'>
+                <div>
+                  <h3>You owe</h3>
+                </div>
+                <div>${userDebt.toFixed(2)}</div>
+              </div>
+              <div className='splash-page-are-owe-container'>
+                <div>
+                  <h3>You are owed</h3>
+                </div>
+                <div>${userOwed.toFixed(2)}</div>
+              </div>
+            </div>
+            <div className='splash-page-content-container'>
+              <div className='you-owe-details-container'>
+                <div>
+                  <h2>YOU OWE</h2>
+                </div>
+                <div className='you-owe-list'>
+                  {friends.map(friend => (
+                    <YouOwe key={friend.id} friend={friend} />
+                  ))}
+                </div>
+              </div>
+              <div className='you-are-owed-details-container'>
+                <div>
+                  <h2>YOU ARE OWED</h2>
+                </div>
+                <div className='you-are-owed-list'>
+                  {friends.map(friend => (
+                    <OweYou key={friend.id} friend={friend} />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className='splash-page-balance-container'>
-          <div className='splash-page-total-balance-container'>
-            <div>
-              <h3>Total balance</h3>
-            </div>
-            <div
-              className={
-                totalBalance < 0
-                  ? 'total-balance-negative'
-                  : 'total-balance-positive'
-              }
-            >
-              {totalBalance < 0 ? '- $' : '$'}
-              {Math.abs(totalBalance).toFixed(2)}
-            </div>
-          </div>
-          <div className='splash-page-owe-container'>
-            <div>
-              <h3>You owe</h3>
-            </div>
-            <div>${userDebt.toFixed(2)}</div>
-          </div>
-          <div className='splash-page-are-owe-container'>
-            <div>
-              <h3>You are owed</h3>
-            </div>
-            <div>${userOwed.toFixed(2)}</div>
-          </div>
-        </div>
-        <div className='splash-page-content-container'>
-          <div className='you-owe-details-container'>
-            <div>
-              <h2>YOU OWE</h2>
-            </div>
-            <div className='you-owe-list'>
-              {friends.map(friend => (
-                <YouOwe key={friend.id} friend={friend} />
-              ))}
-            </div>
-          </div>
-          <div className='you-are-owed-details-container'>
-            <div>
-              <h2>YOU ARE OWED</h2>
-            </div>
-            <div className='you-are-owed-list'>
-              {friends.map(friend => (
-                <OweYou key={friend.id} friend={friend} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+        </>
+      ) : <Loading />}
     </>
   )
 }
