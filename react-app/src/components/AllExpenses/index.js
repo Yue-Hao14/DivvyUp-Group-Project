@@ -5,7 +5,7 @@ import ExpenseSummaries from '../ExpenseSummaries'
 
 import './AllExpenses.css'
 
-function AllExpenses () {
+function AllExpenses() {
   const currentExpenseSummaries = useSelector(
     state => state.expenses.currentExpenseSummaries
   )

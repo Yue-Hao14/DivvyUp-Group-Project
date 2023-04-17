@@ -9,7 +9,7 @@
   }
 
 
-  .friend_details_info_div {
+.friend_details_info_div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,9 +29,9 @@
 
   }
 
-  .expense_details_user_icon {
+.expense_details_user_icon {
     margin-right: 10px;
-  }
+}
 
 /*
   .total_balance_div {
@@ -46,3 +46,4 @@
     display: block;
     margin-bottom: 225px;
   } */
+
