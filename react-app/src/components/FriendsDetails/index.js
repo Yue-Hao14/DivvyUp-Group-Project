@@ -5,6 +5,7 @@ import { getAllExpensesThunk, getFriendExpensesThunk } from '../../store/expense
 import ExpenseSummaries from '../ExpenseSummaries'
 import TotalBalance from '../TotalBalance'
 import './FriendsDetails.css'
+import Loading from '../Loading'
 
 function FriendDetails () {
   const dispatch = useDispatch()
@@ -43,7 +44,7 @@ function FriendDetails () {
             </section>
           </div>
         )
-        : null
+        : <Loading />
       }
     </>
   )
