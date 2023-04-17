@@ -1,37 +1,33 @@
 .friend_details_div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    position: static;
     margin-top: 80px;
     margin-left: 300px;
+    padding: 1rem;
   }
 
 
 .friend_details_info_div {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  margin-left: 341px;
-  background-color: rgb(232, 232, 232);
-  margin-right: 330px;
-  height: 52px;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: .5rem;
+  margin-bottom: 1.5rem;
+  height: 3rem;
   font-size: 1.3rem;
 }
 
 .friend_details_user_info_div {
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    padding: 1rem;
+    width: 75%;
+    background-color: rgb(232, 232, 232);
+}
 
-  }
-
-  .expense_details_user_icon {
-    margin-right: 10px;
-  }
+.expense_details_user_icon {
+  margin-right: 10px;
+}
 
 /* Mobile Styling */
 @media screen and (max-width:80rem) {
