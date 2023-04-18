@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useModal } from '../../../context/Modal'
-import { addCommentToExpenseThunk, updateCommentThunk } from '../../../store/comments';
+import { useModal } from '../../../../context/Modal'
+import { addCommentToExpenseThunk, updateCommentThunk } from '../../../../store/comments';
 import "./CommentModals.css"
 
 function PostCommentModal({ expenseId, commentId }) {
