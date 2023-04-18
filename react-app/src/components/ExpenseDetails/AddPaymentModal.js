@@ -5,7 +5,7 @@ import { postPaymentThunk } from '../../store/expenses'
 import './AddPayment.css'
 
 
-function AddPaymentModal ({ expenseId, ower, owerAmount }) {
+function AddPaymentModal ({ expenseId, ower, owerAmount, friendId }) {
   const dispatch = useDispatch()
   const { closeModal } = useModal()
   const today = new Date().toISOString().split('T')[0]
@@ -21,8 +21,8 @@ function AddPaymentModal ({ expenseId, ower, owerAmount }) {
       expenseId,
       settledDate
     }
-
-    await dispatch(postPaymentThunk(payment))
+    console.log(friendId)
+    await dispatch(postPaymentThunk(payment, friendId))
     closeModal()
   }
 

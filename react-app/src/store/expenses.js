@@ -54,7 +54,7 @@ export const deleteExpense = expenseId => ({
 
 //thunks
 export const getAllExpensesThunk = () => async (dispatch) => {
-    const res = await fetch ('/api/expenses/');
+    const res = await fetch('/api/expenses/');
 
     if (res.ok) {
         const data = await res.json();
@@ -131,9 +131,6 @@ export const postExpenseThunk = expense => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(postExpense(data));
-        expense.owerIds.forEach(owerId => {
-            dispatch(getFriendExpensesThunk(owerId));
-        })
         return null;
     } else if (res.status < 500) {
         const data = await res.json();
@@ -145,19 +142,25 @@ export const postExpenseThunk = expense => async (dispatch) => {
     }
 }
 
-export const postPaymentThunk = payment => async (dispatch) => {
+export const postPaymentThunk = (payment, friendId) => async (dispatch) => {
     const res = await fetch('/api/payments/', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payment)
     })
-
     if (res.ok) {
+        console.log(friendId)
         // update settledExpense slice of store
         // update currentExpenseSummaries slice
         dispatch(getSettledExpensesThunk())
-        .then(() => dispatch(getAllExpensesThunk()))
-        .then(() => dispatch(getFriendExpensesThunk(payment.owerId)))
+            .then(() => dispatch(getAllExpensesThunk()))
+            .then(() => {
+                if (payment.owerId === friendId) {
+                   return dispatch(getFriendExpensesThunk(payment.owerId))
+                } else {
+                    return dispatch(getFriendExpensesThunk(friendId))
+                }
+            })
         return null;
     } else if (res.status < 500) {
         const data = await res.json();
@@ -211,13 +214,13 @@ export const deleteExpenseThunk = expenseId => async (dispatch) => {
 //reducer
 
 const initialState = {
-                        allExpenses : {},
-                        settledExpenses: {},
-                        currentExpenseSummaries: {},
-                        currentExpenseDetails: {}
-                     }
+    allExpenses: {},
+    settledExpenses: {},
+    currentExpenseSummaries: {},
+    currentExpenseDetails: {}
+}
 export default function reducer(state = initialState, action) {
-    switch(action.type) {
+    switch (action.type) {
         case GET_ALL_EXPENSE: {
             const expenses = {}
             for (const expense of action.payload) {
@@ -226,7 +229,7 @@ export default function reducer(state = initialState, action) {
             return { ...state, allExpenses: expenses, currentExpenseSummaries: expenses }
         }
         case GET_SINGLE_EXPENSE_DETAILS: {
-            return {...state, currentExpenseDetails: action.payload}
+            return { ...state, currentExpenseDetails: action.payload }
         }
         case GET_FRIEND_EXPENSES: {
             const newState = { ...state };
@@ -242,10 +245,10 @@ export default function reducer(state = initialState, action) {
             for (const expense of action.payload) {
                 settledPayments[expense.id] = expense
             }
-            return {...state, settledExpenses: settledPayments};
+            return { ...state, settledExpenses: settledPayments };
         }
         case ADD_EXPENSE: {
-            const newState = {...state};
+            const newState = { ...state };
             newState.allExpenses = { ...state.allExpenses, [action.payload.id]: action.payload };
             newState.currentExpenseSummaries = { ...state.currentExpenseSummaries, [action.payload.id]: action.payload };
             return newState;
