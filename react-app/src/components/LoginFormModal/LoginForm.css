@@ -44,7 +44,7 @@
     border: 1px solid gray;
     width: 100%;
     max-width: 350px;
-    height: 40px;
+    height: 41px;
     font-size: 1.0rem;
   }
 
@@ -76,17 +76,15 @@
   .login-modal-button,
   .login-modal-button-demo {
     padding: 0.5rem 1rem;
-    margin: 0.6rem 0;
-    margin-left: 10px;
+    margin: 12.8px 0;
     border-radius: 8px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
     font-weight: bold;
     font-size: 1.1rem;
-
     transition: all 0.3s ease;
-    width: 365px;
+    width: 338px;
 
   }
   .login-modal-button {
