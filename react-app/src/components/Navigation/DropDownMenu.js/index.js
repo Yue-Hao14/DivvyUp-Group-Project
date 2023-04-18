@@ -58,9 +58,9 @@ function DropDownMenu() {
             </li>
             <li className="dropdown-friends-toggle-container" onClick={toggleFriends}>
               {showFriends ? (
-                <span className="display-friends-label">Friends &#x25BE;</span>
+                <div className="dropdown-friends-label display-friends-label">Friends <span className="friends_arrow">&#x25BE;</span></div>
               ) : (
-                <span>Friends &#x25B8;</span>
+                <div className="dropdown-friends-label">Friends <span className="friends_arrow">&#x25B8;</span></div>
               )}
               <div className='side_bar_friends_add_button side_bar_friends_dropdown_add_button'>
                 <OpenModalButton
