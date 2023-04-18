@@ -53,25 +53,15 @@
 }
 
 /* Mobile Styling */
-@media screen and (max-width:81rem) {
-  /* body {
-    color: red;
-  } */
-
+@media screen and (max-width:81em) {
   .friend_details_div {
     width: 100%;
     margin-left: 0;
     gap: 1rem;
   }
-
-  /* Get the total balance to display under the friend name*/
-  /* .friend_details_info_div {
-    display: flex;
-    flex-direction: row;
-  } */
 }
 
-@media screen and (max-width: 50rem) {
+@media screen and (max-width: 50em) {
   .friend_details_div {
     display: flex;
     flex-direction: column;
