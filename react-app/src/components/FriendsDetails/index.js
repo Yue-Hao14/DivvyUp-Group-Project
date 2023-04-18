@@ -36,7 +36,7 @@ function FriendDetails () {
                 </div>
               </div>
             </section>
-            <section className='friend_total_balance_div'>
+            <section className='friend_total_balance_div total_balance_content'>
               <TotalBalance />
             </section>
             <section className='friend_details_expense_summaries_div'>

@@ -51,26 +51,3 @@
 .friend_details_expense_summaries_div {
   grid-area: expense_summaries;
 }
-
-/* Mobile Styling */
-@media screen and (max-width:81em) {
-  .friend_details_div {
-    width: 100%;
-    margin-left: 0;
-    gap: 1rem;
-  }
-}
-
-@media screen and (max-width: 50em) {
-  .friend_details_div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .friend_total_balance_div {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
-  }
-
-}
