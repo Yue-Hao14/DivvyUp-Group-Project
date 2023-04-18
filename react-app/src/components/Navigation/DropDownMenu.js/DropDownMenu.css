@@ -11,3 +11,22 @@
     border: none;
     margin-left: 2rem;
 }
+
+.sidebar-dropdown {
+    position: absolute;
+    top: 80px;
+    list-style: none;
+    margin: 0;
+    background-color:#c5f9ea;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hidden {
+    display: none;
+}

@@ -30,12 +30,12 @@ function DropDownMenu() {
 
     return (
       <>
-        <button className='drop_down_menu_button'>
+        <button onClick={openSideBar} className='drop_down_menu_button'>
             <i className="fa-solid fa-bars profile_icon" />
         </button>
         <ul className={sideBarClassName} ref={sideBarRef}>
           <>
-            <li>option</li>
+            <li onClick={closeSideBar}>option</li>
             <li>option</li>
             <li>option</li>
             <li>option</li>
