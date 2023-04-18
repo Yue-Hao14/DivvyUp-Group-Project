@@ -171,8 +171,12 @@
 
 
 /* Mobile Styling */
-/* @media screen and (max-width:80rem) {
-  body {
+@media screen and (max-width:81rem) {
+  /* body {
     color: red;
+  } */
+
+  .side_bar {
+    display: none;
   }
-} */
+}

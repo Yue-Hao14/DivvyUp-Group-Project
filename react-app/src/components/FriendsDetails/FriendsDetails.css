@@ -51,16 +51,3 @@
 .friend_details_expense_summaries_div {
   grid-area: expense_summaries;
 }
-
-/* Mobile Styling */
-@media screen and (max-width:80rem) {
-  /* body {
-    color: red;
-  } */
-
-  /* Get the total balance to display under the friend name*/
-  /* .friend_details_info_div {
-    display: flex;
-    flex-direction: row;
-  } */
-}

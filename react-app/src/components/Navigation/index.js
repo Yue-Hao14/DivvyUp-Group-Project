@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import ProfileButton from './ProfileButton'
 import AddExpenseModal from './AddExpenseModal'
 import OpenModalButton from '../OpenModalButton'
+import SideBar from '../SideBar'
 
 import './Navigation.css'
+import DropDownMenu from './DropDownMenu.js'
 
 function Navigation ({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user)
 
   return (
     <nav className='navigation-container'>
+      {isLoaded && sessionUser && (
+        <>
+          <DropDownMenu />
+        </>
+      )}
       <NavLink exact to='/' className='navigation-logo'>
         <i className='fa-solid fa-divide navlogodivide' />
         DivvyUp

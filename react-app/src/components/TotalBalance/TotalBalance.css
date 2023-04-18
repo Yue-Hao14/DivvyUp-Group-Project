@@ -15,14 +15,13 @@
   }
 
 
-@media screen and (max-width:80rem) {
+@media screen and (max-width:50rem) {
   /* Get the total balance to display under the friend name*/
   .total_balance_div {
-    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: static;
+    gap: 0;
   }
 
   .total_balance_label_div {

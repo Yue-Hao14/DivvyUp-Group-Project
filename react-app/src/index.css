@@ -7,3 +7,29 @@
 body {
     font-family: 'Open Sans', sans-serif;
   }
+
+
+
+/* Media Queries for Main Content */
+
+@media screen and (max-width:81em) {
+  .main_content {
+    width: 100%;
+    margin-left: 0;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 50em) {
+    .main_content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .total_balance_content {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+}
