@@ -70,3 +70,17 @@
     flex-direction: row;
   } */
 }
+
+@media screen and (max-width: 50rem) {
+  .friend_details_div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .friend_total_balance_div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+}
