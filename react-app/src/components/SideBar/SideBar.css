@@ -1,14 +1,14 @@
 .side_bar {
-  width: 240px;
+  width: 300px;
   height: 100%;
   position: fixed;
-  bottom: 0;
-  left: 8px;
+  /* bottom: 0; */
+  /* left: 8px; */
   /* z-index: 2; */
   overflow-x: hidden;
-  padding: 16px 8px;
-  padding-right: 18px;
-  margin-left: 27px;
+  padding: 1.5rem 2rem;
+  /* padding: 16px 8px;
+  padding-right: 15px; */
   top: 80px;
   border-right: 1px solid rgb(224, 224, 224);
 }
@@ -36,6 +36,7 @@
   color: #5bc5a7;
   width: 100%;
   display: inline-block;
+  font-size: 1.5rem;
   /* line-height: 2; */
 }
 
@@ -43,6 +44,7 @@
 .side_bar_dashboard a {
   text-decoration: none;
   color: black;
+  font-size: 1.25rem;
 }
 
 .side_bar_all_expenses {
@@ -56,6 +58,7 @@
   display: inline-block;
   line-height: 2;
   position: relative;
+  font-size: 1.25rem;
 }
 
 .side_bar_all_expenses a::before {
@@ -72,6 +75,7 @@
   color: #5bc5a7;
   /* background-color: rgb(238, 235, 235); */
   width: 100%;
+  font-size: 1.5rem;
 }
 
 .active_sidebar_link::before {
@@ -84,31 +88,29 @@
   /* background-color: rgb(238, 235, 235); */
 }
 
+.side_bar_friend .active_sidebar_link {
+  font-size: 1rem;
+}
+
 .side_bar_friends_label_div {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: space-between;
   height: 30px;
   margin-bottom: 10px;
-  /* background-color: #f2f0f0;
-  padding-top:9px;
-  padding-left: 5px;
-  padding-right: 10px; */
 }
 
 .side_bar_friends_label {
   display: flex;
   align-items: center;
-  font-size: 16px;
-  margin-right: 8px;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.25rem;
   flex: 1;
   white-space: nowrap;
   margin-bottom: 16px;
   font-weight: 600;
-}
-
-.side_bar_friends_add_button {
-  margin-left: 151px;
 }
 
 .fa-user-plus {
@@ -116,8 +118,9 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 1rem;
   transition: color 0.3s ease, font-weight 0.3s ease;
+  padding: 0;
 }
 
 .fa-user-plus:hover {
@@ -166,5 +169,10 @@
   transform: translateY(2px);
 }
 
-/* .active_sidebar_link {
+
+/* Mobile Styling */
+/* @media screen and (max-width:80rem) {
+  body {
+    color: red;
+  }
 } */

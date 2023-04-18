@@ -28,26 +28,24 @@ function PaymentHistory() {
   return (
     <>
       {isLoaded ? (
-        <>
-          <div className='settled_expenses_header_container'>
-            <div className='settled_expenses_header_label'>
-              <i className='fa-solid fa-handshake settled_expenses_icon'></i>
-              <div className='settled_expenses_header'>Payment History</div>
-            </div>
+      <div className='payment_history_container'>
+        <section className='settled_expenses_header_container'>
+          <div className='settled_expenses_header_label'>
+            <i className='fa-solid fa-handshake settled_expenses_icon'></i>
+            <div className='settled_expenses_header'>Payment History</div>
           </div>
-          <div className='expense_summaries_div'>
-            {Object.values(orderedSettledExpenses).map((expenseList, idx) => {
-              return (
-                <div className='settled_expenses_container' key={idx}>
-                  <SettledExpenses expenses={expenseList} />
-                </div>
-              )
-            })}
-          </div>
-        </>
-      )
-        : <Loading />
-      }
+        </section>
+        <section className='settled_expense_summaries_div'>
+          {Object.values(orderedSettledExpenses).map((expenseList, idx) => {
+            return (
+                <SettledExpenses key={idx} expenses={expenseList} />
+            )
+          })}
+        </section>
+      </div>
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }

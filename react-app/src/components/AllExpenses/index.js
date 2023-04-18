@@ -25,24 +25,31 @@ function AllExpenses() {
       dispatch(getAllExpensesThunk())
         .then(() => setIsLoaded(true))
     } else setIsLoaded(true)
-  },[dispatch])
+  },[dispatch, allExpenses, currentExpenseSummaries])
 
   return (
     <>
       {isLoaded ? (
-        <>
-          <div className='all_expenses_header_container'>
-            <div className='all_expenses_header_label'>
-              <i className='fa-solid fa-coins all_expenses_icon'></i>
-              <div className='all_expenses_header'>All Expenses</div>
-            </div>
+        <div className='all_expenses_container'>
+        <section className='all_expenses_header_container'>
+          <div className='all_expenses_header_label'>
+            <i className='fa-solid fa-coins all_expenses_icon'></i>
+            <div className='all_expenses_header'>All Expenses</div>
           </div>
-          <ExpenseSummaries />
+        </section>
+        <section className='all_expenses_total_balance'>
           <TotalBalance />
-        </>
-      ) : <Loading />}
+        </section>
+        <section className='all_expenses_expense_summaries'>
+          <ExpenseSummaries />
+        </section>
+      </div>
+      ) : (
+        <Loading />
+      )}
+
     </>
   )
 }
 
-export default AllExpenses
+export default AllExpenses;

@@ -27,25 +27,22 @@ function FriendDetails () {
   return (
     <>
       {isLoaded ? (
-          <>
-            <div className='friend_details_div'>
-              <div className='friend_details_info_div'>
-                <div className='friend_details_user_info_div'>
-                  <i className='expense_details_user_icon fa-solid fa-user' />
-                  <div className='friend_details_user_info'>
-                    {friend.firstName} {friend.lastName}
-                  </div>
+          <div className='friend_details_div'>
+            <section className='friend_details_info_div'>
+              <div className='friend_details_user_info_div'>
+                <i className='expense_details_user_icon fa-solid fa-user' />
+                <div className='friend_details_user_info'>
+                  {friend.firstName} {friend.lastName}
                 </div>
-                <div className='friend_details_add_expense_button'></div>
               </div>
-              <div className=''>
-                <ExpenseSummaries />
-              </div>
-            </div>
-            <div className='total_balance_div'>
+            </section>
+            <section className='friend_total_balance_div'>
               <TotalBalance />
-            </div>
-          </>
+            </section>
+            <section className='friend_details_expense_summaries_div'>
+              <ExpenseSummaries />
+            </section>
+          </div>
         )
         : <Loading />
       }
