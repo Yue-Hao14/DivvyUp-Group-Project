@@ -5,9 +5,12 @@ import AddFriendModal from "../../SideBar/AddFriendModal";
 import RemoveFriendModal from "../../SideBar/RemoveFriendModal";
 import "./DropDownMenu.css"
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function DropDownMenu() {
     const [showSideBar, setShowSideBar] = useState(false);
+    const [showFriends, setShowFriends] = useState(false);
+    const friends = useSelector(state => Object.values(state.friends));
     const sideBarRef = useRef();
 
     const openSideBar = () => {
@@ -30,10 +33,11 @@ function DropDownMenu() {
     }, [showSideBar])
 
     const sideBarClassName = "sidebar-dropdown" + (showSideBar ? "" : " hidden");
+    const friendsListClassName = "dropdown-friends-list-container" + (showFriends ? "" : " hidden")
     const closeSideBar = () => setShowSideBar(false);
 
-    const displayFriends = () => {
-      alert("SHOW ME WHAT YOU GOT!")
+    const toggleFriends = () => {
+      setShowFriends(!showFriends)
     }
 
     return (
@@ -47,14 +51,39 @@ function DropDownMenu() {
               <NavLink activeClassName='active_sidebar_link' exact to="/">Dashboard</NavLink>
             </li>
             <li onClick={closeSideBar}>
-              <NavLink to={`/all-expenses`}>All Expenses</NavLink>
+              <NavLink activeClassName='active_sidebar_link' to={`/all-expenses`}>All Expenses</NavLink>
             </li>
             <li onClick={closeSideBar}>
-            <NavLink to={`/payment-history`}>Payment History</NavLink>
+              <NavLink activeClassName='active_sidebar_link' to={`/payment-history`}>Payment History</NavLink>
             </li>
-            <li onClick={displayFriends}>
-              FRIENDS
+            <li className="dropdown-friends-toggle-container" onClick={toggleFriends}>
+              {showFriends ? (
+                <span>Friends &#x25BE;</span>
+              ) : (
+                <span>Friends &#x25B8;</span>
+              )}
+              <div className='side_bar_friends_add_button side_bar_friends_dropdown_add_button'>
+                <OpenModalButton
+                  modalComponent={<AddFriendModal />}
+                  className='fa-solid fa-user-plus'
+                />
+              </div>
             </li>
+            <div className={friendsListClassName}>
+              {friends.map((friend) => (
+                <div key={friend.id} className="side_bar_dropdown_friends_list">
+                  <NavLink onClick={closeSideBar} to={`/friends/${friend.id}`} activeClassName="active_sidebar_link">
+                    {`${friend.firstName} ${friend.lastName}`}
+                  </NavLink>
+                  <OpenModalButton
+                    modalComponent={<RemoveFriendModal user={friend} />}
+                    buttonText={
+                      <i className='dropdown_remove_friend_button fa-solid fa-trash' />
+                    }
+                  />
+                </div>
+              ))}
+            </div>
           </>
         </ul>
       </>
