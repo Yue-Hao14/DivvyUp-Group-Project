@@ -27,7 +27,7 @@ function FriendDetails () {
   return (
     <>
       {isLoaded ? (
-          <div className='friend_details_div'>
+          <div className='friend_details_div main_content'>
             <section className='friend_details_info_div'>
               <div className='friend_details_user_info_div'>
                 <i className='expense_details_user_icon fa-solid fa-user' />
