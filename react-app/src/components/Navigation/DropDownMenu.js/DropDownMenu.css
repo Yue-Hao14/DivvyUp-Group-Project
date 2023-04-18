@@ -1,0 +1,13 @@
+@media screen and (min-width: 81em) {
+    .drop_down_menu_button {
+        display: none;
+    }
+}
+
+.drop_down_menu_button {
+    color: #5BC5A7;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    margin-left: 2rem;
+}
