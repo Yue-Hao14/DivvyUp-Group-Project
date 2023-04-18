@@ -34,8 +34,10 @@
     cursor: pointer;
 }
 
-.sidebar-dropdown a.active_sidebar_link{
+.sidebar-dropdown a.active_sidebar_link,
+.display-friends-label {
     color: #5bc5a7;
+    font-weight: bold;
 }
 
 .dropdown-friends-toggle-container {

@@ -58,7 +58,7 @@ function DropDownMenu() {
             </li>
             <li className="dropdown-friends-toggle-container" onClick={toggleFriends}>
               {showFriends ? (
-                <span>Friends &#x25BE;</span>
+                <span className="display-friends-label">Friends &#x25BE;</span>
               ) : (
                 <span>Friends &#x25B8;</span>
               )}
