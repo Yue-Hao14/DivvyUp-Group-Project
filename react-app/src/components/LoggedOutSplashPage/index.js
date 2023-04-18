@@ -29,7 +29,6 @@ function LoggedOutSplashPage() {
                             always keeping you informed of who you owe and who owes you.</h3>
                     </div>
                     <div className="features-list-container">
-                        <div className="features-list-left">
                             <div>
                                 <span>
                                     <i className="fa-solid fa-user-group"></i>
@@ -48,8 +47,6 @@ function LoggedOutSplashPage() {
                                 </span>
                                 Offers the ability to create and manage group expenses (coming up features)
                             </div>
-                        </div>
-                        <div className="features-list-right">
                             <div>
                                 <span>
                                     <i className="fa-solid fa-money-bill-transfer"></i>
@@ -60,7 +57,7 @@ function LoggedOutSplashPage() {
                                 <span>
                                 <i className="fa-solid fa-eraser"></i>
                                 </span>
-                                Be able to create, update and delete expenses
+                                 Be able to create, update and delete expenses
                             </div>
                             <div>
                                 <span>
@@ -68,8 +65,6 @@ function LoggedOutSplashPage() {
                                 </span>
                                 Offers secure your private information
                             </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
