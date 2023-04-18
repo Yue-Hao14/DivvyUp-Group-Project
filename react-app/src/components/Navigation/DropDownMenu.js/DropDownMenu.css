@@ -34,25 +34,39 @@
     cursor: pointer;
 }
 
-.sidebar-dropdown a.active_sidebar_link{
+.sidebar-dropdown a.active_sidebar_link,
+.display-friends-label {
     color: #5bc5a7;
+    font-weight: bold;
 }
 
 .dropdown-friends-toggle-container {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .dropdown-friends-list-container {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    width: 100%;
+}
+
+.dropdown-friends-label {
+    display: flex;
+    align-items: center;
+}
+
+.friends_arrow {
+    font-size: 2rem;
 }
 
 .side_bar_dropdown_friends_list {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .side_bar_dropdown_friends_list button {

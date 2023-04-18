@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useModal } from "../../../context/Modal";
-import { deleteCommentThunk } from "../../../store/comments";
+import { useModal } from "../../../../context/Modal";
+import { deleteCommentThunk } from "../../../../store/comments";
 
 function DeleteCommentConfirmationModal({ comment }) {
     const { closeModal }  = useModal();

@@ -189,5 +189,6 @@ nav ul.profile-dropdown a:hover {
 
   .navigation-logo {
     margin: 0;
+    justify-self: center;
   }
 }
