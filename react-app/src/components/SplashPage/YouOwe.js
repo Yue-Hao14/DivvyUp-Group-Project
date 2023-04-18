@@ -41,7 +41,7 @@ function YouOwe({ friend }) {
         {outstandingWithFriend > 0 ?
         <Link key={friend.id} to={`/friends/${friend.id}`}>
                 <div>
-                    <div>{friend.firstName}</div>
+                    <div className='friend-name'>{friend.firstName}</div>
                     <div> you owe ${outstandingWithFriend.toFixed(2)}</div>
                 </div>
         </Link>
