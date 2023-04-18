@@ -54,6 +54,8 @@
   .expense_summary_expense_description {
     flex: 2;
     font-size: 0.9rem;
+    max-width: 33%;
+    word-break: break-all;
   }
 
   .expense_summary_expense_payerInfo {
