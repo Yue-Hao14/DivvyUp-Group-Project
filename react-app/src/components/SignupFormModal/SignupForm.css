@@ -43,7 +43,7 @@
     border: 1px solid gray;
     width: 100%;
     max-width: 350px;
-    height: 20px;
+    height: 41px;
     font-size: 1rem;
   }
 
@@ -62,7 +62,7 @@
     color: white;
     cursor: pointer;
     width: 360px;
-    height: 30px;
+    height: 41px;
     font-size: 1.1rem;
     box-sizing: border-box;
     display: flex;
