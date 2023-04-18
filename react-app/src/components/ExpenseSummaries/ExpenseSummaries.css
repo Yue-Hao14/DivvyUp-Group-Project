@@ -29,6 +29,7 @@
     cursor: pointer;
 
     transition: background-color 0.5s ease;
+    word-break: break-all;
   }
 
 
@@ -54,7 +55,6 @@
   .expense_summary_expense_description {
     flex: 2;
     font-size: 0.9rem;
-    max-width: 33%;
     word-break: break-all;
   }
 
@@ -67,24 +67,10 @@
     text-align: right;
 }
 
-/* .expense_summary_paid {
-    margin-bottom: 0.25rem;
-} */
-
 
   .expense_summary_amount {
     font-weight: bold;
   }
-
-  /* .expense_summary_container:first-of-type .expense_summary_details_container:first-child {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-  } */
-
-  /* .expense_summary_container .expense_summary_details_container:last-child {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-  } */
 
   .no_pending_expenses{
     margin-left: 340px;

@@ -33,6 +33,7 @@
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 5px;
+    word-break: break-all;
 }
 
 .expense_details_info_expense_amount {
@@ -55,11 +56,6 @@
     align-items: flex-start;
     padding: 10px;
 }
-
-/* .expense_details_comments_div {
-    flex-grow: 1;
-    margin-left: 20px;
-} */
 
 .expense_details_user_info_div {
     display: flex;
