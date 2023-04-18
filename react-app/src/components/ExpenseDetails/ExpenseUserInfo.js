@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
 import AddPaymentModal from './AddPaymentModal'
+import { useParams } from 'react-router-dom'
 
 
 function ExpenseUserInfo({ expense }) {
@@ -9,6 +10,7 @@ function ExpenseUserInfo({ expense }) {
     const sessionUser = useSelector(state => state.session.user)
     const settledOwers = expense.settledOwers
     const settledOwerIds = settledOwers.map(settledOwer => settledOwer.settledUserId)
+    const { friendId } = useParams()
 
     return (
         <div className="expense_details_info_div">
@@ -28,7 +30,7 @@ function ExpenseUserInfo({ expense }) {
                             {sessionUser.id === expense.payer.id &&
                                 !settledOwerIds.includes(ower.id) &&
                                 <OpenModalButton
-                                    modalComponent={<AddPaymentModal expenseId={expense.id} ower={ower} owerAmount={owerAmount} />}
+                                    modalComponent={<AddPaymentModal expenseId={expense.id} ower={ower} owerAmount={owerAmount} friendId={friendId} />}
                                     buttonText="Settle Up"
                                     className="settle_up_button"
                                 />
