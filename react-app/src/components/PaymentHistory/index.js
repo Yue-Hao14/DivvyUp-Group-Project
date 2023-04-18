@@ -28,7 +28,7 @@ function PaymentHistory() {
   return (
     <>
       {isLoaded ? (
-      <div className='payment_history_container'>
+      <div className='payment_history_container main_content'>
         <section className='settled_expenses_header_container'>
           <div className='settled_expenses_header_label'>
             <i className='fa-solid fa-handshake settled_expenses_icon'></i>
