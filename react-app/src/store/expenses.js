@@ -156,8 +156,8 @@ export const postPaymentThunk = payment => async (dispatch) => {
         // update settledExpense slice of store
         // update currentExpenseSummaries slice
         dispatch(getSettledExpensesThunk())
-            .then(() => dispatch(getAllExpensesThunk()))
-            .then(() => dispatch(getFriendExpensesThunk(payment.owerId)))
+        .then(() => dispatch(getAllExpensesThunk()))
+        .then(() => dispatch(getFriendExpensesThunk(payment.owerId)))
         return null;
     } else if (res.status < 500) {
         const data = await res.json();
