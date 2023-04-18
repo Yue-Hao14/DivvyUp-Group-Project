@@ -65,7 +65,7 @@ function SplashPage() {
   return (
     <>
       {isLoaded ? (
-        <div className='splash-page-wrapper'>
+        <div className='splash-page-wrapper main_content'>
           <section className='splash-page-header-container'>
             <div className='splash-page-header-button'>
               <i className='fa-solid fa-table'></i>
