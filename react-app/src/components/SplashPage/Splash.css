@@ -13,7 +13,8 @@
 
 .splash-page-content-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  width: 100%;
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -60,8 +61,8 @@
 .splash-page-balance-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 1.25rem;
+  width: 100%;
 }
 
 .splash-page-total-balance-container,
@@ -131,6 +132,5 @@
 .fa-table{
   color: #5bc5a7;
   font-size: 35px;
-
   margin-right: 10px ;
 }

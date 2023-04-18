@@ -101,7 +101,7 @@ function SplashPage() {
               <div>${userOwed.toFixed(2)}</div>
             </div>
           </section>
-          <div className='splash-page-content-container'>
+          <section className='splash-page-content-container'>
             <div className='you-owe-details-container'>
               <div>
                 <h2>YOU OWE</h2>
@@ -122,7 +122,7 @@ function SplashPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </section>
         </div>
       ) : <Loading />}
     </>
