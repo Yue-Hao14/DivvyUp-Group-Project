@@ -87,6 +87,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 0;
 }
 
 .about-app-pic img {
@@ -111,10 +112,16 @@ h1 {
 .features-list-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 5px;
 }
 
-.features-list-container div span {
+.features-list-container .single-list {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.single-list div {
   margin-right: 10px;
 }
 
@@ -125,5 +132,15 @@ h1 {
 
   .about-app-wrapper {
     flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .about-app-text-container {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about-app-pic{
+    padding: 10px 0;
   }
 }

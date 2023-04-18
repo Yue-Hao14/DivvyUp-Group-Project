@@ -29,47 +29,59 @@ function LoggedOutSplashPage() {
                             always keeping you informed of who you owe and who owes you.</h3>
                     </div>
                     <div className="features-list-container">
-                            <div>
-                                <span>
+                            <div className="single-list">
+                                <div>
                                     <i className="fa-solid fa-user-group"></i>
-                                </span>
+                                </div>
+                                <p>
                                 Keep track of who owes what and settle up easily
+                                </p>
+
                             </div>
-                            <div>
-                                <span>
+                            <div className="single-list">
+                                <div>
                                     <i className="fa-regular fa-comments"></i>
-                                </span>
+                                </div>
+                                <p>
                                 Provides the option to add comments, communication to expenses
+                                </p>
                             </div>
-                            <div>
-                                <span>
+                            <div className="single-list">
+                                <div>
                                     <i className="fa-solid fa-people-group"></i>
-                                </span>
+                                </div>
+                                <p>
                                 Offers the ability to create and manage group expenses (coming up features)
+                                </p>
                             </div>
-                            <div>
-                                <span>
+                            <div className="single-list">
+                                <div>
                                     <i className="fa-solid fa-money-bill-transfer"></i>
-                                </span>
+                                </div>
+                                <p>
                                 Split expenses among many friends
+                                </p>
                             </div>
-                            <div>
-                                <span>
+                            <div className="single-list">
+                                <div>
                                 <i className="fa-solid fa-eraser"></i>
-                                </span>
+                                </div>
+                                <p>
                                  Be able to create, update and delete expenses
+                                </p>
                             </div>
-                            <div>
-                                <span>
+                            <div className="single-list">
+                                <div>
                                 <i class="fa-solid fa-lock"></i>
-                                </span>
+                                </div>
+                                <p>
                                 Offers secure your private information
+                                </p>
                             </div>
                     </div>
                 </div>
             </div>
         </div >
-
     )
 }
 
