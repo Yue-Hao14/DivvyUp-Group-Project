@@ -1,4 +1,4 @@
-.splash-page-wrapper{
+.splash-page-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,8 +26,9 @@
   border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   padding-left: 20px;
+  overflow: auto;
 }
 
 .you-owe-details-container a,
@@ -36,8 +37,8 @@
   color: inherit;
 }
 
-.you-owe-list > a,
-.you-are-owed-list > a {
+.you-owe-list>a,
+.you-are-owed-list>a {
   display: block;
   border-bottom: 1px solid #5bc5a7;
   padding: 10px;
@@ -46,13 +47,13 @@
   font-size: 16px;
 }
 
-.you-owe-list > a:hover,
-.you-are-owed-list > a:hover {
+.you-owe-list>a:hover,
+.you-are-owed-list>a:hover {
   background-color: #e8fff5;
 }
 
-.you-owe-list > a:last-child,
-.you-are-owed-list > a:last-child {
+.you-owe-list>a:last-child,
+.you-are-owed-list>a:last-child {
   border-bottom: none;
 }
 
@@ -77,6 +78,8 @@
   margin-left: 9px;
   margin-right: 9px;
   width: 300px;
+  background-color: rgb(232, 232, 232);
+  overflow: auto;
 }
 
 .splash-page-total-balance-container h3,
@@ -105,6 +108,7 @@
   width: 100%;
   background-color: rgb(232, 232, 232);
   border-radius: .5rem;
+  overflow: auto;
 }
 
 .total-balance-positive {
@@ -113,6 +117,10 @@
 
 .total-balance-negative {
   color: red;
+}
+
+.you-owe-list .friend-name {
+  font-weight: bold;
 }
 
 .you-are-owed-list .friend-name {
@@ -124,13 +132,66 @@
   color: black
 }
 
-.splash-page-header-button{
+.splash-page-header-button {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.fa-table{
+.fa-table {
   color: #5bc5a7;
   font-size: 35px;
-  margin-right: 10px ;
+  margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+  .splash-page-wrapper {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  .splash-page-header-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .splash-page-content-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .you-owe-details-container,
+  .you-are-owed-details-container {
+    width: 100%;
+  }
+
+  .splash-page-balance-container {
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .splash-page-total-balance-container,
+  .splash-page-owe-container,
+  .you-owe-details-container,
+  .you-are-owed-details-container,
+  .splash-page-are-owe-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  .you-owe-details-container h2,
+  .you-are-owed-details-container h2 {
+    text-align: center;
+  }
+
+  .splash-page-header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
 }
