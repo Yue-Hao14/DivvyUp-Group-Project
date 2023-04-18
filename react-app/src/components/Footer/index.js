@@ -1,9 +1,13 @@
 import React from "react";
 import "./Footer.css"
+import { useSelector } from "react-redux"
 
 function Footer() {
+  const sessionUser = useSelector(state => state.session.user)
+  const footerClass = sessionUser ? "" : "logged_out_footer"
+
   return (
-    <footer className="footer_container">
+    <footer className={`footer_container ` + footerClass}>
       <div className="about_us_title_container">
         <div className="about_us_title">About Us</div>
       </div>

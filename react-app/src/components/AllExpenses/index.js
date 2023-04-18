@@ -25,7 +25,7 @@ function AllExpenses() {
       dispatch(getAllExpensesThunk())
         .then(() => setIsLoaded(true))
     } else setIsLoaded(true)
-  },[dispatch])
+  },[dispatch, allExpenses, currentExpenseSummaries])
 
   return (
     <>
