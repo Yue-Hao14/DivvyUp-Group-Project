@@ -21,7 +21,7 @@ function Navigation ({ isLoaded }) {
       )}
       <NavLink exact to='/' className='navigation-logo'>
         <i className='fa-solid fa-divide navlogodivide' />
-        DivvyUp
+        <span>DivvyUp</span>
       </NavLink>
       {isLoaded && (
         <ul className='navigation-links'>
