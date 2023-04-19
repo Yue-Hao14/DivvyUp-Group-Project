@@ -58,14 +58,14 @@ function TotalBalance() {
             <div className="total_balance_label_div">Your Total Balance:</div>
             <div className={totalBalance >= 0 ? "positive_balance" : "negative_balance"}>
                 {totalBalance > 0 && friendId ? (
-                    <p>{friend.firstName} owes you ${totalBalance.toFixed(2)}</p>
+                    <p>{friend.firstName} owes you ${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 ) : totalBalance < 0 && friendId ? (
-                    <p>You owe {friend.firstName} ${Math.abs(totalBalance).toFixed(2)}</p>
+                    <p>You owe {friend.firstName} ${Math.abs(totalBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 ) : totalBalance === 0 && friendId ? (
                     <p>You are all settled up</p>
                 ) : totalBalance > 0 ? (
-                    <p>you are owed ${totalBalance.toFixed(2)}</p>
-                ) : totalBalance < 0 ? (<p>you owe ${Math.abs(totalBalance.toFixed(2))}</p>
+                    <p>you are owed ${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                ) : totalBalance < 0 ? (<p>you owe ${Math.abs(totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</p>
                 ) : (<p>You are all settled up</p>)
                 }
             </div>
