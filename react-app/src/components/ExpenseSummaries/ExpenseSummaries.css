@@ -21,13 +21,16 @@
   .expense_summary_details_container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     padding: 1rem;
     border: 1.5px solid #5BC5A7;
     cursor: pointer;
     transition: background-color 0.5s ease;
-    word-break: break-all;
   }
 
+  .expense_summary_details_container > * {
+    width: fit-content;
+  }
 
   .expense_summary_details_container:hover {
     background-color: #c7fdee;
