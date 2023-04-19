@@ -73,17 +73,19 @@ function ExpenseSummary ({ expense }) {
         <div className='expense_summary_expense_date'>
           {formattedExpenseDate}
         </div>
-        <i className='fa-solid fa-receipt' />{' '}
         <div className='expense_summary_expense_description'>
+          <div className='expense_summary_icon'>
+            <i className='fa-solid fa-receipt' />
+          </div>
           {expense.description}
         </div>
-        <div className='expense_summary_expense_payerInfo'>
-          {expense.payer.firstName} {expense.payer.lastName[0]}. paid{' '}
-          <span className='expense_summary_amount'>
-            ${expense.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-          </span>
-        </div>
-        {owerDescription}
+          <div className='expense_summary_expense_payerInfo'>
+            {expense.payer.firstName} {expense.payer.lastName[0]}. paid{" "}
+            <span className='expense_summary_amount'>
+              ${expense.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </span>
+          </div>
+          {owerDescription}
       </div>
       {showDetailsId === expense.id && <ExpenseDetails expense={expense} />}
     </div>
