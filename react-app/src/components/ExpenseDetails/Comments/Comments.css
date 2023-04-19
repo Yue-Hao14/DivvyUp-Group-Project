@@ -7,19 +7,14 @@
   border: 2px solid rgb(193, 191, 191);
   border-radius: 8px;
   padding: 5px;
-  width: 400px;
-  
-  /* justify-content: center; */
-  /* align-items: flex-start; */
 }
-
 
 .comment_edit_delete_buttons_div{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-
 }
+
 .comment_edit_delete_buttons_div button{
   background-color: transparent;
   border: none;
@@ -98,6 +93,7 @@
 .comments_container {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .post_comment_button {
@@ -111,6 +107,7 @@
     border: 2px solid #5bc5a7;
     border-radius: 5px;
     cursor: pointer;
+    padding: .5rem;
   }
 
   .post_comment_button:hover {
@@ -131,12 +128,18 @@
 
   .no_comments_heading{
     font-size: 16px;
-    /* border: 2px solid rgb(193, 191, 191); */
     border-radius: 8px;
-    /* padding-left: 35px; */
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 200px;
+    width: fit-content;
     font-weight: lighter;
     color: rgb(150, 149, 149);
+}
+
+
+@media screen and (max-width: 50em) {
+  .comment_div {
+    min-width: 100%;
+  }
+
 }

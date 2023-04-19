@@ -24,7 +24,7 @@ function Comments({ expenseId }) {
   return (
     <>
     {/* <div className="comment_heading_container"></div> */}
-      <div className={`comments_heading ${comments && comments.length === 0 ? 'no_comments_heading' : ''}`}>
+    <div className={`comments_heading ${comments && comments.length === 0 ? 'no_comments_heading' : ''}`}>
       {comments && comments.length === 0 ? 'Be the first to comment!' : 'COMMENTS'}
     </div>
       <div className='comments_container'>
