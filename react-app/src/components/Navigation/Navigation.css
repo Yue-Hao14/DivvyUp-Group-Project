@@ -191,17 +191,19 @@ nav ul.profile-dropdown a:hover {
     display: none;
   }
 
-
-  /* .navigation-logo {
-    margin: 0;
-    justify-self: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  } */
   .navigation-logo{
     position: absolute;
     left: 2rem;
   }
 
+  .navigation-links{
+    padding-left: 133px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navigation-add-expense-button button{
+    padding-right: 0;
+  }
 }
