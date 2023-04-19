@@ -133,7 +133,7 @@
     /* padding-left: 35px; */
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 200px;
+    width: fit-content;
     font-weight: lighter;
     color: rgb(150, 149, 149);
 }
