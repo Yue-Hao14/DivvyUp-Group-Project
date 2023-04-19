@@ -7,10 +7,8 @@
   border: 2px solid rgb(193, 191, 191);
   border-radius: 8px;
   padding: 5px;
-  width: 400px;
-  
-  /* justify-content: center; */
-  /* align-items: flex-start; */
+  /* width: 400px; */
+  max-width: 100%;
 }
 
 
