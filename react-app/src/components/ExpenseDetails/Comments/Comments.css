@@ -128,9 +128,7 @@
 
   .no_comments_heading{
     font-size: 16px;
-    /* border: 2px solid rgb(193, 191, 191); */
     border-radius: 8px;
-    /* padding-left: 35px; */
     padding-top: 10px;
     padding-bottom: 10px;
     width: fit-content;
@@ -140,10 +138,6 @@
 
 
 @media screen and (max-width: 50em) {
-  body {
-    color: red;
-  }
-
   .comment_div {
     min-width: 100%;
   }
