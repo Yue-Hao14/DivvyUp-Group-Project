@@ -7,7 +7,6 @@
   border: 2px solid rgb(193, 191, 191);
   border-radius: 8px;
   padding: 5px;
-  max-width: 100%;
 }
 
 .comment_edit_delete_buttons_div{
@@ -94,6 +93,7 @@
 .comments_container {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .post_comment_button {

@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.75rem;
   margin-top: 80px;
   margin-left: 300px;
   margin-right: 15rem;

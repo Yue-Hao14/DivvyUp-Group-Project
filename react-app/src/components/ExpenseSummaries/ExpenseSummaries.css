@@ -22,13 +22,8 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    /* border-top: 1px solid #ddd; */
     border: 1.5px solid #5BC5A7;
-    border-top: none;
-    /* border-radius: 5px; */
-
     cursor: pointer;
-
     transition: background-color 0.5s ease;
     word-break: break-all;
   }
