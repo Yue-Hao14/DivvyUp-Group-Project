@@ -137,3 +137,15 @@
     font-weight: lighter;
     color: rgb(150, 149, 149);
 }
+
+
+@media screen and (max-width: 50em) {
+  body {
+    color: red;
+  }
+
+  .comment_div {
+    min-width: 100%;
+  }
+
+}
