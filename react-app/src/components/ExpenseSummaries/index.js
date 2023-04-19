@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import { groupExpensesByMonth } from "../../utils/expenseHelpers";
 import ExpenseSummarySection from "./ExpenseSummarySection";
+import NoPendingExpenses from "../NoPendingExpenses";
 
 function ExpenseSummaries() {
     const expenses = useSelector(state => Object.values(state.expenses.currentExpenseSummaries))
@@ -30,7 +31,7 @@ function ExpenseSummaries() {
                     return <ExpenseSummarySection key={idx} expenses={expenseList} />
                 })
                 :
-                <h1 className="no_pending_expenses">No pending expenses</h1>
+                <NoPendingExpenses />
             }
         </div>
     )
