@@ -65,7 +65,7 @@ function TotalBalance() {
                     <p>You are all settled up</p>
                 ) : totalBalance > 0 ? (
                     <p>you are owed ${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                ) : totalBalance < 0 ? (<p>you owe ${Math.abs(totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</p>
+                ) : totalBalance < 0 ? (<p>you owe ${Math.abs(totalBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 ) : (<p>You are all settled up</p>)
                 }
             </div>
