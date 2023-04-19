@@ -183,12 +183,25 @@ nav ul.profile-dropdown a:hover {
 
 
 @media screen and (max-width: 81em) {
-  .navigation-container {
+  /* .navigation-container {
     justify-content: space-between;
+  } */
+
+  .navlogodivide{
+    display: none;
   }
 
-  .navigation-logo {
+
+  /* .navigation-logo {
     margin: 0;
     justify-self: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  } */
+  .navigation-logo{
+    position: absolute;
+    left: 2rem;
   }
+
 }
