@@ -29,7 +29,7 @@
   }
 
   .expense_summary_details_container > * {
-    width: fit-content;
+    flex: 1;
   }
 
   .expense_summary_details_container:hover {
@@ -39,6 +39,7 @@
   .expense_summary_expense_date {
     flex: 1;
     font-size: 0.9rem;
+    font-weight: bold;
   }
 
   .fa-receipt {
@@ -52,10 +53,14 @@
   }
 
   .expense_summary_expense_description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     flex: 2;
     font-size: 0.9rem;
     word-break: break-all;
   }
+
 
   .expense_summary_expense_payerInfo {
     display: flex;
@@ -64,6 +69,7 @@
     flex: 1;
     font-size: 0.9rem;
     text-align: right;
+    margin-left: .5rem;
 }
 
 
@@ -74,6 +80,20 @@
   .no_pending_expenses{
     margin-left: 340px;
     color: black;
+  }
+
+  @media screen and (max-width: 50em) {
+    .expense_summary_details_container {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: .5rem;
+    }
+
+    .expense_summary_expense_payerInfo {
+      flex-direction: row;
+      text-align: left;
+    }
   }
 
   @media (min-width: 1024px) {
