@@ -1,0 +1,27 @@
+.no-expenses-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.no-expenses-img img {
+    width: 200px;
+    height: auto;
+}
+
+.no-expenses-details {
+    align-self: flex-start;
+}
+
+.no-expenses-details h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.no-expenses-details p {
+    font-size: 16px;
+    color: #666;
+}
