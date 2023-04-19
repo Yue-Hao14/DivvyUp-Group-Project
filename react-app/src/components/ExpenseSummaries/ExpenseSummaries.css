@@ -24,6 +24,7 @@
     padding: 1rem;
     /* border-top: 1px solid #ddd; */
     border: 1.5px solid #5BC5A7;
+    border-top: none;
     /* border-radius: 5px; */
 
     cursor: pointer;
