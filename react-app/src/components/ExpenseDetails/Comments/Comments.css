@@ -7,17 +7,15 @@
   border: 2px solid rgb(193, 191, 191);
   border-radius: 8px;
   padding: 5px;
-  /* width: 400px; */
   max-width: 100%;
 }
-
 
 .comment_edit_delete_buttons_div{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-
 }
+
 .comment_edit_delete_buttons_div button{
   background-color: transparent;
   border: none;
@@ -109,6 +107,7 @@
     border: 2px solid #5bc5a7;
     border-radius: 5px;
     cursor: pointer;
+    padding: .5rem;
   }
 
   .post_comment_button:hover {
