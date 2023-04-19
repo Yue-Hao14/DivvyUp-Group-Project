@@ -25,6 +25,7 @@
   /* Get the total balance to display under the friend name*/
   .total_balance_div {
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 0;
