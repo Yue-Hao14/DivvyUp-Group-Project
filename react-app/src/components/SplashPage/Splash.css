@@ -111,11 +111,13 @@
   overflow: auto;
 }
 
-.total-balance-positive {
+.total-balance-positive,
+.green {
   color: green;
 }
 
-.total-balance-negative {
+.total-balance-negative,
+.red {
   color: red;
 }
 

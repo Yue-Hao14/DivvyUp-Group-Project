@@ -80,7 +80,7 @@ function ExpenseSummary ({ expense }) {
         <div className='expense_summary_expense_payerInfo'>
           {expense.payer.firstName} {expense.payer.lastName[0]}. paid{' '}
           <span className='expense_summary_amount'>
-            ${expense.amount.toFixed(2)}
+            ${expense.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
         </div>
         {owerDescription}
