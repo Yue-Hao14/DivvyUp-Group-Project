@@ -13,22 +13,26 @@
 
 .splash-page-content-container {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   width: 100%;
   flex-wrap: wrap;
-  gap: 20px;
+  /* gap: 20px; */
+  border: 2px solid #5bc5a7;
 }
 
 .you-owe-details-container,
 .you-are-owed-details-container {
   width: 48.4%;
-  border: 2px solid #5bc5a7;
-  border-radius: 5px;
+  /* border: 2px solid #5bc5a7; */
+  /* border-radius: 5px; */
   padding: 10px;
   box-sizing: border-box;
   /* margin-bottom: 20px; */
   padding-left: 20px;
   overflow: auto;
+}
+.you-owe-details-container {
+  border-right: 2px solid #5bc5a7;
 }
 
 .you-owe-details-container a,
@@ -61,9 +65,10 @@
 
 .splash-page-balance-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   font-size: 1.25rem;
   width: 100%;
+  border: 2px solid #5bc5a7;
 }
 
 .splash-page-total-balance-container,
@@ -72,14 +77,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #5bc5a7;
-  border-radius: 5px;
+  /* border: 2px solid #5bc5a7; */
+  /* border-radius: 5px; */
   padding-bottom: 16px;
-  margin-left: 9px;
-  margin-right: 9px;
-  width: 300px;
+  /* margin-left: 9px;
+  margin-right: 9px; */
+  width: 33.333333%;
   background-color: rgb(232, 232, 232);
   overflow: auto;
+}
+
+.splash-page-total-balance-container,
+.splash-page-owe-container {
+  border-right: 2px solid #5bc5a7;;
 }
 
 .splash-page-total-balance-container h3,
@@ -111,11 +121,13 @@
   overflow: auto;
 }
 
-.total-balance-positive {
+.total-balance-positive,
+.green {
   color: green;
 }
 
-.total-balance-negative {
+.total-balance-negative,
+.red {
   color: red;
 }
 
@@ -129,7 +141,8 @@
 
 .splash-page-title {
   display: inline;
-  color: black
+  color: black;
+  font-size:1.3rem;
 }
 
 .splash-page-header-button {

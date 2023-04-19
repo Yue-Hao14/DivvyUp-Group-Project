@@ -46,7 +46,7 @@ function OweYou ({ friend }) {
         <Link key={friend.id} to={`/friends/${friend.id}`}>
           <div>
             <span className='friend-name'>{friend.firstName}</span>
-            &nbsp;owes you ${friendOwed.toFixed(2)}
+            &nbsp;owes you ${friendOwed.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
         </Link>
       ) : null}

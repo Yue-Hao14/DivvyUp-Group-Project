@@ -85,20 +85,20 @@ function SplashPage() {
                 }
               >
                 {totalBalance < 0 ? '- $' : '$'}
-                {Math.abs(totalBalance).toFixed(2)}
+                {Math.abs(totalBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </div>
             </div>
             <div className='splash-page-owe-container'>
               <div>
                 <h3>You owe</h3>
               </div>
-              <div>${userDebt.toFixed(2)}</div>
+              <div className='red'>${userDebt.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
             </div>
             <div className='splash-page-are-owe-container'>
               <div>
                 <h3>You are owed</h3>
               </div>
-              <div>${userOwed.toFixed(2)}</div>
+              <div className='green'>${userOwed.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
             </div>
           </section>
           <section className='splash-page-content-container'>
