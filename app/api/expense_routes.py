@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Expense, User, Comment
 from app.forms import ExpenseForm, CommentForm
 from .auth_routes import validation_errors_to_error_messages
-from datetime import datetime, date
+from datetime import datetime, timezone
 import json
 
 expense_routes = Blueprint('expenses', __name__)
@@ -114,7 +114,7 @@ def update_an_expense(id):
             expense.description = form.data["description"]
             expense.amount = form.data['amount']
             expense.expense_date= form.data['expenseDate']
-            expense.updated_at = datetime.today()
+            expense.updated_at = datetime.now(timezone.utc)
 
             new_owers = set([User.query.get(id) for id in ower_ids])
             current_owers = set(expense.owers)

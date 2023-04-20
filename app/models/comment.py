@@ -1,4 +1,4 @@
-from datetime import date
+from sqlalchemy.sql import func
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Comment(db.Model):
@@ -11,8 +11,8 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     expense_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("expenses.id")), nullable=False)
     comment = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.Date, nullable=False, default=date.today())
-    updated_at = db.Column(db.Date, nullable=False, default=date.today())
+    created_at = db.Column(db.DateTime, nullable=False, server_default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, server_default=func.now())
 
     user = db.relationship("User")
     expense = db.relationship("Expense", back_populates="comments")

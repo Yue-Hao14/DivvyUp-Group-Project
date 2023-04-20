@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import ProfileButton from './ProfileButton'
 import AddExpenseModal from './AddExpenseModal'
 import OpenModalButton from '../OpenModalButton'
-import SideBar from '../SideBar'
+import DropDownMenu from './DropDownMenu.js'
 
 import './Navigation.css'
-import DropDownMenu from './DropDownMenu.js'
 
 function Navigation ({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user)

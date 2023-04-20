@@ -8,7 +8,7 @@ function NoPendingExpenses() {
                 <img src={noExpenses} alt="No Pending Expenses img"></img>
             </div>
             <div className="no-expenses-details">
-                <h3>You have not added any expenses yet</h3>
+                <h3>You do not have any pending expenses.</h3>
                 <p>To add a expense, click the "Add an expense" button</p>
             </div>
 
