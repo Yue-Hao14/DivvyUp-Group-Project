@@ -1,6 +1,5 @@
 import React from "react";
 import "./Footer.css"
-import { useSelector } from "react-redux"
 
 function Footer() {
   return (
