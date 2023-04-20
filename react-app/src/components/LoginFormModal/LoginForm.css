@@ -52,26 +52,6 @@
     color: red;
     margin-bottom: 1rem;
   }
-/*
-  .login-modal-button {
-    padding: 0.8rem;
-    margin: 0.6rem 0;
-    margin-left: 10px;
-    border-radius: 8px;
-    border: none;
-    background-color: #5BC5A7;
-    color: white;
-    cursor: pointer;
-    width: 365px;
-    height: 40px;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  } */
-
-
 
   .login-modal-button,
   .login-modal-button-demo {
@@ -84,8 +64,7 @@
     font-weight: bold;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    width: 338px;
-
+    width: 100%;
   }
   .login-modal-button {
     background-color: #fff;
