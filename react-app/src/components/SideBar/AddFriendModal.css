@@ -1,9 +1,8 @@
 .add_friend_modal_form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding: 1.5rem;
-    width: 400px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     background-color: white;
     border-radius: 10px;
@@ -34,10 +33,9 @@
     font-size: 1.5rem;
     font-weight: bold;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: left;
-    width: 380px;
-
+    justify-content: center;
   }
 
 
@@ -47,26 +45,6 @@
     margin-bottom: 1rem;
     width: 95%;
   }
-
-  /* .add_friend_modal_submit_button {
-    background-color: #5bc5a7;
-    color: white;
-    border: 2px solid #5bc5a7;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    margin-top: auto;
-    margin-left: auto;
-    cursor: pointer;
-  }
-
-  .add_friend_modal_submit_button:hover {
-    background-color: #48a289;
-    border: 2px solid #48a289;
-    color: white;
-  } */
-
 
   .add_friend_modal_form ul {
     list-style-type: none;
@@ -88,14 +66,16 @@
 
   .button_container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     width: 100%;
-    margin-left: 18px;
   }
+
   .add_friend_modal_cancel_button,
   .add_friend_modal_submit_button {
+    flex: 1;
     padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
+    margin: 0.5rem;
     border-radius: 4px;
     border: none;
     cursor: pointer;
@@ -132,6 +112,13 @@
     color: #757575; /* Adjust the value to get the desired shade of grey */
     margin-bottom: 10px;
     margin-right: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .add_friend_suggestions_div > * {
+    flex: 1;
   }
 
   .add_friend_suggestion_title {
