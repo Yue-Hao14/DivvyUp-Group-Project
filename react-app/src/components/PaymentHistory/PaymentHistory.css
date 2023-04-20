@@ -65,6 +65,7 @@
   padding: 1rem;
   border: 1.5px solid #5bc5a7;
   transition: background-color 0.4s ease;
+  cursor: pointer;
 }
 
 .payment_details_div:hover {
