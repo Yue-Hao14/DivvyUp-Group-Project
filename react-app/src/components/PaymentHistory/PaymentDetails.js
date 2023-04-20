@@ -66,7 +66,7 @@ function PaymentDetails ({ expense }) {
       <div onClick={() => displayDetails(expense)} className='payment_details_div'>
         <div className='payment_details_heading'>
           <div className='payment_details_date'>{formattedExpenseDate}</div>
-          <i className="fa-solid fa-receipt" />
+            <i className="fa-solid fa-receipt" />
           <div className='payment_details_description'>{expense.description}</div>
         </div>
         <div className='payment_details_list'>{paymentDetails}</div>

@@ -81,6 +81,7 @@
 .payment_details_date {
   flex: 1;
   font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .payment_details_description {
@@ -107,4 +108,23 @@
 .settled_expenses_div .payment_details_div:last-child {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+
+@media screen and (max-width: 50em) {
+  .payment_details_div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+
+  .payment_details_heading {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .payment_details_list {
+    text-align: left;
+  }
 }
