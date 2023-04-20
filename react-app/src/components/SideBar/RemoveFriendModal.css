@@ -13,6 +13,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .delete_confirmation_modal_info {
@@ -79,11 +80,9 @@
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
   transform: translateY(3px);
 }
+
 .delete_confirmation_modal_confirm_button:active {
   background-color: rgb(232, 7, 7);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
   transform: translateY(3px);
 }
-/* .delete_confirmation_modal_confirm_button {
-  margin-left: 1rem;
-} */

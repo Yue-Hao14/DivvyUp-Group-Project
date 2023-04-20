@@ -13,21 +13,16 @@
 
 .splash-page-content-container {
   display: flex;
-  /* justify-content: space-around; */
   width: 100%;
   flex-wrap: wrap;
-  /* gap: 20px; */
   border: 2px solid #5bc5a7;
 }
 
 .you-owe-details-container,
 .you-are-owed-details-container {
   width: 48.4%;
-  /* border: 2px solid #5bc5a7; */
-  /* border-radius: 5px; */
   padding: 10px;
   box-sizing: border-box;
-  /* margin-bottom: 20px; */
   padding-left: 20px;
   overflow: auto;
 }
@@ -77,11 +72,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 2px solid #5bc5a7; */
-  /* border-radius: 5px; */
   padding-bottom: 16px;
-  /* margin-left: 9px;
-  margin-right: 9px; */
   width: 33.333333%;
   background-color: rgb(232, 232, 232);
   overflow: auto;
@@ -114,6 +105,7 @@
 .splash-page-header-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
   width: 100%;
   background-color: rgb(232, 232, 232);
