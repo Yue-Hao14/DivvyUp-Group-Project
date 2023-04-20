@@ -58,6 +58,8 @@ function ExpenseSummary ({ expense }) {
     )
   }
 
+  const expenseSummaryContainerClassName = "expense_summary_details_container" + (!showDetailsId ? " expense_summary_details_container_no_details" : "")
+
   return (
     <div
       className={
@@ -68,7 +70,7 @@ function ExpenseSummary ({ expense }) {
     >
       <div
         onClick={() => displayDetails(expense)}
-        className='expense_summary_details_container'
+        className={expenseSummaryContainerClassName}
       >
         <div className='expense_summary_expense_date'>
           {formattedExpenseDate}

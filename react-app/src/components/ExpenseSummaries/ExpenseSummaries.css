@@ -28,6 +28,14 @@
     transition: background-color 0.5s ease;
   }
 
+  .expense_summary_details_container_no_details {
+    border-bottom: none;
+  }
+
+  .expense_summaries_container:last-child {
+    border-bottom: 1.5px solid #5BC5A7;
+  }
+
   .expense_summary_details_container > * {
     flex: 1;
   }

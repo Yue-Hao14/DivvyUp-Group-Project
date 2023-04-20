@@ -12,14 +12,16 @@ function ExpenseSummarySection ({ expenses }) {
       </div>
 
       }
-      {expenses.map((expense) => {
-        return (
-          <ExpenseSummary
+      <section className='expense_summaries_container'>
+        {expenses.map((expense) => {
+          return (
+            <ExpenseSummary
             key={expense.id}
             expense={expense}
-          />
-        )
-      })}
+            />
+            )
+          })}
+      </section>
     </div>
   )
 }
