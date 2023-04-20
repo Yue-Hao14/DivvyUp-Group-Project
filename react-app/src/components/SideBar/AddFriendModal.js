@@ -26,7 +26,7 @@ function AddFriendModal () {
       <div className='add_friend_modal_form_label_container'>
         <div className='add_friend_modal_label'>
           <i className='fas a-solid fa-divide add_friend_modal_icon'></i>
-          <span className='add_friend_modal_label_text'>Add Friend</span>
+          <div className='add_friend_modal_label_text'>Add Friend</div>
         </div>
       </div>
       <ul className='add_friend_modal_error_list'>
