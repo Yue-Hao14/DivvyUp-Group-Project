@@ -115,16 +115,17 @@
   .payment_details_div {
     flex-direction: column;
     align-items: flex-start;
-    gap: .5rem;
+    gap: 1rem;
   }
 
   .payment_details_heading {
     display: flex;
     align-items: center;
-    width: 100%;
+    flex-wrap: wrap;
   }
 
   .payment_details_list {
     text-align: left;
+    gap: .5rem;
   }
 }
