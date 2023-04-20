@@ -66,6 +66,11 @@
   border: 1.5px solid #5bc5a7;
   transition: background-color 0.4s ease;
   cursor: pointer;
+  border-bottom: none;
+}
+
+.payment_details_div_show_details {
+  border-bottom: 1.5px solid #5bc5a7;
 }
 
 .payment_details_div:hover {
@@ -106,6 +111,7 @@
 }
 
 .settled_expenses_div .payment_details_div:last-child {
+  border-bottom: 1.5px solid #5bc5a7;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }

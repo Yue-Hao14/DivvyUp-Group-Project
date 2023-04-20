@@ -19,6 +19,8 @@ function PaymentDetails ({ expense }) {
     }
   }
 
+  const paymentDetailsContainerClassName = "payment_details_div" + (showDetailsId ? " payment_details_div_show_details" : "");
+
   let paymentDetails
   if (sessionUser.id !== expense.payer.id) {
     // if user is not payer
@@ -63,7 +65,7 @@ function PaymentDetails ({ expense }) {
 
   return (
     <>
-      <div onClick={() => displayDetails(expense)} className='payment_details_div'>
+      <div onClick={() => displayDetails(expense)} className={paymentDetailsContainerClassName}>
         <div className='payment_details_heading'>
           <div className='payment_details_date'>{formattedExpenseDate}</div>
             <i className="fa-solid fa-receipt" />
