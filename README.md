@@ -4,7 +4,7 @@ DivvyUp, a SplitWise clone, is a website for users to track bills and share expe
 Live site: [DivvyUp](https://divvyup.onrender.com/)
 
 # Wiki Link
-* Backend Routes
+* [Backend Routes](https://github.com/Yue-Hao14/DivvyUp-Group-Project/blob/main/dev_documentation/API_Routes.md)
 * [Database Schema](https://github.com/Yue-Hao14/DivvyUp-Group-Project/wiki)
 * [Feature List](https://github.com/Yue-Hao14/DivvyUp-Group-Project/blob/main/dev_documentation/feature_list.md)
 

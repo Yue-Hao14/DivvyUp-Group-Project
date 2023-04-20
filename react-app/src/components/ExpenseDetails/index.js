@@ -4,7 +4,7 @@ import ExpenseUserInfo from './ExpenseUserInfo'
 import Comments from './Comments'
 import './ExpenseDetails.css'
 
-function ExpenseDetails ({ expense }) {
+function ExpenseDetails({ expense }) {
   const createdAt = getMMDDYYYY(new Date(expense.createdAt))
   const updatedAt = getMMDDYYYY(new Date(expense.updatedAt))
 
@@ -27,7 +27,7 @@ function ExpenseDetails ({ expense }) {
       <div className='expense_details_div_lower'>
         <ExpenseUserInfo expense={expense} />
         <div className='expense_details_comments_div'>
-          <Comments expenseId={expense.id}/>
+          <Comments expenseId={expense.id} />
         </div>
       </div>
     </div>
