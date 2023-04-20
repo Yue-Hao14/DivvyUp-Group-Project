@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import func
 from datetime import date
 
 class SettledUserExpense(db.Model):
@@ -10,7 +11,7 @@ class SettledUserExpense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     expense_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("expenses.id")), nullable=False)
-    settled_date = db.Column(db.Date, nullable=False, default=date.today())
+    settled_date = db.Column(db.DateTime, nullable=False, server_default=func.now())
 
     expense = db.relationship("Expense", back_populates="settled_owers")
     settled_user = db.relationship("User", back_populates="settled_expenses")
