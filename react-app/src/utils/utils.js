@@ -3,20 +3,18 @@ export const months = ["January", "February", "March", "April", "May", "June", "
 
 export const getMMDDYYYY = date => {
     const month = months[date.getMonth()]
-    return `${month} ${date.getUTCDate()}, ${date.getUTCFullYear()}`
+    return `${month} ${date.getDate()}, ${date.getFullYear()}`
 }
 
 export const getMMMYYYYY = date => {
-    const month = abbrevMonths[date.getUTCMonth()]
-    return `${month} ${date.getUTCFullYear()}`
+    const month = abbrevMonths[date.getMonth()]
+    return `${month} ${date.getFullYear()}`
 }
 
 
 export const getMMDD = date => {
-    const month = abbrevMonths[date.getUTCMonth()]
-    const day = date.getUTCDate()
+    const month = abbrevMonths[date.getMonth()]
+    const day = date.getDate()
     const formattedDay = day < 10 ? `0${day}` : day
     return `${month} ${formattedDay}`
 }
-
-
