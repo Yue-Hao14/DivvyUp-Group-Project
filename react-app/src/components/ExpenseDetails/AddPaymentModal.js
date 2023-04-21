@@ -21,7 +21,7 @@ function AddPaymentModal ({ expenseId, ower, owerAmount, friendId }) {
       expenseId,
       settledDate
     }
-    console.log(friendId)
+    // console.log(friendId)
     await dispatch(postPaymentThunk(payment, friendId))
     closeModal()
   }
