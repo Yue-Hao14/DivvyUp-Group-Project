@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import OpenModalButton from "../../OpenModalButton";
 import AddFriendModal from "../../SideBar/AddFriendModal";
 import RemoveFriendModal from "../../SideBar/RemoveFriendModal";
+import AddExpenseModal from "../AddExpenseModal";
 import "./DropDownMenu.css"
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -47,6 +48,12 @@ function DropDownMenu() {
         </button>
         <ul className={sideBarClassName} ref={sideBarRef}>
           <>
+            <div className="dropdown_add_expense_button">
+              <OpenModalButton
+              modalComponent={<AddExpenseModal />}
+              buttonText='Add an Expense'
+              />
+            </div>
             <li onClick={closeSideBar}>
               <NavLink activeClassName='active_sidebar_link' exact to="/">Dashboard</NavLink>
             </li>

@@ -163,7 +163,6 @@ nav ul.profile-dropdown a:hover {
   border: none;
   border-radius: 10px;
   font-size: 0.85rem;
-  /* font-weight: bold; */
   padding: 0.75rem 1rem; /* increased padding on top and bottom */
   margin-top: 1px;
   margin-left: auto;
@@ -183,24 +182,27 @@ nav ul.profile-dropdown a:hover {
 
 
 @media screen and (max-width: 81em) {
-  /* .navigation-container {
-    justify-content: space-between;
-  } */
-
   .navlogodivide{
     display: none;
   }
 
-  .navigation-logo{
-    position: absolute;
-    left: 2rem;
+  .navigation-logo {
+    margin: 0;
+  }
+
+  .navigation-add-expense-button {
+    display: none;
   }
 
   .navigation-links{
-    padding-left: 133px;
+    margin-right: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .drop_down_menu_button {
+    margin-left: 1rem;
   }
 
   .navigation-add-expense-button button{
